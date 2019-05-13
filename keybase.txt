@@ -1,0 +1,53 @@
+//keybase.io/anir0y
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://anir0y.github.io
+  * I am anir0y (https://keybase.io/anir0y) on keybase.
+  * I have a public key ASDrGnr2PlQ5r8d7REuYr-vlp1_galmO2HcEmwp1ypT9Ogo
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "01011b7e9be092e68020ed1d5de37900029e5221a9f12cf43263c74cea9b4bbdaf800a",
+      "host": "keybase.io",
+      "kid": "0120eb1a7af63e5439afc77b444b98afebe5a75fe06a598ed877049b0a75ca94fd3a0a",
+      "uid": "f582ffebea47f3fd0d3f70fc4aa26719",
+      "username": "anir0y"
+    },
+    "merkle_root": {
+      "ctime": 1557718261,
+      "hash": "e251c696c50e5687cd1f69ea7561ab7a0515652e9fd85ea7b1a6e1f339bd8186f69f8157c810e09dafbdec6d2f93066c51e9a3d425c31a5b014a89e56a348b9a",
+      "hash_meta": "cf3a9133acce0ed75f9130372ac8ba0e6e72f1903b52cdd6a2c05644c6b8f9fb",
+      "seqno": 5357220
+    },
+    "service": {
+      "entropy": "3NMC8zWzFzlCRSeEPp8pHUI5",
+      "hostname": "anir0y.github.io",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 2
+  },
+  "client": {
+    "name": "keybase.io go client",
+    "version": "4.0.0"
+  },
+  "ctime": 1557718301,
+  "expire_in": 504576000,
+  "prev": "45d1d76c83fe82dc723114dcf883fa05e4d0782f85758796a4d236c8ec2fc7c0",
+  "seqno": 24,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEg6xp69j5UOa/He0RLmK/r5adf4GpZjth3BJsKdcqU/ToKp3BheWxvYWTESpcCGMQgRdHXbIP+gtxyMRTc+IP6BeTQeC+FdYeWpNI2yOwvx8DEIIJhDLqhcxNcsndL4UezcaqwP4qky00lVygQBtuExwHjAgHCo3NpZ8RAuC+Bwj8wVmnVHXJHIQGh2Kfyi9tiMH7w9lGQGdlRQqcvoSz8OFl3mygIUjNotpUky3FW8O5T2H49rQaOCrkhDKhzaWdfdHlwZSCkaGFzaIKkdHlwZQildmFsdWXEIAEkcwZhAh3++SLfkmkW20+9JrX7fAtThr6ieuZs8Q63o3RhZ80CAqd2ZXJzaW9uAQ==
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/anir0y
