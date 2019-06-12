@@ -61,17 +61,14 @@ class TextScramble {
 // ——————————————————————————————————————————————————
 
 const phrases = [
-  'Loa ding ...',
-  'Please wait ',
-  'checking network',
-  'great',
-  'network connected',
-  'connecting to web-server',
-  'connecting ... ...',
-  'getting data ...',
-  'downloading data ...',
+  './init',
+  'username: Anir0y ',
+  'checking ... ',
+  'Password: ****************',
+  'ACCESS GRANTED !',
+  'Welcome to Classroom',
   '#Done',
-  '#Loading the content soon!'
+  '#!'
 ]
 
 const el = document.querySelector('.text')
