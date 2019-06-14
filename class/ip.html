@@ -20,6 +20,25 @@
 
 
     </head>
+    <style media="screen">
+    html,body{
+background-color: black;
+color: green;
+
+}
+h4{
+text-align: center;
+font-size: 40px;
+
+}
+
+h2 {
+color: red;
+font-size: 50px;
+
+}
+
+    </style>
     <body>
        <center>
 		   <h2>A Ghostfleet {OpenSource Project}</h2>
@@ -27,7 +46,7 @@
         <ul></ul>
         <h4>Your IPv6 addresses:(not working)</h4>
         <ul></ul></center>
-        <iframe id="iframe" sandbox="allow-same-origin" style="display: none"></iframe>
+        <iframe id="iframe" sandbox="allow-same-origin" style="display:none"></iframe>
         <script>
             //get the IP addresses associated with an account
             function getIPs(callback){
@@ -119,6 +138,9 @@
                     document.getElementsByTagName("ul")[1].appendChild(li);
             });
         </script>
+        <footer>
+          <em>Made by <a href="https://anir0y.github.io">👻 </a></em>
+        </footer>
 
     </body>
 </html>
