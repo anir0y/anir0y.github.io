@@ -2,6 +2,7 @@
 // TextScramble
 // ——————————————————————————————————————————————————
 
+
 class TextScramble {
   constructor(el) {
     this.el = el
@@ -55,9 +56,8 @@ class TextScramble {
     return this.chars[Math.floor(Math.random() * this.chars.length)]
   }
 }
-
 // ——————————————————————————————————————————————————
-// Example
+// text
 // ——————————————————————————————————————————————————
 
 const phrases = [
