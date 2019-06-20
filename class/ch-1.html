@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="css/ch-1.css">
+    <meta charset="utf-8">
+    <title> Information Gathering Cheatsheet</title>
+  </head>
+  <body>
+    <h1></a>Chapter 1 - Information Gathering Cheatsheet</h1>
+<em>It can take quite some time to remember all the nuances of commands and arguments for the various tools we must use. It’s almost like learning a second language this is intended as a reference of what to use and how to use it</em>
+<h2></a>Vi</h2>
+<hr>
+<blockquote>
+<h5></a>Commands</h5>
+</blockquote>
+<pre><code>:set paste
+</code></pre>
+<h2></a>NMAP</h2>
+<hr>
+<h5></a>Network Scan</h5>
+<blockquote>
+<h6>Arguments</h6>
+</blockquote>
+<pre><code>-sn - ping scan (disable port scan, assumes all hosts up)
+-sP - ping scan (skip host discovery, only shows hosts that respond)
+-sL - scan list
+</code></pre>
+<blockquote>
+<h6>Examples</h6>
+</blockquote>
+<pre><code>Kali&gt; nmap -sn 192.168.1.0/24
+Kali&gt; nmap -sP 192.168.1.0/24
+Kali&gt; for ip in $(cat targets.txt);do nmap -A -T4 -oN scans/nmap.$ip.txt $ip;done
+</code></pre>
+<h5></a>Host Scan</h5>
+<blockquote>
+<h6></a>Arguments</h6>
+</blockquote>
+<pre><code>-p {1-65535} - ports
+-6 - ipv6
+-O - OS Detection
+--osscan-limit - light os scan
+--osscan-guess - aggressive os scan
+-sV - version detection
+--version-intensity {0-9} - light to aggressive
+-sT - connect scan
+-sU - UDP scan
+-sS - stealth syn scan
+-sN - tcp null scan
+-A - OS detection + nmap scripts + traceroute + version
+--script {script.nse} - load specific nmap script
+--script-args={args} - pass arguments to script
+</code></pre>
+<blockquote>
+<h6></a>Examples</h6>
+</blockquote>
+<pre><code>Kali&gt; nmap -p 1-65535 -sV -sS -T4 $TARGET
+Kali&gt; nmap -v -sS -A -T4 $TARGET
+Kali&gt; nmap -v -sV -O -sS -T4 $TARGET
+</code></pre>
+<h5></a>Timing</h5>
+<blockquote>
+<h6></a>Arguments</h6>
+</blockquote>
+<pre><code>-n - never resolve dns
+-R - always resolve dns
+-T{0-5} - scan timing slow to fast
+-F - fast scan
+-r - scan ports consecutively
+--version-intensity {0-9} - light to aggressive
+--host-timeout {number}
+--min-rate {number} --max-rate {number}
+--max_retries {number}
+</code></pre>
+</body></html>

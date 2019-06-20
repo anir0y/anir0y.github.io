@@ -78,3 +78,14 @@ li.dropdown {
 .dropdown:hover .dropdown-content {
   display: block;
 }
+nav {
+float: left;
+width:auto;
+height:100%;
+padding:10px;
+}
+
+nav ul{
+list-style-type:none;
+padding:0;
+}
