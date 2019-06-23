@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>Infromation Gathering // ClassRoom</title>
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.55.6" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="anir0y" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://anir0y.github.io/class/css/main.min.fb222e05f6f82c63ca9f2a61b40175e4c15df390babdb6f59982bd612383422c.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Infromation Gathering"/>
+<meta name="twitter:description" content="Information Gathering Cheatsheet
+Chapter 1 - Information Gathering Cheatsheet It can take quite some time to remember all the nuances of commands and arguments for the various tools we must use. It’s almost like learning a second language this is intended as a reference of what to use and how to use it
+Vi  Commands  :set paste
+NMAP Network Scan  Arguments  -sn - ping scan (disable port scan, assumes all hosts up)"/>
+
+    <meta property="og:title" content="Infromation Gathering" />
+<meta property="og:description" content="Information Gathering Cheatsheet
+Chapter 1 - Information Gathering Cheatsheet It can take quite some time to remember all the nuances of commands and arguments for the various tools we must use. It’s almost like learning a second language this is intended as a reference of what to use and how to use it
+Vi  Commands  :set paste
+NMAP Network Scan  Arguments  -sn - ping scan (disable port scan, assumes all hosts up)" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://anir0y.github.io/class/posts/infromation-gathering/" />
+<meta property="article:published_time" content="2019-06-23T18:58:02&#43;05:30"/>
+<meta property="article:modified_time" content="2019-06-23T18:58:02&#43;05:30"/>
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://anir0y.github.io/class"><img class="app-header-avatar" src="https://i.pinimg.com/originals/ee/e7/5d/eee75d6e875e7e205a1394aaa96fad12.png" alt="anir0y" /></a>
+      <h1>ClassRoom</h1>
+      <p>here we gonna have some cheatsheet and tips related to Classroom training.</p>
+      <div class="app-header-social">
+        
+          <a target="_blank" href="https://github.com/anir0y"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg></a>
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">Infromation Gathering</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Jun 23, 2019
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          2 min read
+        </div></div>
+    </header>
+    <div class="post-content">
+      
+
+<p>Information Gathering Cheatsheet</p>
+
+<h1 id="chapter-1-information-gathering-cheatsheet">Chapter 1 - Information Gathering Cheatsheet</h1>
+
+<p><em>It can take quite some time to remember all the nuances of commands and arguments for the various tools we must use. It’s almost like learning a second language this is intended as a reference of what to use and how to use it</em></p>
+
+<h2 id="vi">Vi</h2>
+
+<hr />
+
+<blockquote>
+<h5 id="commands">Commands</h5>
+</blockquote>
+
+<p>:set paste</p>
+
+<h2 id="nmap">NMAP</h2>
+
+<hr />
+
+<h5 id="network-scan">Network Scan</h5>
+
+<blockquote>
+<h6 id="arguments">Arguments</h6>
+</blockquote>
+
+<p>-sn - ping scan (disable port scan, assumes all hosts up)</p>
+
+<p>-sP - ping scan (skip host discovery, only shows hosts that respond)</p>
+
+<p>-sL - scan list</p>
+
+<blockquote>
+<h6 id="examples">Examples</h6>
+</blockquote>
+
+<p>Kali&gt; nmap -sn 192.168.1.0/24</p>
+
+<p>Kali&gt; nmap -sP 192.168.1.0/24</p>
+
+<p>Kali&gt; for ip in $(cat targets.txt);do nmap -A -T4 -oN scans/nmap.$ip.txt $ip;done</p>
+
+<h5 id="host-scan">Host Scan</h5>
+
+<blockquote>
+<h6 id="arguments-1">Arguments</h6>
+</blockquote>
+
+<p>-p {1-65535} - ports</p>
+
+<p>-6 - ipv6</p>
+
+<p>-O - OS Detection</p>
+
+<p>&ndash;osscan-limit - light os scan</p>
+
+<p>&ndash;osscan-guess - aggressive os scan</p>
+
+<p>-sV - version detection</p>
+
+<p>&ndash;version-intensity {0-9} - light to aggressive</p>
+
+<p>-sT - connect scan</p>
+
+<p>-sU - UDP scan</p>
+
+<p>-sS - stealth syn scan</p>
+
+<p>-sN - tcp null scan</p>
+
+<p>-A - OS detection + nmap scripts + traceroute + version</p>
+
+<p>&ndash;script {script.nse} - load specific nmap script</p>
+
+<p>&ndash;script-args={args} - pass arguments to script</p>
+
+<blockquote>
+<h6 id="examples-1">Examples</h6>
+</blockquote>
+
+<p>Kali&gt; nmap -p 1-65535 -sV -sS -T4 $TARGET</p>
+
+<p>Kali&gt; nmap -v -sS -A -T4 $TARGET</p>
+
+<p>Kali&gt; nmap -v -sV -O -sS -T4 $TARGET</p>
+
+<h5 id="timing">Timing</h5>
+
+<blockquote>
+<h6 id="arguments-2">Arguments</h6>
+</blockquote>
+
+<p>-n - never resolve dns</p>
+
+<p>-R - always resolve dns</p>
+
+<p>-T{0-5} - scan timing slow to fast</p>
+
+<p>-F - fast scan</p>
+
+<p>-r - scan ports consecutively</p>
+
+<p>&ndash;version-intensity {0-9} - light to aggressive</p>
+
+<p>&ndash;host-timeout {number}</p>
+
+<p>&ndash;min-rate {number} &ndash;max-rate {number}</p>
+
+<p>&ndash;max_retries {number}</p>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>
