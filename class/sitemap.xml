@@ -15,12 +15,6 @@
   </url>
   
   <url>
-    <loc>https://anir0y.github.io/class/tags/cheatsheet/</loc>
-    <lastmod>2019-06-23T20:04:38+05:30</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://anir0y.github.io/class/tags/linux/</loc>
     <lastmod>2019-06-23T20:04:38+05:30</lastmod>
     <priority>0</priority>
@@ -41,6 +35,12 @@
   <url>
     <loc>https://anir0y.github.io/class/posts/vim-cheatsheet/</loc>
     <lastmod>2019-06-23T20:04:38+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://anir0y.github.io/class/tags/cheatsheet/</loc>
+    <lastmod>2019-06-23T20:04:38+05:30</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
