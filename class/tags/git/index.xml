@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Git on Blog</title>
+    <link>https://anir0y.github.io/class/tags/git/</link>
+    <description>Recent content in Git on Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 23 Jun 2019 18:58:02 +0530</lastBuildDate>
+    
+	<atom:link href="https://anir0y.github.io/class/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Git Cheatsheet</title>
+      <link>https://anir0y.github.io/class/posts/git-cheatsheet/</link>
+      <pubDate>Sun, 23 Jun 2019 18:58:02 +0530</pubDate>
+      
+      <guid>https://anir0y.github.io/class/posts/git-cheatsheet/</guid>
+      <description>Global Settings  Related Setup: https://gist.github.com/hofmannsven/6814278 Related Pro Tips: https://ochronus.com/git-tips-from-the-trenches/ Interactive Beginners Tutorial: http://try.github.io/ Git Cheatsheet by GitHub: https://services.github.com/on-demand/downloads/github-git-cheat-sheet/  Reminder Press minus + shift + s and return to chop/fold long lines!
+Show folder content: ls -la
+Notes Do not put (external) dependencies in version control!
+Setup See where Git is located: which git
+Get the version of Git: git --version
+Create an alias (shortcut) for git status: git config --global alias.</description>
+    </item>
+    
+  </channel>
+</rss>

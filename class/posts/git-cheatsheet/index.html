@@ -1,0 +1,499 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>Git Cheatsheet // Blog</title>
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.55.6" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="anir0y" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://anir0y.github.io/class/css/main.min.fb222e05f6f82c63ca9f2a61b40175e4c15df390babdb6f59982bd612383422c.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Git Cheatsheet"/>
+<meta name="twitter:description" content="Global Settings  Related Setup: https://gist.github.com/hofmannsven/6814278 Related Pro Tips: https://ochronus.com/git-tips-from-the-trenches/ Interactive Beginners Tutorial: http://try.github.io/ Git Cheatsheet by GitHub: https://services.github.com/on-demand/downloads/github-git-cheat-sheet/  Reminder Press minus &#43; shift &#43; s and return to chop/fold long lines!
+Show folder content: ls -la
+Notes Do not put (external) dependencies in version control!
+Setup See where Git is located: which git
+Get the version of Git: git --version
+Create an alias (shortcut) for git status: git config --global alias."/>
+
+    <meta property="og:title" content="Git Cheatsheet" />
+<meta property="og:description" content="Global Settings  Related Setup: https://gist.github.com/hofmannsven/6814278 Related Pro Tips: https://ochronus.com/git-tips-from-the-trenches/ Interactive Beginners Tutorial: http://try.github.io/ Git Cheatsheet by GitHub: https://services.github.com/on-demand/downloads/github-git-cheat-sheet/  Reminder Press minus &#43; shift &#43; s and return to chop/fold long lines!
+Show folder content: ls -la
+Notes Do not put (external) dependencies in version control!
+Setup See where Git is located: which git
+Get the version of Git: git --version
+Create an alias (shortcut) for git status: git config --global alias." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://anir0y.github.io/class/posts/git-cheatsheet/" />
+<meta property="article:published_time" content="2019-06-23T18:58:02&#43;05:30"/>
+<meta property="article:modified_time" content="2019-06-23T18:58:02&#43;05:30"/>
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://anir0y.github.io/class"><img class="app-header-avatar" src="https://i.pinimg.com/originals/ee/e7/5d/eee75d6e875e7e205a1394aaa96fad12.png" alt="anir0y" /></a>
+      <h1>Blog</h1>
+      <p>here we gonna have some cheatsheet and tips related to Classroom training.</p>
+      <div class="app-header-social">
+        
+          <a target="_blank" href="https://anir0y.github.io"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg></a>
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">Git Cheatsheet</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Jun 23, 2019
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          6 min read
+        </div><div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tag">
+  <title>tag</title>
+  <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line>
+</svg>
+          <a class="tag" href="https://anir0y.github.io/class/tags/git/">Git</a><a class="tag" href="https://anir0y.github.io/class/tags/cheatsheet/">Cheatsheet</a></div></div>
+    </header>
+    <div class="post-content">
+      
+
+<h2 id="global-settings">Global Settings</h2>
+
+<ul>
+<li>Related Setup: <a href="https://gist.github.com/hofmannsven/6814278">https://gist.github.com/hofmannsven/6814278</a></li>
+<li>Related Pro Tips: <a href="https://ochronus.com/git-tips-from-the-trenches/">https://ochronus.com/git-tips-from-the-trenches/</a></li>
+<li>Interactive Beginners Tutorial: <a href="http://try.github.io/">http://try.github.io/</a></li>
+<li>Git Cheatsheet by GitHub: <a href="https://services.github.com/on-demand/downloads/github-git-cheat-sheet/">https://services.github.com/on-demand/downloads/github-git-cheat-sheet/</a></li>
+</ul>
+
+<h2 id="reminder">Reminder</h2>
+
+<p>Press <code>minus + shift + s</code> and <code>return</code> to chop/fold long lines!</p>
+
+<p>Show folder content: <code>ls -la</code></p>
+
+<h2 id="notes">Notes</h2>
+
+<p>Do not put (external) dependencies in version control!</p>
+
+<h2 id="setup">Setup</h2>
+
+<p>See where Git is located:
+<code>which git</code></p>
+
+<p>Get the version of Git:
+<code>git --version</code></p>
+
+<p>Create an alias (shortcut) for <code>git status</code>:
+<code>git config --global alias.st status</code></p>
+
+<p>Help:
+<code>git help</code></p>
+
+<h2 id="general">General</h2>
+
+<p>Initialize Git:
+<code>git init</code></p>
+
+<p>Get everything ready to commit:
+<code>git add .</code></p>
+
+<p>Get custom file ready to commit:
+<code>git add index.html</code></p>
+
+<p>Commit changes:
+<code>git commit -m &quot;Message&quot;</code></p>
+
+<p>Commit changes with title and description:
+<code>git commit -m &quot;Title&quot; -m &quot;Description...&quot;</code></p>
+
+<p>Add and commit in one step:
+<code>git commit -am &quot;Message&quot;</code></p>
+
+<p>Remove files from Git:
+<code>git rm index.html</code></p>
+
+<p>Update all changes:
+<code>git add -u</code></p>
+
+<p>Remove file but do not track anymore:
+<code>git rm --cached index.html</code></p>
+
+<p>Move or rename files:
+<code>git mv index.html dir/index_new.html</code></p>
+
+<p>Undo modifications (restore files from latest commited version):
+<code>git checkout -- index.html</code></p>
+
+<p>Restore file from a custom commit (in current branch):
+<code>git checkout 6eb715d -- index.html</code></p>
+
+<h2 id="reset">Reset</h2>
+
+<p>Go back to commit:
+<code>git revert 073791e7dd71b90daa853b2c5acc2c925f02dbc6</code></p>
+
+<p>Soft reset (move HEAD only; neither staging nor working dir is changed):
+<code>git reset --soft 073791e7dd71b90daa853b2c5acc2c925f02dbc6</code></p>
+
+<p>Undo latest commit: <code>git reset --soft HEAD~</code></p>
+
+<p>Mixed reset (move HEAD and change staging to match repo; does not affect working dir):
+<code>git reset --mixed 073791e7dd71b90daa853b2c5acc2c925f02dbc6</code></p>
+
+<p>Hard reset (move HEAD and change staging dir and working dir to match repo):
+<code>git reset --hard 073791e7dd71b90daa853b2c5acc2c925f02dbc6</code></p>
+
+<p>Hard reset of a single file (<code>@</code> is short for <code>HEAD</code>):
+<code>git checkout @ -- index.html</code></p>
+
+<h2 id="update-delete">Update &amp; Delete</h2>
+
+<p>Test-Delete untracked files:
+<code>git clean -n</code></p>
+
+<p>Delete untracked files (not staging):
+<code>git clean -f</code></p>
+
+<p>Unstage (undo adds):
+<code>git reset HEAD index.html</code></p>
+
+<p>Update most recent commit (also update the commit message):
+<code>git commit --amend -m &quot;New Message&quot;</code></p>
+
+<h2 id="branch">Branch</h2>
+
+<p>Show branches:
+<code>git branch</code></p>
+
+<p>Create branch:
+<code>git branch branchname</code></p>
+
+<p>Change to branch:
+<code>git checkout branchname</code></p>
+
+<p>Create and change to new branch:
+<code>git checkout -b branchname</code></p>
+
+<p>Rename branch:
+<code>git branch -m branchname new_branchname</code> or:
+<code>git branch --move branchname new_branchname</code></p>
+
+<p>Show all completely merged branches with current branch:
+<code>git branch --merged</code></p>
+
+<p>Delete merged branch (only possible if not HEAD):
+<code>git branch -d branchname</code> or:
+<code>git branch --delete branchname</code></p>
+
+<p>Delete not merged branch:
+<code>git branch -D branch_to_delete</code></p>
+
+<h2 id="merge">Merge</h2>
+
+<p>True merge (fast forward):
+<code>git merge branchname</code></p>
+
+<p>Merge to master (only if fast forward):
+<code>git merge --ff-only branchname</code></p>
+
+<p>Merge to master (force a new commit):
+<code>git merge --no-ff branchname</code></p>
+
+<p>Stop merge (in case of conflicts):
+<code>git merge --abort</code></p>
+
+<p>Stop merge (in case of conflicts):
+<code>git reset --merge</code> // prior to v1.7.4</p>
+
+<p>Undo local merge that hasn&rsquo;t been pushed yet:
+<code>git reset --hard origin/master</code></p>
+
+<p>Merge only one specific commit:
+<code>git cherry-pick 073791e7</code></p>
+
+<p>Rebase:
+<code>git checkout branchname</code> » <code>git rebase master</code>
+or:
+<code>git merge master branchname</code>
+(The rebase moves all of the commits in <code>master</code> onto the tip of <code>branchname</code>.)</p>
+
+<p>Cancel rebase:
+<code>git rebase --abort</code></p>
+
+<p>Squash multiple commits into one:
+<code>git rebase -i HEAD~3</code> (<a href="https://www.devroom.io/2011/07/05/git-squash-your-latests-commits-into-one/">source</a>)</p>
+
+<p>Squash-merge a feature branch (as one commit):
+<code>git merge --squash branchname</code> (commit afterwards)</p>
+
+<h2 id="stash">Stash</h2>
+
+<p>Put in stash:
+<code>git stash save &quot;Message&quot;</code></p>
+
+<p>Show stash:
+<code>git stash list</code></p>
+
+<p>Show stash stats:
+<code>git stash show stash@{0}</code></p>
+
+<p>Show stash changes:
+<code>git stash show -p stash@{0}</code></p>
+
+<p>Use custom stash item and drop it:
+<code>git stash pop stash@{0}</code></p>
+
+<p>Use custom stash item and do not drop it:
+<code>git stash apply stash@{0}</code></p>
+
+<p>Use custom stash item and index:
+<code>git stash apply --index</code></p>
+
+<p>Create branch from stash:
+<code>git stash branch new_branch</code></p>
+
+<p>Delete custom stash item:
+<code>git stash drop stash@{0}</code></p>
+
+<p>Delete complete stash:
+<code>git stash clear</code></p>
+
+<h2 id="gitignore-gitkeep">Gitignore &amp; Gitkeep</h2>
+
+<p>About: <a href="https://help.github.com/articles/ignoring-files">https://help.github.com/articles/ignoring-files</a></p>
+
+<p>Useful templates: <a href="https://github.com/github/gitignore">https://github.com/github/gitignore</a></p>
+
+<p>Add or edit gitignore:
+<code>nano .gitignore</code></p>
+
+<p>Track empty dir:
+<code>touch dir/.gitkeep</code></p>
+
+<h2 id="log">Log</h2>
+
+<p>Show commits:
+<code>git log</code></p>
+
+<p>Show oneline-summary of commits:
+<code>git log --oneline</code></p>
+
+<p>Show oneline-summary of commits with full SHA-1:
+<code>git log --format=oneline</code></p>
+
+<p>Show oneline-summary of the last three commits:
+<code>git log --oneline -3</code></p>
+
+<p>Show only custom commits:
+<code>git log --author=&quot;Sven&quot;</code>
+<code>git log --grep=&quot;Message&quot;</code>
+<code>git log --until=2013-01-01</code>
+<code>git log --since=2013-01-01</code></p>
+
+<p>Show only custom data of commit:
+<code>git log --format=short</code>
+<code>git log --format=full</code>
+<code>git log --format=fuller</code>
+<code>git log --format=email</code>
+<code>git log --format=raw</code></p>
+
+<p>Show changes:
+<code>git log -p</code></p>
+
+<p>Show every commit since special commit for custom file only:
+<code>git log 6eb715d.. index.html</code></p>
+
+<p>Show changes of every commit since special commit for custom file only:
+<code>git log -p 6eb715d.. index.html</code></p>
+
+<p>Show stats and summary of commits:
+<code>git log --stat --summary</code></p>
+
+<p>Show history of commits as graph:
+<code>git log --graph</code></p>
+
+<p>Show history of commits as graph-summary:
+<code>git log --oneline --graph --all --decorate</code></p>
+
+<h2 id="compare">Compare</h2>
+
+<p>Compare modified files:
+<code>git diff</code></p>
+
+<p>Compare modified files and highlight changes only:
+<code>git diff --color-words index.html</code></p>
+
+<p>Compare modified files within the staging area:
+<code>git diff --staged</code></p>
+
+<p>Compare branches:
+<code>git diff master..branchname</code></p>
+
+<p>Compare branches like above:
+<code>git diff --color-words master..branchname^</code></p>
+
+<p>Compare commits:
+<code>git diff 6eb715d</code>
+<code>git diff 6eb715d..HEAD</code>
+<code>git diff 6eb715d..537a09f</code></p>
+
+<p>Compare commits of file:
+<code>git diff 6eb715d index.html</code>
+<code>git diff 6eb715d..537a09f index.html</code></p>
+
+<p>Compare without caring about spaces:
+<code>git diff -b 6eb715d..HEAD</code> or:
+<code>git diff --ignore-space-change 6eb715d..HEAD</code></p>
+
+<p>Compare without caring about all spaces:
+<code>git diff -w 6eb715d..HEAD</code> or:
+<code>git diff --ignore-all-space 6eb715d..HEAD</code></p>
+
+<p>Useful comparings:
+<code>git diff --stat --summary 6eb715d..HEAD</code></p>
+
+<p>Blame:
+<code>git blame -L10,+1 index.html</code></p>
+
+<h2 id="releases-version-tags">Releases &amp; Version Tags</h2>
+
+<p>Show all released versions:
+<code>git tag</code></p>
+
+<p>Show all released versions with comments:
+<code>git tag -l -n1</code></p>
+
+<p>Create release version:
+<code>git tag v1.0.0</code></p>
+
+<p>Create release version with comment:
+<code>git tag -a v1.0.0 -m 'Message'</code></p>
+
+<p>Checkout a specific release version:
+<code>git checkout v1.0.0</code></p>
+
+<h2 id="collaborate">Collaborate</h2>
+
+<p>Show remote:
+<code>git remote</code></p>
+
+<p>Show remote details:
+<code>git remote -v</code></p>
+
+<p>Add remote upstream from GitHub project:
+<code>git remote add upstream https://github.com/user/project.git</code></p>
+
+<p>Add remote upstream from existing empty project on server:
+<code>git remote add upstream ssh://root@123.123.123.123/path/to/repository/.git</code></p>
+
+<p>Fetch:
+<code>git fetch upstream</code></p>
+
+<p>Fetch a custom branch:
+<code>git fetch upstream branchname:local_branchname</code></p>
+
+<p>Merge fetched commits:
+<code>git merge upstream/master</code></p>
+
+<p>Remove origin:
+<code>git remote rm origin</code></p>
+
+<p>Show remote branches:
+<code>git branch -r</code></p>
+
+<p>Show all branches (remote and local):
+<code>git branch -a</code></p>
+
+<p>Create and checkout branch from a remote branch:
+<code>git checkout -b local_branchname upstream/remote_branchname</code></p>
+
+<p>Compare:
+<code>git diff origin/master..master</code></p>
+
+<p>Push (set default with <code>-u</code>):
+<code>git push -u origin master</code></p>
+
+<p>Push:
+<code>git push origin master</code></p>
+
+<p>Force-Push:
+`git push origin master &ndash;force</p>
+
+<p>Pull:
+<code>git pull</code></p>
+
+<p>Pull specific branch:
+<code>git pull origin branchname</code></p>
+
+<p>Fetch a pull request on GitHub by its ID and create a new branch:
+<code>git fetch upstream pull/ID/head:new-pr-branch</code></p>
+
+<p>Clone to localhost:
+<code>git clone https://github.com/user/project.git</code> or:
+<code>git clone ssh://user@domain.com/~/dir/.git</code></p>
+
+<p>Clone to localhost folder:
+<code>git clone https://github.com/user/project.git ~/dir/folder</code></p>
+
+<p>Clone specific branch to localhost:
+<code>git clone -b branchname https://github.com/user/project.git</code></p>
+
+<p>Clone with token authentication (in CI environment):
+<code>git clone https://oauth2:&lt;token&gt;@gitlab.com/username/repo.git</code></p>
+
+<p>Delete remote branch (push nothing):
+<code>git push origin :branchname</code> or:
+<code>git push origin --delete branchname</code></p>
+
+<h2 id="archive">Archive</h2>
+
+<p>Create a zip-archive: <code>git archive --format zip --output filename.zip master</code></p>
+
+<p>Export/write custom log to a file: <code>git log --author=sven --all &gt; log.txt</code></p>
+
+<h2 id="troubleshooting">Troubleshooting</h2>
+
+<p>Ignore files that have already been committed to a Git repository: <a href="http://stackoverflow.com/a/1139797/1815847">http://stackoverflow.com/a/1139797/1815847</a></p>
+
+<h2 id="security">Security</h2>
+
+<p>Hide Git on the web via <code>.htaccess</code>: <code>RedirectMatch 404 /\.git</code>
+(more info here: <a href="http://stackoverflow.com/a/17916515/1815847">http://stackoverflow.com/a/17916515/1815847</a>)</p>
+
+<h2 id="large-file-storage">Large File Storage</h2>
+
+<p>Website: <a href="https://git-lfs.github.com/">https://git-lfs.github.com/</a></p>
+
+<p>Install: <code>brew install git-lfs</code></p>
+
+<p>Track <code>*.psd</code> files: <code>git lfs track &quot;*.psd&quot;</code> (init, add, commit and push as written above)</p>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>

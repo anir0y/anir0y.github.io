@@ -21,6 +21,20 @@
     </item>
     
     <item>
+      <title>Git Cheatsheet</title>
+      <link>https://anir0y.github.io/class/posts/git-cheatsheet/</link>
+      <pubDate>Sun, 23 Jun 2019 18:58:02 +0530</pubDate>
+      
+      <guid>https://anir0y.github.io/class/posts/git-cheatsheet/</guid>
+      <description>Global Settings  Related Setup: https://gist.github.com/hofmannsven/6814278 Related Pro Tips: https://ochronus.com/git-tips-from-the-trenches/ Interactive Beginners Tutorial: http://try.github.io/ Git Cheatsheet by GitHub: https://services.github.com/on-demand/downloads/github-git-cheat-sheet/  Reminder Press minus + shift + s and return to chop/fold long lines!
+Show folder content: ls -la
+Notes Do not put (external) dependencies in version control!
+Setup See where Git is located: which git
+Get the version of Git: git --version
+Create an alias (shortcut) for git status: git config --global alias.</description>
+    </item>
+    
+    <item>
       <title>Infromation Gathering</title>
       <link>https://anir0y.github.io/class/posts/infromation-gathering/</link>
       <pubDate>Sun, 23 Jun 2019 18:58:02 +0530</pubDate>
