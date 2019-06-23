@@ -9,6 +9,12 @@
   </url>
   
   <url>
+    <loc>https://anir0y.github.io/class/tags/cli/</loc>
+    <lastmod>2019-06-23T21:44:08+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://anir0y.github.io/class/posts/nmap-cheatsheet/</loc>
     <lastmod>2019-06-23T21:44:08+05:30</lastmod>
   </url>
@@ -20,19 +26,25 @@
   </url>
   
   <url>
-    <loc>https://anir0y.github.io/class/tags/cli/</loc>
-    <lastmod>2019-06-23T20:04:38+05:30</lastmod>
+    <loc>https://anir0y.github.io/class/tags/</loc>
+    <lastmod>2019-06-23T21:44:08+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://anir0y.github.io/class/tags/hacking/</loc>
+    <lastmod>2019-06-23T21:44:08+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://anir0y.github.io/class/tags/nmap/</loc>
+    <lastmod>2019-06-23T21:44:08+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://anir0y.github.io/class/tags/linux/</loc>
-    <lastmod>2019-06-23T20:04:38+05:30</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://anir0y.github.io/class/tags/</loc>
     <lastmod>2019-06-23T20:04:38+05:30</lastmod>
     <priority>0</priority>
   </url>
@@ -62,18 +74,6 @@
   <url>
     <loc>https://anir0y.github.io/class/posts/infromation-gathering/</loc>
     <lastmod>2019-06-23T18:58:02+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://anir0y.github.io/class/tags/hacking/</loc>
-    <lastmod>2019-06-23T18:58:02+05:30</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://anir0y.github.io/class/tags/nmap/</loc>
-    <lastmod>2019-06-23T18:58:02+05:30</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
