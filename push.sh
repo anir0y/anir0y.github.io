@@ -1,5 +1,5 @@
 echo "------------StarT-------------"
-echo date +%F
+date +%F%{%T}
 echo Pushing update
 echo adding stuffs
 git add --all
