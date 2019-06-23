@@ -1,9 +1,10 @@
+echo "------------StarT-------------"
+echo date +%F
 echo Pushing update
 echo adding stuffs
 git add --all
 sleep 2
-$date = date +%F%{%T}
-git commit -m "Automate push via script at $date"
+git commit -m "Automate push via script."
 echo msg added
 sleep 1
 git push origin master
