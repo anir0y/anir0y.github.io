@@ -2,7 +2,7 @@ echo Pushing update
 echo adding stuffs
 git add --all
 sleep 2
-date = date
+date = date +%F%{%T}
 git commit -m "Automate push via script at $date"
 echo msg added
 sleep 1
