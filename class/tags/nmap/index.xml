@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>nmap on ClassRoom Blog</title>
+    <link>https://anir0y.github.io/class/tags/nmap/</link>
+    <description>Recent content in nmap on ClassRoom Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 23 Jun 2019 18:58:02 +0530</lastBuildDate>
+    
+	<atom:link href="https://anir0y.github.io/class/tags/nmap/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Infromation Gathering</title>
+      <link>https://anir0y.github.io/class/posts/infromation-gathering/</link>
+      <pubDate>Sun, 23 Jun 2019 18:58:02 +0530</pubDate>
+      
+      <guid>https://anir0y.github.io/class/posts/infromation-gathering/</guid>
+      <description>Information Gathering Cheatsheet
+Chapter 1 - Information Gathering Cheatsheet It can take quite some time to remember all the nuances of commands and arguments for the various tools we must use. It’s almost like learning a second language this is intended as a reference of what to use and how to use it
+Vi  Commands  :set paste
+NMAP Network Scan  Arguments  -sn - ping scan (disable port scan, assumes all hosts up)</description>
+    </item>
+    
+  </channel>
+</rss>

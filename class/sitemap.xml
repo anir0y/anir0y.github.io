@@ -3,8 +3,43 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://anir0y.github.io/class/tags/cli/</loc>
+    <lastmod>2019-06-23T20:04:38+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://anir0y.github.io/class/</loc>
-    <lastmod>2019-06-23T18:58:02+05:30</lastmod>
+    <lastmod>2019-06-23T20:04:38+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://anir0y.github.io/class/tags/linux/</loc>
+    <lastmod>2019-06-23T20:04:38+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://anir0y.github.io/class/posts/</loc>
+    <lastmod>2019-06-23T20:04:38+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://anir0y.github.io/class/tags/</loc>
+    <lastmod>2019-06-23T20:04:38+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://anir0y.github.io/class/posts/vim-cheatsheet/</loc>
+    <lastmod>2019-06-23T20:04:38+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://anir0y.github.io/class/tags/cheatsheet/</loc>
+    <lastmod>2019-06-23T20:04:38+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -14,18 +49,19 @@
   </url>
   
   <url>
-    <loc>https://anir0y.github.io/class/posts/</loc>
+    <loc>https://anir0y.github.io/class/tags/hacking/</loc>
+    <lastmod>2019-06-23T18:58:02+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://anir0y.github.io/class/tags/nmap/</loc>
     <lastmod>2019-06-23T18:58:02+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://anir0y.github.io/class/categories/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://anir0y.github.io/class/tags/</loc>
     <priority>0</priority>
   </url>
   

@@ -1,14 +1,60 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on ClassRoom</title>
+    <title>Tags on ClassRoom Blog</title>
     <link>https://anir0y.github.io/class/tags/</link>
-    <description>Recent content in Tags on ClassRoom</description>
+    <description>Recent content in Tags on ClassRoom Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Sun, 23 Jun 2019 20:04:38 +0530</lastBuildDate>
     
 	<atom:link href="https://anir0y.github.io/class/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>CLI</title>
+      <link>https://anir0y.github.io/class/tags/cli/</link>
+      <pubDate>Sun, 23 Jun 2019 20:04:38 +0530</pubDate>
+      
+      <guid>https://anir0y.github.io/class/tags/cli/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Linux</title>
+      <link>https://anir0y.github.io/class/tags/linux/</link>
+      <pubDate>Sun, 23 Jun 2019 20:04:38 +0530</pubDate>
+      
+      <guid>https://anir0y.github.io/class/tags/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>cheatsheet</title>
+      <link>https://anir0y.github.io/class/tags/cheatsheet/</link>
+      <pubDate>Sun, 23 Jun 2019 20:04:38 +0530</pubDate>
+      
+      <guid>https://anir0y.github.io/class/tags/cheatsheet/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>hacking</title>
+      <link>https://anir0y.github.io/class/tags/hacking/</link>
+      <pubDate>Sun, 23 Jun 2019 18:58:02 +0530</pubDate>
+      
+      <guid>https://anir0y.github.io/class/tags/hacking/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>nmap</title>
+      <link>https://anir0y.github.io/class/tags/nmap/</link>
+      <pubDate>Sun, 23 Jun 2019 18:58:02 +0530</pubDate>
+      
+      <guid>https://anir0y.github.io/class/tags/nmap/</guid>
+      <description></description>
+    </item>
     
   </channel>
 </rss>
