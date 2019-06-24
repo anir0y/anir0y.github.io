@@ -20,18 +20,18 @@
   </url>
   
   <url>
-    <loc>https://anir0y.github.io/class/tags/cheatsheet/</loc>
-    <lastmod>2019-06-24T21:27:28+05:30</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://anir0y.github.io/class/posts/spawning-shell/</loc>
     <lastmod>2019-06-24T21:27:28+05:30</lastmod>
   </url>
   
   <url>
     <loc>https://anir0y.github.io/class/tags/</loc>
+    <lastmod>2019-06-24T21:27:28+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://anir0y.github.io/class/tags/cheatsheet/</loc>
     <lastmod>2019-06-24T21:27:28+05:30</lastmod>
     <priority>0</priority>
   </url>
