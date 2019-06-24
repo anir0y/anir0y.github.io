@@ -6,7 +6,7 @@
     <description>Recent content in Tags on Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 23 Jun 2019 23:43:45 +0530</lastBuildDate>
+    <lastBuildDate>Mon, 24 Jun 2019 21:27:28 +0530</lastBuildDate>
     
 	<atom:link href="https://anir0y.github.io/class/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,9 +14,27 @@
     <item>
       <title>cheatsheet</title>
       <link>https://anir0y.github.io/class/tags/cheatsheet/</link>
-      <pubDate>Sun, 23 Jun 2019 23:43:45 +0530</pubDate>
+      <pubDate>Mon, 24 Jun 2019 21:27:28 +0530</pubDate>
       
       <guid>https://anir0y.github.io/class/tags/cheatsheet/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>htb</title>
+      <link>https://anir0y.github.io/class/tags/htb/</link>
+      <pubDate>Mon, 24 Jun 2019 21:27:28 +0530</pubDate>
+      
+      <guid>https://anir0y.github.io/class/tags/htb/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>shell</title>
+      <link>https://anir0y.github.io/class/tags/shell/</link>
+      <pubDate>Mon, 24 Jun 2019 21:27:28 +0530</pubDate>
+      
+      <guid>https://anir0y.github.io/class/tags/shell/</guid>
       <description></description>
     </item>
     
