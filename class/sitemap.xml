@@ -4,12 +4,23 @@
   
   <url>
     <loc>https://anir0y.github.io/class/</loc>
-    <lastmod>2019-06-24T21:27:28+05:30</lastmod>
+    <lastmod>2019-06-24T23:13:30+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
+    <loc>https://anir0y.github.io/class/posts/osint-ch1/</loc>
+    <lastmod>2019-06-24T23:13:30+05:30</lastmod>
+  </url>
+  
+  <url>
     <loc>https://anir0y.github.io/class/posts/</loc>
+    <lastmod>2019-06-24T23:13:30+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://anir0y.github.io/class/tags/cheatsheet/</loc>
     <lastmod>2019-06-24T21:27:28+05:30</lastmod>
     <priority>0</priority>
   </url>
@@ -21,12 +32,6 @@
   
   <url>
     <loc>https://anir0y.github.io/class/tags/</loc>
-    <lastmod>2019-06-24T21:27:28+05:30</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://anir0y.github.io/class/tags/cheatsheet/</loc>
     <lastmod>2019-06-24T21:27:28+05:30</lastmod>
     <priority>0</priority>
   </url>

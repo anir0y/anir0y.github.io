@@ -6,10 +6,21 @@
     <description>Recent content on Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 24 Jun 2019 21:27:28 +0530</lastBuildDate>
+    <lastBuildDate>Mon, 24 Jun 2019 23:13:30 +0530</lastBuildDate>
     
 	<atom:link href="https://anir0y.github.io/class/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>OSINT Ch1</title>
+      <link>https://anir0y.github.io/class/posts/osint-ch1/</link>
+      <pubDate>Mon, 24 Jun 2019 23:13:30 +0530</pubDate>
+      
+      <guid>https://anir0y.github.io/class/posts/osint-ch1/</guid>
+      <description>Passive Information Gathering DNS WHOIS enumeration whois domain-name-here.com  Perform DNS IP Lookup dig a domain-name-here.com @nameserver  Perform MX Record Lookup dig mx domain-name-here.com @nameserver  Perform Zone Transfer with DIG dig axfr domain-name-here.com @nameserver  DNS Zone Transfers nslookup -&amp;gt; set type=any -&amp;gt; ls -d blah.com &amp;gt;&amp;gt; Windows DNS zone transfer
+dig axfr blah.com @ns1.blah.com &amp;gt;&amp;gt; Linux DNS zone transfer
+Email Simply Email Use Simply Email to enumerate all the online places (github, target site etc), it works better if you use proxies or set long throttle times so google doesn’t think you’re a robot and make you fill out a Captcha.</description>
+    </item>
     
     <item>
       <title>Spawning Shell</title>
