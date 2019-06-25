@@ -6,10 +6,37 @@
     <description>Recent content in Tags on Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 24 Jun 2019 21:27:28 +0530</lastBuildDate>
+    <lastBuildDate>Tue, 25 Jun 2019 21:06:31 +0530</lastBuildDate>
     
 	<atom:link href="https://anir0y.github.io/class/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>hacking</title>
+      <link>https://anir0y.github.io/class/tags/hacking/</link>
+      <pubDate>Tue, 25 Jun 2019 21:06:31 +0530</pubDate>
+      
+      <guid>https://anir0y.github.io/class/tags/hacking/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>metasploit</title>
+      <link>https://anir0y.github.io/class/tags/metasploit/</link>
+      <pubDate>Tue, 25 Jun 2019 21:06:31 +0530</pubDate>
+      
+      <guid>https://anir0y.github.io/class/tags/metasploit/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>msfvenom</title>
+      <link>https://anir0y.github.io/class/tags/msfvenom/</link>
+      <pubDate>Tue, 25 Jun 2019 21:06:31 +0530</pubDate>
+      
+      <guid>https://anir0y.github.io/class/tags/msfvenom/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>cheatsheet</title>
@@ -35,15 +62,6 @@
       <pubDate>Mon, 24 Jun 2019 21:27:28 +0530</pubDate>
       
       <guid>https://anir0y.github.io/class/tags/shell/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>hacking</title>
-      <link>https://anir0y.github.io/class/tags/hacking/</link>
-      <pubDate>Sun, 23 Jun 2019 23:43:45 +0530</pubDate>
-      
-      <guid>https://anir0y.github.io/class/tags/hacking/</guid>
       <description></description>
     </item>
     
