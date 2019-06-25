@@ -6,10 +6,21 @@
     <description>Recent content on Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 24 Jun 2019 23:13:30 +0530</lastBuildDate>
+    <lastBuildDate>Tue, 25 Jun 2019 15:17:58 +0530</lastBuildDate>
     
 	<atom:link href="https://anir0y.github.io/class/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Admission</title>
+      <link>https://anir0y.github.io/class/posts/addmission/</link>
+      <pubDate>Tue, 25 Jun 2019 15:17:58 +0530</pubDate>
+      
+      <guid>https://anir0y.github.io/class/posts/addmission/</guid>
+      <description>Prerequisites: As this is based on CEH module, so basic knowledge of computer and programming language (PHP,MySQL,Python) is a bonus. if you don&amp;rsquo;t know anything about these, you can learn the basic for free here .
+System requirements: A laptop/Desktop with least 2MBPS internet connection. 50 GB of disk space 4 GB of RAM (min) any processor above i3 3rd generation.
+Software requirements:  Virtual Box: you can find it here Google Classroom : ID will be share once enrolled.</description>
+    </item>
     
     <item>
       <title>OSINT Ch1</title>
