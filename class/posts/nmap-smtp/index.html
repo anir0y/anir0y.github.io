@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>Nmap | SMTP // Blog</title>
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.55.6" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="anir0y" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://anir0y.github.io/class/css/main.min.39148ae0f72fffe9f87c1a814d721cdeeb454065141f54e94724b4cff5de79f1.css" />
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-142104594-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Nmap | SMTP"/>
+<meta name="twitter:description" content="Lesson 3  What is SMTP SMTP stands for Simple Mail Transfer Protocol and is used for email delivery from an email client to an email server.
+What is enumeration There are a few different definitions of enumeration. In network security, this is performed as a discovery process of hosts and devices within a network.
+Enumeration tools Scan Conduct a scan using tools such as Nmap to determine state of the ports servicing SMTP and any other details that you may ascertain."/>
+
+    <meta property="og:title" content="Nmap | SMTP" />
+<meta property="og:description" content="Lesson 3  What is SMTP SMTP stands for Simple Mail Transfer Protocol and is used for email delivery from an email client to an email server.
+What is enumeration There are a few different definitions of enumeration. In network security, this is performed as a discovery process of hosts and devices within a network.
+Enumeration tools Scan Conduct a scan using tools such as Nmap to determine state of the ports servicing SMTP and any other details that you may ascertain." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://anir0y.github.io/class/posts/nmap-smtp/" />
+<meta property="article:published_time" content="2019-06-25T23:16:54&#43;05:30"/>
+<meta property="article:modified_time" content="2019-06-25T23:16:54&#43;05:30"/>
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://anir0y.github.io/class"><img class="app-header-avatar" src="https://i.pinimg.com/originals/ee/e7/5d/eee75d6e875e7e205a1394aaa96fad12.png" alt="anir0y" /></a>
+      <h1>Blog</h1>
+      <p>here we gonna have some cheatsheet and tips related to Classroom training.</p>
+      <div class="app-header-social">
+        
+          <a target="_blank" href="https://anir0y.github.io"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg></a>
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">Nmap | SMTP</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Jun 25, 2019
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          4 min read
+        </div><div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tag">
+  <title>tag</title>
+  <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line>
+</svg>
+          <a class="tag" href="https://anir0y.github.io/class/tags/nmap/">nmap</a><a class="tag" href="https://anir0y.github.io/class/tags/enumeration/">enumeration</a></div></div>
+    </header>
+    <div class="post-content">
+      
+
+<h1 id="span-style-color-green-lesson-3-span"><span style="color: green"> Lesson 3 </span></h1>
+
+<h1 id="what-is-smtp">What is SMTP</h1>
+
+<p>SMTP stands for Simple Mail Transfer Protocol and is used for email delivery
+from an email client to an email server.</p>
+
+<h1 id="what-is-enumeration">What is enumeration</h1>
+
+<p>There are a few different definitions of enumeration.  In network security, this
+is performed as a discovery process of hosts and devices within a network.</p>
+
+<h1 id="enumeration-tools">Enumeration tools</h1>
+
+<h2 id="scan">Scan</h2>
+
+<p>Conduct a scan using tools such as Nmap to determine state of the ports
+servicing SMTP and any other details that you may ascertain.</p>
+
+<h2 id="nmap-and-nse-scripts">Nmap and NSE scripts</h2>
+
+<p>The Nmap Scripting Engine (NSE) contains a library of scripts including scripts
+for SMTP enumeration.</p>
+
+<p>The following are some examples that can be gleaned from use of these scripts.</p>
+
+<p>A couple of things:</p>
+
+<ul>
+<li><p>The output has been edited/sanitised</p></li>
+
+<li><p>I&rsquo;ve added a -d (debug) and -v (verbose) for stdout.</p></li>
+</ul>
+
+<h3 id="smtp-enum-users">smtp-enum-users</h3>
+
+<pre><code>nmap -v -p [port] --script=smtp-enum-users [target] -d
+</code></pre>
+
+<pre><code>Starting Nmap 7.25BETA2 ( https://nmap.org ) at 2017-02-15 23:37 GMT
+--------------- Timing report ---------------
+  hostgroups: min 1, max 100000
+  rtt-timeouts: init 1000, min 100, max 10000
+  max-scan-delay: TCP 1000, UDP 1000, SCTP 1000
+  parallelism: min 0, max 0
+  max-retries: 10, host-timeout: 0
+  min-rate: 0, max-rate: 0
+---------------------------------------------
+NSE: Using Lua 5.3.
+NSE: Arguments from CLI:
+NSE: Loaded 1 scripts for scanning.
+NSE: Script Pre-scanning.
+NSE: Starting runlevel 1 (of 1) scan.
+Initiating NSE at 23:37
+Completed NSE at 23:37, 0.00s elapsed
+
+Scanning [target] [1 port]
+
+Discovered open port [port] on [target]
+Completed SYN Stealth Scan at 23:55, 0.15s elapsed (1 total ports)
+Overall sending rates: 6.75 packets / s, 297.20 bytes / s.
+NSE: Script scanning [target].
+NSE: Starting runlevel 1 (of 1) scan.
+Initiating NSE at 23:37
+NSE: Starting smtp-enum-users against [target].
+NSE: Finished smtp-enum-users against [target].
+Completed NSE at 23:37, 1.86s elapsed
+Nmap scan report for [target]
+Host is up, received arp-response (0.15s latency).
+Scanned at 2017-02-15 23:37:06 GMT for 3s
+
+PORT   STATE SERVICE REASON
+[port] open  smtp    syn-ack ttl 128
+| smtp-enum-users:
+|   RCPT, root
+|   Method VRFY returned a unhandled status code.
+|_  Method EXPN returned a unhandled status code.
+MAC Address: [MAC Address]
+Final times for host: srtt: 145105 rttvar: 109245  to: 582085
+
+NSE: Script Post-scanning.
+NSE: Starting runlevel 1 (of 1) scan.
+Initiating NSE at 23:37
+Completed NSE at 23:37, 0.00s elapsed
+Read from /usr/bin/../share/nmap: nmap-mac-prefixes nmap-payloads nmap-services.
+Nmap done: 1 IP address (1 host up) scanned in 2.62 seconds
+           Raw packets sent: 2 (72B) | Rcvd: 2 (72B)
+</code></pre>
+
+<h3 id="smtp-commands">smtp-commands</h3>
+
+<pre><code>nmap -v -p [ports] --script=smtp-commands [target]
+</code></pre>
+
+<pre><code>Starting Nmap 7.25BETA2 ( https://nmap.org ) at 2017-02-15 23:37 GMT
+NSE: Loaded 1 scripts for scanning.
+NSE: Script Pre-scanning.
+Initiating NSE at 23:37
+Completed NSE at 23:37, 0.00s elapsed
+Initiating ARP Ping Scan at 23:37
+Scanning [target] [1 port]
+Completed ARP Ping Scan at 23:37, 0.14s elapsed (1 total hosts)
+Initiating Parallel DNS resolution of 1 host. at 23:37
+Completed Parallel DNS resolution of 1 host. at 23:37, 0.04s elapsed
+Initiating SYN Stealth Scan at 23:37
+Scanning [target] [1 port]
+Discovered open port [port] on [target]
+Completed SYN Stealth Scan at 23:37, 0.15s elapsed (1 total ports)
+NSE: Script scanning [target].
+Initiating NSE at 23:37
+Completed NSE at 23:37, 0.58s elapsed
+Nmap scan report for [target]
+Host is up (0.14s latency).
+
+PORT   STATE SERVICE
+[port] open  smtp
+|_smtp-commands: localhost Hello nmap.scanme.org; ESMTPs are:, TIME,
+MAC Address: [MAC Address]
+
+NSE: Script Post-scanning.
+Initiating NSE at 23:37
+Completed NSE at 23:37, 0.00s elapsed
+Read data files from: /usr/bin/../share/nmap
+Nmap done: 1 IP address (1 host up) scanned in 1.34 seconds
+           Raw packets sent: 2 (72B) | Rcvd: 2 (72B)
+</code></pre>
+
+<h3 id="smtp-open-relay">smtp-open-relay</h3>
+
+<pre><code>nmap -v -p [port] --script=smtp-open-relay [target]
+</code></pre>
+
+<pre><code>Starting Nmap 7.25BETA2 ( https://nmap.org ) at 2017-02-15 23:37 GMT
+NSE: Loaded 1 scripts for scanning.
+NSE: Script Pre-scanning.
+Initiating NSE at 23:37
+Completed NSE at 23:37, 0.00s elapsed
+Initiating ARP Ping Scan at 23:37
+Scanning [target] [1 port]
+Completed ARP Ping Scan at 23:37, 0.14s elapsed (1 total hosts)
+Initiating Parallel DNS resolution of 1 host. at 23:37
+Completed Parallel DNS resolution of 1 host. at 23:37, 0.03s elapsed
+Initiating SYN Stealth Scan at 23:37
+Scanning [target] [1 port]
+Discovered open port [port] on [target]
+Completed SYN Stealth Scan at 23:37, 0.14s elapsed (1 total ports)
+NSE: Script scanning [target].
+Initiating NSE at 23:37
+Completed NSE at 23:37, 1.06s elapsed
+Nmap scan report for [target]
+Host is up (0.14s latency).
+
+PORT   STATE SERVICE
+[port] open  smtp
+| smtp-open-relay: Server is an open relay (2/16 tests)
+|  MAIL FROM:&lt;&gt; -&gt; RCPT TO:&lt;relaytest@nmap.scanme.org&gt;
+|_ SMTP: RSET 553 We do not relay non-local mail, sorry.
+MAC Address: [MAC address]
+
+NSE: Script Post-scanning.
+Initiating NSE at 23:37
+Completed NSE at 23:37, 0.00s elapsed
+Read data files from: /usr/bin/../share/nmap
+Nmap done: 1 IP address (1 host up) scanned in 1.98 seconds
+           Raw packets sent: 2 (72B) | Rcvd: 2 (72B)
+</code></pre>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>

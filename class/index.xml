@@ -6,10 +6,21 @@
     <description>Recent content on Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 25 Jun 2019 22:25:08 +0530</lastBuildDate>
+    <lastBuildDate>Tue, 25 Jun 2019 23:16:54 +0530</lastBuildDate>
     
 	<atom:link href="https://anir0y.github.io/class/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Nmap | SMTP</title>
+      <link>https://anir0y.github.io/class/posts/nmap-smtp/</link>
+      <pubDate>Tue, 25 Jun 2019 23:16:54 +0530</pubDate>
+      
+      <guid>https://anir0y.github.io/class/posts/nmap-smtp/</guid>
+      <description>Lesson 3  What is SMTP SMTP stands for Simple Mail Transfer Protocol and is used for email delivery from an email client to an email server.
+What is enumeration There are a few different definitions of enumeration. In network security, this is performed as a discovery process of hosts and devices within a network.
+Enumeration tools Scan Conduct a scan using tools such as Nmap to determine state of the ports servicing SMTP and any other details that you may ascertain.</description>
+    </item>
     
     <item>
       <title>Nmap | OS Fingerprinting</title>
