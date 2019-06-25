@@ -6,10 +6,19 @@
     <description>Recent content on Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 25 Jun 2019 23:16:54 +0530</lastBuildDate>
+    <lastBuildDate>Tue, 25 Jun 2019 23:25:50 +0530</lastBuildDate>
     
 	<atom:link href="https://anir0y.github.io/class/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Data Loss Prevention - Systems, Software and Strategies</title>
+      <link>https://anir0y.github.io/class/posts/dlp/</link>
+      <pubDate>Tue, 25 Jun 2019 23:25:50 +0530</pubDate>
+      
+      <guid>https://anir0y.github.io/class/posts/dlp/</guid>
+      <description>What is Data Loss Prevention (DLP)?  Data Loss Prevention (or DLP for short) is the application of technology and policies in order to detect and prevent potential data breaches and data ex-filtration. Data that is of particular interest include sensitive emails, documents and other information leaving the organizational boundary. Data Loss Prevention is one out of many options used in today&amp;rsquo;s arsenal of defense against threats and attacks, and also a layer to harden overall data security.</description>
+    </item>
     
     <item>
       <title>Nmap | SMTP</title>

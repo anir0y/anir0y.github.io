@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>Data Loss Prevention - Systems, Software and Strategies // Blog</title>
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.55.6" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="anir0y" />
+    <meta name="description" content="Data Loss Prevention (or DLP for short) is the application of technology and policies in order to detect and prevent potential data breaches and data ex-filtration." />
+    <link rel="stylesheet" href="https://anir0y.github.io/class/css/main.min.39148ae0f72fffe9f87c1a814d721cdeeb454065141f54e94724b4cff5de79f1.css" />
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-142104594-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Data Loss Prevention - Systems, Software and Strategies"/>
+<meta name="twitter:description" content="Data Loss Prevention (or DLP for short) is the application of technology and policies in order to detect and prevent potential data breaches and data ex-filtration."/>
+
+    <meta property="og:title" content="Data Loss Prevention - Systems, Software and Strategies" />
+<meta property="og:description" content="Data Loss Prevention (or DLP for short) is the application of technology and policies in order to detect and prevent potential data breaches and data ex-filtration." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://anir0y.github.io/class/posts/dlp/" />
+<meta property="article:published_time" content="2019-06-25T23:25:50&#43;05:30"/>
+<meta property="article:modified_time" content="2019-06-25T23:25:50&#43;05:30"/>
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://anir0y.github.io/class"><img class="app-header-avatar" src="https://i.pinimg.com/originals/ee/e7/5d/eee75d6e875e7e205a1394aaa96fad12.png" alt="anir0y" /></a>
+      <h1>Blog</h1>
+      <p>here we gonna have some cheatsheet and tips related to Classroom training.</p>
+      <div class="app-header-social">
+        
+          <a target="_blank" href="https://anir0y.github.io"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg></a>
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">Data Loss Prevention - Systems, Software and Strategies</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Jun 25, 2019
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          3 min read
+        </div><div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tag">
+  <title>tag</title>
+  <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line>
+</svg>
+          <a class="tag" href="https://anir0y.github.io/class/tags/dlp/">dlp</a><a class="tag" href="https://anir0y.github.io/class/tags/post/">post</a></div></div>
+    </header>
+    <div class="post-content">
+      
+
+<h2 id="span-style-color-green-what-is-data-loss-prevention-dlp-span"><span style="color: green"> What is Data Loss Prevention (DLP)? </span></h2>
+
+<p>Data Loss Prevention (or DLP for short) is the application of technology and policies in order to detect and prevent potential data breaches and data ex-filtration.
+Data that is of particular interest include sensitive emails, documents and other information leaving the organizational boundary.
+Data Loss Prevention is one out of many options used in today&rsquo;s arsenal of defense against threats and attacks, and also a layer to harden overall data security.</p>
+
+<p>While SANS may <code>write &lt;https://www.sans.org/reading-room/whitepapers/dlp/data-loss-prevention-32883&gt;</code>_ that DLP is primarily concerned with identifying sensitive data, we have taken on board a more holistic look beyond identification.</p>
+
+<p>Data loss prevention can be in the form of the following:</p>
+
+<ul>
+<li><p>Network-based DLP.</p></li>
+
+<li><p>Endpoint DLP which monitors on the application level such as email client used.</p></li>
+
+<li><p>Network policies enforced for information leaving the network.</p></li>
+
+<li><p>UI, for example in the form of pop up tips, that will help reinforce data protection awareness training.</p></li>
+
+<li><p>Common dictionaries and regular expressions syntax used to create content protections rules.</p></li>
+
+<li><p>Staff awareness training.</p></li>
+
+<li><p>Using file tagging to secure data that can contain intellectual property or trade secrets.</p></li>
+</ul>
+
+<p>The above is not an exhaustive list.</p>
+
+<p>Data loss prevention tend to be interchanged with data leak prevention when the situation involves the lost data being acquired by an unauthorized third party.
+However for this article, we will also include both data loss and data leak scenarios under the overall DLP umbrella term.</p>
+
+<p>Upon application of DLP, you can ensure compliance with regulations governing use of data and ensure obligations for best practices are being met.
+These compliance and regulations include Health Insurance Portability and Accountability Act (HIPAA), (Payment Card Industry) PCI compliance, and General Data Protection Regulation (GDPR) to name a few.</p>
+
+<h3 id="data-loss-prevention-in-file-transfers">Data loss prevention in file transfers</h3>
+
+<p>Within the territory of file transfer, data loss happens via information being inadvertently or intentionally sent to an unauthorized individual through the use of either file transfer software or file transfer protocols.
+It can also happen due to human ignorance or negligence - for example, uploading sensitive documents using an unapproved cloud provider.</p>
+
+<p>Imagine a scenario where an employee in a large company has just transferred a series of files containing confidential data.
+Or another scenario where a small business owner has data residing on USB (unencrypted) and has since been lost.</p>
+
+<p>It is with these two scenarios where we see data loss prevention not being applied for both data in transit (the transfer of files containing confidential information) and data at rest (the files residing within the USB).</p>
+
+<h2 id="types-of-data-in-file-transfers">Types of data in file transfers</h2>
+
+<p>As an introduction, the following paragraphs from <a href="https://en.wikipedia.org/wiki/Data_loss_prevention_software">Wikipedia</a> summaries the differences between data at-rest, data in-use and date in-motion.</p>
+
+<h3 id="data-at-rest">Data at-rest</h3>
+
+<p>&ldquo;Data at rest&rdquo; specifically refers to old archived information.
+This information is of great concern to businesses and government institutions simply because the longer data is left unused in storage, the more likely it might be retrieved by unauthorized individuals.
+Protecting such data involves methods such as access control, data encryption and data retention policies.</p>
+
+<h3 id="data-in-use">Data in-use</h3>
+
+<p>&ldquo;Data in use&rdquo; refers to data that the user is currently interacting with.
+DLP systems that protect data in-use may monitor and flag unauthorised activities.
+These activities include screen-capture, copy/paste, print and fax operations involving sensitive data.
+It can be intentional or unintentional attempts to transmit sensitive data over communication channels.</p>
+
+<h3 id="data-in-motion">Data in-motion</h3>
+
+<p>&ldquo;Data in motion&rdquo; is data that is traversing through a network to an endpoint destination.
+Networks can be internal or external.
+DLP systems that protect data in-motion monitor sensitive data traveling across a network through various communication channels.</p>
+
+<hr />
+
+<p><center></p>
+
+<p><a href="https://anir0y.github.io/class">home</a> </span>
+</center></p>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>
