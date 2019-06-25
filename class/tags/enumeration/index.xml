@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>nmap on Blog</title>
-    <link>https://anir0y.github.io/class/tags/nmap/</link>
-    <description>Recent content in nmap on Blog</description>
+    <title>enumeration on Blog</title>
+    <link>https://anir0y.github.io/class/tags/enumeration/</link>
+    <description>Recent content in enumeration on Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 25 Jun 2019 22:25:08 +0530</lastBuildDate>
     
-	<atom:link href="https://anir0y.github.io/class/tags/nmap/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://anir0y.github.io/class/tags/enumeration/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -29,28 +29,6 @@ Operating System (OS) fingerprinting using the Nmap active fingerprinter Via con
       
       <guid>https://anir0y.github.io/class/posts/nmap-intro/</guid>
       <description>Lesson 1  Introduction Nmap (&amp;ldquo;Network Mapper&amp;rdquo;) is a free and open source (license) utility for network discovery and security auditing. Many systems and network administrators also find it useful for tasks such as network inventory, managing service upgrade schedules, and monitoring host or service uptime. Nmap uses raw IP packets in novel ways to determine what hosts are available on the network, what services (application name and version) those hosts are offering, what operating systems (and OS versions) they are running, what type of packet filters/firewalls are in use, and dozens of other characteristics.</description>
-    </item>
-    
-    <item>
-      <title>Nmap Cheatsheet</title>
-      <link>https://anir0y.github.io/class/posts/nmap-cheatsheet/</link>
-      <pubDate>Sun, 23 Jun 2019 21:44:08 +0530</pubDate>
-      
-      <guid>https://anir0y.github.io/class/posts/nmap-cheatsheet/</guid>
-      <description>common useful commands src: https://www.stationx.net/nmap-cheat-sheet
-Target Specification    Switch Example Description      nmap 192.168.1.1 Scan a single IP    nmap 192.168.1.1 192.168.2.1 Scan specific IPs    nmap 192.168.1.1-254 Scan a range    nmap scanme.nmap.org Scan a domain    nmap 192.168.1.0/24 Scan using CIDR notation   -iL nmap -iL targets.txt Scan targets from a file   -iR nmap -iR 100 Scan 100 random hosts   &amp;ndash;exclude nmap &amp;ndash;exclude 192.</description>
-    </item>
-    
-    <item>
-      <title>Infromation Gathering</title>
-      <link>https://anir0y.github.io/class/posts/infromation-gathering/</link>
-      <pubDate>Sun, 23 Jun 2019 18:58:02 +0530</pubDate>
-      
-      <guid>https://anir0y.github.io/class/posts/infromation-gathering/</guid>
-      <description>Information Gathering Cheatsheet
-Chapter 1 - Information Gathering Cheatsheet It can take quite some time to remember all the nuances of commands and arguments for the various tools we must use. It’s almost like learning a second language this is intended as a reference of what to use and how to use it
-Vi  Commands  :set paste
-NMAP Network Scan  Arguments  -sn - ping scan (disable port scan, assumes all hosts up)</description>
     </item>
     
   </channel>

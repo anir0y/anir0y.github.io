@@ -6,10 +6,30 @@
     <description>Recent content in Posts on Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 25 Jun 2019 21:06:31 +0530</lastBuildDate>
+    <lastBuildDate>Tue, 25 Jun 2019 22:25:08 +0530</lastBuildDate>
     
 	<atom:link href="https://anir0y.github.io/class/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Nmap | OS Fingerprinting</title>
+      <link>https://anir0y.github.io/class/posts/nmap-os-fingerprinting/</link>
+      <pubDate>Tue, 25 Jun 2019 22:25:08 +0530</pubDate>
+      
+      <guid>https://anir0y.github.io/class/posts/nmap-os-fingerprinting/</guid>
+      <description>Lesson 2  What is OS fingerprinting? OS fingerprinting is the process of differentiating the OS used by a host in a network. There can be different implementations in determining this like obtaining the TCP/IP stack (TTL value defaults), HTTP packets (via User-Agent field), via ICMP requests, open port patterns, TCP window size and more.
+There are two types of tools used - active fingerprinters and passive fingerprinters.
+Operating System (OS) fingerprinting using the Nmap active fingerprinter Via conducting an nmap scan using the -O parameter, one can conduct OS fingerprinting through inspecting the packets received from the target.</description>
+    </item>
+    
+    <item>
+      <title>Nmap Intro</title>
+      <link>https://anir0y.github.io/class/posts/nmap-intro/</link>
+      <pubDate>Tue, 25 Jun 2019 22:18:31 +0530</pubDate>
+      
+      <guid>https://anir0y.github.io/class/posts/nmap-intro/</guid>
+      <description>Lesson 1  Introduction Nmap (&amp;ldquo;Network Mapper&amp;rdquo;) is a free and open source (license) utility for network discovery and security auditing. Many systems and network administrators also find it useful for tasks such as network inventory, managing service upgrade schedules, and monitoring host or service uptime. Nmap uses raw IP packets in novel ways to determine what hosts are available on the network, what services (application name and version) those hosts are offering, what operating systems (and OS versions) they are running, what type of packet filters/firewalls are in use, and dozens of other characteristics.</description>
+    </item>
     
     <item>
       <title>Msfvenom Payloads</title>
