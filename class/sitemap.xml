@@ -3,26 +3,49 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://anir0y.github.io/class/posts/redteaming-aws/</loc>
+    <lastmod>2019-06-30T13:37:20+05:30</lastmod>
+  </url>
+  
+  <url>
     <loc>https://anir0y.github.io/class/</loc>
-    <lastmod>2019-06-25T23:25:50+05:30</lastmod>
+    <lastmod>2019-06-30T13:37:20+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://anir0y.github.io/class/posts/</loc>
+    <lastmod>2019-06-30T13:37:20+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://anir0y.github.io/class/tags/</loc>
+    <lastmod>2019-06-30T13:37:20+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://anir0y.github.io/class/tags/tools/</loc>
+    <lastmod>2019-06-30T13:37:20+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://anir0y.github.io/class/tags/cloud/</loc>
+    <lastmod>2019-06-30T13:37:20+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://anir0y.github.io/class/tags/hacking/</loc>
+    <lastmod>2019-06-30T13:37:20+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://anir0y.github.io/class/posts/dlp/</loc>
     <lastmod>2019-06-25T23:25:50+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://anir0y.github.io/class/posts/</loc>
-    <lastmod>2019-06-25T23:25:50+05:30</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://anir0y.github.io/class/tags/</loc>
-    <lastmod>2019-06-25T23:25:50+05:30</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -70,12 +93,6 @@
   </url>
   
   <url>
-    <loc>https://anir0y.github.io/class/tags/hacking/</loc>
-    <lastmod>2019-06-25T21:06:31+05:30</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://anir0y.github.io/class/tags/metasploit/</loc>
     <lastmod>2019-06-25T21:06:31+05:30</lastmod>
     <priority>0</priority>
@@ -98,14 +115,14 @@
   </url>
   
   <url>
-    <loc>https://anir0y.github.io/class/posts/spawning-shell/</loc>
-    <lastmod>2019-06-24T21:27:28+05:30</lastmod>
-  </url>
-  
-  <url>
     <loc>https://anir0y.github.io/class/tags/cheatsheet/</loc>
     <lastmod>2019-06-24T21:27:28+05:30</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://anir0y.github.io/class/posts/spawning-shell/</loc>
+    <lastmod>2019-06-24T21:27:28+05:30</lastmod>
   </url>
   
   <url>

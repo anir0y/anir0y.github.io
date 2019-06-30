@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tools on Blog</title>
+    <link>https://anir0y.github.io/class/tags/tools/</link>
+    <description>Recent content in Tools on Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 30 Jun 2019 13:37:20 +0530</lastBuildDate>
+    
+	<atom:link href="https://anir0y.github.io/class/tags/tools/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>AWS Security (Tools &amp; Scripts)</title>
+      <link>https://anir0y.github.io/class/posts/redteaming-aws/</link>
+      <pubDate>Sun, 30 Jun 2019 13:37:20 +0530</pubDate>
+      
+      <guid>https://anir0y.github.io/class/posts/redteaming-aws/</guid>
+      <description>Defensive (Hardening, Security Assessment, Inventory)
+ ScoutSuite: https://github.com/nccgroup/ScoutSuite - Multi-Cloud Security auditing tool for AWS, Google Cloud and Azure environments (Python) Prowler: https://github.com/toniblyx/prowler - CIS benchmarks and additional checks for security best practices in AWS (Shell Script) CloudSploit: https://github.com/cloudsploit/scans - AWS security scanning checks (NodeJS) CloudMapper: https://github.com/duo-labs/cloudmapper - helps you analyze your AWS environments (Python) CloudTracker: https://github.com/duo-labs/cloudtracker - helps you find over-privileged IAM users and roles by comparing CloudTrail logs with current IAM policies (Python) AWS Security Benchmarks: https://github.</description>
+    </item>
+    
+  </channel>
+</rss>

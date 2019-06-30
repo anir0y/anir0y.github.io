@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>AWS Security (Tools &amp; Scripts) // Blog</title>
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.55.6" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="anir0y" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://anir0y.github.io/class/css/main.min.39148ae0f72fffe9f87c1a814d721cdeeb454065141f54e94724b4cff5de79f1.css" />
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-142104594-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="AWS Security (Tools &amp; Scripts)"/>
+<meta name="twitter:description" content="Defensive (Hardening, Security Assessment, Inventory)
+ ScoutSuite: https://github.com/nccgroup/ScoutSuite - Multi-Cloud Security auditing tool for AWS, Google Cloud and Azure environments (Python) Prowler: https://github.com/toniblyx/prowler - CIS benchmarks and additional checks for security best practices in AWS (Shell Script) CloudSploit: https://github.com/cloudsploit/scans - AWS security scanning checks (NodeJS) CloudMapper: https://github.com/duo-labs/cloudmapper - helps you analyze your AWS environments (Python) CloudTracker: https://github.com/duo-labs/cloudtracker - helps you find over-privileged IAM users and roles by comparing CloudTrail logs with current IAM policies (Python) AWS Security Benchmarks: https://github."/>
+
+    <meta property="og:title" content="AWS Security (Tools &amp; Scripts)" />
+<meta property="og:description" content="Defensive (Hardening, Security Assessment, Inventory)
+ ScoutSuite: https://github.com/nccgroup/ScoutSuite - Multi-Cloud Security auditing tool for AWS, Google Cloud and Azure environments (Python) Prowler: https://github.com/toniblyx/prowler - CIS benchmarks and additional checks for security best practices in AWS (Shell Script) CloudSploit: https://github.com/cloudsploit/scans - AWS security scanning checks (NodeJS) CloudMapper: https://github.com/duo-labs/cloudmapper - helps you analyze your AWS environments (Python) CloudTracker: https://github.com/duo-labs/cloudtracker - helps you find over-privileged IAM users and roles by comparing CloudTrail logs with current IAM policies (Python) AWS Security Benchmarks: https://github." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://anir0y.github.io/class/posts/redteaming-aws/" />
+<meta property="article:published_time" content="2019-06-30T13:37:20&#43;05:30"/>
+<meta property="article:modified_time" content="2019-06-30T13:37:20&#43;05:30"/>
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://anir0y.github.io/class"><img class="app-header-avatar" src="https://i.pinimg.com/originals/ee/e7/5d/eee75d6e875e7e205a1394aaa96fad12.png" alt="anir0y" /></a>
+      <h1>Blog</h1>
+      <p>here we gonna have some cheatsheet and tips related to Classroom training.</p>
+      <div class="app-header-social">
+        
+          <a target="_blank" href="https://anir0y.github.io"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg></a>
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">AWS Security (Tools &amp; Scripts)</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Jun 30, 2019
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          6 min read
+        </div><div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tag">
+  <title>tag</title>
+  <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line>
+</svg>
+          <a class="tag" href="https://anir0y.github.io/class/tags/tools/">Tools</a><a class="tag" href="https://anir0y.github.io/class/tags/hacking/">hacking</a><a class="tag" href="https://anir0y.github.io/class/tags/cloud/">cloud</a></div></div>
+    </header>
+    <div class="post-content">
+      <p><strong>Defensive (Hardening, Security Assessment, Inventory)</strong></p>
+
+<ul>
+<li><strong>ScoutSuite</strong>: <a href="https://github.com/nccgroup/ScoutSuite">https://github.com/nccgroup/ScoutSuite</a> - Multi-Cloud Security auditing tool for AWS, Google Cloud and Azure environments (Python)</li>
+<li><strong>Prowler</strong>: <a href="https://github.com/toniblyx/prowler">https://github.com/toniblyx/prowler</a> - CIS benchmarks and additional checks for security best practices in AWS (Shell Script)</li>
+<li><strong>CloudSploit</strong>: <a href="https://github.com/cloudsploit/scans">https://github.com/cloudsploit/scans</a> - AWS security scanning checks (NodeJS)</li>
+<li><strong>CloudMapper</strong>: <a href="https://github.com/duo-labs/cloudmapper">https://github.com/duo-labs/cloudmapper</a> - helps you analyze your AWS environments (Python)</li>
+<li><strong>CloudTracker</strong>: <a href="https://github.com/duo-labs/cloudtracker">https://github.com/duo-labs/cloudtracker</a> - helps you find over-privileged IAM users and roles by comparing CloudTrail logs with current IAM policies (Python)</li>
+<li><strong>AWS Security Benchmarks</strong>: <a href="https://github.com/awslabs/aws-security-benchmark">https://github.com/awslabs/aws-security-benchmark</a> - scrips and templates guidance related to the AWS CIS Foundation framework (Python)</li>
+<li><strong>AWS Public IPs</strong>: <a href="https://github.com/arkadiyt/aws_public_ips">https://github.com/arkadiyt/aws_public_ips</a> - Fetch all public IP addresses tied to your AWS account. Works with IPv4/IPv6, Classic/VPC networking, and across all AWS services (Ruby)</li>
+<li><strong>PMapper</strong>: <a href="https://github.com/nccgroup/PMapper">https://github.com/nccgroup/PMapper</a> - Advanced and Automated AWS IAM Evaluation (Python)</li>
+<li><strong>AWS-Inventory</strong>: <a href="https://github.com/nccgroup/aws-inventory">https://github.com/nccgroup/aws-inventory</a> - Make a inventory of all your resources across regions (Python)</li>
+<li><strong>Resource Counter</strong>: <a href="https://github.com/disruptops/resource-counter">https://github.com/disruptops/resource-counter</a> - Counts number of resources in categories across regions</li>
+<li><strong>ICE</strong>: <a href="https://github.com/Teevity/ice">https://github.com/Teevity/ice</a> - Ice provides insights from a usage and cost perspective, with high detail dashboards.</li>
+<li><strong>SkyArk</strong>: <a href="https://github.com/cyberark/SkyArk">https://github.com/cyberark/SkyArk</a> - SkyArk provides advanced discovery and security assessment for the most privileged entities in the tested AWS.</li>
+<li><strong>Trailblazer AWS</strong>: <a href="https://github.com/willbengtson/trailblazer-aws">https://github.com/willbengtson/trailblazer-aws</a> - Trailblazer AWS, determine what AWS API calls are logged by CloudTrail and what they are logged as. You can also use TrailBlazer as an attack simulation framework.</li>
+<li><strong>Lunar</strong>: <a href="https://github.com/lateralblast/lunar">https://github.com/lateralblast/lunar</a> - Security auditing tool based on several security frameworks (it does some AWS checks)</li>
+<li><strong>Cloud-reports</strong>: <a href="https://github.com/tensult/cloud-reports">https://github.com/tensult/cloud-reports</a> - Scans your AWS cloud resources and generates reports</li>
+<li><strong>Pacbot</strong>: <a href="https://github.com/tmobile/pacbot">https://github.com/tmobile/pacbot</a> - Platform for continuous compliance monitoring, compliance reporting and security automation for the cloud</li>
+<li><strong>cs-suite</strong>: <a href="https://github.com/SecurityFTW/cs-suite">https://github.com/SecurityFTW/cs-suite</a> - Integrates tools like Scout2 and Prowler among others</li>
+<li><strong>aws-key-disabler</strong>: <a href="https://github.com/te-papa/aws-key-disabler">https://github.com/te-papa/aws-key-disabler</a> - A small lambda script that will disable access keys older than a given amount of days</li>
+<li><strong>Antiope</strong>: <a href="https://github.com/turnerlabs/antiope/">https://github.com/turnerlabs/antiope/</a> - AWS Inventory and Compliance Framework</li>
+<li><strong>FunctionShield</strong>: <a href="https://www.puresec.io/function-shield">https://www.puresec.io/function-shield</a> A free AWS Lambda security library for developers, providing runtime protection such as: outbound network blocking, disable shell processes, /tmp/ disk I/O operations and prevents leakage of the handler&rsquo;s source code.</li>
+<li><strong>Cloud Reports</strong>: <a href="https://github.com/tensult/cloud-reports">https://github.com/tensult/cloud-reports</a> Scans your AWS cloud resources and generates reports, includes security best practices.</li>
+<li><strong>Terraform AWS Secure Baseline</strong>: <a href="https://github.com/nozaq/terraform-aws-secure-baseline">https://github.com/nozaq/terraform-aws-secure-baseline</a> Terraform module to set up your AWS account with the secure baseline configuration based on CIS Amazon Web Services Foundations.</li>
+<li><strong>Cartography</strong>: <a href="https://github.com/lyft/cartography">https://github.com/lyft/cartography</a> - Cartography is a Python tool that consolidates infrastructure assets and the relationships between them in an intuitive graph view powered by a Neo4j database.</li>
+<li><strong>TrailScraper</strong>: <a href="https://github.com/flosell/trailscraper">https://github.com/flosell/trailscraper</a> - A command-line tool to get valuable information out of AWS CloudTrail</li>
+<li><strong>LambdaGuard</strong>: <a href="https://github.com/Skyscanner/LambdaGuard">https://github.com/Skyscanner/LambdaGuard</a> - An AWS Lambda auditing tool designed to create asset visibility and provide actionable results.</li>
+<li><strong>Komiser</strong>: <a href="https://github.com/mlabouardy/komiser">https://github.com/mlabouardy/komiser</a> - Cloud Environment Inspector, nalyze and manage cloud cost, usage, security, and governance in one place.</li>
+<li><strong>Perimeterator</strong>: <a href="https://github.com/darkarnium/perimeterator">https://github.com/darkarnium/perimeterator</a> - AWS perimeter monitoring: Periodically scan internet facing AWS resources to detect misconfigured services</li>
+</ul>
+
+<p><strong>Offensive:</strong></p>
+
+<ul>
+<li><strong>weirdALL</strong>: <a href="https://github.com/carnal0wnage/weirdAAL">https://github.com/carnal0wnage/weirdAAL</a> - AWS Attack Library</li>
+<li><strong>Pacu</strong>: <a href="https://github.com/RhinoSecurityLabs/pacu">https://github.com/RhinoSecurityLabs/pacu</a> - AWS penetration testing toolkit</li>
+<li><strong>Cred Scanner</strong>: <a href="https://github.com/disruptops/cred_scanner">https://github.com/disruptops/cred_scanner</a></li>
+<li><strong>AWS PWN</strong>: <a href="https://github.com/dagrz/aws_pwn">https://github.com/dagrz/aws_pwn</a></li>
+<li><strong>Cloudfrunt</strong>: <a href="https://github.com/MindPointGroup/cloudfrunt">https://github.com/MindPointGroup/cloudfrunt</a></li>
+<li><strong>Cloudjack</strong>: <a href="https://github.com/prevade/cloudjack">https://github.com/prevade/cloudjack</a></li>
+<li><strong>Nimbostratus</strong>: <a href="https://github.com/andresriancho/nimbostratus">https://github.com/andresriancho/nimbostratus</a></li>
+<li><strong>GitLeaks</strong>: <a href="https://github.com/zricethezav/gitleaks">https://github.com/zricethezav/gitleaks</a> - Audit git repos for secrets</li>
+<li><strong>TruffleHog</strong>: <a href="https://github.com/dxa4481/truffleHog">https://github.com/dxa4481/truffleHog</a> - Searches through git repositories for high entropy strings and secrets, digging deep into commit history</li>
+<li><strong>DumpsterDiver</strong>: <a href="https://github.com/securing/DumpsterDiver">https://github.com/securing/DumpsterDiver</a> - Tool to search secrets in various filetypes, like keys (e.g. AWS Access Key, Azure Share Key or SSH keys) or passwords.</li>
+<li><strong>Mad-King</strong>: <a href="https://github.com/ThreatResponse/mad-king">https://github.com/ThreatResponse/mad-king</a> - Proof of Concept Zappa Based AWS Persistence and Attack Platform</li>
+<li><strong>Cloud-Nuke</strong>: <a href="https://github.com/gruntwork-io/cloud-nuke">https://github.com/gruntwork-io/cloud-nuke</a> - A tool for cleaning up your cloud accounts by nuking (deleting) all resources within it</li>
+<li><strong>MozDef: The Mozilla Defense Platform</strong> <a href="https://github.com/mozilla/MozDef">https://github.com/mozilla/MozDef</a> - The Mozilla Defense Platform (MozDef) seeks to automate the security incident handling process and facilitate the real-time activities of incident handlers.</li>
+<li><strong>Lambdashell</strong>: <a href="http://www.lambdashell.com/">http://www.lambdashell.com/</a> - This is a simple AWS lambda function that does a straight exec. Essentially giving you a shell directly in my AWS infrastructure to just run your commands.</li>
+<li><strong>Lambda-Proxy</strong>: [<a href="https://github.com/puresec/lambda-proxy/">https://github.com/puresec/lambda-proxy/</a>] - A bridge between SQLMap and AWS Lambda, which lets you use SQLMap to natively test AWS Lambda functions for SQL Injection vulnerabilities.</li>
+<li><strong>CloudCopy</strong>: <a href="https://github.com/Static-Flow/CloudCopy">https://github.com/Static-Flow/CloudCopy</a> - Cloud version of the Shadow Copy attack against domain controllers running in AWS using only the EC2:CreateSnapshot permission</li>
+<li><strong>enumerate-iam</strong>: <a href="https://github.com/andresriancho/enumerate-iam">https://github.com/andresriancho/enumerate-iam</a> - Enumerate the permissions associated with AWS credential set</li>
+</ul>
+
+<p><strong>Continuous Security Auditing:</strong></p>
+
+<ul>
+<li><strong>Security Monkey</strong>: <a href="https://github.com/Netflix/security_monkey">https://github.com/Netflix/security_monkey</a></li>
+<li><strong>Krampus</strong> (as Security Monkey complement) <a href="https://github.com/sendgrid/krampus">https://github.com/sendgrid/krampus</a></li>
+<li><strong>Cloud Inquisitor</strong>: <a href="https://github.com/RiotGames/cloud-inquisitor">https://github.com/RiotGames/cloud-inquisitor</a></li>
+<li><strong>CloudCustodian</strong>: <a href="https://github.com/capitalone/cloud-custodian">https://github.com/capitalone/cloud-custodian</a></li>
+<li><strong>Disable keys after X days</strong>: <a href="https://github.com/te-papa/aws-key-disabler">https://github.com/te-papa/aws-key-disabler</a></li>
+<li><strong>Repokid</strong> Least Privilege: <a href="https://github.com/Netflix/repokid">https://github.com/Netflix/repokid</a></li>
+<li><strong>Wazuh CloudTrail module</strong>: <a href="https://documentation.wazuh.com/current/amazon/index.html">https://documentation.wazuh.com/current/amazon/index.html</a></li>
+<li><strong>Hammer</strong>: <a href="https://github.com/dowjones/hammer">https://github.com/dowjones/hammer</a></li>
+<li><strong>Streamalert</strong>: <a href="https://github.com/airbnb/streamalert">https://github.com/airbnb/streamalert</a></li>
+<li><strong>Billing Alerts CFN templates</strong>: <a href="https://github.com/btkrausen/AWS/tree/master/CloudFormation/Billing%20Alerts">https://github.com/btkrausen/AWS/tree/master/CloudFormation/Billing%20Alerts</a></li>
+<li><strong>Watchmen</strong>: <a href="https://github.com/iagcl/watchmen">https://github.com/iagcl/watchmen</a> - AWS account compliance using centrally managed Config Rules</li>
+</ul>
+
+<p><strong>DFIR:</strong></p>
+
+<ul>
+<li><strong>AWS IR</strong>: <a href="https://github.com/ThreatResponse/aws_ir">https://github.com/ThreatResponse/aws_ir</a> - AWS specific Incident Response and Forensics Tool</li>
+<li><strong>Margaritashotgun</strong>: <a href="https://github.com/ThreatResponse/margaritashotgun">https://github.com/ThreatResponse/margaritashotgun</a> - Linux memory remote acquisition tool</li>
+<li><strong>LiMEaide</strong>: <a href="https://kd8bny.github.io/LiMEaide/">https://kd8bny.github.io/LiMEaide/</a> - Linux memory remote acquisition tool</li>
+<li><strong>Diffy</strong>: <a href="https://github.com/Netflix-Skunkworks/diffy">https://github.com/Netflix-Skunkworks/diffy</a> - Triage tool used during cloud-centric security incidents</li>
+<li><strong>AWS Security Automation</strong>: <a href="https://github.com/awslabs/aws-security-automation">https://github.com/awslabs/aws-security-automation</a> - AWS scripts and resources for DevSecOps and automated incident response</li>
+<li><strong>GDPatrol</strong>: <a href="https://github.com/ansorren/GDPatrol">https://github.com/ansorren/GDPatrol</a> - Automated Incident Response based off AWS GuardDuty findings</li>
+<li><strong>AWSlog</strong>: <a href="https://github.com/jaksi/awslog">https://github.com/jaksi/awslog</a> - Show the history and changes between configuration versions of AWS resources using AWS Config</li>
+<li><strong>AWS_Responder</strong> <a href="https://github.com/prolsen/aws_responder">https://github.com/prolsen/aws_responder</a> - AWS Digital Forensic and Incident Response (DFIR) Response Python Scripts</li>
+<li><strong>SSM-Acquire</strong>: <a href="https://github.com/mozilla/ssm-acquire">https://github.com/mozilla/ssm-acquire</a> - A python module for orchestrating content acquisitions and analysis via Amazon SSM</li>
+</ul>
+
+<p><strong>Development Security:</strong></p>
+
+<ul>
+<li><strong>CFN NAG</strong>: <a href="https://github.com/stelligent/cfn_nag">https://github.com/stelligent/cfn_nag</a> -  CloudFormation security test (Ruby)</li>
+<li><strong>Git-secrets</strong>: <a href="https://github.com/awslabs/git-secrets">https://github.com/awslabs/git-secrets</a></li>
+<li><strong>Repository of sample Custom Rules for AWS Config</strong>: <a href="https://github.com/awslabs/aws-config-rules">https://github.com/awslabs/aws-config-rules</a></li>
+<li><strong>asecure.cloud</strong>: <a href="https://asecure.cloud">https://asecure.cloud</a> - A repository of cutomizable AWS security configurations (Cloudformation and CLI templates)</li>
+<li><strong>CFripper</strong>: <a href="https://github.com/Skyscanner/cfripper/">https://github.com/Skyscanner/cfripper/</a> - Lambda function to &ldquo;rip apart&rdquo; a CloudFormation template and check it for security compliance.</li>
+<li><strong>Assume</strong>: <a href="https://github.com/SanderKnape/assume">https://github.com/SanderKnape/assume</a> - A simple CLI utility that makes it easier to switch between different AWS roles</li>
+<li><strong>Terrascan</strong>: <a href="https://github.com/cesar-rodriguez/terrascan">https://github.com/cesar-rodriguez/terrascan</a> - A collection of security and best practice tests for static code analysis of terraform templates using terraform_validate</li>
+<li><strong>tfsec</strong>: <a href="https://github.com/liamg/tfsec">https://github.com/liamg/tfsec</a> - Provides static analysis of your terraform templates to spot potential security issues</li>
+<li><strong>pytest-services</strong>: <a href="https://github.com/mozilla-services/pytest-services">https://github.com/mozilla-services/pytest-services</a> - Unit testing framework for test driven security of AWS configurations and more</li>
+<li><strong>IAM Least-Privileged Role Generator</strong>: <a href="https://github.com/puresec/serverless-puresec-cli">https://github.com/puresec/serverless-puresec-cli</a> - A Serverless framework plugin that statically analyzes AWS Lambda function code and automagically generates least-privileged IAM roles.</li>
+<li><strong>AWS Vault</strong>: <a href="https://github.com/99designs/aws-vault">https://github.com/99designs/aws-vault</a> - A vault for securely storing and accessing AWS credentials in development environments</li>
+<li><strong>AWS Service Control Policies</strong>: <a href="https://github.com/jchrisfarris/aws-service-control-policies">https://github.com/jchrisfarris/aws-service-control-policies</a> - Collection of semi-useful Service Control Policies and scripts to manage them</li>
+<li><strong>Half-Life</strong>: <a href="https://github.com/Skyscanner/halflife">https://github.com/Skyscanner/halflife</a> - AWS Lambda auditing tool that provides a meaningful overview in terms of statistical analysis, AWS service dependencies and configuration checks from the security perspective</li>
+</ul>
+
+<p><strong>S3 Buckets Auditing:</strong></p>
+
+<ul>
+<li><a href="https://github.com/Parasimpaticki/sandcastle">https://github.com/Parasimpaticki/sandcastle</a></li>
+<li><a href="https://github.com/smiegles/mass3">https://github.com/smiegles/mass3</a></li>
+<li><a href="https://github.com/koenrh/s3enum">https://github.com/koenrh/s3enum</a></li>
+<li><a href="https://github.com/tomdev/teh_s3_bucketeers/">https://github.com/tomdev/teh_s3_bucketeers/</a></li>
+<li><a href="https://github.com/Quikko/BuQuikker">https://github.com/Quikko/BuQuikker</a> (multi threading for teh_s3_bucketeers)</li>
+<li><a href="https://github.com/eth0izzle/bucket-stream">https://github.com/eth0izzle/bucket-stream</a></li>
+<li><a href="https://github.com/gwen001/s3-buckets-finder">https://github.com/gwen001/s3-buckets-finder</a></li>
+<li><a href="https://github.com/aaparmeggiani/s3find">https://github.com/aaparmeggiani/s3find</a></li>
+<li><a href="https://github.com/bbb31/slurp">https://github.com/bbb31/slurp</a></li>
+<li><a href="https://github.com/random-robbie/slurp">https://github.com/random-robbie/slurp</a></li>
+<li><a href="https://github.com/kromtech/s3-inspector">https://github.com/kromtech/s3-inspector</a></li>
+<li><a href="https://github.com/petermbenjamin/s3-fuzzer">https://github.com/petermbenjamin/s3-fuzzer</a></li>
+<li><a href="https://github.com/jordanpotti/AWSBucketDump">https://github.com/jordanpotti/AWSBucketDump</a></li>
+<li><a href="https://github.com/bear/s3scan">https://github.com/bear/s3scan</a></li>
+<li><a href="https://github.com/sa7mon/S3Scanner">https://github.com/sa7mon/S3Scanner</a></li>
+<li><a href="https://github.com/magisterquis/s3finder">https://github.com/magisterquis/s3finder</a></li>
+<li><a href="https://github.com/abhn/S3Scan">https://github.com/abhn/S3Scan</a></li>
+<li><a href="https://breachinsider.com/honey-buckets/">https://breachinsider.com/honey-buckets/</a></li>
+<li><a href="https://www.buckhacker.com">https://www.buckhacker.com</a> [Currently Offline]</li>
+<li><a href="https://www.thebuckhacker.com/">https://www.thebuckhacker.com/</a></li>
+<li><a href="https://buckets.grayhatwarfare.com/">https://buckets.grayhatwarfare.com/</a></li>
+<li><a href="https://github.com/whitfin/s3-meta">https://github.com/whitfin/s3-meta</a></li>
+<li><a href="https://github.com/vr00n/Amazon-Web-Shenanigans/tree/master/S3PublicBucketCheck">https://github.com/vr00n/Amazon-Web-Shenanigans/tree/master/S3PublicBucketCheck</a></li>
+<li><a href="https://github.com/FishermansEnemy/bucket_finder">https://github.com/FishermansEnemy/bucket_finder</a></li>
+<li><a href="https://github.com/brianwarehime/inSp3ctor">https://github.com/brianwarehime/inSp3ctor</a></li>
+<li><a href="https://github.com/Atticuss/bucketcat">https://github.com/Atticuss/bucketcat</a></li>
+<li><a href="https://github.com/Ucnt/aws-s3-bruteforce">https://github.com/Ucnt/aws-s3-bruteforce</a></li>
+<li><a href="https://github.com/nahamsec/lazys3">https://github.com/nahamsec/lazys3</a></li>
+<li><a href="https://github.com/securing/BucketScanner">https://github.com/securing/BucketScanner</a></li>
+<li><a href="https://digi.ninja/projects/bucket_finder.php">https://digi.ninja/projects/bucket_finder.php</a></li>
+<li><a href="https://github.com/VirtueSecurity/aws-extender-cli">https://github.com/VirtueSecurity/aws-extender-cli</a></li>
+</ul>
+
+<p><strong>Training:</strong></p>
+
+<ul>
+<li><a href="http://flaws.cloud/">http://flaws.cloud/</a> - flAWS challenge to learn through a series of levels about common mistakes and gotchas when using AWS</li>
+<li><a href="flaws2.cloud">flaws2.cloud</a> - flAWS 2 has two paths this time: Attacker and Defender! In the Attacker path, you&rsquo;ll exploit your way through misconfigurations in serverless (Lambda) and containers (ECS Fargate). In the Defender path, that target is now viewed as the victim and you&rsquo;ll work as an incident responder for that same app, understanding how an attack happened.</li>
+<li><a href="https://github.com/RhinoSecurityLabs/cloudgoat">https://github.com/RhinoSecurityLabs/cloudgoat</a> - Vulnerable by Design AWS infrastructure setup tool</li>
+<li><a href="https://github.com/m6a-UdS/dvca">https://github.com/m6a-UdS/dvca</a> - Damn Vulnerable Cloud Application <a href="https://medium.com/poka-techblog/privilege-escalation-in-the-cloud-from-ssrf-to-global-account-administrator-fd943cf5a2f6">more info</a></li>
+<li><a href="https://github.com/sonofagl1tch/AWSDetonationLab">https://github.com/sonofagl1tch/AWSDetonationLab</a> - Scripts and templates to generate some basic detections of the AWS security services</li>
+<li><a href="https://www.owasp.org/index.php/OWASP_Serverless_Goat">OWASP ServerlessGoat</a> - OWASP ServerlessGoat is a deliberately insecure realistic AWS Lambda serverless application, maintained by OWASP for educational purposes. Single click installation through the AWS Serverless Application Repository.</li>
+</ul>
+
+<p><strong>Honey-token:</strong></p>
+
+<ul>
+<li><a href="https://bitbucket.org/asecurityteam/spacecrab">https://bitbucket.org/asecurityteam/spacecrab</a></li>
+<li><a href="https://breachinsider.com/honey-buckets/">https://breachinsider.com/honey-buckets/</a></li>
+<li><a href="https://github.com/0x4D31/honeyLambda">https://github.com/0x4D31/honeyLambda</a></li>
+<li><a href="https://github.com/thinkst/canarytokens-docker">https://github.com/thinkst/canarytokens-docker</a></li>
+</ul>
+
+<p><strong>Others:</strong></p>
+
+<ul>
+<li><a href="https://github.com/nagwww/s3-leaks">https://github.com/nagwww/s3-leaks</a> - a list of some biggest leaks recorded</li>
+<li><strong>Model Risk AWS</strong> <a href="https://magoo.github.io/model-risk-aws/">https://magoo.github.io/model-risk-aws/</a> - POC about probabilistic risk model for AWS</li>
+<li><strong>asecure.cloud</strong> <a href="https://asecure.cloud/">https://asecure.cloud/</a> - a great place for security resources regarding AWS Security.</li>
+</ul>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>
