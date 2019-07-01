@@ -6,7 +6,7 @@
 	
 	<link rel="icon" href="/class/images/logo.png">
 	
-	<title>Spawn Shell | ClassRoom</title>
+	<title>Nmap Os Fingerprinting | ClassRoom</title>
 	
 	
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -73,13 +73,13 @@
     <p>Share</p>
     <ul>
         <li class="ml-1 mr-1">
-        <a target="_blank" href="https://twitter.com/intent/tweet?text=Spawn%20Shell&url=%2fclass%2fblog%2fspawn-shell%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=435');return false;">
+        <a target="_blank" href="https://twitter.com/intent/tweet?text=Nmap%20Os%20Fingerprinting&url=%2fclass%2fblog%2fnmap-os-fingerprinting%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=435');return false;">
         <i class="fab fa-twitter"></i>
         </a>
         </li>
         
         <li class="ml-1 mr-1">
-        <a target="_blank" href="https://facebook.com/sharer.php?u=%2fclass%2fblog%2fspawn-shell%2f" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+        <a target="_blank" href="https://facebook.com/sharer.php?u=%2fclass%2fblog%2fnmap-os-fingerprinting%2f" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
         <i class="fab fa-facebook-f"></i>
         </a>
         </li>      
@@ -122,12 +122,12 @@
                         
                                                 
                         
-                        <h1 class="posttitle">Spawn Shell</h1> 
+                        <h1 class="posttitle">Nmap Os Fingerprinting</h1> 
                     </div>
 
                     
                     
-                        <img class="featured-image img-fluid" src="/class/images/blog/spawn-shell.png" alt="thumbnail for this post">
+                        <img class="featured-image img-fluid" src="/class/images/blog/nmap-logo.png" alt="thumbnail for this post">
                     
                     
                     
@@ -135,61 +135,78 @@
                     <div class="article-post">
                         
 
-<h2 id="non-interactive-tty-shell">Non-interactive tty-shell</h2>
+<h1 id="span-style-color-green-lesson-2-span"><span style="color: green"> Lesson 2 </span></h1>
 
-<p>If you have a non-tty-shell there are certain commands and stuff you can&rsquo;t do. This can happen if you upload reverse shells on a web server, so that the shell you get is by the user www-data, or similar. These users are not meant to have shells as they don&rsquo;t interact with the system has humans do.</p>
+<h4 id="what-is-os-fingerprinting">What is OS fingerprinting?</h4>
 
-<p>So if you don&rsquo;t have a tty-shell you can&rsquo;t run <code>su</code>, <code>sudo</code> for example. This can be annoying if you manage to get a root password but you can&rsquo;t use it.</p>
+<p>OS fingerprinting is the process of differentiating the OS used by a host in a network.  There can be different implementations in determining this like obtaining the TCP/IP stack (TTL value defaults), HTTP packets (via User-Agent field), via ICMP requests, open port patterns, TCP window size and more.</p>
 
-<p>Anyways, if you get one of these shells you can upgrade it to a tty-shell using the following methods:</p>
+<p>There are two types of tools used - <strong>active fingerprinters</strong> and <strong>passive fingerprinters</strong>.</p>
 
-<p><strong>Using python</strong></p>
+<h4 id="operating-system-os-fingerprinting-using-the-nmap-active-fingerprinter">Operating System (OS) fingerprinting using the Nmap active fingerprinter</h4>
 
-<pre><code>python -c 'import pty; pty.spawn(&quot;/bin/sh&quot;)'
+<p>Via conducting an <code>nmap</code> scan using the <code>-O</code> parameter, one can conduct OS fingerprinting through inspecting the packets received from the target.  More details about <a href="https://www.nmap.org">nmap here</a>.</p>
 
-python3 -c 'import pty; pty.spawn(&quot;/bin/sh&quot;)'
+<p>Example command:</p>
+
+<pre><code>nmap -Pn -O {IP_ADDRESS}
 </code></pre>
 
-<p><strong>Echo</strong></p>
+<blockquote>
+<p>The <code>-Pn</code> has been added since I know that the target is up but it may be blocking the ping probe.</p>
+</blockquote>
 
-<pre><code>echo 'os.system('/bin/bash')'
+<p>An example output is below of conducting an OS fingerprint exercise:</p>
+
+<pre><code>$ nmap -Pn -O {IP_ADDRESS_HERE}
+
+Starting Nmap 7.25BETA2 ( https://nmap.org ) at 2017-02-10 17:03 EST
+Nmap scan report for MYSITE.COM (IP_ADDRESS_HERE)
+Host is up (0.0020s latency).
+
+All 1000 scanned ports on MYSITE.COM (IP_ADDRESS_HERE) are filtered
+
+Warning: OSScan results may be unreliable because we could not find at least 1 open and 1 closed port
+
+Device type: WAP|general purpose|specialized
+
+Running: DETAILS_HERE
+OS CPE: OS_CPE_DETAILS_HERE
+
+OS details: OS_DETAILS_HERE
+
+OS detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+
+Nmap done: 1 IP address (1 host up) scanned in 253.29 seconds
+
 </code></pre>
 
-<p><strong>sh</strong></p>
+<p>another way you can do is:</p>
 
-<pre><code>/bin/sh -i
+<pre><code>nmap -A {IP_ADDRESS}
 </code></pre>
 
-<p><strong>bash</strong></p>
+<blockquote>
+<p>this is run a aggressive scan against the IP address.</p>
+</blockquote>
 
-<pre><code>/bin/bash -i
-</code></pre>
+<hr />
 
-<p><strong>Perl</strong></p>
+<p><center></p>
 
-<pre><code>perl -e 'exec &quot;/bin/sh&quot;;'
-</code></pre>
-
-<p><strong>From within VI</strong></p>
-
-<pre><code>:!bash
-</code></pre>
-
-<h2 id="interactive-tty-shell">Interactive tty-shell</h2>
-
-<p>So if you manage to upgrade to a non-interactive tty-shell you will still have a limited shell. You won&rsquo;t be able to use the up and down arrows, you won&rsquo;t have tab-completion. This might be really frustrating if you stay in that shell for long. It can also be more risky, if a execution gets stuck you cant use Ctr-C or Ctr-Z without killing your session. However that can be fixed using socat. Follow these instructions.</p>
-
-<p><a href="https://github.com/cornerpirate/socat-shell">https://github.com/cornerpirate/socat-shell</a></p>
-
-<h2 id="references">References:</h2>
-
-<p><a href="http://unix.stackexchange.com/questions/122616/why-do-i-need-a-tty-to-run-sudo-if-i-can-sudo-without-a-password">http://unix.stackexchange.com/questions/122616/why-do-i-need-a-tty-to-run-sudo-if-i-can-sudo-without-a-password</a> <a href="http://netsec.ws/?p=337">http://netsec.ws/?p=337</a> <a href="http://pentestmonkey.net/blog/post-exploitation-without-a-tty">http://pentestmonkey.net/blog/post-exploitation-without-a-tty</a></p>
+<p>&lt;&lt; prev <a href="../../posts/nmap-intro/index.html">Lesson 1</a> {HOME}
+ <a href="#">Lesson 3</a> next &gt;&gt;
+</center></p>
 
                     </div>
                     
                     
                     <div class="after-post-tags">
                         <ul class="tags">
+                        
+                        <li>
+                        <a href="/class/tags/nmap">nmap</a>
+                        </li>
                         
                         </ul>
                     </div>
@@ -198,10 +215,10 @@ python3 -c 'import pty; pty.spawn(&quot;/bin/sh&quot;)'
                     
                     <div class="row PageNavigation d-flex justify-content-between font-weight-bold">
                     
-                        <a class="d-block col-md-6" href="/class/blog/nmap-intro/"> &laquo; Nmap Intro</a>
+                        <a class="d-block col-md-6" href="/class/blog/nmap-cheatsheet/"> &laquo; Nmap Cheatsheet</a>
                     
                     
-                        <a class="d-block col-md-6 text-lg-right" href="/class/blog/redteaming-aws/">Redteaming Aws &raquo;</a>
+                        <a class="d-block col-md-6 text-lg-right" href="/class/blog/nmap-smtp/">Nmap Smtp &raquo;</a>
                     
                     <div class="clearfix"></div>
                     </div>

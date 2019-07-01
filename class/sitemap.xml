@@ -4,14 +4,79 @@
   
   <url>
     <loc>/class/blog/</loc>
-    <lastmod>2019-07-01T17:19:45+05:30</lastmod>
+    <lastmod>2019-07-01T18:33:42+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
+    <loc>/class/blog/cheatsheet-msfpaylods/</loc>
+    <lastmod>2019-07-01T18:33:42+05:30</lastmod>
+  </url>
+  
+  <url>
     <loc>/class/</loc>
-    <lastmod>2019-07-01T17:19:45+05:30</lastmod>
+    <lastmod>2019-07-01T18:33:42+05:30</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/class/tags/</loc>
+    <lastmod>2019-07-01T18:33:42+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/class/tags/cheatsheet/</loc>
+    <lastmod>2019-07-01T18:33:42+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/class/tags/msf/</loc>
+    <lastmod>2019-07-01T18:33:42+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/class/blog/cheatsheet-vim/</loc>
+    <lastmod>2019-07-01T18:28:27+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>/class/blog/tmux-cheatsheet/</loc>
+    <lastmod>2019-07-01T18:20:27+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>/class/tags/tmux/</loc>
+    <lastmod>2019-07-01T18:20:27+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/class/blog/nmap-cheatsheet/</loc>
+    <lastmod>2019-07-01T18:09:53+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>/class/tags/nmap/</loc>
+    <lastmod>2019-07-01T18:09:53+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/class/blog/nmap-os-fingerprinting/</loc>
+    <lastmod>2019-07-01T17:56:35+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>/class/blog/nmap-smtp/</loc>
+    <lastmod>2019-07-01T17:56:24+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>/class/blog/nmap-intro/</loc>
+    <lastmod>2019-07-01T17:56:16+05:30</lastmod>
   </url>
   
   <url>
@@ -25,19 +90,13 @@
   </url>
   
   <url>
-    <loc>/class/tags/</loc>
-    <lastmod>2019-07-01T17:16:39+05:30</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>/class/tags/aws/</loc>
     <lastmod>2019-07-01T17:16:39+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/class/tags/redteamin/</loc>
+    <loc>/class/tags/pentesting/</loc>
     <lastmod>2019-07-01T17:16:39+05:30</lastmod>
     <priority>0</priority>
   </url>
@@ -48,30 +107,12 @@
   </url>
   
   <url>
-    <loc>/class/tags/cheatsheet/</loc>
-    <lastmod>2019-07-01T17:12:57+05:30</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>/class/blog/git-cheatsheet/</loc>
     <lastmod>2019-07-01T17:05:32+05:30</lastmod>
   </url>
   
   <url>
-    <loc>/class/static/</loc>
-    <lastmod>2018-10-07T11:12:00+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>/class/static/enroll/</loc>
-    <lastmod>2018-10-07T11:12:00+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/class/enroll/enroll/</loc>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -80,7 +121,7 @@
   </url>
   
   <url>
-    <loc>/class/enroll/</loc>
+    <loc>/class/static/</loc>
     <priority>0</priority>
   </url>
   

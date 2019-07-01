@@ -7,18 +7,17 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>anir0y</copyright>
-    <lastBuildDate>Sun, 07 Oct 2018 11:12:00 +0200</lastBuildDate>
     
 	<atom:link href="/class/static/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>enroll </title>
+      <title> </title>
       <link>/class/static/enroll/</link>
-      <pubDate>Sun, 07 Oct 2018 11:12:00 +0200</pubDate>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/class/static/enroll/</guid>
-      <description></description>
+      <description>Prerequisites: As this is based on CEH module, so basic knowledge of computer and programming language (PHP,MySQL,Python) is a bonus. if you don&amp;rsquo;t know anything about these, you can learn the basic for free here .</description>
     </item>
     
   </channel>

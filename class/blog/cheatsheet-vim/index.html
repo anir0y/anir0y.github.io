@@ -6,7 +6,7 @@
 	
 	<link rel="icon" href="/class/images/logo.png">
 	
-	<title>Spawn Shell | ClassRoom</title>
+	<title>Cheatsheet Vim | ClassRoom</title>
 	
 	
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -73,13 +73,13 @@
     <p>Share</p>
     <ul>
         <li class="ml-1 mr-1">
-        <a target="_blank" href="https://twitter.com/intent/tweet?text=Spawn%20Shell&url=%2fclass%2fblog%2fspawn-shell%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=435');return false;">
+        <a target="_blank" href="https://twitter.com/intent/tweet?text=Cheatsheet%20Vim&url=%2fclass%2fblog%2fcheatsheet-vim%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=435');return false;">
         <i class="fab fa-twitter"></i>
         </a>
         </li>
         
         <li class="ml-1 mr-1">
-        <a target="_blank" href="https://facebook.com/sharer.php?u=%2fclass%2fblog%2fspawn-shell%2f" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+        <a target="_blank" href="https://facebook.com/sharer.php?u=%2fclass%2fblog%2fcheatsheet-vim%2f" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
         <i class="fab fa-facebook-f"></i>
         </a>
         </li>      
@@ -114,7 +114,7 @@
                                     <i class="far fa-star"></i>
                                     Jul 1, 2019
                                     <i class="far fa-clock clock"></i>
-                                    2 min read
+                                    5 min read
                                 </span>					
                             </div>
                         </div>			
@@ -122,12 +122,12 @@
                         
                                                 
                         
-                        <h1 class="posttitle">Spawn Shell</h1> 
+                        <h1 class="posttitle">Cheatsheet Vim</h1> 
                     </div>
 
                     
                     
-                        <img class="featured-image img-fluid" src="/class/images/blog/spawn-shell.png" alt="thumbnail for this post">
+                        <img class="featured-image img-fluid" src="/class/images/blog/vim-logo.jpg" alt="thumbnail for this post">
                     
                     
                     
@@ -135,55 +135,233 @@
                     <div class="article-post">
                         
 
-<h2 id="non-interactive-tty-shell">Non-interactive tty-shell</h2>
+<blockquote>
+<p>Vim is a CLI text editor. and here we have some usefull commands.</p>
+</blockquote>
 
-<p>If you have a non-tty-shell there are certain commands and stuff you can&rsquo;t do. This can happen if you upload reverse shells on a web server, so that the shell you get is by the user www-data, or similar. These users are not meant to have shells as they don&rsquo;t interact with the system has humans do.</p>
+<hr />
 
-<p>So if you don&rsquo;t have a tty-shell you can&rsquo;t run <code>su</code>, <code>sudo</code> for example. This can be annoying if you manage to get a root password but you can&rsquo;t use it.</p>
+<h3 id="modes-and-basic-movement">Modes and Basic movement</h3>
 
-<p>Anyways, if you get one of these shells you can upgrade it to a tty-shell using the following methods:</p>
-
-<p><strong>Using python</strong></p>
-
-<pre><code>python -c 'import pty; pty.spawn(&quot;/bin/sh&quot;)'
-
-python3 -c 'import pty; pty.spawn(&quot;/bin/sh&quot;)'
+<pre><code>vim -  shows info about vim
+default mode is command mode
+j/k/h/l - navigation
+i - insert mode
+esc - go back to command mode
 </code></pre>
 
-<p><strong>Echo</strong></p>
+<hr />
 
-<pre><code>echo 'os.system('/bin/bash')'
+<h3 id="faster-movement">Faster Movement</h3>
+
+<pre><code>w - jump from word to word
+W - move whole word
+b - go back to word
+B - back to whole word
+A - append at the end of line 
+$ - go to end of line
+^ - go to first non space char of line
+0 - go to very beginning of line
+gg - begining of file
+G - go to end of file
+} - jump to next paragraph
+{ - back to paragraph
+f* - will find the first occurance of * in the line
+F* - find backwords the * char
+t* - till the occurence of *
+T* - backward occurence of *
+8gg - 8th line
+8G - 8th line
+:8 - go to 8th line
+; - repeat the last search
+, - repeat last search on opposite direction
 </code></pre>
 
-<p><strong>sh</strong></p>
+<h3 id="basic-editing">Basic Editing</h3>
 
-<pre><code>/bin/sh -i
+<pre><code>:e ~/.vimrc
+x - delete current character
+u - undo the previous change
+dw - delete the word
+db - delete the previous word
+5dw - delete 5 words
+cw - change the word
+dd - delete the current line
+cc - change the whole line
+dt&quot; - delete inside quotes
+ct&quot; - change the string inside the &quot;&quot;
+ci&quot; - change inside &quot;/{/[/' and so on
+ca&quot; - change around &quot;
 </code></pre>
 
-<p><strong>bash</strong></p>
+<h3 id="cut-copy-and-paste">Cut, Copy and Paste</h3>
 
-<pre><code>/bin/bash -i
+<pre><code>dw - delete the word
+p - paste from buffer
+P - paste from buffer starting from one column behind
+dj - delete current and immediate follwing line
+yw - copy the current word
+yy - copy the current line
+y0 - copy everything before the cursor to beginning of the line
+dh - delete  previous character  
+dl - delete current char
+dj - delete current line and next line
+dk - delete current line and above line
+x - delete char under the cursor
 </code></pre>
 
-<p><strong>Perl</strong></p>
+<h3 id="searching">Searching</h3>
 
-<pre><code>perl -e 'exec &quot;/bin/sh&quot;;'
+<pre><code>/text - search for text {case sensitive}
+n - go to next search result
+N - back back to previous search result
+?text - search for text backwards
+:set incsearch - set incremental search
+:set ignorecase - case insensitive search
+:set hlsearch - highlight search
+:nohlsearch - disable highligh search
+:noh - a shortcut for :nohlsearch
+d/chalam - delete all the text from the postion of cursor to text
+it works the same with change and yank.
+/.[gain] - finds *gain
+/\n\n - finds all empty lines in the file
 </code></pre>
 
-<p><strong>From within VI</strong></p>
+<h3 id="replace">Replace</h3>
 
-<pre><code>:!bash
+<pre><code>:s/find/replace - substitute a word for another
+:%s/find/replace - repeat the above for entire file
+:%/find/replace/g - substitute globally ( all occurances in the file )
+v - visual mode
+shit + v - visual line mode
+shift + % - finding matched brace
+:%/find/replace/gc - substitute after conformation
+gv - select previous visually
+:s/find/replace/gci - case insensitive replacement
+/[^ ](
+/[^ ]\zs(
+/),
+/)\ze,
 </code></pre>
 
-<h2 id="interactive-tty-shell">Interactive tty-shell</h2>
+<h3 id="macros-and-registers">Macros and registers</h3>
 
-<p>So if you manage to upgrade to a non-interactive tty-shell you will still have a limited shell. You won&rsquo;t be able to use the up and down arrows, you won&rsquo;t have tab-completion. This might be really frustrating if you stay in that shell for long. It can also be more risky, if a execution gets stuck you cant use Ctr-C or Ctr-Z without killing your session. However that can be fixed using socat. Follow these instructions.</p>
+<pre><code>:registers
+qa - to record a macro
+@a -execute a macro
+ctrl + g - inforamtion about current file
+</code></pre>
 
-<p><a href="https://github.com/cornerpirate/socat-shell">https://github.com/cornerpirate/socat-shell</a></p>
+<h3 id="advanced-movements">Advanced Movements</h3>
 
-<h2 id="references">References:</h2>
+<pre><code>ctrl + d - move half wat down in the current screen
+crtl + u - move half up in current screenct
+ctrl + f - full screen down
+crtl + b - full screen up
+M - go to middle
+L - last line of window
+H - go to top
+3L - 3rd line from the last
+3H - 3rd from the top
+zt - current line stays on the top of page
+zb - bottom
+zz - middle of the window
+Markers
+m followed by register to mark
+' followed by register to go to mark
+'' - go to visited places
+</code></pre>
 
-<p><a href="http://unix.stackexchange.com/questions/122616/why-do-i-need-a-tty-to-run-sudo-if-i-can-sudo-without-a-password">http://unix.stackexchange.com/questions/122616/why-do-i-need-a-tty-to-run-sudo-if-i-can-sudo-without-a-password</a> <a href="http://netsec.ws/?p=337">http://netsec.ws/?p=337</a> <a href="http://pentestmonkey.net/blog/post-exploitation-without-a-tty">http://pentestmonkey.net/blog/post-exploitation-without-a-tty</a></p>
+<h3 id="invoking-the-command-line-directly-from-vim">Invoking the command line directly from vim</h3>
+
+<pre><code>:! - can use commands
+:read !command - brings command result into the file
+:r  !curl --silent url - brings url to file
+:se ft=javascript
+</code></pre>
+
+<h3 id="buffers">Buffers</h3>
+
+<pre><code>:bn - navigate to the next buffer
+:bp - previous buffer in the list
+:b# - navigate to previous buffer
+:bf - first buffer
+O - inset new line before
+@@ - recent macro again
+:bd - delete current buffer
+:bd12 - delete 12 buffer
+</code></pre>
+
+<h3 id="windows-and-tabs">Windows and tabs</h3>
+
+<pre><code>:e url - edit a file
+:vsplit url - vertical split the screen
+ctrl + w + hjkl - switch between files in a screen
+ctrl + w + +/- to resize the window
+ctrl + w + e - resize all windows equally
+:sb2 - new split window in top
+:vert sb3 - 
+:tabedit url -
+:tabe url - open a new tab
+gt - go to next tab
+gT - go to previous tab
+:gf - go to first tab
+</code></pre>
+
+<h3 id="indents-and-folds">Indents and folds</h3>
+
+<pre><code>&gt;&gt; - indentation of tab
+:set list - 
+:set expandtab
+:set noexpandtab
+:set shiftwidth = 4
+&lt;&lt; - undo indent
+2&gt;&gt; - indent 2 lines
+:set nolist
+'o' - other side of visual selection
+gv - reselect the previous select
+o - go to new after the cursor
+:set smartindent
+= - auto indentation
+=3j - auto indent 3 lines next to current postion
+:set softtabstop = 4
+ctrl + t - indent in insert mod3e
+ctrl + d - undo indent
+zf5j - fold the next five lines
+zo - open fold
+zc - close
+zd - delete
+zi - invert foldings
+:set foldmenthod = s:yntax
+:se fdm = syntax
+zC - close fold from current to top
+zO - to every single folding inside
+:se fmd = marker 
+:set foldmarker = {{{,}}}
+</code></pre>
+
+<h3 id="vimrc-file">Vimrc file</h3>
+
+<pre><code>set nocompatible
+filetype on
+filetype indent on
+filetype plugin on
+set backspace=indent,eol,start
+set smartcase
+set gdefault
+set incsearch
+set showmatch
+set list
+:so %
+set noswapfile
+set visualbell
+set cursorline
+</code></pre>
+
+<h3 id="others">Others</h3>
+
+<pre><code>:newtab - open a new tab
+</code></pre>
 
                     </div>
                     
@@ -198,10 +376,10 @@ python3 -c 'import pty; pty.spawn(&quot;/bin/sh&quot;)'
                     
                     <div class="row PageNavigation d-flex justify-content-between font-weight-bold">
                     
-                        <a class="d-block col-md-6" href="/class/blog/nmap-intro/"> &laquo; Nmap Intro</a>
+                        <a class="d-block col-md-6" href="/class/blog/cheatsheet-msfpaylods/"> &laquo; Cheatsheet Msfpaylods</a>
                     
                     
-                        <a class="d-block col-md-6 text-lg-right" href="/class/blog/redteaming-aws/">Redteaming Aws &raquo;</a>
+                        <a class="d-block col-md-6 text-lg-right" href="/class/blog/tmux-cheatsheet/">Tmux Cheatsheet &raquo;</a>
                     
                     <div class="clearfix"></div>
                     </div>
