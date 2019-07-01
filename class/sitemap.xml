@@ -3,191 +3,39 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://anir0y.github.io/class/posts/redteaming-aws/</loc>
-    <lastmod>2019-06-30T13:37:20+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://anir0y.github.io/class/</loc>
-    <lastmod>2019-06-30T13:37:20+05:30</lastmod>
+    <loc>/class/</loc>
+    <lastmod>2018-10-07T11:12:00+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://anir0y.github.io/class/posts/</loc>
-    <lastmod>2019-06-30T13:37:20+05:30</lastmod>
+    <loc>/class/static/</loc>
+    <lastmod>2018-10-07T11:12:00+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://anir0y.github.io/class/tags/</loc>
-    <lastmod>2019-06-30T13:37:20+05:30</lastmod>
+    <loc>/class/static/enroll/</loc>
+    <lastmod>2018-10-07T11:12:00+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/class/enroll/enroll/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://anir0y.github.io/class/tags/tools/</loc>
-    <lastmod>2019-06-30T13:37:20+05:30</lastmod>
+    <loc>/class/categories/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://anir0y.github.io/class/tags/cloud/</loc>
-    <lastmod>2019-06-30T13:37:20+05:30</lastmod>
+    <loc>/class/enroll/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://anir0y.github.io/class/tags/hacking/</loc>
-    <lastmod>2019-06-30T13:37:20+05:30</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://anir0y.github.io/class/posts/dlp/</loc>
-    <lastmod>2019-06-25T23:25:50+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://anir0y.github.io/class/tags/dlp/</loc>
-    <lastmod>2019-06-25T23:25:50+05:30</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://anir0y.github.io/class/tags/post/</loc>
-    <lastmod>2019-06-25T23:25:50+05:30</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://anir0y.github.io/class/posts/nmap-smtp/</loc>
-    <lastmod>2019-06-25T23:16:54+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://anir0y.github.io/class/tags/enumeration/</loc>
-    <lastmod>2019-06-25T23:16:54+05:30</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://anir0y.github.io/class/tags/nmap/</loc>
-    <lastmod>2019-06-25T23:16:54+05:30</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://anir0y.github.io/class/posts/nmap-os-fingerprinting/</loc>
-    <lastmod>2019-06-25T22:25:08+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://anir0y.github.io/class/posts/nmap-intro/</loc>
-    <lastmod>2019-06-25T22:18:31+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://anir0y.github.io/class/posts/msfvenompayloads/</loc>
-    <lastmod>2019-06-25T21:06:31+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://anir0y.github.io/class/tags/metasploit/</loc>
-    <lastmod>2019-06-25T21:06:31+05:30</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://anir0y.github.io/class/tags/msfvenom/</loc>
-    <lastmod>2019-06-25T21:06:31+05:30</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://anir0y.github.io/class/posts/addmission/</loc>
-    <lastmod>2019-06-25T15:17:58+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://anir0y.github.io/class/posts/osint-ch1/</loc>
-    <lastmod>2019-06-24T23:13:30+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://anir0y.github.io/class/tags/cheatsheet/</loc>
-    <lastmod>2019-06-24T21:27:28+05:30</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://anir0y.github.io/class/posts/spawning-shell/</loc>
-    <lastmod>2019-06-24T21:27:28+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://anir0y.github.io/class/tags/htb/</loc>
-    <lastmod>2019-06-24T21:27:28+05:30</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://anir0y.github.io/class/tags/shell/</loc>
-    <lastmod>2019-06-24T21:27:28+05:30</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://anir0y.github.io/class/posts/tmux-cheatsheet/</loc>
-    <lastmod>2019-06-23T23:43:45+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://anir0y.github.io/class/tags/information-gathering/</loc>
-    <lastmod>2019-06-23T23:43:45+05:30</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://anir0y.github.io/class/tags/cli/</loc>
-    <lastmod>2019-06-23T21:44:08+05:30</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://anir0y.github.io/class/posts/nmap-cheatsheet/</loc>
-    <lastmod>2019-06-23T21:44:08+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://anir0y.github.io/class/tags/linux/</loc>
-    <lastmod>2019-06-23T20:04:38+05:30</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://anir0y.github.io/class/posts/vim-cheatsheet/</loc>
-    <lastmod>2019-06-23T20:04:38+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://anir0y.github.io/class/tags/git/</loc>
-    <lastmod>2019-06-23T18:58:02+05:30</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://anir0y.github.io/class/posts/git-cheatsheet/</loc>
-    <lastmod>2019-06-23T18:58:02+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://anir0y.github.io/class/posts/infromation-gathering/</loc>
-    <lastmod>2019-06-23T18:58:02+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://anir0y.github.io/class/categories/</loc>
+    <loc>/class/tags/</loc>
     <priority>0</priority>
   </url>
   
