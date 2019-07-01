@@ -3,125 +3,125 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/class/blog/</loc>
+    <loc>https://anir0y.github.io/class/blog/</loc>
     <lastmod>2019-07-01T18:33:42+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/class/blog/cheatsheet-msfpaylods/</loc>
+    <loc>https://anir0y.github.io/class/blog/cheatsheet-msfpaylods/</loc>
     <lastmod>2019-07-01T18:33:42+05:30</lastmod>
   </url>
   
   <url>
-    <loc>/class/</loc>
-    <lastmod>2019-07-01T18:33:42+05:30</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/class/tags/</loc>
+    <loc>https://anir0y.github.io/class/</loc>
     <lastmod>2019-07-01T18:33:42+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/class/tags/cheatsheet/</loc>
+    <loc>https://anir0y.github.io/class/tags/</loc>
     <lastmod>2019-07-01T18:33:42+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/class/tags/msf/</loc>
+    <loc>https://anir0y.github.io/class/tags/cheatsheet/</loc>
     <lastmod>2019-07-01T18:33:42+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/class/blog/cheatsheet-vim/</loc>
+    <loc>https://anir0y.github.io/class/tags/msf/</loc>
+    <lastmod>2019-07-01T18:33:42+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://anir0y.github.io/class/blog/cheatsheet-vim/</loc>
     <lastmod>2019-07-01T18:28:27+05:30</lastmod>
   </url>
   
   <url>
-    <loc>/class/blog/tmux-cheatsheet/</loc>
+    <loc>https://anir0y.github.io/class/blog/tmux-cheatsheet/</loc>
     <lastmod>2019-07-01T18:20:27+05:30</lastmod>
   </url>
   
   <url>
-    <loc>/class/tags/tmux/</loc>
+    <loc>https://anir0y.github.io/class/tags/tmux/</loc>
     <lastmod>2019-07-01T18:20:27+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/class/blog/nmap-cheatsheet/</loc>
+    <loc>https://anir0y.github.io/class/blog/nmap-cheatsheet/</loc>
     <lastmod>2019-07-01T18:09:53+05:30</lastmod>
   </url>
   
   <url>
-    <loc>/class/tags/nmap/</loc>
+    <loc>https://anir0y.github.io/class/tags/nmap/</loc>
     <lastmod>2019-07-01T18:09:53+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/class/blog/nmap-os-fingerprinting/</loc>
+    <loc>https://anir0y.github.io/class/blog/nmap-os-fingerprinting/</loc>
     <lastmod>2019-07-01T17:56:35+05:30</lastmod>
   </url>
   
   <url>
-    <loc>/class/blog/nmap-smtp/</loc>
+    <loc>https://anir0y.github.io/class/blog/nmap-smtp/</loc>
     <lastmod>2019-07-01T17:56:24+05:30</lastmod>
   </url>
   
   <url>
-    <loc>/class/blog/nmap-intro/</loc>
+    <loc>https://anir0y.github.io/class/blog/nmap-intro/</loc>
     <lastmod>2019-07-01T17:56:16+05:30</lastmod>
   </url>
   
   <url>
-    <loc>/class/blog/spawn-shell/</loc>
+    <loc>https://anir0y.github.io/class/blog/spawn-shell/</loc>
     <lastmod>2019-07-01T17:19:45+05:30</lastmod>
   </url>
   
   <url>
-    <loc>/class/blog/securityaudit-aws/</loc>
+    <loc>https://anir0y.github.io/class/blog/securityaudit-aws/</loc>
     <lastmod>2019-07-01T17:16:39+05:30</lastmod>
   </url>
   
   <url>
-    <loc>/class/tags/aws/</loc>
-    <lastmod>2019-07-01T17:16:39+05:30</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/class/tags/pentesting/</loc>
+    <loc>https://anir0y.github.io/class/tags/aws/</loc>
     <lastmod>2019-07-01T17:16:39+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/class/blog/xss-bypassfilter/</loc>
+    <loc>https://anir0y.github.io/class/tags/pentesting/</loc>
+    <lastmod>2019-07-01T17:16:39+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://anir0y.github.io/class/blog/xss-bypassfilter/</loc>
     <lastmod>2019-07-01T17:12:57+05:30</lastmod>
   </url>
   
   <url>
-    <loc>/class/blog/git-cheatsheet/</loc>
+    <loc>https://anir0y.github.io/class/blog/git-cheatsheet/</loc>
     <lastmod>2019-07-01T17:05:32+05:30</lastmod>
   </url>
   
   <url>
-    <loc>/class/static/enroll/</loc>
+    <loc>https://anir0y.github.io/class/static/enroll/</loc>
   </url>
   
   <url>
-    <loc>/class/categories/</loc>
+    <loc>https://anir0y.github.io/class/categories/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/class/static/</loc>
+    <loc>https://anir0y.github.io/class/static/</loc>
     <priority>0</priority>
   </url>
   
