@@ -6,7 +6,7 @@
 	
 	<link rel="icon" href="/class/images/logo.png">
 	
-	<title> | ClassRoom</title>
+	<title>Spawn Shell | ClassRoom</title>
 	
 	
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -73,24 +73,32 @@
     <p>Share</p>
     <ul>
         <li class="ml-1 mr-1">
-        <a target="_blank" href="https://twitter.com/intent/tweet?text=&url=%2fclass%2fenroll%2fenroll%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=435');return false;">
+        <a target="_blank" href="https://twitter.com/intent/tweet?text=Spawn%20Shell&url=%2fclass%2fblog%2fspawn-shell%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=435');return false;">
         <i class="fab fa-twitter"></i>
         </a>
         </li>
         
         <li class="ml-1 mr-1">
-        <a target="_blank" href="https://facebook.com/sharer.php?u=%2fclass%2fenroll%2fenroll%2f" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+        <a target="_blank" href="https://facebook.com/sharer.php?u=%2fclass%2fblog%2fspawn-shell%2f" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
         <i class="fab fa-facebook-f"></i>
         </a>
         </li>
 
         <li class="ml-1 mr-1">
-        <a target="_blank" href="https://www.xing.com/spi/shares/new?url=%2fclass%2fenroll%2fenroll%2f" onclick="window.open(this.href, 'xing-share', 'width=550,height=435');return false;">
+        <a target="_blank" href="https://www.xing.com/spi/shares/new?url=%2fclass%2fblog%2fspawn-shell%2f" onclick="window.open(this.href, 'xing-share', 'width=550,height=435');return false;">
         <i class="fab fa-xing"></i>
         </a>
         </li>        
     </ul>
 
+    
+        <div class="sep">
+        </div>				
+        <ul>
+            <li> 
+            <a  class="small smoothscroll" href="#disqus_thread"></a>
+            </li>
+        </ul>
     
 </div>
 </div>
@@ -110,9 +118,9 @@
                                 <span class="author-description">
                                     Creator!<br>
                                     <i class="far fa-star"></i>
-                                    Jan 1, 0001
+                                    Jul 1, 2019
                                     <i class="far fa-clock clock"></i>
-                                    1 min read
+                                    2 min read
                                 </span>					
                             </div>
                         </div>			
@@ -120,10 +128,12 @@
                         
                                                 
                         
-                        <h1 class="posttitle"></h1> 
+                        <h1 class="posttitle">Spawn Shell</h1> 
                     </div>
 
                     
+                    
+                        <img class="featured-image img-fluid" src="/class/images/blog/spawn-shell.png" alt="thumbnail for this post">
                     
                     
                     
@@ -131,15 +141,55 @@
                     <div class="article-post">
                         
 
-<p>title: &ldquo;Eighth&rdquo;
-date: 2018-10-07T11:40:11+02:00
-publishdate: 2018-10-07T11:40:11+02:00</p>
+<h2 id="non-interactive-tty-shell">Non-interactive tty-shell</h2>
 
-<h2 id="image-images-blog-8-jpg">image: &ldquo;/images/blog/8.jpg&rdquo;</h2>
+<p>If you have a non-tty-shell there are certain commands and stuff you can&rsquo;t do. This can happen if you upload reverse shells on a web server, so that the shell you get is by the user www-data, or similar. These users are not meant to have shells as they don&rsquo;t interact with the system has humans do.</p>
 
-<h1 id="this-is-another-post">This is another post</h1>
+<p>So if you don&rsquo;t have a tty-shell you can&rsquo;t run <code>su</code>, <code>sudo</code> for example. This can be annoying if you manage to get a root password but you can&rsquo;t use it.</p>
 
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean semper libero quis dictum dapibus. Nulla egestas vitae augue eu rutrum. Duis ullamcorper dictum ipsum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse tortor dui, fermentum non dapibus id, volutpat non odio. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Maecenas fringilla tempus urna ac laoreet. Curabitur sed bibendum lectus. Vivamus gravida venenatis porttitor. Phasellus aliquet nibh vel accumsan malesuada. Nulla nibh enim, auctor nec rhoncus a, pulvinar at tortor. Donec sodales consequat dolor et condimentum. Praesent convallis massa sit amet ultrices porta. Sed commodo, odio et porttitor fringilla, mi tortor sodales nulla, a fermentum dolor mi pulvinar mi.</p>
+<p>Anyways, if you get one of these shells you can upgrade it to a tty-shell using the following methods:</p>
+
+<p><strong>Using python</strong></p>
+
+<pre><code>python -c 'import pty; pty.spawn(&quot;/bin/sh&quot;)'
+
+python3 -c 'import pty; pty.spawn(&quot;/bin/sh&quot;)'
+</code></pre>
+
+<p><strong>Echo</strong></p>
+
+<pre><code>echo 'os.system('/bin/bash')'
+</code></pre>
+
+<p><strong>sh</strong></p>
+
+<pre><code>/bin/sh -i
+</code></pre>
+
+<p><strong>bash</strong></p>
+
+<pre><code>/bin/bash -i
+</code></pre>
+
+<p><strong>Perl</strong></p>
+
+<pre><code>perl -e 'exec &quot;/bin/sh&quot;;'
+</code></pre>
+
+<p><strong>From within VI</strong></p>
+
+<pre><code>:!bash
+</code></pre>
+
+<h2 id="interactive-tty-shell">Interactive tty-shell</h2>
+
+<p>So if you manage to upgrade to a non-interactive tty-shell you will still have a limited shell. You won&rsquo;t be able to use the up and down arrows, you won&rsquo;t have tab-completion. This might be really frustrating if you stay in that shell for long. It can also be more risky, if a execution gets stuck you cant use Ctr-C or Ctr-Z without killing your session. However that can be fixed using socat. Follow these instructions.</p>
+
+<p><a href="https://github.com/cornerpirate/socat-shell">https://github.com/cornerpirate/socat-shell</a></p>
+
+<h2 id="references">References:</h2>
+
+<p><a href="http://unix.stackexchange.com/questions/122616/why-do-i-need-a-tty-to-run-sudo-if-i-can-sudo-without-a-password">http://unix.stackexchange.com/questions/122616/why-do-i-need-a-tty-to-run-sudo-if-i-can-sudo-without-a-password</a> <a href="http://netsec.ws/?p=337">http://netsec.ws/?p=337</a> <a href="http://pentestmonkey.net/blog/post-exploitation-without-a-tty">http://pentestmonkey.net/blog/post-exploitation-without-a-tty</a></p>
 
                     </div>
                     
@@ -155,6 +205,8 @@ publishdate: 2018-10-07T11:40:11+02:00</p>
                     <div class="row PageNavigation d-flex justify-content-between font-weight-bold">
                     
                     
+                        <a class="d-block col-md-6 text-lg-right" href="/class/blog/redteaming-aws/">Redteaming Aws &raquo;</a>
+                    
                     <div class="clearfix"></div>
                     </div>
                     
@@ -164,6 +216,14 @@ publishdate: 2018-10-07T11:40:11+02:00</p>
         </div>
         
         
+<div class="container">
+    <div id="comments" class="row justify-content-center mb-5">
+        <div class="col-md-8">              
+                           
+        </div>
+    </div>
+</div>
+
     </div>
 
 
