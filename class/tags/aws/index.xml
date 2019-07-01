@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>aws on ClassRoom</title>
-    <link>/class/tags/aws/</link>
+    <link>/tags/aws/</link>
     <description>Recent content in aws on ClassRoom</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>anir0y</copyright>
     <lastBuildDate>Mon, 01 Jul 2019 17:16:39 +0530</lastBuildDate>
     
-	<atom:link href="/class/tags/aws/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/aws/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Redteaming Aws</title>
-      <link>/class/blog/redteaming-aws/</link>
+      <title>Security Audit of AWS.</title>
+      <link>/blog/securityaudit-aws/</link>
       <pubDate>Mon, 01 Jul 2019 17:16:39 +0530</pubDate>
       
-      <guid>/class/blog/redteaming-aws/</guid>
+      <guid>/blog/securityaudit-aws/</guid>
       <description>We want your security testing to be a positive experience that efficiently gathers the objective evidence you need, without errors or interruptions. The following are some helpful tips that when followed will likely improve that experience, while also being appreciated by your provider, AWS, and other AWS customers.</description>
     </item>
     
