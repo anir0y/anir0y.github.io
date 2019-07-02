@@ -2,49 +2,49 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>nmap on ClassRoom</title>
-    <link>/class/tags/nmap/</link>
+    <link>https://anir0y.github.io/class/tags/nmap/</link>
     <description>Recent content in nmap on ClassRoom</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>anir0y</copyright>
     <lastBuildDate>Mon, 01 Jul 2019 18:09:53 +0530</lastBuildDate>
     
-	<atom:link href="/class/tags/nmap/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://anir0y.github.io/class/tags/nmap/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Nmap Cheatsheet</title>
-      <link>/class/blog/nmap-cheatsheet/</link>
+      <link>https://anir0y.github.io/class/blog/nmap-cheatsheet/</link>
       <pubDate>Mon, 01 Jul 2019 18:09:53 +0530</pubDate>
       
-      <guid>/class/blog/nmap-cheatsheet/</guid>
+      <guid>https://anir0y.github.io/class/blog/nmap-cheatsheet/</guid>
       <description>Target Specification    Switch Example Description      nmap 192.168.1.1 Scan a single IP    nmap 192.168.1.1 192.</description>
     </item>
     
     <item>
       <title>Nmap Os Fingerprinting</title>
-      <link>/class/blog/nmap-os-fingerprinting/</link>
+      <link>https://anir0y.github.io/class/blog/nmap-os-fingerprinting/</link>
       <pubDate>Mon, 01 Jul 2019 17:56:35 +0530</pubDate>
       
-      <guid>/class/blog/nmap-os-fingerprinting/</guid>
+      <guid>https://anir0y.github.io/class/blog/nmap-os-fingerprinting/</guid>
       <description>Lesson 2  What is OS fingerprinting? OS fingerprinting is the process of differentiating the OS used by a host in a network. There can be different implementations in determining this like obtaining the TCP/IP stack (TTL value defaults), HTTP packets (via User-Agent field), via ICMP requests, open port patterns, TCP window size and more.</description>
     </item>
     
     <item>
       <title>Nmap Smtp</title>
-      <link>/class/blog/nmap-smtp/</link>
+      <link>https://anir0y.github.io/class/blog/nmap-smtp/</link>
       <pubDate>Mon, 01 Jul 2019 17:56:24 +0530</pubDate>
       
-      <guid>/class/blog/nmap-smtp/</guid>
+      <guid>https://anir0y.github.io/class/blog/nmap-smtp/</guid>
       <description>Lesson 3  What is SMTP SMTP stands for Simple Mail Transfer Protocol and is used for email delivery from an email client to an email server.</description>
     </item>
     
     <item>
       <title>Nmap Intro</title>
-      <link>/class/blog/nmap-intro/</link>
+      <link>https://anir0y.github.io/class/blog/nmap-intro/</link>
       <pubDate>Mon, 01 Jul 2019 17:56:16 +0530</pubDate>
       
-      <guid>/class/blog/nmap-intro/</guid>
+      <guid>https://anir0y.github.io/class/blog/nmap-intro/</guid>
       <description>Lesson 1  Introduction Nmap (&amp;ldquo;Network Mapper&amp;rdquo;) is a free and open source (license) utility for network discovery and security auditing. Many systems and network administrators also find it useful for tasks such as network inventory, managing service upgrade schedules, and monitoring host or service uptime.</description>
     </item>
     
