@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Powershell on ClassRoom</title>
+    <link>/class/tags/powershell/</link>
+    <description>Recent content in Powershell on ClassRoom</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>anir0y</copyright>
+    <lastBuildDate>Tue, 02 Jul 2019 15:42:48 +0530</lastBuildDate>
+    
+	<atom:link href="/class/tags/powershell/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Powershell - Information Collection</title>
+      <link>/class/blog/powershell-commands-2/</link>
+      <pubDate>Tue, 02 Jul 2019 15:42:48 +0530</pubDate>
+      
+      <guid>/class/blog/powershell-commands-2/</guid>
+      <description>Collecting Information About Computers Cmdlets from CimCmdlets module are the most important cmdlets for general system management tasks. All critical subsystem settings are exposed through WMI.</description>
+    </item>
+    
+    <item>
+      <title>Powershell - CHange State</title>
+      <link>/class/blog/powershell-commands-1/</link>
+      <pubDate>Tue, 02 Jul 2019 15:42:44 +0530</pubDate>
+      
+      <guid>/class/blog/powershell-commands-1/</guid>
+      <description>Basic commands to change computer state (shutdown, restart, lock) To reset a computer in Windows PowerShell, use either a standard command-line tool or a WMI class.</description>
+    </item>
+    
+    <item>
+      <title>Powershell - Intro</title>
+      <link>/class/blog/powershell-intro/</link>
+      <pubDate>Tue, 02 Jul 2019 15:42:06 +0530</pubDate>
+      
+      <guid>/class/blog/powershell-intro/</guid>
+      <description>PowerShell  PowerShell is a task-based command-line shell and scripting language built on .NET. PowerShell helps system administrators and power-users rapidly automate tasks that manage operating systems (Linux, macOS, and Windows) and processes.</description>
+    </item>
+    
+  </channel>
+</rss>

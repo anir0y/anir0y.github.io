@@ -4,25 +4,46 @@
   
   <url>
     <loc>/class/blog/</loc>
-    <lastmod>2019-07-01T18:33:42+05:30</lastmod>
+    <lastmod>2019-07-02T15:42:48+05:30</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/class/</loc>
+    <lastmod>2019-07-02T15:42:48+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/class/tags/powershell/</loc>
+    <lastmod>2019-07-02T15:42:48+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/class/blog/powershell-commands-2/</loc>
+    <lastmod>2019-07-02T15:42:48+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>/class/tags/</loc>
+    <lastmod>2019-07-02T15:42:48+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/class/blog/powershell-commands-1/</loc>
+    <lastmod>2019-07-02T15:42:44+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>/class/blog/powershell-intro/</loc>
+    <lastmod>2019-07-02T15:42:06+05:30</lastmod>
   </url>
   
   <url>
     <loc>/class/blog/cheatsheet-msfpaylods/</loc>
     <lastmod>2019-07-01T18:33:42+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>/class/</loc>
-    <lastmod>2019-07-01T18:33:42+05:30</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/class/tags/</loc>
-    <lastmod>2019-07-01T18:33:42+05:30</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>

@@ -6,7 +6,7 @@
 	
 	<link rel="icon" href="/class/images/logo.png">
 	
-	<title>Spawn Shell | ClassRoom</title>
+	<title>Powershell - CHange State | ClassRoom</title>
 	
 	
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -73,13 +73,13 @@
     <p>Share</p>
     <ul>
         <li class="ml-1 mr-1">
-        <a target="_blank" href="https://twitter.com/intent/tweet?text=Spawn%20Shell&url=%2fclass%2fblog%2fspawn-shell%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=435');return false;">
+        <a target="_blank" href="https://twitter.com/intent/tweet?text=Powershell%20-%20CHange%20State&url=%2fclass%2fblog%2fpowershell-commands-1%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=435');return false;">
         <i class="fab fa-twitter"></i>
         </a>
         </li>
         
         <li class="ml-1 mr-1">
-        <a target="_blank" href="https://facebook.com/sharer.php?u=%2fclass%2fblog%2fspawn-shell%2f" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+        <a target="_blank" href="https://facebook.com/sharer.php?u=%2fclass%2fblog%2fpowershell-commands-1%2f" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
         <i class="fab fa-facebook-f"></i>
         </a>
         </li>      
@@ -112,7 +112,7 @@
                                 <span class="author-description">
                                     Creator!<br>
                                     <i class="far fa-star"></i>
-                                    Jul 1, 2019
+                                    Jul 2, 2019
                                     <i class="far fa-clock clock"></i>
                                     2 min read
                                 </span>					
@@ -122,12 +122,10 @@
                         
                                                 
                         
-                        <h1 class="posttitle">Spawn Shell</h1> 
+                        <h1 class="posttitle">Powershell - CHange State</h1> 
                     </div>
 
                     
-                    
-                        <img class="featured-image img-fluid" src="/class/images/blog/spawn-shell.png" alt="thumbnail for this post">
                     
                     
                     
@@ -135,61 +133,69 @@
                     <div class="article-post">
                         
 
-<h2 id="non-interactive-tty-shell">Non-interactive tty-shell</h2>
+<h2 id="basic-commands-to-change-computer-state-shutdown-restart-lock">Basic  commands to change computer state (shutdown, restart, lock)</h2>
 
-<p>If you have a non-tty-shell there are certain commands and stuff you can&rsquo;t do. This can happen if you upload reverse shells on a web server, so that the shell you get is by the user www-data, or similar. These users are not meant to have shells as they don&rsquo;t interact with the system has humans do.</p>
+<p><em>To reset a computer in Windows PowerShell, use either a standard command-line tool or a WMI class. Although you are using Windows PowerShell only to run the tool, learning how to change a computer&rsquo;s power state in Windows PowerShell illustrates some of the important details about working with external tools in Windows PowerShell.</em></p>
 
-<p>So if you don&rsquo;t have a tty-shell you can&rsquo;t run <code>su</code>, <code>sudo</code> for example. This can be annoying if you manage to get a root password but you can&rsquo;t use it.</p>
+<h2 id="locking-a-computer">Locking a Computer</h2>
 
-<p>Anyways, if you get one of these shells you can upgrade it to a tty-shell using the following methods:</p>
+<p>The only way to lock a computer directly with the standard available tools is to call the <strong>LockWorkstation()</strong> function in <strong>user32.dll</strong>:</p>
 
-<p><strong>Using python</strong></p>
-
-<pre><code>python -c 'import pty; pty.spawn(&quot;/bin/sh&quot;)'
-
-python3 -c 'import pty; pty.spawn(&quot;/bin/sh&quot;)'
+<pre><code>rundll32.exe user32.dll,LockWorkStation
 </code></pre>
 
-<p><strong>Echo</strong></p>
+<p>This command immediately locks the workstation. It uses <em>rundll32.exe</em>, which runs Windows DLLs (and saves their libraries for repeated use) to run user32.dll, a library of Windows management functions.</p>
 
-<pre><code>echo 'os.system('/bin/bash')'
+<p>When you lock a workstation while Fast User Switching is enabled, such as on Windows XP, the computer displays the user logon screen rather than starting the current user&rsquo;s screensaver.</p>
+
+<p>To shut down particular sessions on a Terminal Server, use the <strong>tsshutdn.exe</strong> command-line tool.</p>
+
+<h2 id="logging-off-the-current-session">Logging Off the Current Session</h2>
+
+<p>You can use several different techniques to log off of a session on the local system. The simplest way is to use the Remote Desktop/Terminal Services command-line tool, <strong>logoff.exe</strong> (For details, at the Windows PowerShell prompt, type <strong>logoff /?</strong>). To log off the current active session, type <strong>logoff</strong> with no arguments.</p>
+
+<p>You can also use the <strong>shutdown.exe</strong> tool with its logoff option:</p>
+
+<pre><code>shutdown.exe -l
 </code></pre>
 
-<p><strong>sh</strong></p>
+<p>A third option is to use WMI. The Win32_OperatingSystem class has a Win32Shutdown method. Invoking the method with the 0 flag initiates logoff:</p>
 
-<pre><code>/bin/sh -i
+<pre><code class="language-powershell">(Get-WmiObject -Class Win32_OperatingSystem -ComputerName .).Win32Shutdown(0)
 </code></pre>
 
-<p><strong>bash</strong></p>
+<p>For more information, and to find other features of the Win32Shutdown method, see &ldquo;Win32Shutdown Method of the Win32_OperatingSystem Class&rdquo; in MSDN.</p>
 
-<pre><code>/bin/bash -i
+<h2 id="shutting-down-or-restarting-a-computer">Shutting Down or Restarting a Computer</h2>
+
+<p>Shutting down and restarting computers are generally the same types of task. Tools that shut down a computer will generally restart it as well—and vice versa. There are two straightforward options for restarting a computer from Windows PowerShell. Use either Tsshutdn.exe or Shutdown.exe with appropriate arguments. You can get detailed usage information from <strong>tsshutdn.exe /?</strong> or <strong>shutdown.exe /?</strong>.</p>
+
+<p>You can also perform shutdown and restart operations directly from Windows PowerShell as well.</p>
+
+<p>To shut down the computer, use the Stop-Computer command</p>
+
+<pre><code class="language-powershell">Stop-Computer
 </code></pre>
 
-<p><strong>Perl</strong></p>
+<p>To restart the operating system, use the Restart-Computer command</p>
 
-<pre><code>perl -e 'exec &quot;/bin/sh&quot;;'
+<pre><code class="language-powershell">Restart-Computer
 </code></pre>
 
-<p><strong>From within VI</strong></p>
+<p>To force an immediate restart of the computer, use the -Force parameter.</p>
 
-<pre><code>:!bash
+<pre><code class="language-powershell">Restart-Computer -Force
 </code></pre>
-
-<h2 id="interactive-tty-shell">Interactive tty-shell</h2>
-
-<p>So if you manage to upgrade to a non-interactive tty-shell you will still have a limited shell. You won&rsquo;t be able to use the up and down arrows, you won&rsquo;t have tab-completion. This might be really frustrating if you stay in that shell for long. It can also be more risky, if a execution gets stuck you cant use Ctr-C or Ctr-Z without killing your session. However that can be fixed using socat. Follow these instructions.</p>
-
-<p><a href="https://github.com/cornerpirate/socat-shell">https://github.com/cornerpirate/socat-shell</a></p>
-
-<h2 id="references">References:</h2>
-
-<p><a href="http://unix.stackexchange.com/questions/122616/why-do-i-need-a-tty-to-run-sudo-if-i-can-sudo-without-a-password">http://unix.stackexchange.com/questions/122616/why-do-i-need-a-tty-to-run-sudo-if-i-can-sudo-without-a-password</a> <a href="http://netsec.ws/?p=337">http://netsec.ws/?p=337</a> <a href="http://pentestmonkey.net/blog/post-exploitation-without-a-tty">http://pentestmonkey.net/blog/post-exploitation-without-a-tty</a></p>
 
                     </div>
                     
                     
                     <div class="after-post-tags">
                         <ul class="tags">
+                        
+                        <li>
+                        <a href="/class/tags/powershell">powershell</a>
+                        </li>
                         
                         </ul>
                     </div>
@@ -198,10 +204,10 @@ python3 -c 'import pty; pty.spawn(&quot;/bin/sh&quot;)'
                     
                     <div class="row PageNavigation d-flex justify-content-between font-weight-bold">
                     
-                        <a class="d-block col-md-6" href="/class/blog/nmap-intro/"> &laquo; Nmap Intro</a>
+                        <a class="d-block col-md-6" href="/class/blog/powershell-commands-2/"> &laquo; Powershell - Information Collection</a>
                     
                     
-                        <a class="d-block col-md-6 text-lg-right" href="/class/blog/securityaudit-aws/">Security Audit of AWS. &raquo;</a>
+                        <a class="d-block col-md-6 text-lg-right" href="/class/blog/powershell-intro/">Powershell - Intro &raquo;</a>
                     
                     <div class="clearfix"></div>
                     </div>

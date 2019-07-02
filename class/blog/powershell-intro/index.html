@@ -6,7 +6,7 @@
 	
 	<link rel="icon" href="/class/images/logo.png">
 	
-	<title>Spawn Shell | ClassRoom</title>
+	<title>Powershell - Intro | ClassRoom</title>
 	
 	
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -73,26 +73,18 @@
     <p>Share</p>
     <ul>
         <li class="ml-1 mr-1">
-        <a target="_blank" href="https://twitter.com/intent/tweet?text=Spawn%20Shell&url=%2fclass%2fblog%2fspawn-shell%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=435');return false;">
+        <a target="_blank" href="https://twitter.com/intent/tweet?text=Powershell%20-%20Intro&url=%2fclass%2fblog%2fpowershell-intro%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=435');return false;">
         <i class="fab fa-twitter"></i>
         </a>
         </li>
         
         <li class="ml-1 mr-1">
-        <a target="_blank" href="https://facebook.com/sharer.php?u=%2fclass%2fblog%2fspawn-shell%2f" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+        <a target="_blank" href="https://facebook.com/sharer.php?u=%2fclass%2fblog%2fpowershell-intro%2f" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
         <i class="fab fa-facebook-f"></i>
         </a>
         </li>      
     </ul>
 
-    
-        <div class="sep">
-        </div>				
-        <ul>
-            <li> 
-            <a  class="small smoothscroll" href="#disqus_thread"></a>
-            </li>
-        </ul>
     
 </div>
 </div>
@@ -112,9 +104,9 @@
                                 <span class="author-description">
                                     Creator!<br>
                                     <i class="far fa-star"></i>
-                                    Jul 1, 2019
+                                    Jul 2, 2019
                                     <i class="far fa-clock clock"></i>
-                                    2 min read
+                                    3 min read
                                 </span>					
                             </div>
                         </div>			
@@ -122,12 +114,10 @@
                         
                                                 
                         
-                        <h1 class="posttitle">Spawn Shell</h1> 
+                        <h1 class="posttitle">Powershell - Intro</h1> 
                     </div>
 
                     
-                    
-                        <img class="featured-image img-fluid" src="/class/images/blog/spawn-shell.png" alt="thumbnail for this post">
                     
                     
                     
@@ -135,61 +125,58 @@
                     <div class="article-post">
                         
 
-<h2 id="non-interactive-tty-shell">Non-interactive tty-shell</h2>
+<h2 id="powershell">PowerShell</h2>
 
-<p>If you have a non-tty-shell there are certain commands and stuff you can&rsquo;t do. This can happen if you upload reverse shells on a web server, so that the shell you get is by the user www-data, or similar. These users are not meant to have shells as they don&rsquo;t interact with the system has humans do.</p>
+<blockquote>
+<p>PowerShell is a task-based command-line shell and scripting language built on .NET. PowerShell helps system administrators and power-users rapidly automate tasks that manage operating systems (Linux, macOS, and Windows) and processes.</p>
+</blockquote>
 
-<p>So if you don&rsquo;t have a tty-shell you can&rsquo;t run <code>su</code>, <code>sudo</code> for example. This can be annoying if you manage to get a root password but you can&rsquo;t use it.</p>
+<p>PowerShell commands let you manage computers from the command line. PowerShell providers let you access data stores, such as the registry and certificate store, as easily as you access the file system. PowerShell includes a rich expression parser and a fully developed scripting language</p>
 
-<p>Anyways, if you get one of these shells you can upgrade it to a tty-shell using the following methods:</p>
+<h3 id="discoverebility">Discoverebility</h3>
 
-<p><strong>Using python</strong></p>
+<p>Powershell makes it easy to discover it&rsquo;s features. for instance, to find a list of cmdlests that view and change windows services,</p>
 
-<pre><code>python -c 'import pty; pty.spawn(&quot;/bin/sh&quot;)'
+<p>Get-Command *-service</p>
 
-python3 -c 'import pty; pty.spawn(&quot;/bin/sh&quot;)'
-</code></pre>
+<p>After discovering which cmdlet accomplishes a task, you can learn more about the cmdlet by using the Get-Help cmdlet. For example, to display help about the Get-Service cmdlet, type:</p>
 
-<p><strong>Echo</strong></p>
+<p>Get-Help Get-Service</p>
 
-<pre><code>echo 'os.system('/bin/bash')'
-</code></pre>
+<p>Most cmdlets return objects that can be manipulated and then rendered as text for display. To fully understand the output of a cmdlet, pipe the output to the Get-Member cmdlet. For example, the following command displays information about the members of the object output by the Get-Service cmdlet.</p>
 
-<p><strong>sh</strong></p>
+<p>Get-Service | Get-Member</p>
 
-<pre><code>/bin/sh -i
-</code></pre>
+<p>Consistency</p>
 
-<p><strong>bash</strong></p>
+<p>Managing systems can be a complex task. Tools that have a consistent interface help to control the inherent complexity. Unfortunately, command-line tools and scriptable Component Object Model (COM) objects aren&rsquo;t known for their consistency.</p>
 
-<pre><code>/bin/bash -i
-</code></pre>
+<p>The consistency of PowerShell is one of its primary assets. For example, if you learn how to use the Sort-Object cmdlet, you can use that knowledge to sort the output of any cmdlet. You don&rsquo;t have to learn the different sorting routines of each cmdlet.</p>
 
-<p><strong>Perl</strong></p>
+<p>Additionally, cmdlet developers don&rsquo;t have to design sorting features for their cmdlets. PowerShell provides a framework with the basic features that forces consistency. The framework eliminates some choices that are left to the developer. But, in return, it makes the development of cmdlets much simpler.
+Interactive and scripting environments</p>
 
-<pre><code>perl -e 'exec &quot;/bin/sh&quot;;'
-</code></pre>
+<p>The Windows Command Prompt provides an interactive shell with access to command-line tools and basic scripting. Windows Script Host (WSH) has scriptable command-line tools and COM automation objects, but doesn&rsquo;t provide an interactive shell.</p>
 
-<p><strong>From within VI</strong></p>
+<p>PowerShell combines an interactive shell and a scripting environment. PowerShell can access command-line tools, COM objects, and .NET class libraries. This combination of features extends the capabilities of the interactive user, the script writer, and the system administrator.
+Object orientation</p>
 
-<pre><code>:!bash
-</code></pre>
+<p>PowerShell is based on object not text. The output of a command is an object. You can send the output object, through the pipeline, to another command as its input.</p>
 
-<h2 id="interactive-tty-shell">Interactive tty-shell</h2>
+<p>This pipeline provides a familiar interface for people experienced with other shells. PowerShell extends this concept by sending objects rather than text.
+Easy transition to scripting</p>
 
-<p>So if you manage to upgrade to a non-interactive tty-shell you will still have a limited shell. You won&rsquo;t be able to use the up and down arrows, you won&rsquo;t have tab-completion. This might be really frustrating if you stay in that shell for long. It can also be more risky, if a execution gets stuck you cant use Ctr-C or Ctr-Z without killing your session. However that can be fixed using socat. Follow these instructions.</p>
-
-<p><a href="https://github.com/cornerpirate/socat-shell">https://github.com/cornerpirate/socat-shell</a></p>
-
-<h2 id="references">References:</h2>
-
-<p><a href="http://unix.stackexchange.com/questions/122616/why-do-i-need-a-tty-to-run-sudo-if-i-can-sudo-without-a-password">http://unix.stackexchange.com/questions/122616/why-do-i-need-a-tty-to-run-sudo-if-i-can-sudo-without-a-password</a> <a href="http://netsec.ws/?p=337">http://netsec.ws/?p=337</a> <a href="http://pentestmonkey.net/blog/post-exploitation-without-a-tty">http://pentestmonkey.net/blog/post-exploitation-without-a-tty</a></p>
+<p>PowerShell&rsquo;s command discoverability makes it easy to transition from typing commands interactively to creating and running scripts. PowerShell transcripts and history make it easy to copy commands to a file for use as a script</p>
 
                     </div>
                     
                     
                     <div class="after-post-tags">
                         <ul class="tags">
+                        
+                        <li>
+                        <a href="/class/tags/powershell">Powershell</a>
+                        </li>
                         
                         </ul>
                     </div>
@@ -198,10 +185,10 @@ python3 -c 'import pty; pty.spawn(&quot;/bin/sh&quot;)'
                     
                     <div class="row PageNavigation d-flex justify-content-between font-weight-bold">
                     
-                        <a class="d-block col-md-6" href="/class/blog/nmap-intro/"> &laquo; Nmap Intro</a>
+                        <a class="d-block col-md-6" href="/class/blog/powershell-commands-1/"> &laquo; Powershell - CHange State</a>
                     
                     
-                        <a class="d-block col-md-6 text-lg-right" href="/class/blog/securityaudit-aws/">Security Audit of AWS. &raquo;</a>
+                        <a class="d-block col-md-6 text-lg-right" href="/class/blog/cheatsheet-msfpaylods/">Cheatsheet Msfpaylods &raquo;</a>
                     
                     <div class="clearfix"></div>
                     </div>
@@ -212,14 +199,6 @@ python3 -c 'import pty; pty.spawn(&quot;/bin/sh&quot;)'
         </div>
         
         
-<div class="container">
-    <div id="comments" class="row justify-content-center mb-5">
-        <div class="col-md-8">              
-                           
-        </div>
-    </div>
-</div>
-
     </div>
 
 
