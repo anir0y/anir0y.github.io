@@ -15,18 +15,18 @@
   </url>
   
   <url>
-    <loc>/class/tags/powershell/</loc>
-    <lastmod>2019-07-02T15:42:48+05:30</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>/class/blog/powershell-commands-2/</loc>
     <lastmod>2019-07-02T15:42:48+05:30</lastmod>
   </url>
   
   <url>
     <loc>/class/tags/</loc>
+    <lastmod>2019-07-02T15:42:48+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/class/tags/powershell/</loc>
     <lastmod>2019-07-02T15:42:48+05:30</lastmod>
     <priority>0</priority>
   </url>
