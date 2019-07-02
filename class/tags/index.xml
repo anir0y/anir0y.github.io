@@ -2,67 +2,67 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on ClassRoom</title>
-    <link>https://anir0y.github.io/class/tags/</link>
+    <link>/class/tags/</link>
     <description>Recent content in Tags on ClassRoom</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>anir0y</copyright>
     <lastBuildDate>Mon, 01 Jul 2019 18:33:42 +0530</lastBuildDate>
     
-	<atom:link href="https://anir0y.github.io/class/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/class/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>cheatsheet</title>
-      <link>https://anir0y.github.io/class/tags/cheatsheet/</link>
+      <link>/class/tags/cheatsheet/</link>
       <pubDate>Mon, 01 Jul 2019 18:33:42 +0530</pubDate>
       
-      <guid>https://anir0y.github.io/class/tags/cheatsheet/</guid>
+      <guid>/class/tags/cheatsheet/</guid>
       <description></description>
     </item>
     
     <item>
       <title>msf</title>
-      <link>https://anir0y.github.io/class/tags/msf/</link>
+      <link>/class/tags/msf/</link>
       <pubDate>Mon, 01 Jul 2019 18:33:42 +0530</pubDate>
       
-      <guid>https://anir0y.github.io/class/tags/msf/</guid>
+      <guid>/class/tags/msf/</guid>
       <description></description>
     </item>
     
     <item>
       <title>tmux</title>
-      <link>https://anir0y.github.io/class/tags/tmux/</link>
+      <link>/class/tags/tmux/</link>
       <pubDate>Mon, 01 Jul 2019 18:20:27 +0530</pubDate>
       
-      <guid>https://anir0y.github.io/class/tags/tmux/</guid>
+      <guid>/class/tags/tmux/</guid>
       <description></description>
     </item>
     
     <item>
       <title>nmap</title>
-      <link>https://anir0y.github.io/class/tags/nmap/</link>
+      <link>/class/tags/nmap/</link>
       <pubDate>Mon, 01 Jul 2019 18:09:53 +0530</pubDate>
       
-      <guid>https://anir0y.github.io/class/tags/nmap/</guid>
+      <guid>/class/tags/nmap/</guid>
       <description></description>
     </item>
     
     <item>
       <title>aws</title>
-      <link>https://anir0y.github.io/class/tags/aws/</link>
+      <link>/class/tags/aws/</link>
       <pubDate>Mon, 01 Jul 2019 17:16:39 +0530</pubDate>
       
-      <guid>https://anir0y.github.io/class/tags/aws/</guid>
+      <guid>/class/tags/aws/</guid>
       <description></description>
     </item>
     
     <item>
       <title>pentesting</title>
-      <link>https://anir0y.github.io/class/tags/pentesting/</link>
+      <link>/class/tags/pentesting/</link>
       <pubDate>Mon, 01 Jul 2019 17:16:39 +0530</pubDate>
       
-      <guid>https://anir0y.github.io/class/tags/pentesting/</guid>
+      <guid>/class/tags/pentesting/</guid>
       <description></description>
     </item>
     

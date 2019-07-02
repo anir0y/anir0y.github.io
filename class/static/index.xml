@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Statics on ClassRoom</title>
-    <link>https://anir0y.github.io/class/static/</link>
+    <link>/class/static/</link>
     <description>Recent content in Statics on ClassRoom</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>anir0y</copyright>
     
-	<atom:link href="https://anir0y.github.io/class/static/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/class/static/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title> </title>
-      <link>https://anir0y.github.io/class/static/enroll/</link>
+      <link>/class/static/enroll/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://anir0y.github.io/class/static/enroll/</guid>
+      <guid>/class/static/enroll/</guid>
       <description>Prerequisites: As this is based on CEH module, so basic knowledge of computer and programming language (PHP,MySQL,Python) is a bonus. if you don&amp;rsquo;t know anything about these, you can learn the basic for free here .</description>
     </item>
     
