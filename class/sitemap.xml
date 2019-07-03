@@ -15,14 +15,10 @@
   </url>
   
   <url>
-    <loc>https://anir0y.github.io/class/tags/powershell/</loc>
-    <lastmod>2019-07-02T15:42:48+05:30</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://anir0y.github.io/class/blog/powershell-commands-2/</loc>
     <lastmod>2019-07-02T15:42:48+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
@@ -32,18 +28,30 @@
   </url>
   
   <url>
+    <loc>https://anir0y.github.io/class/tags/powershell/</loc>
+    <lastmod>2019-07-02T15:42:48+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://anir0y.github.io/class/blog/powershell-commands-1/</loc>
     <lastmod>2019-07-02T15:42:44+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://anir0y.github.io/class/blog/powershell-intro/</loc>
     <lastmod>2019-07-02T15:42:06+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://anir0y.github.io/class/blog/cheatsheet-msfpaylods/</loc>
     <lastmod>2019-07-01T18:33:42+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
@@ -61,11 +69,15 @@
   <url>
     <loc>https://anir0y.github.io/class/blog/cheatsheet-vim/</loc>
     <lastmod>2019-07-01T18:28:27+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://anir0y.github.io/class/blog/tmux-cheatsheet/</loc>
     <lastmod>2019-07-01T18:20:27+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
@@ -77,6 +89,8 @@
   <url>
     <loc>https://anir0y.github.io/class/blog/nmap-cheatsheet/</loc>
     <lastmod>2019-07-01T18:09:53+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
@@ -88,26 +102,36 @@
   <url>
     <loc>https://anir0y.github.io/class/blog/nmap-os-fingerprinting/</loc>
     <lastmod>2019-07-01T17:56:35+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://anir0y.github.io/class/blog/nmap-smtp/</loc>
     <lastmod>2019-07-01T17:56:24+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://anir0y.github.io/class/blog/nmap-intro/</loc>
     <lastmod>2019-07-01T17:56:16+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://anir0y.github.io/class/blog/spawn-shell/</loc>
     <lastmod>2019-07-01T17:19:45+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://anir0y.github.io/class/blog/securityaudit-aws/</loc>
     <lastmod>2019-07-01T17:16:39+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
@@ -125,15 +149,21 @@
   <url>
     <loc>https://anir0y.github.io/class/blog/xss-bypassfilter/</loc>
     <lastmod>2019-07-01T17:12:57+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://anir0y.github.io/class/blog/git-cheatsheet/</loc>
     <lastmod>2019-07-01T17:05:32+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://anir0y.github.io/class/static/enroll/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
