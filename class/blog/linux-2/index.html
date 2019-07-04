@@ -6,7 +6,7 @@
 	
 	<link rel="icon" href="/class/images/logo.png">
 	
-	<title>Powershell - CHange State | ClassRoom</title>
+	<title>Linux | File Permissions | ClassRoom</title>
 	
 	
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -73,13 +73,13 @@
     <p>Share</p>
     <ul>
         <li class="ml-1 mr-1">
-        <a target="_blank" href="https://twitter.com/intent/tweet?text=Powershell%20-%20CHange%20State&url=https%3a%2f%2fanir0y.github.io%2fclass%2fblog%2fpowershell-commands-1%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=435');return false;">
+        <a target="_blank" href="https://twitter.com/intent/tweet?text=Linux%20%7c%20File%20Permissions&url=https%3a%2f%2fanir0y.github.io%2fclass%2fblog%2flinux-2%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=435');return false;">
         <i class="fab fa-twitter"></i>
         </a>
         </li>
         
         <li class="ml-1 mr-1">
-        <a target="_blank" href="https://facebook.com/sharer.php?u=https%3a%2f%2fanir0y.github.io%2fclass%2fblog%2fpowershell-commands-1%2f" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+        <a target="_blank" href="https://facebook.com/sharer.php?u=https%3a%2f%2fanir0y.github.io%2fclass%2fblog%2flinux-2%2f" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
         <i class="fab fa-facebook-f"></i>
         </a>
         </li>      
@@ -112,9 +112,9 @@
                                 <span class="author-description">
                                     Creator!<br>
                                     <i class="far fa-star"></i>
-                                    Jul 2, 2019
+                                    Jul 4, 2019
                                     <i class="far fa-clock clock"></i>
-                                    2 min read
+                                    5 min read
                                 </span>					
                             </div>
                         </div>			
@@ -122,12 +122,12 @@
                         
                                                 
                         
-                        <h1 class="posttitle">Powershell - CHange State</h1> 
+                        <h1 class="posttitle">Linux | File Permissions</h1> 
                     </div>
 
                     
                     
-                        <img class="featured-image img-fluid" src="/class/images/blog/ps-logo.png" alt="thumbnail for this post">
+                        <img class="featured-image img-fluid" src="/class/images/blog/linux-logo.png" alt="thumbnail for this post">
                     
                     
                     
@@ -135,59 +135,169 @@
                     <div class="article-post">
                         
 
-<h2 id="basic-commands-to-change-computer-state-shutdown-restart-lock">Basic  commands to change computer state (shutdown, restart, lock)</h2>
+<h2 id="file-permissions-chmod">File Permissions - chmod</h2>
 
-<p><em>To reset a computer in Windows PowerShell, use either a standard command-line tool or a WMI class. Although you are using Windows PowerShell only to run the tool, learning how to change a computer&rsquo;s power state in Windows PowerShell illustrates some of the important details about working with external tools in Windows PowerShell.</em></p>
+<p>Linux has inherited from UNIX the concept of ownerships and permissions for files. This is basically because it was conceived as a networked system where different people would be using a variety of programs, files, etc. Obviously, there&rsquo;s a need to keep things organized and secure.</p>
 
-<h2 id="locking-a-computer">Locking a Computer</h2>
+<h2 id="file-permission-symbols">File permission symbols</h2>
 
-<p>The only way to lock a computer directly with the standard available tools is to call the <strong>LockWorkstation()</strong> function in <strong>user32.dll</strong>:</p>
-
-<pre><code>rundll32.exe user32.dll,LockWorkStation
+<pre><code class="language-sh">ls -l
 </code></pre>
 
-<p>This command immediately locks the workstation. It uses <em>rundll32.exe</em>, which runs Windows DLLs (and saves their libraries for repeated use) to run user32.dll, a library of Windows management functions.</p>
+<p>in your home directory, you will get a list of files that may include something like this</p>
 
-<p>When you lock a workstation while Fast User Switching is enabled, such as on Windows XP, the computer displays the user logon screen rather than starting the current user&rsquo;s screensaver.</p>
-
-<p>To shut down particular sessions on a Terminal Server, use the <strong>tsshutdn.exe</strong> command-line tool.</p>
-
-<h2 id="logging-off-the-current-session">Logging Off the Current Session</h2>
-
-<p>You can use several different techniques to log off of a session on the local system. The simplest way is to use the Remote Desktop/Terminal Services command-line tool, <strong>logoff.exe</strong> (For details, at the Windows PowerShell prompt, type <strong>logoff /?</strong>). To log off the current active session, type <strong>logoff</strong> with no arguments.</p>
-
-<p>You can also use the <strong>shutdown.exe</strong> tool with its logoff option:</p>
-
-<pre><code>shutdown.exe -l
+<pre><code class="language-bash">Code:
+-rw-r--r--  1  nix  nix  2793  Jul 01  18:30 notes.txt
 </code></pre>
 
-<p>A third option is to use WMI. The Win32_OperatingSystem class has a Win32Shutdown method. Invoking the method with the 0 flag initiates logoff:</p>
+<p>This basically says, interpreting this from RIGHT to LEFT that the file, notes.txt was created at 6:30 PM on July 1 and is 2793 bytes large. It belongs to the group nix (i.e, the people who use this computer). It belongs to nix in particular and it is one (1) file. Then come the file permission symbols.</p>
 
-<pre><code class="language-powershell">(Get-WmiObject -Class Win32_OperatingSystem -ComputerName .).Win32Shutdown(0)
+<h2 id="let-s-look-at-what-these-symbols-mean">Let&rsquo;s look at what these symbols mean</h2>
+
+<p>The dashes - separate the permissions into three types</p>
+
+<p>The first part refers to the owner&rsquo;s permissions.</p>
+
+<p>The dash - before the rw means that this is a normal file that contains any type of data. A directory, for example, would have a d instead of a dash.</p>
+
+<p>The rw that follows means that bob can read and write to (modify) his own file. That&rsquo;s pretty logical. If you own it, you can do what you want with it.</p>
+
+<p>The second part of the these symbols after the second dash, are the permissions for the group. Linux can establish different types of groups for file access. In a one home computer environment anyone who uses the computer can read this file but cannot write to (modify) it. This is a completely normal situation. You, as a user, may want to take away the rights of others to read your file. We&rsquo;ll cover how to do that later.</p>
+
+<p>After the two dashes (two here because there is no write permissions for the group) come the overall user permissions. Anyone who might have access to the computer from inside or outside (in the case of a network) can read this file. Once again, we can take away the possibility of people reading this file if we so choose.</p>
+
+<p>Let&rsquo;s take a look at some other examples. An interesting place to look at different kinds of file permissions is the /bin directory. Here we have the commands that anybody can use on the Linux system. Let&rsquo;s look at the command for gzip, a file compression utility for Linux.</p>
+
+<pre><code class="language-bash">Code:
+-rwxr-xr-x  1 root    root        53468 May  1  1999 gzip
 </code></pre>
 
-<p>For more information, and to find other features of the Win32Shutdown method, see &ldquo;Win32Shutdown Method of the Win32_OperatingSystem Class&rdquo; in MSDN.</p>
+<p>As we see here, there are some differences.</p>
 
-<h2 id="shutting-down-or-restarting-a-computer">Shutting Down or Restarting a Computer</h2>
+<p>The program name, date, bytes are all standard. Even though this is obviously different information, the idea is the same as before.</p>
 
-<p>Shutting down and restarting computers are generally the same types of task. Tools that shut down a computer will generally restart it as well—and vice versa. There are two straightforward options for restarting a computer from Windows PowerShell. Use either Tsshutdn.exe or Shutdown.exe with appropriate arguments. You can get detailed usage information from <strong>tsshutdn.exe /?</strong> or <strong>shutdown.exe /?</strong>.</p>
+<p>The changes are in the owner and group. Root owns the file and it is in the group &ldquo;root&rdquo;. Root is actually the only member of that group.</p>
 
-<p>You can also perform shutdown and restart operations directly from Windows PowerShell as well.</p>
+<p>The file is an executable (program) so that&rsquo;s why the letter x is among the symbols.</p>
 
-<p>To shut down the computer, use the Stop-Computer command</p>
+<p>This file can be executed by everybody: the owner (root), the group (root) and all others that have access to the computer</p>
 
-<pre><code class="language-powershell">Stop-Computer
+<p>As we mentioned, the file is a program, so there is no need for anybody other than root to &ldquo;write&rdquo; to the file, so there is no w permissions for it for anybody but root.</p>
+
+<p>If we look at a file in /sbin which are files that only root can use or execute, the permissions would look like this:</p>
+
+<pre><code class="language-bash">Code:
+-rwxr--r--  1 root    root        1065 Jan 14  1999 cron
 </code></pre>
 
-<p>To restart the operating system, use the Restart-Computer command</p>
+<p>&lsquo;cron&rsquo; is a program on Linux systems that allows programs to be run automatically at certain times and under certain conditions. As we can see here, only root, the owner of the file, is allowed to use this program. There are no xpermissions for the rest of the users.</p>
 
-<pre><code class="language-powershell">Restart-Computer
+<p>We hope you enjoyed this little walk-through of file permissions in Linux. Now that we know what we&rsquo;re looking for, we can talk about changing certain permissions.</p>
+
+<blockquote>
+<p>chmod
+chmod is a Linux command that will let you set permissions (aka, assign who can read/write/execute) on a file.</p>
+</blockquote>
+
+<pre><code class="language-bash">Code:
+chmod permissions file
 </code></pre>
 
-<p>To force an immediate restart of the computer, use the -Force parameter.</p>
+<p>When using chmod, you need to be aware that there are three types of Linux users that you are setting permissions for. Therefore, when setting permissions, you are assigning them for yourself, &ldquo;your group&rdquo; and &ldquo;everyone else&rdquo; in the world. These users are technically know as:</p>
 
-<pre><code class="language-powershell">Restart-Computer -Force
+<ul>
+<li><p>Owner</p></li>
+
+<li><p>Group</p></li>
+
+<li><p>World</p></li>
+</ul>
+
+<p>Therefore, when setting permissions on a file, you will want to assign all three levels of permissions, and not just one user.</p>
+
+<p>Think of the chmod command actually having the following syntax&hellip;</p>
+
+<p>chmod owner group world FileName</p>
+
+<p>Now that you understand that you are setting permissions for THREE user levels, you just have to wrap your head around what permissions you are able to set!</p>
+
+<p>There are three types of permissions that Linux allows for each file.</p>
+
+<ul>
+<li><p>read</p></li>
+
+<li><p>write</p></li>
+
+<li><p>execute</p></li>
+</ul>
+
+<p>chmod read &amp; write read read FileName
+Code:
+chmod 644 myDoc.txt
+Wait! What are those numbers?!?</p>
+
+<p>Computers like numbers, not words. Sorry. You will have to deal with it. Take a look at the following output of <code>ls -l</code></p>
+
+<pre><code class="language-bash">Code:
+-rw-r--r-- 1 gcawood iqnection 382 Dec 19 6:49 myDoc.txt
 </code></pre>
+
+<h2 id="number-values">Number Values</h2>
+
+<p>You will need to convert the word read or write or execute into the numeric equivalent (octal) based on the table below.</p>
+
+<ul>
+<li>4 read (r)</li>
+<li>2 write (w)</li>
+
+<li><p>1 execute (x)</p></li>
+
+<li><p>7 = 4+2+1 (read/write/execute)</p></li>
+
+<li><p>6 = 4+2 (read/write)</p></li>
+
+<li><p>5 = 4+1 (read/execute)</p></li>
+
+<li><p>4 = 4 (read)</p></li>
+
+<li><p>3 = 2+1 (write/execute)</p></li>
+
+<li><p>2 = 2 (write)</p></li>
+
+<li><p>1 = 1 (execute)</p></li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th align="left">cmd</th>
+<th align="center">num</th>
+<th align="left">Details</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">chmod</td>
+<td align="center">666</td>
+<td align="left">mydoc.txt read/write by anybody! (the devil loves this one!)</td>
+</tr>
+
+<tr>
+<td align="left">chmod</td>
+<td align="center">755</td>
+<td align="left">mydoc.txt rwx for owner, rx for group and rx for the world</td>
+</tr>
+
+<tr>
+<td align="left">chmod</td>
+<td align="center">777</td>
+<td align="left">mydoc.txt read, write, execute for all! (may not be the best plan in the world&hellip;)</td>
+</tr>
+</tbody>
+</table>
+
+<hr />
 
                     </div>
                     
@@ -196,7 +306,7 @@
                         <ul class="tags">
                         
                         <li>
-                        <a href="/class/tags/powershell">powershell</a>
+                        <a href="/class/tags/linux">Linux</a>
                         </li>
                         
                         </ul>
@@ -206,10 +316,8 @@
                     
                     <div class="row PageNavigation d-flex justify-content-between font-weight-bold">
                     
-                        <a class="d-block col-md-6" href="/class/blog/powershell-commands-2/"> &laquo; Powershell - Information Collection</a>
                     
-                    
-                        <a class="d-block col-md-6 text-lg-right" href="/class/blog/powershell-intro/">Powershell - Intro &raquo;</a>
+                        <a class="d-block col-md-6 text-lg-right" href="/class/blog/linux-1/">Linux Intro &raquo;</a>
                     
                     <div class="clearfix"></div>
                     </div>

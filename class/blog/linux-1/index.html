@@ -6,7 +6,7 @@
 	
 	<link rel="icon" href="/class/images/logo.png">
 	
-	<title>Powershell - CHange State | ClassRoom</title>
+	<title>Linux Intro | ClassRoom</title>
 	
 	
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -73,13 +73,13 @@
     <p>Share</p>
     <ul>
         <li class="ml-1 mr-1">
-        <a target="_blank" href="https://twitter.com/intent/tweet?text=Powershell%20-%20CHange%20State&url=https%3a%2f%2fanir0y.github.io%2fclass%2fblog%2fpowershell-commands-1%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=435');return false;">
+        <a target="_blank" href="https://twitter.com/intent/tweet?text=Linux%20Intro&url=https%3a%2f%2fanir0y.github.io%2fclass%2fblog%2flinux-1%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=435');return false;">
         <i class="fab fa-twitter"></i>
         </a>
         </li>
         
         <li class="ml-1 mr-1">
-        <a target="_blank" href="https://facebook.com/sharer.php?u=https%3a%2f%2fanir0y.github.io%2fclass%2fblog%2fpowershell-commands-1%2f" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+        <a target="_blank" href="https://facebook.com/sharer.php?u=https%3a%2f%2fanir0y.github.io%2fclass%2fblog%2flinux-1%2f" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
         <i class="fab fa-facebook-f"></i>
         </a>
         </li>      
@@ -112,9 +112,9 @@
                                 <span class="author-description">
                                     Creator!<br>
                                     <i class="far fa-star"></i>
-                                    Jul 2, 2019
+                                    Jul 4, 2019
                                     <i class="far fa-clock clock"></i>
-                                    2 min read
+                                    3 min read
                                 </span>					
                             </div>
                         </div>			
@@ -122,12 +122,12 @@
                         
                                                 
                         
-                        <h1 class="posttitle">Powershell - CHange State</h1> 
+                        <h1 class="posttitle">Linux Intro</h1> 
                     </div>
 
                     
                     
-                        <img class="featured-image img-fluid" src="/class/images/blog/ps-logo.png" alt="thumbnail for this post">
+                        <img class="featured-image img-fluid" src="/class/images/blog/linux-logo.png" alt="thumbnail for this post">
                     
                     
                     
@@ -135,59 +135,117 @@
                     <div class="article-post">
                         
 
-<h2 id="basic-commands-to-change-computer-state-shutdown-restart-lock">Basic  commands to change computer state (shutdown, restart, lock)</h2>
+<h2 id="what-is-linux">What is Linux?</h2>
 
-<p><em>To reset a computer in Windows PowerShell, use either a standard command-line tool or a WMI class. Although you are using Windows PowerShell only to run the tool, learning how to change a computer&rsquo;s power state in Windows PowerShell illustrates some of the important details about working with external tools in Windows PowerShell.</em></p>
+<p>Linux is a family of open source Unix-like operating systems based on the Linux kernel, an operating system kernel first released on September 17, 1991 by Linus Torvalds. Linux is typically packaged in a Linux distribution. <a href="https://en.wikipedia.org/wiki/Linux">Wikipedia</a></p>
 
-<h2 id="locking-a-computer">Locking a Computer</h2>
+<blockquote>
+<p>Initial Released on date: 17 September 1991,
+Developed by <a href="https://twitter.com/linus__torvalds">Linus Torvalds
+</a></p>
+</blockquote>
 
-<p>The only way to lock a computer directly with the standard available tools is to call the <strong>LockWorkstation()</strong> function in <strong>user32.dll</strong>:</p>
+<h2 id="unix-linux-file-system-basics">Unix / Linux - File System Basics</h2>
 
-<pre><code>rundll32.exe user32.dll,LockWorkStation
-</code></pre>
+<p>In computing, a file system or filesystem, controls how data is stored and retrieved. Without a file system, information placed in a storage medium would be one large body of data with no way to tell where one piece of information stops and the next begins. <a href="https://en.wikipedia.org/wiki/File_system">Wiki</a></p>
 
-<p>This command immediately locks the workstation. It uses <em>rundll32.exe</em>, which runs Windows DLLs (and saves their libraries for repeated use) to run user32.dll, a library of Windows management functions.</p>
+<h2 id="directory-structure">Directory Structure</h2>
 
-<p>When you lock a workstation while Fast User Switching is enabled, such as on Windows XP, the computer displays the user logon screen rather than starting the current user&rsquo;s screensaver.</p>
+<p>ses a hierarchical file system structure, much like an upside-down tree, with root (/) at the base of the file system and all other directories spreading from there.
+It has a root directory (/) that contains other files and directories.</p>
 
-<p>To shut down particular sessions on a Terminal Server, use the <strong>tsshutdn.exe</strong> command-line tool.</p>
+<ul>
+<li><p>Each file or directory is uniquely identified by its name, the directory in which it resides, and a unique identifier, typically called an inode.</p></li>
 
-<h2 id="logging-off-the-current-session">Logging Off the Current Session</h2>
+<li><p>By convention, the root directory has an inode number of 2 and the lost+found directory has an inode number of 3. Inode numbers 0 and 1 are not used. File inode numbers can be seen by specifying the -i option to ls command.</p></li>
 
-<p>You can use several different techniques to log off of a session on the local system. The simplest way is to use the Remote Desktop/Terminal Services command-line tool, <strong>logoff.exe</strong> (For details, at the Windows PowerShell prompt, type <strong>logoff /?</strong>). To log off the current active session, type <strong>logoff</strong> with no arguments.</p>
+<li><p>It is self-contained. There are no dependencies between one filesystem and another.</p></li>
+</ul>
 
-<p>You can also use the <strong>shutdown.exe</strong> tool with its logoff option:</p>
+<p>The directories have specific purposes and generally hold the same types of information for easily locating files.</p>
 
-<pre><code>shutdown.exe -l
-</code></pre>
+<table>
+<thead>
+<tr>
+<th align="left">Name</th>
+<th align="left">Details</th>
+</tr>
+</thead>
 
-<p>A third option is to use WMI. The Win32_OperatingSystem class has a Win32Shutdown method. Invoking the method with the 0 flag initiates logoff:</p>
+<tbody>
+<tr>
+<td align="left">/</td>
+<td align="left">This is the root directory which should contain only the directories needed at the top level of the file structure</td>
+</tr>
 
-<pre><code class="language-powershell">(Get-WmiObject -Class Win32_OperatingSystem -ComputerName .).Win32Shutdown(0)
-</code></pre>
+<tr>
+<td align="left">/bin</td>
+<td align="left">This is where the executable files are located. These files are available to all users</td>
+</tr>
 
-<p>For more information, and to find other features of the Win32Shutdown method, see &ldquo;Win32Shutdown Method of the Win32_OperatingSystem Class&rdquo; in MSDN.</p>
+<tr>
+<td align="left">/dev</td>
+<td align="left">Device Drivers</td>
+</tr>
 
-<h2 id="shutting-down-or-restarting-a-computer">Shutting Down or Restarting a Computer</h2>
+<tr>
+<td align="left">/etc</td>
+<td align="left">Supervisor directory commands, configuration files, disk configuration files, valid user lists, groups, ethernet, hosts, where to send critical messages</td>
+</tr>
 
-<p>Shutting down and restarting computers are generally the same types of task. Tools that shut down a computer will generally restart it as well—and vice versa. There are two straightforward options for restarting a computer from Windows PowerShell. Use either Tsshutdn.exe or Shutdown.exe with appropriate arguments. You can get detailed usage information from <strong>tsshutdn.exe /?</strong> or <strong>shutdown.exe /?</strong>.</p>
+<tr>
+<td align="left">/lib</td>
+<td align="left">Shared library files and sometimes other kernel-related files</td>
+</tr>
 
-<p>You can also perform shutdown and restart operations directly from Windows PowerShell as well.</p>
+<tr>
+<td align="left">/boot</td>
+<td align="left">Files for booting the system</td>
+</tr>
 
-<p>To shut down the computer, use the Stop-Computer command</p>
+<tr>
+<td align="left">/home</td>
+<td align="left">The home directory for users and other accounts</td>
+</tr>
 
-<pre><code class="language-powershell">Stop-Computer
-</code></pre>
+<tr>
+<td align="left">/mnt</td>
+<td align="left">Used to mount other temporary file systems, such as cdrom and floppy for the CD-ROM drive and floppy diskette drive, respectively</td>
+</tr>
 
-<p>To restart the operating system, use the Restart-Computer command</p>
+<tr>
+<td align="left">/proc</td>
+<td align="left">All processes marked as a file by process number or other information that is dynamic to the system</td>
+</tr>
 
-<pre><code class="language-powershell">Restart-Computer
-</code></pre>
+<tr>
+<td align="left">/tmp</td>
+<td align="left">Holds temporary files used between system boots</td>
+</tr>
 
-<p>To force an immediate restart of the computer, use the -Force parameter.</p>
+<tr>
+<td align="left">/usr</td>
+<td align="left">Use for miscellaneous purposes, and can be used by many users. Includes administrative commands, shared files, library files, and others</td>
+</tr>
 
-<pre><code class="language-powershell">Restart-Computer -Force
-</code></pre>
+<tr>
+<td align="left">/var</td>
+<td align="left">Typically contains variable-length files such as log and print files and any other type of file that may contain a variable amount of data, also /var/log contains all kind of logs</td>
+</tr>
+
+<tr>
+<td align="left">/sbin</td>
+<td align="left">Contains System binary (executable) files, usually for system administration.</td>
+</tr>
+
+<tr>
+<td align="left">/kernal</td>
+<td align="left">kernel files <a href="https://en.wikipedia.org/wiki/Linux_kernel">more</a></td>
+</tr>
+</tbody>
+</table>
+
+<hr />
 
                     </div>
                     
@@ -196,7 +254,7 @@
                         <ul class="tags">
                         
                         <li>
-                        <a href="/class/tags/powershell">powershell</a>
+                        <a href="/class/tags/linux">Linux</a>
                         </li>
                         
                         </ul>
@@ -206,10 +264,10 @@
                     
                     <div class="row PageNavigation d-flex justify-content-between font-weight-bold">
                     
-                        <a class="d-block col-md-6" href="/class/blog/powershell-commands-2/"> &laquo; Powershell - Information Collection</a>
+                        <a class="d-block col-md-6" href="/class/blog/linux-2/"> &laquo; Linux | File Permissions</a>
                     
                     
-                        <a class="d-block col-md-6 text-lg-right" href="/class/blog/powershell-intro/">Powershell - Intro &raquo;</a>
+                        <a class="d-block col-md-6 text-lg-right" href="/class/blog/powershell-commands-2/">Powershell - Information Collection &raquo;</a>
                     
                     <div class="clearfix"></div>
                     </div>
