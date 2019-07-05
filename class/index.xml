@@ -7,10 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>anir0y</copyright>
-    <lastBuildDate>Thu, 04 Jul 2019 19:01:36 +0530</lastBuildDate>
+    <lastBuildDate>Thu, 04 Jul 2019 22:04:17 +0530</lastBuildDate>
     
 	<atom:link href="https://anir0y.github.io/class/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Linux | Basic Commands</title>
+      <link>https://anir0y.github.io/class/blog/linux-3/</link>
+      <pubDate>Thu, 04 Jul 2019 22:04:17 +0530</pubDate>
+      
+      <guid>https://anir0y.github.io/class/blog/linux-3/</guid>
+      <description>Usage Note: Hold option (alt) and click a position in the current line to move your cursor to that position.
+Clear history: ctrl + l</description>
+    </item>
     
     <item>
       <title>Linux | File Permissions</title>
