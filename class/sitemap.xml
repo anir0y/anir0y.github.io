@@ -4,19 +4,32 @@
   
   <url>
     <loc>https://anir0y.github.io/class/blog/</loc>
-    <lastmod>2019-07-04T22:04:17+05:30</lastmod>
+    <lastmod>2019-07-06T21:13:49+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://anir0y.github.io/class/</loc>
-    <lastmod>2019-07-04T22:04:17+05:30</lastmod>
+    <lastmod>2019-07-06T21:13:49+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://anir0y.github.io/class/tags/linux/</loc>
-    <lastmod>2019-07-04T22:04:17+05:30</lastmod>
+    <lastmod>2019-07-06T21:13:49+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://anir0y.github.io/class/blog/linux-4/</loc>
+    <lastmod>2019-07-06T21:13:49+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://anir0y.github.io/class/tags/</loc>
+    <lastmod>2019-07-06T21:13:49+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -25,12 +38,6 @@
     <lastmod>2019-07-04T22:04:17+05:30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://anir0y.github.io/class/tags/</loc>
-    <lastmod>2019-07-04T22:04:17+05:30</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -48,16 +55,16 @@
   </url>
   
   <url>
+    <loc>https://anir0y.github.io/class/tags/powershell/</loc>
+    <lastmod>2019-07-02T15:42:48+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://anir0y.github.io/class/blog/powershell-commands-2/</loc>
     <lastmod>2019-07-02T15:42:48+05:30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://anir0y.github.io/class/tags/powershell/</loc>
-    <lastmod>2019-07-02T15:42:48+05:30</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>

@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en-us"><head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	
+	<link rel="icon" href="/class/images/logo.png">
+	
+	<title>Linux| Linux firewalls | ClassRoom</title>
+	
+	
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+	 crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Righteous%7CMerriweather:300,300i,400,400i,700,700i" rel="stylesheet">
+	<link href="/class/css/medium.css" rel="stylesheet">
+	<link href="/class/css/additional.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top mediumnavigation nav-down">
+    <div class="container pr-0">
+        
+        <a class="navbar-brand" href="https://anir0y.github.io/class//">
+
+            
+            <img src="/class/images/logo.png" alt="logo">
+            
+        </a>
+        
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMediumish" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        
+        <div class="collapse navbar-collapse" id="navbarMediumish">
+            
+            <ul class="navbar-nav ml-auto">
+                 
+                <li class="nav-item ">
+                    <a class="nav-link" href="/class/blog/">Blog</a>
+                </li>
+                 
+                <li class="nav-item ">
+                    <a class="nav-link" href="/class/">About Me</a>
+                </li>
+                 
+                <li class="nav-item ">
+                    <a class="nav-link" href="/class/static/enroll">Enroll</a>
+                </li>
+                
+            </ul>
+        </div>
+        
+    </div>
+</nav>
+
+
+        <div class="site-content">   
+            <div class="container">
+<div class="mainheading">
+    <h1 class="sitetitle">ClassRoom</h1>
+    <p class="lead">
+         A Place with Tips!
+    </p>
+</div><div class="main-content">
+        
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-md-2 pl-0"><div class="share sticky-top sticky-top-offset">
+    <p>Share</p>
+    <ul>
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://twitter.com/intent/tweet?text=Linux%7c%20Linux%20firewalls&url=https%3a%2f%2fanir0y.github.io%2fclass%2fblog%2flinux-4%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=435');return false;">
+        <i class="fab fa-twitter"></i>
+        </a>
+        </li>
+        
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://facebook.com/sharer.php?u=https%3a%2f%2fanir0y.github.io%2fclass%2fblog%2flinux-4%2f" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+        <i class="fab fa-facebook-f"></i>
+        </a>
+        </li>      
+    </ul>
+
+    
+        <div class="sep">
+        </div>				
+        <ul>
+            <li> 
+            <a  class="small smoothscroll" href="#disqus_thread"></a>
+            </li>
+        </ul>
+    
+</div>
+</div>
+                                
+                <div class="col-md-9 flex-first flex-md-unordered">
+                    <div class="mainheading">
+                        	
+                        
+                        
+                        
+                        <div class="row post-top-meta">
+                            <div class="col-xs-12 col-md-3 col-lg-2 text-center text-md-left mb-4 mb-md-0 md-nopad-right">
+                                <img class="author-thumb" src="/class/images/author.png" alt="Anir0y">
+                            </div>
+                            <div class="col-xs-12 col-md-9 col-lg-10 text-center text-md-left md-nopad-left">
+                                <a target="_blank" class="link-dark">Anir0y</a><br>
+                                <span class="author-description">
+                                    Creator!<br>
+                                    <i class="far fa-star"></i>
+                                    Jul 6, 2019
+                                    <i class="far fa-clock clock"></i>
+                                    10 min read
+                                </span>					
+                            </div>
+                        </div>			
+                        	
+                        
+                                                
+                        
+                        <h1 class="posttitle">Linux| Linux firewalls</h1> 
+                    </div>
+
+                    
+                    
+                        <img class="featured-image img-fluid" src="/class/images/blog/linux-logo.png" alt="thumbnail for this post">
+                    
+                    
+                    
+                    
+                    <div class="article-post">
+                        
+
+<h2 id="the-firewall">The Firewall</h2>
+
+<p>A firewall is a set of rules. When a data packet moves into or out of a protected network space, its contents (in particular, information about its origin, target, and the protocol it plans to use) are tested against the firewall rules to see if it should be allowed through. <a href="https://simple.wikipedia.org/wiki/Firewall_(networking)">wiki</a></p>
+
+<p><img src="/class/images/blog/iptable.jpg" alt="img" /></p>
+
+<h2 id="iptables-configuration">Iptables Configuration</h2>
+
+<p>​See what rules are already configured.</p>
+
+<p><code>iptables -L</code></p>
+
+<p><img src="/class/images/blog/iptables-configured-rules.png" alt="iptable" /></p>
+
+<blockquote>
+<p>This allows anyone accesses to anything from anywhere.<br />
+Delete the rules of iptables</p>
+</blockquote>
+
+<p><code>iptables -F</code></p>
+
+<p><img src="/class/images/blog/delete-iptables-rules.png" alt="delete-iptables-rules.png" /></p>
+
+<h2 id="policies">Policies</h2>
+
+<p>a. ACCEPT   ALLOW THE TRAFFIC<br />
+B. DROP     DROP THE TRAFFIC</p>
+
+<h3 id="tools-to-help-you-configure-iptables">Tools to help you configure Iptables</h3>
+
+<p>
+&nbsp;&nbsp;🔸 <a href="http://shorewall.org/"><b>Shorewall</b></a> - advanced gateway/firewall configuration tool for GNU/Linux.<br>
+&nbsp;&nbsp;🔸 <a href="https://firewalld.org/"><b>Firewalld</b></a> - provides a dynamically managed firewall.<br>
+&nbsp;&nbsp;🔸 <a href="https://wiki.ubuntu.com/UncomplicatedFirewall"><b>UFW</b></a> - default firewall configuration tool for Ubuntu.<br>
+&nbsp;&nbsp;🔸 <a href="https://github.com/firehol/firehol"><b>FireHOL</b></a> - offer simple and powerful configuration for all Linux firewall and traffic shaping requirements.<br>
+</p>
+
+<h3 id="manuals-howtos-tutorials">Manuals/Howtos/Tutorials</h3>
+
+<p>
+&nbsp;&nbsp;🔸 <a href="https://major.io/2010/04/12/best-practices-iptables/"><b>Best practices: iptables - by Major Hayden</b></a><br>
+&nbsp;&nbsp;🔸 <a href="https://www.booleanworld.com/depth-guide-iptables-linux-firewall/"><b>An In-Depth Guide to Iptables, the Linux Firewall</b></a><br>
+&nbsp;&nbsp;🔸 <a href="https://linuxgazette.net/108/odonovan.html"><b>Advanced Features of netfilter/iptables</b></a><br>
+&nbsp;&nbsp;🔸 <a href="http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_:_Ch14_:_Linux_Firewalls_Using_iptables"><b>Linux Firewalls Using iptables</b></a><br>
+&nbsp;&nbsp;🔸 <a href="https://serverfault.com/questions/696182/debugging-iptables-and-common-firewall-pitfalls"><b>Debugging iptables and common firewall pitfalls?</b></a><br>
+&nbsp;&nbsp;🔸 <a href="https://www.netfilter.org/documentation/HOWTO/netfilter-hacking-HOWTO-4.html"><b>Netfilter Hacking HOWTO</b></a><br>
+&nbsp;&nbsp;🔸 <a href="https://making.pusher.com/per-ip-rate-limiting-with-iptables/"><b>Per-IP rate limiting with iptables</b></a><br>
+</p>
+
+<h3 id="iptables-rules">Iptables Rules</h3>
+
+<h4 id="saving-rules">Saving Rules</h4>
+
+<h6 id="debian-based">Debian Based</h6>
+
+<pre><code class="language-bash">netfilter-persistent save
+</code></pre>
+
+<h6 id="redhat-based">RedHat Based</h6>
+
+<pre><code class="language-bash">service iptables save
+</code></pre>
+
+<h4 id="list-out-all-of-the-active-iptables-rules-with-verbose">List out all of the active iptables rules with verbose</h4>
+
+<pre><code class="language-bash">iptables -n -L -v
+</code></pre>
+
+<h4 id="list-out-all-of-the-active-iptables-rules-with-numeric-lines-and-verbose">List out all of the active iptables rules with numeric lines and verbose</h4>
+
+<pre><code class="language-bash">iptables -n -L -v --line-numbers
+</code></pre>
+
+<h4 id="print-out-all-of-the-active-iptables-rules">Print out all of the active iptables rules</h4>
+
+<pre><code class="language-bash">iptables -S
+</code></pre>
+
+<h4 id="list-rules-as-tables-for-input-chain">List Rules as Tables for INPUT chain</h4>
+
+<pre><code class="language-bash">iptables -L INPUT
+</code></pre>
+
+<h4 id="print-all-of-the-rule-specifications-in-the-input-chain">Print all of the rule specifications in the INPUT chain</h4>
+
+<pre><code class="language-bash">iptables -S INPUT
+</code></pre>
+
+<h4 id="show-packet-counts-and-aggregate-size">Show Packet Counts and Aggregate Size</h4>
+
+<pre><code class="language-bash">iptables -L INPUT -v
+</code></pre>
+
+<h4 id="to-display-input-or-output-chain-rules-with-numeric-lines-and-verbose">To display INPUT or OUTPUT chain rules with numeric lines and verbose</h4>
+
+<pre><code class="language-bash">iptables -L INPUT -n -v
+iptables -L OUTPUT -n -v --line-numbers
+</code></pre>
+
+<h4 id="delete-rule-by-chain-and-number">Delete Rule by Chain and Number</h4>
+
+<pre><code class="language-bash">iptables -D INPUT 10
+</code></pre>
+
+<h4 id="delete-rule-by-specification">Delete Rule by Specification</h4>
+
+<pre><code class="language-bash">iptables -D INPUT -m conntrack --ctstate INVALID -j DROP
+</code></pre>
+
+<h4 id="flush-all-rules-delete-all-chains-and-accept-all">Flush All Rules, Delete All Chains, and Accept All</h4>
+
+<pre><code class="language-bash">iptables -P INPUT ACCEPT
+iptables -P FORWARD ACCEPT
+iptables -P OUTPUT ACCEPT
+
+iptables -t nat -F
+iptables -t mangle -F
+iptables -F
+iptables -X
+</code></pre>
+
+<h4 id="flush-all-chains">Flush All Chains</h4>
+
+<pre><code class="language-bash">iptables -F
+</code></pre>
+
+<h4 id="flush-a-single-chain">Flush a Single Chain</h4>
+
+<pre><code class="language-bash">iptables -F INPUT
+</code></pre>
+
+<h4 id="insert-firewall-rules">Insert Firewall Rules</h4>
+
+<pre><code class="language-bash">iptables -I INPUT 2 -s 202.54.1.2 -j DROP
+</code></pre>
+
+<h4 id="allow-loopback-connections">Allow Loopback Connections</h4>
+
+<pre><code class="language-bash">iptables -A INPUT -i lo -j ACCEPT
+iptables -A OUTPUT -o lo -j ACCEPT
+</code></pre>
+
+<h4 id="allow-established-and-related-incoming-connections">Allow Established and Related Incoming Connections</h4>
+
+<pre><code class="language-bash">iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
+</code></pre>
+
+<h4 id="allow-established-outgoing-connections">Allow Established Outgoing Connections</h4>
+
+<pre><code class="language-bash">iptables -A OUTPUT -m conntrack --ctstate ESTABLISHED -j ACCEPT
+</code></pre>
+
+<h4 id="internal-to-external">Internal to External</h4>
+
+<pre><code class="language-bash">iptables -A FORWARD -i eth1 -o eth0 -j ACCEPT
+</code></pre>
+
+<h4 id="drop-invalid-packets">Drop Invalid Packets</h4>
+
+<pre><code class="language-bash">iptables -A INPUT -m conntrack --ctstate INVALID -j DROP
+</code></pre>
+
+<h4 id="block-an-ip-address">Block an IP Address</h4>
+
+<pre><code class="language-bash">iptables -A INPUT -s 192.168.252.10 -j DROP
+</code></pre>
+
+<h4 id="block-and-ip-address-and-reject">Block and IP Address and Reject</h4>
+
+<pre><code class="language-bash">iptables -A INPUT -s 192.168.252.10 -j REJECT
+</code></pre>
+
+<h4 id="block-connections-to-a-network-interface">Block Connections to a Network Interface</h4>
+
+<pre><code class="language-bash">iptables -A INPUT -i eth0 -s 192.168.252.10 -j DROP
+</code></pre>
+
+<h4 id="allow-all-incoming-ssh">Allow All Incoming SSH</h4>
+
+<pre><code class="language-bash">iptables -A INPUT -p tcp --dport 22 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
+iptables -A OUTPUT -p tcp --sport 22 -m conntrack --ctstate ESTABLISHED -j ACCEPT
+</code></pre>
+
+<h4 id="allow-incoming-ssh-from-specific-ip-address-or-subnet">Allow Incoming SSH from Specific IP address or subnet</h4>
+
+<pre><code class="language-bash">iptables -A INPUT -p tcp -s 192.168.240.0/24 --dport 22 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
+iptables -A OUTPUT -p tcp --sport 22 -m conntrack --ctstate ESTABLISHED -j ACCEPT
+</code></pre>
+
+<h4 id="allow-outgoing-ssh">Allow Outgoing SSH</h4>
+
+<pre><code class="language-bash">iptables -A OUTPUT -p tcp --dport 22 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
+iptables -A INPUT -p tcp --sport 22 -m conntrack --ctstate ESTABLISHED -j ACCEPT
+</code></pre>
+
+<h4 id="allow-incoming-rsync-from-specific-ip-address-or-subnet">Allow Incoming Rsync from Specific IP Address or Subnet</h4>
+
+<pre><code class="language-bash">iptables -A INPUT -p tcp -s 192.168.240.0/24 --dport 873 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
+iptables -A OUTPUT -p tcp --sport 873 -m conntrack --ctstate ESTABLISHED -j ACCEPT
+</code></pre>
+
+<h4 id="allow-all-incoming-http">Allow All Incoming HTTP</h4>
+
+<pre><code class="language-bash">iptables -A INPUT -p tcp --dport 80 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
+iptables -A OUTPUT -p tcp --sport 80 -m conntrack --ctstate ESTABLISHED -j ACCEPT
+</code></pre>
+
+<h4 id="allow-all-incoming-https">Allow All Incoming HTTPS</h4>
+
+<pre><code class="language-bash">iptables -A INPUT -p tcp --dport 443 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
+iptables -A OUTPUT -p tcp --sport 443 -m conntrack --ctstate ESTABLISHED -j ACCEPT
+</code></pre>
+
+<h4 id="allow-all-incoming-http-and-https">Allow All Incoming HTTP and HTTPS</h4>
+
+<pre><code class="language-bash">iptables -A INPUT -p tcp -m multiport --dports 80,443 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
+iptables -A OUTPUT -p tcp -m multiport --dports 80,443 -m conntrack --ctstate ESTABLISHED -j ACCEPT
+</code></pre>
+
+<h4 id="allow-mysql-from-specific-ip-address-or-subnet">Allow MySQL from Specific IP Address or Subnet</h4>
+
+<pre><code class="language-bash">iptables -A INPUT -p tcp -s 192.168.240.0/24 --dport 3306 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
+iptables -A OUTPUT -p tcp --sport 3306 -m conntrack --ctstate ESTABLISHED -j ACCEPT
+</code></pre>
+
+<h4 id="allow-mysql-to-specific-network-interface">Allow MySQL to Specific Network Interface</h4>
+
+<pre><code class="language-bash">iptables -A INPUT -i eth1 -p tcp --dport 3306 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
+iptables -A OUTPUT -o eth1 -p tcp --sport 3306 -m conntrack --ctstate ESTABLISHED -j ACCEPT
+</code></pre>
+
+<h4 id="postgresql-from-specific-ip-address-or-subnet">PostgreSQL from Specific IP Address or Subnet</h4>
+
+<pre><code class="language-bash">iptables -A INPUT -p tcp -s 192.168.240.0/24 --dport 5432 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
+iptables -A OUTPUT -p tcp --sport 5432 -m conntrack --ctstate ESTABLISHED -j ACCEPT
+</code></pre>
+
+<h4 id="allow-postgresql-to-specific-network-interface">Allow PostgreSQL to Specific Network Interface</h4>
+
+<pre><code class="language-bash">iptables -A INPUT -i eth1 -p tcp --dport 5432 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
+iptables -A OUTPUT -o eth1 -p tcp --sport 5432 -m conntrack --ctstate ESTABLISHED -j ACCEPT
+</code></pre>
+
+<h4 id="block-outgoing-smtp-mail">Block Outgoing SMTP Mail</h4>
+
+<pre><code class="language-bash">iptables -A OUTPUT -p tcp --dport 25 -j REJECT
+</code></pre>
+
+<h4 id="allow-all-incoming-smtp">Allow All Incoming SMTP</h4>
+
+<pre><code class="language-bash">iptables -A INPUT -p tcp --dport 25 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
+iptables -A OUTPUT -p tcp --sport 25 -m conntrack --ctstate ESTABLISHED -j ACCEPT
+</code></pre>
+
+<h4 id="allow-all-incoming-imap">Allow All Incoming IMAP</h4>
+
+<pre><code class="language-bash">iptables -A INPUT -p tcp --dport 143 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
+iptables -A OUTPUT -p tcp --sport 143 -m conntrack --ctstate ESTABLISHED -j ACCEPT
+</code></pre>
+
+<h4 id="allow-all-incoming-imaps">Allow All Incoming IMAPS</h4>
+
+<pre><code class="language-bash">iptables -A INPUT -p tcp --dport 993 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
+iptables -A OUTPUT -p tcp --sport 993 -m conntrack --ctstate ESTABLISHED -j ACCEPT
+</code></pre>
+
+<h4 id="allow-all-incoming-pop3">Allow All Incoming POP3</h4>
+
+<pre><code class="language-bash">iptables -A INPUT -p tcp --dport 110 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
+iptables -A OUTPUT -p tcp --sport 110 -m conntrack --ctstate ESTABLISHED -j ACCEPT
+</code></pre>
+
+<h4 id="allow-all-incoming-pop3s">Allow All Incoming POP3S</h4>
+
+<pre><code class="language-bash">iptables -A INPUT -p tcp --dport 995 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
+iptables -A OUTPUT -p tcp --sport 995 -m conntrack --ctstate ESTABLISHED -j ACCEPT
+</code></pre>
+
+<h4 id="drop-private-network-address-on-public-interface">Drop Private Network Address On Public Interface</h4>
+
+<pre><code class="language-bash">iptables -A INPUT -i eth1 -s 192.168.0.0/24 -j DROP
+iptables -A INPUT -i eth1 -s 10.0.0.0/8 -j DROP
+</code></pre>
+
+<h4 id="drop-all-outgoing-to-facebook-networks">Drop All Outgoing to Facebook Networks</h4>
+
+<p>Get Facebook AS:</p>
+
+<pre><code class="language-bash">whois -h v4.whois.cymru.com &quot; -v $(host facebook.com | grep &quot;has address&quot; | cut -d &quot; &quot; -f4)&quot; | tail -n1 | awk '{print $1}'
+</code></pre>
+
+<p>Drop:</p>
+
+<pre><code class="language-bash">for i in $(whois -h whois.radb.net -- '-i origin AS32934' | grep &quot;^route:&quot; | cut -d &quot;:&quot; -f2 | sed -e 's/^[ \t]*//' | sort -n -t . -k 1,1 -k 2,2 -k 3,3 -k 4,4 | cut -d &quot;:&quot; -f2 | sed 's/$/;/') ; do
+
+  iptables -A OUTPUT -s &quot;$i&quot; -j REJECT
+
+done
+</code></pre>
+
+<h4 id="log-and-drop-packets">Log and Drop Packets</h4>
+
+<pre><code class="language-bash">iptables -A INPUT -i eth1 -s 10.0.0.0/8 -j LOG --log-prefix &quot;IP_SPOOF A: &quot;
+iptables -A INPUT -i eth1 -s 10.0.0.0/8 -j DROP
+</code></pre>
+
+<p>By default everything is logged to <code>/var/log/messages</code> file:</p>
+
+<pre><code class="language-bash">tail -f /var/log/messages
+grep --color 'IP SPOOF' /var/log/messages
+</code></pre>
+
+<h4 id="log-and-drop-packets-with-limited-number-of-log-entries">Log and Drop Packets with Limited Number of Log Entries</h4>
+
+<pre><code class="language-bash">iptables -A INPUT -i eth1 -s 10.0.0.0/8 -m limit --limit 5/m --limit-burst 7 -j LOG --log-prefix &quot;IP_SPOOF A: &quot;
+iptables -A INPUT -i eth1 -s 10.0.0.0/8 -j DROP
+</code></pre>
+
+<h4 id="drop-or-accept-traffic-from-mac-address">Drop or Accept Traffic From Mac Address</h4>
+
+<pre><code class="language-bash">iptables -A INPUT -m mac --mac-source 00:0F:EA:91:04:08 -j DROP
+iptables -A INPUT -p tcp --destination-port 22 -m mac --mac-source 00:0F:EA:91:04:07 -j ACCEPT
+</code></pre>
+
+<h4 id="block-or-allow-icmp-ping-request">Block or Allow ICMP Ping Request</h4>
+
+<pre><code class="language-bash">iptables -A INPUT -p icmp --icmp-type echo-request -j DROP
+iptables -A INPUT -i eth1 -p icmp --icmp-type echo-request -j DROP
+</code></pre>
+
+<h4 id="specifying-multiple-ports-with-multiport">Specifying Multiple Ports with <code>multiport</code></h4>
+
+<pre><code class="language-bash">iptables -A INPUT -i eth0 -p tcp -m state --state NEW -m multiport --dports ssh,smtp,http,https -j ACCEPT
+</code></pre>
+
+<h4 id="load-balancing-with-random-or-nth">Load Balancing with <code>random*</code> or <code>nth*</code></h4>
+
+<pre><code class="language-bash">_ips=(&quot;172.31.250.10&quot; &quot;172.31.250.11&quot; &quot;172.31.250.12&quot; &quot;172.31.250.13&quot;)
+
+for ip in &quot;${_ips[@]}&quot; ; do
+  iptables -A PREROUTING -i eth0 -p tcp --dport 80 -m state --state NEW -m nth --counter 0 --every 4 --packet 0 \
+    -j DNAT --to-destination ${ip}:80
+done
+</code></pre>
+
+<p>or</p>
+
+<pre><code class="language-bash">_ips=(&quot;172.31.250.10&quot; &quot;172.31.250.11&quot; &quot;172.31.250.12&quot; &quot;172.31.250.13&quot;)
+
+for ip in &quot;${_ips[@]}&quot; ; do
+  iptables -A PREROUTING -i eth0 -p tcp --dport 80 -m state --state NEW -m random --average 25 \
+    -j DNAT --to-destination ${ip}:80
+done
+</code></pre>
+
+<h4 id="restricting-the-number-of-connections-with-limit-and-iplimit">Restricting the Number of Connections with <code>limit</code> and <code>iplimit*</code></h4>
+
+<pre><code class="language-bash">iptables -A FORWARD -m state --state NEW -p tcp -m multiport --dport http,https -o eth0 -i eth1 \
+    -m limit --limit 20/hour --limit-burst 5 -j ACCEPT
+</code></pre>
+
+<p>or</p>
+
+<pre><code class="language-bash">iptables -A INPUT -p tcp -m state --state NEW --dport http -m iplimit --iplimit-above 5 -j DROP
+</code></pre>
+
+<h4 id="maintaining-a-list-of-recent-connections-to-match-against">Maintaining a List of recent Connections to Match Against</h4>
+
+<pre><code class="language-bash">iptables -A FORWARD -m recent --name portscan --rcheck --seconds 100 -j DROP
+iptables -A FORWARD -p tcp -i eth0 --dport 443 -m recent --name portscan --set -j DROP
+</code></pre>
+
+<h4 id="matching-against-a-string-in-a-packet-s-data-payload">Matching Against a <code>string*</code> in a Packet&rsquo;s Data Payload</h4>
+
+<pre><code class="language-bash">iptables -A FORWARD -m string --string '.com' -j DROP
+iptables -A FORWARD -m string --string '.exe' -j DROP
+</code></pre>
+
+<h4 id="time-based-rules-with-time">Time-based Rules with <code>time*</code></h4>
+
+<pre><code class="language-bash">iptables -A FORWARD -p tcp -m multiport --dport http,https -o eth0 -i eth1 \
+    -m time --timestart 21:30 --timestop 22:30 --days Mon,Tue,Wed,Thu,Fri -j ACCEPT
+</code></pre>
+
+<h4 id="packet-matching-based-on-ttl-values">Packet Matching Based on TTL Values</h4>
+
+<pre><code class="language-bash">iptables -A INPUT -s 1.2.3.4 -m ttl --ttl-lt 40 -j REJECT
+</code></pre>
+
+<h4 id="protection-against-port-scanning">Protection against port scanning</h4>
+
+<pre><code class="language-bash">iptables -N port-scanning
+iptables -A port-scanning -p tcp --tcp-flags SYN,ACK,FIN,RST RST -m limit --limit 1/s --limit-burst 2 -j RETURN
+iptables -A port-scanning -j DROP
+</code></pre>
+
+<h4 id="ssh-brute-force-protection">SSH brute-force protection</h4>
+
+<pre><code class="language-bash">iptables -A INPUT -p tcp --dport ssh -m conntrack --ctstate NEW -m recent --set
+iptables -A INPUT -p tcp --dport ssh -m conntrack --ctstate NEW -m recent --update --seconds 60 --hitcount 10 -j DROP
+</code></pre>
+
+<h4 id="syn-flood-protection">Syn-flood protection</h4>
+
+<pre><code class="language-bash">iptables -N syn_flood
+
+iptables -A INPUT -p tcp --syn -j syn_flood
+iptables -A syn_flood -m limit --limit 1/s --limit-burst 3 -j RETURN
+iptables -A syn_flood -j DROP
+
+iptables -A INPUT -p icmp -m limit --limit  1/s --limit-burst 1 -j ACCEPT
+
+iptables -A INPUT -p icmp -m limit --limit 1/s --limit-burst 1 -j LOG --log-prefix PING-DROP:
+iptables -A INPUT -p icmp -j DROP
+
+iptables -A OUTPUT -p icmp -j ACCEPT
+</code></pre>
+
+<h5 id="mitigating-syn-floods-with-synproxy">Mitigating SYN Floods With SYNPROXY</h5>
+
+<pre><code class="language-bash">iptables -t raw -A PREROUTING -p tcp -m tcp --syn -j CT --notrack
+iptables -A INPUT -p tcp -m tcp -m conntrack --ctstate INVALID,UNTRACKED -j SYNPROXY --sack-perm --timestamp --wscale 7 --mss 1460
+iptables -A INPUT -m conntrack --ctstate INVALID -j DROP
+</code></pre>
+
+<h4 id="block-new-packets-that-are-not-syn">Block New Packets That Are Not SYN</h4>
+
+<pre><code class="language-bash">iptables -A INPUT -p tcp ! --syn -m state --state NEW -j DROP
+</code></pre>
+
+<p>or</p>
+
+<pre><code class="language-bash">iptables -t mangle -A PREROUTING -p tcp ! --syn -m conntrack --ctstate NEW -j DROP
+</code></pre>
+
+<h4 id="force-fragments-packets-check">Force Fragments packets check</h4>
+
+<pre><code class="language-bash">iptables -A INPUT -f -j DROP
+</code></pre>
+
+<h4 id="xmas-packets">XMAS packets</h4>
+
+<pre><code class="language-bash">iptables -A INPUT -p tcp --tcp-flags ALL ALL -j DROP
+</code></pre>
+
+<h4 id="drop-all-null-packets">Drop all NULL packets</h4>
+
+<pre><code class="language-bash">iptables -A INPUT -p tcp --tcp-flags ALL NONE -j DROP
+</code></pre>
+
+<h4 id="block-uncommon-mss-values">Block Uncommon MSS Values</h4>
+
+<pre><code class="language-bash">iptables -t mangle -A PREROUTING -p tcp -m conntrack --ctstate NEW -m tcpmss ! --mss 536:65535 -j DROP
+</code></pre>
+
+<h4 id="block-packets-with-bogus-tcp-flags">Block Packets With Bogus TCP Flags</h4>
+
+<pre><code class="language-bash">iptables -t mangle -A PREROUTING -p tcp --tcp-flags FIN,SYN,RST,PSH,ACK,URG NONE -j DROP
+iptables -t mangle -A PREROUTING -p tcp --tcp-flags FIN,SYN FIN,SYN -j DROP
+iptables -t mangle -A PREROUTING -p tcp --tcp-flags SYN,RST SYN,RST -j DROP
+iptables -t mangle -A PREROUTING -p tcp --tcp-flags FIN,RST FIN,RST -j DROP
+iptables -t mangle -A PREROUTING -p tcp --tcp-flags FIN,ACK FIN -j DROP
+iptables -t mangle -A PREROUTING -p tcp --tcp-flags ACK,URG URG -j DROP
+iptables -t mangle -A PREROUTING -p tcp --tcp-flags ACK,FIN FIN -j DROP
+iptables -t mangle -A PREROUTING -p tcp --tcp-flags ACK,PSH PSH -j DROP
+iptables -t mangle -A PREROUTING -p tcp --tcp-flags ALL ALL -j DROP
+iptables -t mangle -A PREROUTING -p tcp --tcp-flags ALL NONE -j DROP
+iptables -t mangle -A PREROUTING -p tcp --tcp-flags ALL FIN,PSH,URG -j DROP
+iptables -t mangle -A PREROUTING -p tcp --tcp-flags ALL SYN,FIN,PSH,URG -j DROP
+iptables -t mangle -A PREROUTING -p tcp --tcp-flags ALL SYN,RST,ACK,FIN,URG -j DROP
+</code></pre>
+
+<h4 id="block-packets-from-private-subnets-spoofing">Block Packets From Private Subnets (Spoofing)</h4>
+
+<pre><code class="language-bash">_subnets=(&quot;224.0.0.0/3&quot; &quot;169.254.0.0/16&quot; &quot;172.16.0.0/12&quot; &quot;192.0.2.0/24&quot; &quot;192.168.0.0/16&quot; &quot;10.0.0.0/8&quot; &quot;0.0.0.0/8&quot; &quot;240.0.0.0/5&quot;)
+
+for _sub in &quot;${_subnets[@]}&quot; ; do
+  iptables -t mangle -A PREROUTING -s &quot;$_sub&quot; -j DROP
+done
+iptables -t mangle -A PREROUTING -s 127.0.0.0/8 ! -i lo -j DROP
+</code></pre>
+
+                    </div>
+                    
+                    
+                    <div class="after-post-tags">
+                        <ul class="tags">
+                        
+                        <li>
+                        <a href="/class/tags/linux">Linux</a>
+                        </li>
+                        
+                        </ul>
+                    </div>
+                    
+                    
+                    
+                    <div class="row PageNavigation d-flex justify-content-between font-weight-bold">
+                    
+                    
+                        <a class="d-block col-md-6 text-lg-right" href="/class/blog/linux-3/">Linux | Basic Commands &raquo;</a>
+                    
+                    <div class="clearfix"></div>
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+<div class="container">
+    <div id="comments" class="row justify-content-center mb-5">
+        <div class="col-md-8">              
+            <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "anir0y" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>               
+        </div>
+    </div>
+</div>
+
+    </div>
+
+
+            </div>
+<div class="jumbotron fortags">
+	<div class="d-md-flex h-100">
+		<div class="col-md-4 transpdark align-self-center text-center h-100">
+			<div class="d-md-flex align-items-center justify-content-center h-100">
+				<h2 class="d-md-block d-none align-self-center py-1 font-weight-light">Explore <span class="d-none d-md-inline">→</span></h2>
+			</div>
+		</div>
+		<div class="col-md-8 p-5 align-self-center text-center">
+			
+			<a class="mt-1 mb-1" href="/class/tags/aws">aws</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/cheatsheet">cheatsheet</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/linux">linux</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/msf">msf</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/nmap">nmap</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/pentesting">pentesting</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/powershell">powershell</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/tmux">tmux</a>
+			
+		</div>
+	</div>
+</div>
+
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-6 text-center text-lg-left">
+                &copy; Copyright anir0y
+            </div>
+            
+        </div>
+    </div>
+</footer>
+
+        </div>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+<script src="/class/js/mediumish.js"></script>
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-142104594-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    </body>
+</html>

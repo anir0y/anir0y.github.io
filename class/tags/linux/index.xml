@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>anir0y</copyright>
-    <lastBuildDate>Thu, 04 Jul 2019 22:04:17 +0530</lastBuildDate>
+    <lastBuildDate>Sat, 06 Jul 2019 21:13:49 +0530</lastBuildDate>
     
 	<atom:link href="https://anir0y.github.io/class/tags/linux/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Linux| Linux firewalls</title>
+      <link>https://anir0y.github.io/class/blog/linux-4/</link>
+      <pubDate>Sat, 06 Jul 2019 21:13:49 +0530</pubDate>
+      
+      <guid>https://anir0y.github.io/class/blog/linux-4/</guid>
+      <description>The Firewall A firewall is a set of rules. When a data packet moves into or out of a protected network space, its contents (in particular, information about its origin, target, and the protocol it plans to use) are tested against the firewall rules to see if it should be allowed through.</description>
+    </item>
     
     <item>
       <title>Linux | Basic Commands</title>
