@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>anir0y</copyright>
-    <lastBuildDate>Sat, 06 Jul 2019 21:13:49 +0530</lastBuildDate>
+    <lastBuildDate>Mon, 08 Jul 2019 17:46:54 +0530</lastBuildDate>
     
 	<atom:link href="https://anir0y.github.io/class/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Get SSH Login Notification on Telegram</title>
+      <link>https://anir0y.github.io/class/blog/bash-get-ssh-login-notification-on-telegram/</link>
+      <pubDate>Mon, 08 Jul 2019 17:46:54 +0530</pubDate>
+      
+      <guid>https://anir0y.github.io/class/blog/bash-get-ssh-login-notification-on-telegram/</guid>
+      <description>Description A simple shell script that executes automatically once a ssh user logs into a server with SSH. The script sends a telegram message to a user of your choice.</description>
+    </item>
     
     <item>
       <title>Linux| Linux firewalls</title>

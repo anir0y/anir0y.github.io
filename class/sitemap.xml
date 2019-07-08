@@ -3,14 +3,45 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://anir0y.github.io/class/tags/bash/</loc>
+    <lastmod>2019-07-08T17:46:54+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://anir0y.github.io/class/blog/</loc>
-    <lastmod>2019-07-06T21:13:49+05:30</lastmod>
+    <lastmod>2019-07-08T17:46:54+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://anir0y.github.io/class/</loc>
-    <lastmod>2019-07-06T21:13:49+05:30</lastmod>
+    <lastmod>2019-07-08T17:46:54+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://anir0y.github.io/class/blog/bash-get-ssh-login-notification-on-telegram/</loc>
+    <lastmod>2019-07-08T17:46:54+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://anir0y.github.io/class/tags/</loc>
+    <lastmod>2019-07-08T17:46:54+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://anir0y.github.io/class/tags/bot/</loc>
+    <lastmod>2019-07-08T17:46:54+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://anir0y.github.io/class/tags/telegram/</loc>
+    <lastmod>2019-07-08T17:46:54+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -25,12 +56,6 @@
     <lastmod>2019-07-06T21:13:49+05:30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://anir0y.github.io/class/tags/</loc>
-    <lastmod>2019-07-06T21:13:49+05:30</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
