@@ -7,10 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>anir0y</copyright>
-    <lastBuildDate>Mon, 08 Jul 2019 17:46:54 +0530</lastBuildDate>
+    <lastBuildDate>Tue, 09 Jul 2019 19:32:52 +0530</lastBuildDate>
     
 	<atom:link href="https://anir0y.github.io/class/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Class|OSINT</title>
+      <link>https://anir0y.github.io/class/blog/class-osint/</link>
+      <pubDate>Tue, 09 Jul 2019 19:32:52 +0530</pubDate>
+      
+      <guid>https://anir0y.github.io/class/blog/class-osint/</guid>
+      <description>Awesome OSINT  
+A curated list of amazingly awesome open source intelligence tools and resources. Open-source intelligence (OSINT) is intelligence collected from publicly available sources.</description>
+    </item>
     
     <item>
       <title>Get SSH Login Notification on Telegram</title>
