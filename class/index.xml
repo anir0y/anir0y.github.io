@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>anir0y</copyright>
-    <lastBuildDate>Tue, 09 Jul 2019 19:32:52 +0530</lastBuildDate>
+    <lastBuildDate>Mon, 29 Jul 2019 16:00:19 +0530</lastBuildDate>
     
 	<atom:link href="https://anir0y.github.io/class/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Theat Model</title>
+      <link>https://anir0y.github.io/class/blog/theat-model/</link>
+      <pubDate>Mon, 29 Jul 2019 16:00:19 +0530</pubDate>
+      
+      <guid>https://anir0y.github.io/class/blog/theat-model/</guid>
+      <description>Introduction Objective of the Threat Modelling Control Cheat Sheet – To provide guidance to architects, designers and reviewers, on deriving threat models for applications.</description>
+    </item>
     
     <item>
       <title>Class|OSINT</title>
