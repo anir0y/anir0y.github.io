@@ -7,10 +7,37 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>anir0y</copyright>
-    <lastBuildDate>Mon, 29 Jul 2019 16:00:19 +0530</lastBuildDate>
+    <lastBuildDate>Mon, 12 Aug 2019 14:21:54 +0530</lastBuildDate>
     
 	<atom:link href="https://anir0y.github.io/class/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Azure DeployWebAPP III</title>
+      <link>https://anir0y.github.io/class/blog/azure-deploywebapp-iii/</link>
+      <pubDate>Mon, 12 Aug 2019 14:21:54 +0530</pubDate>
+      
+      <guid>https://anir0y.github.io/class/blog/azure-deploywebapp-iii/</guid>
+      <description>sometimes Practicals makes more sense, you can try the same with following lab setup. this don&amp;rsquo;t require any card information. all you need a Microsoft account.</description>
+    </item>
+    
+    <item>
+      <title>Azure DeployWebAPP II</title>
+      <link>https://anir0y.github.io/class/blog/azure-deploywebapp-ii/</link>
+      <pubDate>Mon, 12 Aug 2019 14:21:51 +0530</pubDate>
+      
+      <guid>https://anir0y.github.io/class/blog/azure-deploywebapp-ii/</guid>
+      <description>Introduction Imagine you&amp;rsquo;re building a website for a new business, or you&amp;rsquo;re running an existing web app on an aging on-premises server. Setting up a new server can be challenging.</description>
+    </item>
+    
+    <item>
+      <title>Azure DeployWebAPP I</title>
+      <link>https://anir0y.github.io/class/blog/azure-deploywebapp-i/</link>
+      <pubDate>Mon, 12 Aug 2019 14:21:45 +0530</pubDate>
+      
+      <guid>https://anir0y.github.io/class/blog/azure-deploywebapp-i/</guid>
+      <description>Why use the Azure portal? The first step in hosting your web application is to create a web app (an App Service app) inside your Azure subscription.</description>
+    </item>
     
     <item>
       <title>Theat Model</title>

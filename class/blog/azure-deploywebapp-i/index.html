@@ -3,7 +3,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	
-	<title>Get SSH Login Notification on Telegram | ClassRoom</title>
+	<title>Azure DeployWebAPP I | ClassRoom</title>
 	
 	<meta name="description" content="" />
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -66,13 +66,13 @@
     <p>Share</p>
     <ul>
         <li class="ml-1 mr-1">
-        <a target="_blank" href="https://twitter.com/intent/tweet?text=Get%20SSH%20Login%20Notification%20on%20Telegram&url=https%3a%2f%2fanir0y.github.io%2fclass%2fblog%2fbash-get-ssh-login-notification-on-telegram%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=435');return false;">
+        <a target="_blank" href="https://twitter.com/intent/tweet?text=Azure%20DeployWebAPP%20I&url=https%3a%2f%2fanir0y.github.io%2fclass%2fblog%2fazure-deploywebapp-i%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=435');return false;">
         <i class="fab fa-twitter"></i>
         </a>
         </li>
         
         <li class="ml-1 mr-1">
-        <a target="_blank" href="https://facebook.com/sharer.php?u=https%3a%2f%2fanir0y.github.io%2fclass%2fblog%2fbash-get-ssh-login-notification-on-telegram%2f" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+        <a target="_blank" href="https://facebook.com/sharer.php?u=https%3a%2f%2fanir0y.github.io%2fclass%2fblog%2fazure-deploywebapp-i%2f" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
         <i class="fab fa-facebook-f"></i>
         </a>
         </li>      
@@ -97,12 +97,12 @@
                         
                                                 
                         
-                        <h1 class="posttitle">Get SSH Login Notification on Telegram</h1> 
+                        <h1 class="posttitle">Azure DeployWebAPP I</h1> 
                     </div>
 
                     
                     
-                        <img class="featured-image img-fluid" src="/class/images/blog/bash-logo.png" alt="thumbnail for this post">
+                        <img class="featured-image img-fluid" src="/class/images/blog/azure.png" alt="thumbnail for this post">
                     
                     
                     
@@ -110,93 +110,62 @@
                     <div class="article-post">
                         
 
-<h2 id="description">Description</h2>
+<h1 id="why-use-the-azure-portal">Why use the Azure portal?</h1>
 
-<p>A simple shell script that executes automatically once a ssh user logs into a server with SSH. The script sends a telegram message to a user of your choice. It also has features to identify the user who has just logged in.</p>
+<p>The first step in hosting your web application is to create a web app (an App Service app) inside your Azure subscription.</p>
 
-<h3 id="the-script-reports-the-following">The script reports the following</h3>
+<p>There are several ways you can create a web app. You can use the Azure portal, the Azure CLI, a script, or an IDE.</p>
 
-<ol>
-<li>Date and time.</li>
-<li>Username used to gain ssh login.</li>
-<li>The IP address of the user trying to login.</li>
-<li>The AS code of the User trying to login.</li>
-<li>Physical address and the country of the user attempting login.</li>
-<li>SSH port the login was attempted on.</li>
-</ol>
+<p>Here, we are going to use the portal because it&rsquo;s a graphical experience, which makes it a great learning tool. The portal helps you discover available features, add additional resources, and customize existing resources.</p>
 
-<h3 id="operational-security-disclaimer">Operational security disclaimer</h3>
+<p>What is Azure App Service?
+Azure App Service is a fully managed web application hosting platform. This platform as a service (PaaS) offered by Azure allows you to focus on designing and building your app while Azure takes care of the infrastructure to run and scale your applications.</p>
 
-<blockquote>
-<p>This script isn’t designed to gain logs of ‘anyone’ trying to gain authorized/unauthorized access to a machine with SSH. But it can be modified to do so. This script focus on notifying the owner of a machine if anyone has attempted successful login with SSH. THIS IS DETECTION, NOT PREVENTION.</p>
-</blockquote>
+<p>Deployment slots
+Using the Azure portal, you can easily add deployment slots to an App Service web app. For instance, you can create a staging deployment slot where you can push your code to test on Azure. Once you are happy with your code, you can easily swap the staging deployment slot with the production slot. You do all this with a few simple mouse clicks in the Azure portal.</p>
 
-<p><img src="/class/images/blog/bot-img.jpeg" alt="img" /></p>
+<p><img src="https://docs.microsoft.com/en-us/learn/modules/host-a-web-app-with-azure-app-service/media/2-deployment-slots.png" alt="image" /></p>
 
-<h3 id="prerequisites">Prerequisites</h3>
+<h3 id="continuous-integration-deployment-support">Continuous integration/deployment support</h3>
 
-<ul>
-<li>A telegram bot. Make one from the BotFather bot @BotFather More information here: <a href="https://core.telegram.org/bots">https://core.telegram.org/bots</a></li>
-<li>The recipient’s telegram ID. Use this bot @getmyid_bot</li>
-<li>A SSH machine with sudo access.</li>
-</ul>
+<p>The Azure portal provides out-of-the-box continuous integration and deployment with Azure DevOps, GitHub, Bitbucket, FTP, or a local Git repository on your development machine. Connect your web app with any of the above sources and App Service will do the rest for you by auto-syncing code and any future changes on the code into the web app. Furthermore, with Azure DevOps, you can define your own build and release process that compiles your source code, runs the tests, builds a release, and finally deploys the release into your web app every time you commit the code. All that happens implicitly without any need to intervene.</p>
 
-<script type="application/javascript" src="//gist.github.com/anir0y/fb81ba1a46b37b10b504d08e6ea6c38d.js"></script>
+<p><img src="https://docs.microsoft.com/en-us/learn/modules/host-a-web-app-with-azure-app-service/media/2-continuous-integration.png" alt="image" /></p>
 
-<p>get raw from <a href="https://gist.githubusercontent.com/anir0y/fb81ba1a46b37b10b504d08e6ea6c38d/raw/f4c0f17039511c5e799f1f254608e020293650ad/telegram-ssh">here</a></p>
+<h3 id="integrated-visual-studio-publishing-and-ftp-publishing">Integrated Visual Studio publishing and FTP publishing</h3>
 
-<h3 id="instructions">Instructions</h3>
+<p>In addition to being able to set up continuous integration/deployment for your web app, you can always benefit from the tight integration with Visual Studio to publish your web app to Azure via Web Deploy technology. App Service also supports FTP-based publishing for more traditional workflows.</p>
 
-<ul>
-<li>will look like <a href="http://t.me/your_bots_name.">http://t.me/your_bots_name.</a> Also, copy the HTTP API: token generated by the BotFather.</li>
-<li>Use @getmyid_bot bot to get your user ID. Should be in the form Your user ID: XXXXXXXXX Current chat ID: XXXXXXXXX</li>
-<li>Clone the script on your target machine. Edit the sshd file located at</li>
-</ul>
+<h3 id="built-in-auto-scale-support-automatic-scale-out-based-on-real-world-load">Built-in auto scale support (automatic scale-out based on real-world load)</h3>
 
-<pre><code class="language-bash">/etc/pam.d/sshd
-</code></pre>
+<p>Baked into the web app is the ability to scale up/down or scale out. Depending on the usage of the web app, you can scale your app up/down by increasing/decreasing the resources of the underlying machine that is hosting your web app. Resources can be number of cores or the amount of RAM available.</p>
 
-<p>and add the following line at the end of the file</p>
+<p>Scaling out, on the other hand, is the ability to increase the number of machine instances that are running your web app.</p>
 
-<pre><code class="language-bash">session optional pam_exec.so /&lt;path_to_yourscript.sh
-</code></pre>
+<h2 id="creating-a-web-app">Creating a web app</h2>
 
-<p>or add this line to .bashrc (/root/.bashrc or ~/user/.bashrc)</p>
+<p>When you&rsquo;re ready to run a web app on Azure, you visit the Azure portal and create a Web App resource. Creating a web app allocates a set of hosting resources in App Service, which you can use to host any web-based application that is supported by Azure, whether it be ASP.NET Core, Node.js, PHP, etc.</p>
 
-<pre><code class="language-bash">bash /&lt;path_to_Script.sh&gt;
-</code></pre>
-
-<h3 id="important">IMPORTANT</h3>
-
-<blockquote>
-<p>Setting the session to ‘optional’ will allow the user to login in case the script fails. (ex. Telegram servers are down) This prevents you from being locked out. But setting the session to ‘required’ will enforce the execution of this script as absolute.</p>
-</blockquote>
+<p>The Azure portal provides a wizard to create a web app. This wizard requires the following fields:</p>
 
 <ul>
-<li><p>Edit the telegram credentials you just got from the two bots. USERID and KEY.</p></li>
-
-<li><p>Login and test!</p></li>
+<li><strong>Subscription:</strong> A valid and active Azure subscription.</li>
+<li><strong>Resource group:</strong> A valid resource group.</li>
+<li><strong>App name:</strong> The name of the web app. This name becomes part of the app&rsquo;s URL, so it must be unique among all Azure App Service web apps.</li>
+<li><strong>Publish:</strong> You can deploy your application to App Service as code or as a ready-to-run Docker image. Selecting Docker image will activate the Docker tab of the wizard, where you provide information about the Docker registry from which App Service will retrieve your image.</li>
+<li><strong>Runtime stack:</strong> If you choose to deploy your application as code, App Service needs to know what runtime your application uses (examples include Node.js, PHP, Java and .NET). If you deploy your application as a Docker image, you will not need to choose a runtime stack, since your image will include it.
+<strong>Operating system:</strong> App Service can host applications on Windows or Linux servers.
+If you are deploying your app as code, many of the available runtime stacks are limited to one operating system or the other. After choosing a runtime stack, the toggle will indicate whether or not you have a choice of operating system. If your target runtime stack is available on both operating systems, select the one that you use to develop and test your application.
+If your application is packaged as a Docker image, choose the operating system on which your image is designed to run.
+Selecting Windows activates the Monitoring tab, where you have the option to enable Application Insights. Enabling this feature will configure your app to automatically send detailed performance telemetry to the Application Insights monitoring service without requiring any changes to your code. Application Insights can be used from Linux-hosted apps as well, but this turnkey, no-code option is only available on Windows.</li>
+<li><strong>Region:</strong> The Azure region from which your application will be served.</li>
 </ul>
-
-<p><a target="_blank" href="https://developereconomics.net?utm_campaign=referrer&utm_source=website&utm_medium=banner&utm_content=1500x750&member_id=f9KZNy4u&lang=en"><img src="https://developer-economics.cdn.prismic.io/developer-economics/de7534bec98de830fffd502913842c3f6395e2e5_twitter_post_506x253.jpg"></a></p>
 
                     </div>
                     
                     
                     <div class="after-post-tags">
                         <ul class="tags">
-                        
-                        <li>
-                        <a href="/class/tags/bash">Bash</a>
-                        </li>
-                        
-                        <li>
-                        <a href="/class/tags/telegram">telegram</a>
-                        </li>
-                        
-                        <li>
-                        <a href="/class/tags/bot">bot</a>
-                        </li>
                         
                         </ul>
                     </div>
@@ -205,10 +174,10 @@
                     
                     <div class="row PageNavigation d-flex justify-content-between font-weight-bold">
                     
-                        <a class="d-block col-md-6" href="/class/blog/class-osint/"> &laquo; Class|OSINT</a>
+                        <a class="d-block col-md-6" href="/class/blog/azure-deploywebapp-ii/"> &laquo; Azure DeployWebAPP II</a>
                     
                     
-                        <a class="d-block col-md-6 text-lg-right" href="/class/blog/linux-4/">Linux| Linux firewalls &raquo;</a>
+                        <a class="d-block col-md-6 text-lg-right" href="/class/blog/theat-model/">Theat Model &raquo;</a>
                     
                     <div class="clearfix"></div>
                     </div>
