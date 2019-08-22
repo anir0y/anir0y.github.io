@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Quickbits on ClassRoom</title>
+    <link>https://anir0y.github.io/class/quickbits/</link>
+    <description>Recent content in Quickbits on ClassRoom</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>anir0y</copyright>
+    <lastBuildDate>Thu, 22 Aug 2019 09:17:56 +0530</lastBuildDate>
+    
+	<atom:link href="https://anir0y.github.io/class/quickbits/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Checklist_SecureCode</title>
+      <link>https://anir0y.github.io/class/quickbits/checklist_securecode/</link>
+      <pubDate>Thu, 22 Aug 2019 09:17:56 +0530</pubDate>
+      
+      <guid>https://anir0y.github.io/class/quickbits/checklist_securecode/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
