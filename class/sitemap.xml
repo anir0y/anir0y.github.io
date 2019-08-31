@@ -4,7 +4,38 @@
   
   <url>
     <loc>https://anir0y.github.io/class/</loc>
-    <lastmod>2019-08-22T11:21:43+05:30</lastmod>
+    <lastmod>2019-08-24T19:32:50+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://anir0y.github.io/class/kle/gpolicy_applocker/</loc>
+    <lastmod>2019-08-24T19:32:50+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://anir0y.github.io/class/kle/</loc>
+    <lastmod>2019-08-24T19:32:50+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://anir0y.github.io/class/tags/</loc>
+    <lastmod>2019-08-24T19:32:50+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://anir0y.github.io/class/tags/windows/</loc>
+    <lastmod>2019-08-24T19:32:50+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://anir0y.github.io/class/tags/policy/</loc>
+    <lastmod>2019-08-24T19:32:50+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -60,12 +91,6 @@
     <lastmod>2019-08-12T14:21:45+05:30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://anir0y.github.io/class/tags/</loc>
-    <lastmod>2019-07-29T16:00:19+05:30</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -160,16 +185,16 @@
   </url>
   
   <url>
-    <loc>https://anir0y.github.io/class/tags/powershell/</loc>
-    <lastmod>2019-07-02T15:42:48+05:30</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://anir0y.github.io/class/blog/powershell-commands-2/</loc>
     <lastmod>2019-07-02T15:42:48+05:30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://anir0y.github.io/class/tags/powershell/</loc>
+    <lastmod>2019-07-02T15:42:48+05:30</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>

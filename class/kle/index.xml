@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Kles on ClassRoom</title>
+    <link>https://anir0y.github.io/class/kle/</link>
+    <description>Recent content in Kles on ClassRoom</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>anir0y</copyright>
+    <lastBuildDate>Sat, 24 Aug 2019 19:32:50 +0530</lastBuildDate>
+    
+	<atom:link href="https://anir0y.github.io/class/kle/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Group policy App-locker</title>
+      <link>https://anir0y.github.io/class/kle/gpolicy_applocker/</link>
+      <pubDate>Sat, 24 Aug 2019 19:32:50 +0530</pubDate>
+      
+      <guid>https://anir0y.github.io/class/kle/gpolicy_applocker/</guid>
+      <description>The Windows default is to allow users to run any application—even single EXE files—without question. But what if that EXE contains something dangerous? Or what if it is an old version of an in-house application that needs to be upgraded?</description>
+    </item>
+    
+  </channel>
+</rss>

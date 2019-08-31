@@ -7,10 +7,28 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>anir0y</copyright>
-    <lastBuildDate>Mon, 29 Jul 2019 16:00:19 +0530</lastBuildDate>
+    <lastBuildDate>Sat, 24 Aug 2019 19:32:50 +0530</lastBuildDate>
     
 	<atom:link href="https://anir0y.github.io/class/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Windows</title>
+      <link>https://anir0y.github.io/class/tags/windows/</link>
+      <pubDate>Sat, 24 Aug 2019 19:32:50 +0530</pubDate>
+      
+      <guid>https://anir0y.github.io/class/tags/windows/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>policy</title>
+      <link>https://anir0y.github.io/class/tags/policy/</link>
+      <pubDate>Sat, 24 Aug 2019 19:32:50 +0530</pubDate>
+      
+      <guid>https://anir0y.github.io/class/tags/policy/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>threat model</title>
@@ -76,7 +94,7 @@
     </item>
     
     <item>
-      <title>Powershell</title>
+      <title>powershell</title>
       <link>https://anir0y.github.io/class/tags/powershell/</link>
       <pubDate>Tue, 02 Jul 2019 15:42:48 +0530</pubDate>
       
