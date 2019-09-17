@@ -1,9 +1,10 @@
-//keybase.io/anir0y
+==================================================================
+https://keybase.io/anir0y
 --------------------------------------------------------------------
 
 I hereby claim:
 
-  * I am an admin of https://anir0y.github.io
+  * I am an admin of https://anir0y.live
   * I am anir0y (https://keybase.io/anir0y) on keybase.
   * I have a public key ASDrGnr2PlQ5r8d7REuYr-vlp1_galmO2HcEmwp1ypT9Ogo
 
@@ -19,14 +20,14 @@ To do so, I am signing this object:
       "username": "anir0y"
     },
     "merkle_root": {
-      "ctime": 1557718261,
-      "hash": "e251c696c50e5687cd1f69ea7561ab7a0515652e9fd85ea7b1a6e1f339bd8186f69f8157c810e09dafbdec6d2f93066c51e9a3d425c31a5b014a89e56a348b9a",
-      "hash_meta": "cf3a9133acce0ed75f9130372ac8ba0e6e72f1903b52cdd6a2c05644c6b8f9fb",
-      "seqno": 5357220
+      "ctime": 1567485816,
+      "hash": "63ae96fa3f53764c6b1106ccd5264d289d8b45355d4c99d3174c025cf7c7833a4303ba43e45fc7659645b55244f4217bd23283d47a272db1cbfe1b8a7cd496e3",
+      "hash_meta": "0e3e295c8370caf3eb40a3bae3a3801ae2f3206dccccb5709ad671e5c53ecd1f",
+      "seqno": 6155863
     },
     "service": {
-      "entropy": "3NMC8zWzFzlCRSeEPp8pHUI5",
-      "hostname": "anir0y.github.io",
+      "entropy": "9TPdMs0uyoalXNrCaE4uiQ4S",
+      "hostname": "anir0y.live",
       "protocol": "https:"
     },
     "type": "web_service_binding",
@@ -34,20 +35,22 @@ To do so, I am signing this object:
   },
   "client": {
     "name": "keybase.io go client",
-    "version": "4.0.0"
+    "version": "4.2.0"
   },
-  "ctime": 1557718301,
+  "ctime": 1567485835,
   "expire_in": 504576000,
-  "prev": "45d1d76c83fe82dc723114dcf883fa05e4d0782f85758796a4d236c8ec2fc7c0",
-  "seqno": 24,
+  "prev": "7148351725f1d2b0217eec8c75c1e73494cef1256c7c546f98f5690d6f3179f6",
+  "seqno": 28,
   "tag": "signature"
 }
 
 which yields the signature:
 
-hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEg6xp69j5UOa/He0RLmK/r5adf4GpZjth3BJsKdcqU/ToKp3BheWxvYWTESpcCGMQgRdHXbIP+gtxyMRTc+IP6BeTQeC+FdYeWpNI2yOwvx8DEIIJhDLqhcxNcsndL4UezcaqwP4qky00lVygQBtuExwHjAgHCo3NpZ8RAuC+Bwj8wVmnVHXJHIQGh2Kfyi9tiMH7w9lGQGdlRQqcvoSz8OFl3mygIUjNotpUky3FW8O5T2H49rQaOCrkhDKhzaWdfdHlwZSCkaGFzaIKkdHlwZQildmFsdWXEIAEkcwZhAh3++SLfkmkW20+9JrX7fAtThr6ieuZs8Q63o3RhZ80CAqd2ZXJzaW9uAQ==
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEg6xp69j5UOa/He0RLmK/r5adf4GpZjth3BJsKdcqU/ToKp3BheWxvYWTESpcCHMQgcUg1FyXx0rAhfuyMdcHnNJTO8SVsfFRvmPVpDW8xefbEII+SlPUr5AAIcrIFoGvCsaosPdm40eHy3/qqrp/9lsQuAgHCo3NpZ8RAVR5TxkLkbHNK0aSEN7Nn1J30lSx/0/CdNS6ltZnVTYFyHdV/jFvTgK0Mby+fk/6muQhmPq1inFVE0/Q1/rr3AqhzaWdfdHlwZSCkaGFzaIKkdHlwZQildmFsdWXEII3Zrx+Ie6Hox2XkkLpAZJdXZogKu/iQ9olpr0QkmyNjo3RhZ80CAqd2ZXJzaW9uAQ==
 
 And finally, I am proving ownership of this host by posting or
 appending to this document.
 
 View my publicly-auditable identity here: https://keybase.io/anir0y
+
+==================================================================

@@ -4,7 +4,32 @@
   
   <url>
     <loc>https://anir0y.github.io/class/</loc>
-    <lastmod>2019-08-24T19:32:50+05:30</lastmod>
+    <lastmod>2019-09-17T13:30:16+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://anir0y.github.io/class/quickbits/</loc>
+    <lastmod>2019-09-17T13:30:16+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://anir0y.github.io/class/tags/</loc>
+    <lastmod>2019-09-17T13:30:16+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://anir0y.github.io/class/quickbits/books/</loc>
+    <lastmod>2019-09-17T13:30:16+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://anir0y.github.io/class/tags/books/</loc>
+    <lastmod>2019-09-17T13:30:16+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -22,12 +47,6 @@
   </url>
   
   <url>
-    <loc>https://anir0y.github.io/class/tags/</loc>
-    <lastmod>2019-08-24T19:32:50+05:30</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://anir0y.github.io/class/tags/windows/</loc>
     <lastmod>2019-08-24T19:32:50+05:30</lastmod>
     <priority>0</priority>
@@ -36,12 +55,6 @@
   <url>
     <loc>https://anir0y.github.io/class/tags/policy/</loc>
     <lastmod>2019-08-24T19:32:50+05:30</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://anir0y.github.io/class/quickbits/</loc>
-    <lastmod>2019-08-22T11:21:43+05:30</lastmod>
     <priority>0</priority>
   </url>
   
