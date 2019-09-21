@@ -292,5 +292,14 @@ tmux a # (or at, or attach)  attach to named:</description>
       <description>Prerequisites As this is based on CEH module, so basic knowledge of computer and programming language (PHP,MySQL,Python) is a bonus. if you don&amp;rsquo;t know anything about these, you can learn the basic for free here .</description>
     </item>
     
+    <item>
+      <title>FeedBack</title>
+      <link>https://anir0y.github.io/class/static/feedback/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://anir0y.github.io/class/static/feedback/</guid>
+      <description> </description>
+    </item>
+    
   </channel>
 </rss>
