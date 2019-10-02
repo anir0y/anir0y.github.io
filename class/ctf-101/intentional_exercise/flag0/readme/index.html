@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en-us"><head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	
+	<title> | ClassRoom</title>
+	
+	<meta name="description" content="" />
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+	 crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Righteous%7CMerriweather:300,300i,400,400i,700,700i" rel="stylesheet">
+	<link href="/class/css/medium.css" rel="stylesheet">
+	<link href="/class/css/additional.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top mediumnavigation nav-down">
+    <div class="container pr-0">
+        
+        <a class="navbar-brand" href="https://anir0y.github.io/class//">
+
+            
+            <span style="font-family:Righteous;">ClassRoom</span>
+            
+        </a>
+        
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMediumish" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        
+        <div class="collapse navbar-collapse" id="navbarMediumish">
+            
+            <ul class="navbar-nav ml-auto">
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="https://hackerinside.xyz">Lab</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/class/quickbits/">Quick Bits</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/class/kle">KLE </a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/class/static/enroll">Enroll</a>
+                </li>
+                
+            </ul>
+        </div>
+        
+    </div>
+</nav>
+
+
+        <div class="site-content">   
+            <div class="container">
+<div class="mainheading">
+    <h1 class="sitetitle">ClassRoom</h1>
+    <p class="lead">
+         
+    </p>
+</div><div class="main-content">
+        
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-md-2 pl-0"><div class="share sticky-top sticky-top-offset">
+    <p>Share</p>
+    <ul>
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://twitter.com/intent/tweet?text=&url=https%3a%2f%2fanir0y.github.io%2fclass%2fctf-101%2fintentional_exercise%2fflag0%2freadme%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=435');return false;">
+        <i class="fab fa-twitter"></i>
+        </a>
+        </li>
+        
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://facebook.com/sharer.php?u=https%3a%2f%2fanir0y.github.io%2fclass%2fctf-101%2fintentional_exercise%2fflag0%2freadme%2f" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+        <i class="fab fa-facebook-f"></i>
+        </a>
+        </li>      
+    </ul>
+
+    
+</div>
+</div>
+                                
+                <div class="col-md-9 flex-first flex-md-unordered">
+                    <div class="mainheading">
+                        	
+                        
+                        
+                                                
+                        
+                        <h1 class="posttitle"></h1> 
+                    </div>
+
+                    
+                    
+                    
+                    
+                    
+                    <div class="article-post">
+                        
+
+<h1 id="intentional-exercise-flag0">Intentional Exercise - FLAG0</h1>
+
+<h2 id="0x00-app-home">0x00 App Home</h2>
+
+<p>On app load, a request is sening to server and got an flag link.</p>
+
+<p><img src="./imgs/home.jpg" alt="" /></p>
+
+<p>However, the result shows invalid request</p>
+
+<p><img src="./imgs/invalid.jpg" alt="" /></p>
+
+<h2 id="0x01-mutate-request">0x01 Mutate Request</h2>
+
+<p>It is a practice to modify all the HTTP parameters you can reach.</p>
+
+<p>It seems always send the same link no matter what parameter I send in request.</p>
+
+<p><img src="./imgs/request.jpg" alt="" /></p>
+
+<p>But the second request needs more data.</p>
+
+<p><img src="./imgs/flagbearer.jpg" alt="" /></p>
+
+<p>After adding the parameter <strong>hash</strong>, it shows a diffeerent response.</p>
+
+<p><img src="./imgs/invalid_hash.jpg" alt="" /></p>
+
+<h2 id="0x02-check-source">0x02 Check Source</h2>
+
+<p>As we have the <strong>apk</strong> file, we may check inside of it.</p>
+
+<h3 id="dex-to-jar">Dex to Jar</h3>
+
+<p>Use <a href="https://github.com/pxb1988/dex2jar">dex2jar</a> to convert to <strong>jar</strong>.</p>
+
+<pre><code class="language-batch">d2j-dex2jar.bat -f ./level13.apk
+</code></pre>
+
+<p>So we got <strong>level13-dex2jar.jar</strong> now.</p>
+
+<h3 id="decompile">Decompile</h3>
+
+<p>Use <a href="https://github.com/pxb1988/dex2jar">jd-gui</a> to chek inside of the <strong>jar</strong>.</p>
+
+<p><img src="./imgs/source.jpg" alt="" /></p>
+
+<h2 id="0x03-code-review">0x03 Code Review</h2>
+
+<p>The full source can be found at <a href="./MainActivity.java">MainActivity.java</a></p>
+
+<pre><code class="language-java">MessageDigest messageDigest = MessageDigest.getInstance(&quot;SHA-256&quot;);
+messageDigest.update(&quot;s00p3rs3cr3tk3y&quot;.getBytes(StandardCharsets.UTF_8));
+messageDigest.update(str3.getBytes(StandardCharsets.UTF_8));
+byte[] arrayOfByte = messageDigest.digest();
+</code></pre>
+
+<p>The request hash is generated with the secret key <strong>s00p3rs3cr3tk3y</strong> and the message payload <strong>str3</strong> with <strong>SHA-256</strong></p>
+
+<p>However, the first request <a href="https://www.cmd5.com/hash.aspx?s=s00p3rs3cr3tk3y">hash</a> is just the secret key without any payload.</p>
+
+<p><a href="http://127.0.0.1/xxxxxxxxxx/appRoot?&amp;hash=61f4518d844a9bd27bb971e55a23cd6cf3a9f5ef7f46285461cf6cf135918a1a">http://127.0.0.1/xxxxxxxxxx/appRoot?&amp;hash=61f4518d844a9bd27bb971e55a23cd6cf3a9f5ef7f46285461cf6cf135918a1a</a></p>
+
+<pre><code>SHA-256(s00p3rs3cr3tk3y) = 61f4518d844a9bd27bb971e55a23cd6cf3a9f5ef7f46285461cf6cf135918a1a
+</code></pre>
+
+<h2 id="0x04-get-hash">0x04 Get Hash</h2>
+
+<p>There is another piece of code shows the hint.</p>
+
+<pre><code class="language-java">Uri uri = getIntent().getData();
+str3 = uri.toString().substring(28);
+</code></pre>
+
+<p>and</p>
+
+<pre><code class="language-xml">&lt;data 
+	android:scheme=&quot;http&quot;
+	android:host=&quot;level13.hacker101.com&quot; 
+/&gt;
+</code></pre>
+
+<p>So the payload string after the index of 28 should be</p>
+
+<pre><code class="language-java">&quot;http://level13.hacker101.com&quot;.substring(28);
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th>uri</th>
+<th>payload</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>/appRoot</td>
+<td>null</td>
+</tr>
+
+<tr>
+<td>/appRoot/flagBeare</td>
+<td>/flagBearer</td>
+</tr>
+</tbody>
+</table>
+
+<p>So we need to encrypt <strong>/flagBearer</strong> with secret key <strong>s00p3rs3cr3tk3y</strong> for this hash.</p>
+
+<p>Try use this online <a href="https://www.cmd5.com/hash.aspx?s=s00p3rs3cr3tk3y/flagBearer">tool</a>.</p>
+
+<pre><code>SHA-256(s00p3rs3cr3tk3y/flagBearer) = 8743a18df6861ced0b7d472b34278dc29abba81b3fa4cf836013426d6256bd5e
+</code></pre>
+
+<h2 id="0x05-flag">0x05 FLAG</h2>
+
+<p>Create a new get request with the new generated hash. The server will send back FLAG.</p>
+
+<p><a href="http://127.0.0.1/xxxxxxxxxx/appRoot/flagBearer?&amp;hash=8743a18df6861ced0b7d472b34278dc29abba81b3fa4cf836013426d6256bd5e">http://127.0.0.1/xxxxxxxxxx/appRoot/flagBearer?&amp;hash=8743a18df6861ced0b7d472b34278dc29abba81b3fa4cf836013426d6256bd5e</a></p>
+
+<p><img src="./imgs/flag.jpg" alt="" /></p>
+
+                    </div>
+                    
+                    
+                    <div class="after-post-tags">
+                        <ul class="tags">
+                        
+                        </ul>
+                    </div>
+                    
+                    
+                    
+                    <div class="row PageNavigation d-flex justify-content-between font-weight-bold">
+                    
+                        <a class="d-block col-md-6" href="/class/ctf-101/intentional_exercise/readme/"> &laquo; </a>
+                    
+                    
+                        <a class="d-block col-md-6 text-lg-right" href="/class/ctf-101/micro-cms_v1/readme/"> &raquo;</a>
+                    
+                    <div class="clearfix"></div>
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+    </div>
+
+
+            </div>
+<div class="jumbotron fortags">
+	<div class="d-md-flex h-100">
+		<div class="col-md-4 transpdark align-self-center text-center h-100">
+			<div class="d-md-flex align-items-center justify-content-center h-100">
+				<h2 class="d-md-block d-none align-self-center py-1 font-weight-light">Explore <span class="d-none d-md-inline">→</span></h2>
+			</div>
+		</div>
+		<div class="col-md-8 p-5 align-self-center text-center">
+			
+			<a class="mt-1 mb-1" href="/class/tags/aws">aws</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/bash">bash</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/books">books</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/bot">bot</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/cheatsheet">cheatsheet</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/class">class</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/linux">linux</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/msf">msf</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/nmap">nmap</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/osint">osint</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/pentesting">pentesting</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/policy">policy</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/powershell">powershell</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/telegram">telegram</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/threat-model">threat-model</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/tmux">tmux</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/windows">windows</a>
+			
+		</div>
+	</div>
+</div>
+
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            
+            <div class="col-md-6 col-sm-6 text-center text-lg-left">
+                &copy; Copyright anir0y
+            </div>
+            
+        </div>
+    </div>
+</footer>
+
+        </div>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+<script src="/class/js/mediumish.js"></script>
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-142104594-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    </body>
+</html>
