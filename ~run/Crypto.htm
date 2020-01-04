@@ -1,7 +1,7 @@
-
-<!-- saved from url=(0061)http://cobweb.cs.uga.edu/~dme/csci6300/Encryption/Crypto.html -->
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+<!-- Original source : http://cobweb.cs.uga.edu/~dme/csci6300/Encryption/Crypto.html -->
+<html>
+<head>
+<head>
 <style type="text/css">
 H1 {color:red}
 P  {font-family:Arial; font-size:14pt}
@@ -66,51 +66,53 @@ function decrypt() {
 }
 </script>
 </head>
-<body bgcolor="oldlace" onload="clear()">
+<body bgcolor="oldlace" onLoad=clear()>
 <center>
 <h1>Public-Key encryption Demo</h1>
 </center>
 <font color="blue"><h3>Step 1: Generate Keys</h3></font>
-<p>Press the button to generate a pair of randomly chosen keys.</p>
+<P>Press the button to generate a pair of randomly chosen keys.</p>
 <ul>
 <li>
-<p>
+<P>
 The <b>public key</b> will be posted in a  public key repository
-where anyone can find it. </p><p>The <b>private key</b> should be known only to
+where anyone can find it. </p?
+<li><P>The <b>private key</b> should be known only to
 you.</p>
-</li></ul>
+</ul>
 <form name="gen_form">
-<input type="button" value="Generate keys" onclick="generate()">
+<input type="button" value="Generate keys" onClick = generate()>
 Public key: &nbsp; 
-<input type="text" size="5" name="public_key">
+<input type ="text" size=5 name="public_key">
 Private key: &nbsp; 
-<input type="text" size="5" name="private_key">
+<input type ="text" size=5 name="private_key">
 
 </form>
 <font color="blue"><h3>Step 2: Encrypt the message </h3></font>
-<p>Now type in a short message and enter one of the keys from above.
+<P>Now type in a short message and enter one of the keys from above.
 Then press the button.</p>
 <form name="myform">
 Message: &nbsp;
-<input type="text" size="35" value="" name="input">
+<input type="text" size=35 value="" name="input">
 Encryption key:
-&nbsp; <input type="text" size="5" name="encrypt_key">
-&nbsp; <input type="button" value="Encode message" onclick="encrypt()"><p>
+&nbsp; <input type="text" size=5 name = encrypt_key>
+&nbsp; <input type="button" value="Encode message"
+ onClick=encrypt()><P>
 <font color="red"><b>The encrypted message:</b></font>
-<input type="text" size="75" value="" name="crypted">
-</p></form>
+<input type="text" size=75 value="" name="crypted">
+</form>
 <font color="blue"><h3>Step 3: Decrypt the message </h3></font>
-<p>Pretend that you have received the encrypted message over the Internet. 
+<P>Pretend that you have received the encrypted message over the Internet. 
 Now enter an appropriate decryption key and press the "Decode" button.</p>
-<p>
+<P>
 <i>Hint:</i> If you used one of the two keys generated in step 1, 
 the other key works here.</p>
 <form name="decrypt_form">
 
 Decryption key:
-&nbsp; <input type="text" size="5" name="decrypt_key">
-&nbsp; <input type="button" value="Decode message" onclick="decrypt()"><p>
+&nbsp; <input type="text" size=5 name = decrypt_key>
+&nbsp; <input type="button" value="Decode message"
+ onClick=decrypt()><P>
 <font color="red"><b>The decrypted message:</b></font>
-<input type="text" size="35" value="" name="decrypted">
-</p></form>
-</body></html>
+<input type="text" size=35 value="" name="decrypted">
+</form>
