@@ -4,9 +4,9 @@ https://keybase.io/anir0y
 
 I hereby claim:
 
-  * I am an admin of https://anir0y.live
+  * I am an admin of https://anir0y.in
   * I am anir0y (https://keybase.io/anir0y) on keybase.
-  * I have a public key ASDrGnr2PlQ5r8d7REuYr-vlp1_galmO2HcEmwp1ypT9Ogo
+  * I have a public key with fingerprint C2DD 925A E4EA 4B4B 64F3  0522 EA60 6F14 2CBC AFD7
 
 To do so, I am signing this object:
 
@@ -14,39 +14,64 @@ To do so, I am signing this object:
   "body": {
     "key": {
       "eldest_kid": "01011b7e9be092e68020ed1d5de37900029e5221a9f12cf43263c74cea9b4bbdaf800a",
+      "fingerprint": "c2dd925ae4ea4b4b64f30522ea606f142cbcafd7",
       "host": "keybase.io",
-      "kid": "0120eb1a7af63e5439afc77b444b98afebe5a75fe06a598ed877049b0a75ca94fd3a0a",
+      "key_id": "ea606f142cbcafd7",
+      "kid": "01011b7e9be092e68020ed1d5de37900029e5221a9f12cf43263c74cea9b4bbdaf800a",
       "uid": "f582ffebea47f3fd0d3f70fc4aa26719",
       "username": "anir0y"
     },
     "merkle_root": {
-      "ctime": 1567485816,
-      "hash": "63ae96fa3f53764c6b1106ccd5264d289d8b45355d4c99d3174c025cf7c7833a4303ba43e45fc7659645b55244f4217bd23283d47a272db1cbfe1b8a7cd496e3",
-      "hash_meta": "0e3e295c8370caf3eb40a3bae3a3801ae2f3206dccccb5709ad671e5c53ecd1f",
-      "seqno": 6155863
+      "ctime": 1595323246,
+      "hash_meta": "656bc2b096d3fcc63bbe7d3726c8dce3a555d0e8a4c2f8cfabbc9f315aa0125d",
+      "seqno": 17032412
+    },
+    "revoke": {
+      "sig_ids": [
+        "9e0fc7bd93d365d08db62b25b2b53e52cc548cceca95ad9fef7804c479e0b3ee0f"
+      ]
     },
     "service": {
-      "entropy": "9TPdMs0uyoalXNrCaE4uiQ4S",
-      "hostname": "anir0y.live",
+      "hostname": "anir0y.in",
       "protocol": "https:"
     },
     "type": "web_service_binding",
-    "version": 2
+    "version": 1
   },
-  "client": {
-    "name": "keybase.io go client",
-    "version": "4.2.0"
-  },
-  "ctime": 1567485835,
-  "expire_in": 504576000,
-  "prev": "7148351725f1d2b0217eec8c75c1e73494cef1256c7c546f98f5690d6f3179f6",
-  "seqno": 28,
+  "ctime": 1595323256,
+  "expire_in": 157680000,
+  "prev": "ef6b94f28e9d081d7c97c08c0f9b980345350a7d0bbf94ebe15f519fe3954ab9",
+  "seqno": 32,
   "tag": "signature"
 }
 
 which yields the signature:
 
-hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEg6xp69j5UOa/He0RLmK/r5adf4GpZjth3BJsKdcqU/ToKp3BheWxvYWTESpcCHMQgcUg1FyXx0rAhfuyMdcHnNJTO8SVsfFRvmPVpDW8xefbEII+SlPUr5AAIcrIFoGvCsaosPdm40eHy3/qqrp/9lsQuAgHCo3NpZ8RAVR5TxkLkbHNK0aSEN7Nn1J30lSx/0/CdNS6ltZnVTYFyHdV/jFvTgK0Mby+fk/6muQhmPq1inFVE0/Q1/rr3AqhzaWdfdHlwZSCkaGFzaIKkdHlwZQildmFsdWXEII3Zrx+Ie6Hox2XkkLpAZJdXZogKu/iQ9olpr0QkmyNjo3RhZ80CAqd2ZXJzaW9uAQ==
+-----BEGIN PGP MESSAGE-----
+Version: Keybase OpenPGP v2.1.13
+Comment: https://keybase.io/crypto
+
+yMKvAnicrVNbaB1FGD7HpJFE26aIEmhAWYzX0M7OZXcnqMlLtQX7UmwVknadyz8n
+a5Ldk93NaY4lJUgRb6BULbUUBaUlUnuJYgsq0saKYKWUIhUl+GAIiMWaStWQqnE2
+KKL46LwMM3zf93//98+cXt5Qaik//dmxmefaZEf5zFQ6Ugpvemd0hyMTXXe6djgD
+sLTBoIYsDwci7XQ5yEWuK33gEhDH4AUII9CuZhqIzxFCmAPD2BXcuFgZSrBHlE8V
+CC6plFqYACHhdDomiiuQVtMozq2swlpzzARQENQCPWoIsjogPOQZl2IllTDat8T+
+JCsY1pwUGayJEntnD+GSvf/A/8++R5bkDAuwMSCtW98Qo5EmxkdGUSGw57u8AGaQ
+xmIILFrEUYrqzlinMwTpwCCEaZLkRbQqjwqAyzgjmGDq2fZE1h8OQS4sz2OeVFgi
+7ll5pTwiJfia+NhTgVZABGNMIwgEVdgEyggpFTfEZUIgFzNtXWQwHCe2go+svIut
+hRRqyQAU1bOoYlPLnK5eh4M170vNiSae1Qy09LDETGLJiA1GKUYDpUAJzoTmBowf
+IKqob4mSgGU7W8eKamktUkvixZj+0f6aKLZ+qmmSJyoZtNf9eV7NuopU8nq1wG0H
+Gf6pEMoo1vaFWEYN0ixKYtuDRf4rMGYDg9FqlEIYFQjm28HaVdSBWvEejCc5NTgA
+bptyta+4r1CgkOGSB4hQRhgSvkZSGk7tPF1mmGv7I5xRIfnfCRJsfYqK1bSxxSIf
+ScEZmzrZ11gqt5Sall1TfJ1SS3PrXx/q6ui1v+ObzSZZmfvywqNtG6e3r1z1/skD
+599cEa4Xh1/Z36vm33rj069mf32y+fN9t33TdO4sLouVm0cvNf9y5eCRzYda05+f
+4Gv3vLD3at9dF3Z1fNhz5tTaGbrv4up7ZrtLBxruuH66/u76uXtv6Fm97r7ZW268
+9djdpxrHH7zs1Hf3Dro7V3zy05bxdWai/fHbK1dKjsNe/L5vWduG8rcXhzaOb1l4
+5u35oz+efe+6+4dPXz769Xz3nolVTYc37Kc/LE4/u9D50EcPd7d/fGdPy/xi40JH
+Q31y9yXx2PHy3rkHlk/O/PbIoZdOHDy+aeK1I2Et62nlXkK3xq8+39D68vDizm1T
+k2n760+Nf/DdzBdk1x/4woLC
+=rsZS
+-----END PGP MESSAGE-----
 
 And finally, I am proving ownership of this host by posting or
 appending to this document.
