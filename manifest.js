@@ -1,1 +1,0 @@
-{"name":"ANir0y","short_name":"ANir0y","start_url":"/","display":"standalone","theme_color":"#7d5bd9","background_color":"#7d5bd9","icons":[{"src":"https://r.8b.io/101116/icons/512x512.png","sizes":"512x512","type":"image/png"}]}
