@@ -2,6 +2,3 @@ User-agent: *
 Disallow: /pdf
 Disallow: /dl
 Disallow: /img
-
-
-
