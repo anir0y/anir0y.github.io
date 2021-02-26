@@ -1,8 +1,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	<url>
-		<loc>https://anir0y.in/sitemap.xml/index.html</loc>
+		<loc>https://anir0y.in/index.html</loc>
 	</url>
 	<url>
-		<loc>https://anir0y.in/sitemap.xml/class.html</loc>
+		<loc>https://anir0y.in/class.html</loc>
+	</url>
+	<url>
+		<loc>https://anir0y.in/training.html</loc>
 	</url>
 </urlset>
