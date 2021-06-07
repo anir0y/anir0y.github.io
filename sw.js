@@ -1,6 +1,160 @@
+/**
+ * Welcome to your Workbox-powered service worker!
+ *
+ * You'll need to register this file in your web app and you should
+ * disable HTTP caching for this file too.
+ * See https://goo.gl/nhQhGp
+ *
+ * The rest of the code is auto-generated. Please don't update this file
+ * directly; instead, make changes to your Workbox build configuration
+ * and re-run your build process.
+ * See https://goo.gl/2aRDsh
+ */
 
-var staticCaches=["mobirise-cache-v1"];function inArray(b,c){return 0<b.filter(function(a){return a===c}).length?!0:!1}self.addEventListener("install",function(b){console.log("SW: Installed and updated");self.skipWaiting()});
-self.addEventListener("activate",function(b){console.log("SW: Activate");b.waitUntil(caches.keys().then(function(b){return Promise.all(b.map(function(a){if(!inArray(staticCaches,a))return caches.delete(a)}))}).then(function(){console.log("SW: First time caching ...");return caches.open(staticCaches).then(function(b){return fetch("/sw-resources.json").then(function(a){return a.json()}).then(function(a){a=JSON.parse(a);a=a.reduce(function(a,b){/(?:json|html|mobirise)/i.test(b.split(".").pop())||a.push(b);
-return a},["/","manifest.json"]);return Promise.all(a.map(function(a){return fetch(a,{mode:"no-cors"}).then(function(d){return b.put(a,d)})}))})}).catch(function(b){console.error(b)})}))});
-self.addEventListener("fetch",function(b){"http"===b.request.url.slice(0,4)&&b.respondWith(fetch(b.request).then(function(c){if(404==c.status)return new Response("Page not found!");var a=c.clone();caches.open(staticCaches).then(function(c){0===b.request.url.indexOf("http")&&c.matchAll(b.request,{ignoreSearch:!0}).then(function(a){return Promise.all(a.map(function(a){return c.delete(a)}))}).then(function(){c.put(b.request,a)})});return c}).catch(function(c){console.log("Offline mode.");return caches.match(b.request).then(function(a){return a?
-a:!1})}))});
+importScripts("workbox-v4.3.1/workbox-sw.js");
+workbox.setConfig({modulePathPrefix: "workbox-v4.3.1"});
+
+workbox.core.setCacheNameDetails({prefix: "gatsby-plugin-offline"});
+
+workbox.core.skipWaiting();
+
+workbox.core.clientsClaim();
+
+/**
+ * The workboxSW.precacheAndRoute() method efficiently caches and responds to
+ * requests for URLs in the manifest.
+ * See https://goo.gl/S9QRab
+ */
+self.__precacheManifest = [
+  {
+    "url": "webpack-runtime-9d09a88e33cf1ee10d73.js"
+  },
+  {
+    "url": "framework-7d7b24b52a49e7df0f3b.js"
+  },
+  {
+    "url": "app-b24fe03fd8094baff67d.js"
+  },
+  {
+    "url": "offline-plugin-app-shell-fallback/index.html",
+    "revision": "11047e26b967950cf18d2cbc244ceb2b"
+  },
+  {
+    "url": "polyfill-e7d8298d74917fb112ce.js"
+  },
+  {
+    "url": "manifest.webmanifest",
+    "revision": "6f49ab89d9228c315c2997665cb2af0e"
+  }
+].concat(self.__precacheManifest || []);
+workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
+
+workbox.routing.registerRoute(/(\.js$|\.css$|static\/)/, new workbox.strategies.CacheFirst(), 'GET');
+workbox.routing.registerRoute(/^https?:.*\/page-data\/.*\.json/, new workbox.strategies.StaleWhileRevalidate(), 'GET');
+workbox.routing.registerRoute(/^https?:.*\.(png|jpg|jpeg|webp|avif|svg|gif|tiff|js|woff|woff2|json|css)$/, new workbox.strategies.StaleWhileRevalidate(), 'GET');
+workbox.routing.registerRoute(/^https?:\/\/fonts\.googleapis\.com\/css/, new workbox.strategies.StaleWhileRevalidate(), 'GET');
+
+/* global importScripts, workbox, idbKeyval */
+importScripts(`idb-keyval-3.2.0-iife.min.js`)
+
+const { NavigationRoute } = workbox.routing
+
+let lastNavigationRequest = null
+let offlineShellEnabled = true
+
+// prefer standard object syntax to support more browsers
+const MessageAPI = {
+  setPathResources: (event, { path, resources }) => {
+    event.waitUntil(idbKeyval.set(`resources:${path}`, resources))
+  },
+
+  clearPathResources: event => {
+    event.waitUntil(idbKeyval.clear())
+  },
+
+  enableOfflineShell: () => {
+    offlineShellEnabled = true
+  },
+
+  disableOfflineShell: () => {
+    offlineShellEnabled = false
+  },
+}
+
+self.addEventListener(`message`, event => {
+  const { gatsbyApi: api } = event.data
+  if (api) MessageAPI[api](event, event.data)
+})
+
+function handleAPIRequest({ event }) {
+  const { pathname } = new URL(event.request.url)
+
+  const params = pathname.match(/:(.+)/)[1]
+  const data = {}
+
+  if (params.includes(`=`)) {
+    params.split(`&`).forEach(param => {
+      const [key, val] = param.split(`=`)
+      data[key] = val
+    })
+  } else {
+    data.api = params
+  }
+
+  if (MessageAPI[data.api] !== undefined) {
+    MessageAPI[data.api]()
+  }
+
+  if (!data.redirect) {
+    return new Response()
+  }
+
+  return new Response(null, {
+    status: 302,
+    headers: {
+      Location: lastNavigationRequest,
+    },
+  })
+}
+
+const navigationRoute = new NavigationRoute(async ({ event }) => {
+  // handle API requests separately to normal navigation requests, so do this
+  // check first
+  if (event.request.url.match(/\/.gatsby-plugin-offline:.+/)) {
+    return handleAPIRequest({ event })
+  }
+
+  if (!offlineShellEnabled) {
+    return await fetch(event.request)
+  }
+
+  lastNavigationRequest = event.request.url
+
+  let { pathname } = new URL(event.request.url)
+  pathname = pathname.replace(new RegExp(`^`), ``)
+
+  // Check for resources + the app bundle
+  // The latter may not exist if the SW is updating to a new version
+  const resources = await idbKeyval.get(`resources:${pathname}`)
+  if (!resources || !(await caches.match(`/app-b24fe03fd8094baff67d.js`))) {
+    return await fetch(event.request)
+  }
+
+  for (const resource of resources) {
+    // As soon as we detect a failed resource, fetch the entire page from
+    // network - that way we won't risk being in an inconsistent state with
+    // some parts of the page failing.
+    if (!(await caches.match(resource))) {
+      return await fetch(event.request)
+    }
+  }
+
+  const offlineShell = `/offline-plugin-app-shell-fallback/index.html`
+  const offlineShellWithKey = workbox.precaching.getCacheKeyForURL(offlineShell)
+  return await caches.match(offlineShellWithKey)
+})
+
+workbox.routing.registerRoute(navigationRoute)
+
+// this route is used when performing a non-navigation request (e.g. fetch)
+workbox.routing.registerRoute(/\/.gatsby-plugin-offline:.+/, handleAPIRequest)

@@ -1,6 +1,4 @@
 User-agent: *
-Disallow: /pdf
-Disallow: /dl
-Disallow: /img
-
-Sitemap: http://anir0y.in/sitemap.xml
+Allow: /
+Sitemap: https://anir0y.in/sitemap.xml
+Host: https://anir0y.in
