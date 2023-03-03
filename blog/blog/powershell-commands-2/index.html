@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en-us"><head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	
+	<title>Powershell - Information Collection | ClassRoom</title>
+	
+	<meta name="description" content="" />
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+	 crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Righteous%7CMerriweather:300,300i,400,400i,700,700i" rel="stylesheet">
+	<link href="/class/css/medium.css" rel="stylesheet">
+	<link href="/class/css/additional.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top mediumnavigation nav-down">
+    <div class="container pr-0">
+        
+        <a class="navbar-brand" href="https://anir0y.github.io/class//">
+
+            
+            <span style="font-family:Righteous;">ClassRoom</span>
+            
+        </a>
+        
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMediumish" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        
+        <div class="collapse navbar-collapse" id="navbarMediumish">
+            
+            <ul class="navbar-nav ml-auto">
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="https://hackerinside.xyz">Lab</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/class/quickbits/">Quick Bits</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/class/kle">KLE </a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/class/static/enroll">Enroll</a>
+                </li>
+                
+            </ul>
+        </div>
+        
+    </div>
+</nav>
+
+
+        <div class="site-content">   
+            <div class="container">
+<div class="mainheading">
+    <h1 class="sitetitle">ClassRoom</h1>
+    <p class="lead">
+         
+    </p>
+</div><div class="main-content">
+        
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-md-2 pl-0"><div class="share sticky-top sticky-top-offset">
+    <p>Share</p>
+    <ul>
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://twitter.com/intent/tweet?text=Powershell%20-%20Information%20Collection&url=https%3a%2f%2fanir0y.github.io%2fclass%2fblog%2fpowershell-commands-2%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=435');return false;">
+        <i class="fab fa-twitter"></i>
+        </a>
+        </li>
+        
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://facebook.com/sharer.php?u=https%3a%2f%2fanir0y.github.io%2fclass%2fblog%2fpowershell-commands-2%2f" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+        <i class="fab fa-facebook-f"></i>
+        </a>
+        </li>      
+    </ul>
+
+    
+        <div class="sep">
+        </div>				
+        <ul>
+            <li> 
+            <a  class="small smoothscroll" href="#disqus_thread"></a>
+            </li>
+        </ul>
+    
+</div>
+</div>
+                                
+                <div class="col-md-9 flex-first flex-md-unordered">
+                    <div class="mainheading">
+                        	
+                        
+                        
+                                                
+                        
+                        <h1 class="posttitle">Powershell - Information Collection</h1> 
+                    </div>
+
+                    
+                    
+                        <img class="featured-image img-fluid" src="/class/images/blog/ps-logo.png" alt="thumbnail for this post">
+                    
+                    
+                    
+                    
+                    <div class="article-post">
+                        
+
+<h1 id="collecting-information-about-computers">Collecting Information About Computers</h1>
+
+<p>Cmdlets from <strong>CimCmdlets</strong> module are the most important cmdlets for general system management tasks.
+All critical subsystem settings are exposed through WMI.
+Furthermore, WMI treats data as objects that are in collections of one or more items.
+Because Windows PowerShell also works with objects and has a pipeline that allows you to treat single or multiple objects in the same way, generic WMI access allows you to perform some advanced tasks with very little work.</p>
+
+<p>The following examples demonstrate how to collect specific information by using <code>Get-CimInstance</code> against an arbitrary computer.
+We specify the <strong>ComputerName</strong> parameter with the dot value (<strong>.</strong>), which represents the local computer.
+You can specify a name or IP address associated with any computer you can reach through WMI.
+To retrieve information about the local computer, you could omit the <strong>ComputerName</strong> parameter.</p>
+
+<h2 id="listing-desktop-settings">Listing Desktop Settings</h2>
+
+<p>We&rsquo;ll begin with a command that collects information about the desktops on the local computer.</p>
+
+<pre><code class="language-powershell">Get-CimInstance -ClassName Win32_Desktop -ComputerName .
+</code></pre>
+
+<p>This returns information for all desktops, whether they are in use or not.</p>
+
+<blockquote>
+<p>[!NOTE]
+Information returned by some WMI classes can be very detailed, and often include metadata about the WMI class.
+Because most of these metadata properties have names that begin with <strong>Cim</strong>, you can filter the properties using <code>Select-Object</code>.
+Specify the <strong>-ExcludeProperty</strong> parameter with &ldquo;Cim*&rdquo; as the value.
+For example:</p>
+</blockquote>
+
+<pre><code class="language-powershell">Get-CimInstance -ClassName Win32_Desktop -ComputerName . | Select-Object -ExcludeProperty &quot;CIM*&quot;
+</code></pre>
+
+<p>To filter out the metadata, use a pipeline operator (|) to send the results of the <code>Get-CimInstance</code> command to <code>Select-Object -ExcludeProperty &quot;CIM*&quot;</code>.</p>
+
+<h2 id="listing-bios-information">Listing BIOS Information</h2>
+
+<p>The WMI <strong>Win32_BIOS</strong> class returns fairly compact and complete information about the system BIOS on the local computer:</p>
+
+<pre><code class="language-powershell">Get-CimInstance -ClassName Win32_BIOS -ComputerName .
+</code></pre>
+
+<h2 id="listing-processor-information">Listing Processor Information</h2>
+
+<p>You can retrieve general processor information by using WMI&rsquo;s <strong>Win32_Processor</strong> class, although you will likely want to filter the information:</p>
+
+<pre><code class="language-powershell">Get-CimInstance -ClassName Win32_Processor -ComputerName . | Select-Object -ExcludeProperty &quot;CIM*&quot;
+</code></pre>
+
+<p>For a generic description string of the processor family, you can just return the <strong>SystemType</strong> property:</p>
+
+<pre><code class="language-powershell">Get-CimInstance -ClassName Win32_ComputerSystem -ComputerName . | Select-Object -Property SystemType
+
+SystemType
+----------
+X86-based PC
+</code></pre>
+
+<h2 id="listing-computer-manufacturer-and-model">Listing Computer Manufacturer and Model</h2>
+
+<p>Computer model information is also available from <strong>Win32_ComputerSystem</strong>.
+The standard displayed output will not need any filtering to provide OEM data:</p>
+
+<pre><code class="language-powershell">Get-CimInstance -ClassName Win32_ComputerSystem
+</code></pre>
+
+<pre><code class="language-output">Name PrimaryOwnerName Domain    TotalPhysicalMemory Model                   Manufacturer
+---- ---------------- ------    ------------------- -----                   ------------
+MyPC Jane Doe         WORKGROUP 804765696           DA243A-ABA 6415cl NA910 Compaq Presario 06
+</code></pre>
+
+<p>Your output from commands such as this, which return information directly from some hardware, is only as good as the data you have.
+Some information is not correctly configured by hardware manufacturers and may therefore be unavailable.</p>
+
+<h2 id="listing-installed-hotfixes">Listing Installed Hotfixes</h2>
+
+<p>You can list all installed hotfixes by using <strong>Win32_QuickFixEngineering</strong>:</p>
+
+<pre><code class="language-powershell">Get-CimInstance -ClassName Win32_QuickFixEngineering -ComputerName .
+</code></pre>
+
+<p>This class returns a list of hotfixes that looks like this:</p>
+
+<pre><code class="language-output">Source Description     HotFixID  InstalledBy   InstalledOn PSComputerName
+------ -----------     --------  -----------   ----------- --------------
+       Security Update KB4048951 Administrator 12/16/2017  .
+</code></pre>
+
+<p>For more succinct output, you may want to exclude some properties.
+Although you can use the <code>Get-CimInstance</code>&rsquo;s <strong>Property</strong> parameter to choose only the <strong>HotFixID</strong>, doing so will actually return more information, because all the metadata is displayed by default:</p>
+
+<pre><code class="language-powershell">Get-CimInstance -ClassName Win32_QuickFixEngineering -ComputerName . -Property HotFixID
+</code></pre>
+
+<pre><code class="language-output">PSShowComputerName    : True
+InstalledOn           :
+Caption               :
+Description           :
+InstallDate           :
+Name                  :
+Status                :
+CSName                :
+FixComments           :
+HotFixID              : KB4048951
+InstalledBy           :
+ServicePackInEffect   :
+PSComputerName        : .
+CimClass              : root/cimv2:Win32_QuickFixEngineering
+CimInstanceProperties : {Caption, Description, InstallDate, Name...}
+CimSystemProperties   : Microsoft.Management.Infrastructure.CimSystemProperties
+</code></pre>
+
+<p>The additional data is returned, because the Property parameter in <code>Get-CimInstance</code> restricts the properties returned from WMI class instances, not the object returned to Windows PowerShell.
+To reduce the output, use <code>Select-Object</code>:</p>
+
+<pre><code class="language-powershell">Get-CimInstance -ClassName Win32_QuickFixEngineering -ComputerName . -Property HotFixId | Select-Object -Property HotFixId
+</code></pre>
+
+<pre><code class="language-output">HotFixId
+--------
+KB4048951
+</code></pre>
+
+<h2 id="listing-operating-system-version-information">Listing Operating System Version Information</h2>
+
+<p>The <strong>Win32_OperatingSystem</strong> class properties include version and service pack information.
+You can explicitly select only these properties to get a version information summary from <strong>Win32_OperatingSystem</strong>:</p>
+
+<pre><code class="language-powershell">Get-CimInstance -ClassName Win32_OperatingSystem -ComputerName . | Select-Object -Property BuildNumber,BuildType,OSType,ServicePackMajorVersion,ServicePackMinorVersion
+</code></pre>
+
+<p>You can also use wildcards with the <code>Select-Object</code>&rsquo;s <strong>Property</strong> parameter.
+Because all the properties beginning with either <strong>Build</strong> or <strong>ServicePack</strong> are important to use here, we can shorten this to the following form:</p>
+
+<pre><code class="language-powershell">Get-CimInstance -ClassName Win32_OperatingSystem -ComputerName . | Select-Object -Property Build*,OSType,ServicePack*
+</code></pre>
+
+<pre><code class="language-output">BuildNumber             : 16299
+BuildType               : Multiprocessor Free
+OSType                  : 18
+ServicePackMajorVersion : 0
+ServicePackMinorVersion : 0
+</code></pre>
+
+<h2 id="listing-local-users-and-owner">Listing Local Users and Owner</h2>
+
+<p>Local general user information — number of licensed users, current number of users, and owner name — can be found with a selection of <strong>Win32_OperatingSystem</strong> class&rsquo; properties.
+You can explicitly select the properties to display like this:</p>
+
+<pre><code class="language-powershell">Get-CimInstance -ClassName Win32_OperatingSystem -ComputerName . | Select-Object -Property NumberOfLicensedUsers,NumberOfUsers,RegisteredUser
+</code></pre>
+
+<p>A more succinct version using wildcards is:</p>
+
+<pre><code class="language-powershell">Get-CimInstance -ClassName Win32_OperatingSystem -ComputerName . | Select-Object -Property *user*
+</code></pre>
+
+<h2 id="getting-available-disk-space">Getting Available Disk Space</h2>
+
+<p>To see the disk space and free space for local drives, you can use the Win32_LogicalDisk WMI class.
+You need to see only instances with a DriveType of 3 — the value WMI uses for fixed hard disks.</p>
+
+<pre><code class="language-powershell">Get-CimInstance -ClassName Win32_LogicalDisk -Filter &quot;DriveType=3&quot; -ComputerName .
+
+DeviceID DriveType ProviderName VolumeName Size         FreeSpace   PSComputerName
+-------- --------- ------------ ---------- ----         ---------   --------------
+C:       3                      Local Disk 203912880128 65541357568 .
+Q:       3                      New Volume 122934034432 44298250240 .
+
+Get-CimInstance -ClassName Win32_LogicalDisk -Filter &quot;DriveType=3&quot; -ComputerName . | Measure-Object -Property FreeSpace,Size -Sum | Select-Object -Property Property,Sum
+
+Property           Sum
+--------           ---
+FreeSpace 109839607808
+Size      326846914560
+</code></pre>
+
+<h2 id="getting-logon-session-information">Getting Logon Session Information</h2>
+
+<p>You can get general information about logon sessions associated with users through the <strong>Win32_LogonSession</strong> WMI class:</p>
+
+<pre><code class="language-powershell">Get-CimInstance -ClassName Win32_LogonSession -ComputerName .
+</code></pre>
+
+<h2 id="getting-the-user-logged-on-to-a-computer">Getting the User Logged on to a Computer</h2>
+
+<p>You can display the user logged on to a particular computer system using Win32_ComputerSystem.
+This command returns only the user logged on to the system desktop:</p>
+
+<pre><code class="language-powershell">Get-CimInstance -ClassName Win32_ComputerSystem -Property UserName -ComputerName .
+</code></pre>
+
+<h2 id="getting-local-time-from-a-computer">Getting Local Time from a Computer</h2>
+
+<p>You can retrieve the current local time on a specific computer by using the <strong>Win32_LocalTime</strong> WMI class.</p>
+
+<pre><code class="language-powershell">Get-CimInstance -ClassName Win32_LocalTime -ComputerName .
+
+Day          : 15
+DayOfWeek    : 4
+Hour         : 12
+Milliseconds :
+Minute       : 11
+Month        : 6
+Quarter      : 2
+Second       : 52
+WeekInMonth  : 3
+Year         : 2017
+PSComputerName : .
+</code></pre>
+
+<h2 id="displaying-service-status">Displaying Service Status</h2>
+
+<p>To view the status of all services on a specific computer, you can locally use the <code>Get-Service</code> cmdlet.
+For remote systems, you can use the <strong>Win32_Service</strong> WMI class.
+If you also use <code>Select-Object</code> to filter the results to <strong>Status</strong>, <strong>Name</strong>, and <strong>DisplayName</strong>, the output format will be almost identical to that from <code>Get-Service</code>:</p>
+
+<pre><code class="language-powershell">Get-CimInstance -ClassName Win32_Service -ComputerName . | Select-Object -Property Status,Name,DisplayName
+</code></pre>
+
+<p>To allow the complete display of names for the occasional services with extremely long names, you may want to use <code>Format-Table</code> with the <strong>AutoSize</strong> and <strong>Wrap</strong> parameters, to optimize column width and allow long names to wrap instead of being truncated:</p>
+
+<pre><code class="language-powershell">Get-CimInstance -ClassName Win32_Service -ComputerName . | Format-Table -Property Status,Name,DisplayName -AutoSize -Wrap
+</code></pre>
+
+                    </div>
+                    
+                    
+                    <div class="after-post-tags">
+                        <ul class="tags">
+                        
+                        <li>
+                        <a href="/class/tags/powershell">powershell</a>
+                        </li>
+                        
+                        </ul>
+                    </div>
+                    
+                    
+                    
+                    <div class="row PageNavigation d-flex justify-content-between font-weight-bold">
+                    
+                        <a class="d-block col-md-6" href="/class/blog/linux-1/"> &laquo; Linux Intro</a>
+                    
+                    
+                        <a class="d-block col-md-6 text-lg-right" href="/class/blog/powershell-commands-1/">Powershell - CHange State &raquo;</a>
+                    
+                    <div class="clearfix"></div>
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+<div class="container">
+    <div id="comments" class="row justify-content-center mb-5">
+        <div class="col-md-8">              
+            <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "anir0y" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>               
+        </div>
+    </div>
+</div>
+
+    </div>
+
+
+            </div>
+<div class="jumbotron fortags">
+	<div class="d-md-flex h-100">
+		<div class="col-md-4 transpdark align-self-center text-center h-100">
+			<div class="d-md-flex align-items-center justify-content-center h-100">
+				<h2 class="d-md-block d-none align-self-center py-1 font-weight-light">Explore <span class="d-none d-md-inline">→</span></h2>
+			</div>
+		</div>
+		<div class="col-md-8 p-5 align-self-center text-center">
+			
+			<a class="mt-1 mb-1" href="/class/tags/aws">aws</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/bash">bash</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/books">books</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/bot">bot</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/cheatsheet">cheatsheet</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/class">class</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/linux">linux</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/msf">msf</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/nmap">nmap</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/osint">osint</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/pentesting">pentesting</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/policy">policy</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/powershell">powershell</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/telegram">telegram</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/threat-model">threat-model</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/tmux">tmux</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/windows">windows</a>
+			
+		</div>
+	</div>
+</div>
+
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            
+            <div class="col-md-6 col-sm-6 text-center text-lg-left">
+                &copy; Copyright anir0y
+            </div>
+            
+        </div>
+    </div>
+</footer>
+
+        </div>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+<script src="/class/js/mediumish.js"></script>
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-142104594-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    </body>
+</html>

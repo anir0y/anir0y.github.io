@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en-us"><head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	
+	<title>Linux | File Permissions | ClassRoom</title>
+	
+	<meta name="description" content="" />
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+	 crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Righteous%7CMerriweather:300,300i,400,400i,700,700i" rel="stylesheet">
+	<link href="/class/css/medium.css" rel="stylesheet">
+	<link href="/class/css/additional.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top mediumnavigation nav-down">
+    <div class="container pr-0">
+        
+        <a class="navbar-brand" href="https://anir0y.github.io/class//">
+
+            
+            <span style="font-family:Righteous;">ClassRoom</span>
+            
+        </a>
+        
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMediumish" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        
+        <div class="collapse navbar-collapse" id="navbarMediumish">
+            
+            <ul class="navbar-nav ml-auto">
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="https://hackerinside.xyz">Lab</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/class/quickbits/">Quick Bits</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/class/kle">KLE </a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/class/static/enroll">Enroll</a>
+                </li>
+                
+            </ul>
+        </div>
+        
+    </div>
+</nav>
+
+
+        <div class="site-content">   
+            <div class="container">
+<div class="mainheading">
+    <h1 class="sitetitle">ClassRoom</h1>
+    <p class="lead">
+         
+    </p>
+</div><div class="main-content">
+        
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-md-2 pl-0"><div class="share sticky-top sticky-top-offset">
+    <p>Share</p>
+    <ul>
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://twitter.com/intent/tweet?text=Linux%20%7c%20File%20Permissions&url=https%3a%2f%2fanir0y.github.io%2fclass%2fblog%2flinux-2%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=435');return false;">
+        <i class="fab fa-twitter"></i>
+        </a>
+        </li>
+        
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://facebook.com/sharer.php?u=https%3a%2f%2fanir0y.github.io%2fclass%2fblog%2flinux-2%2f" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+        <i class="fab fa-facebook-f"></i>
+        </a>
+        </li>      
+    </ul>
+
+    
+        <div class="sep">
+        </div>				
+        <ul>
+            <li> 
+            <a  class="small smoothscroll" href="#disqus_thread"></a>
+            </li>
+        </ul>
+    
+</div>
+</div>
+                                
+                <div class="col-md-9 flex-first flex-md-unordered">
+                    <div class="mainheading">
+                        	
+                        
+                        
+                                                
+                        
+                        <h1 class="posttitle">Linux | File Permissions</h1> 
+                    </div>
+
+                    
+                    
+                        <img class="featured-image img-fluid" src="/class/images/blog/linux-logo.png" alt="thumbnail for this post">
+                    
+                    
+                    
+                    
+                    <div class="article-post">
+                        
+
+<h2 id="file-permissions-chmod">File Permissions - chmod</h2>
+
+<p>Linux has inherited from UNIX the concept of ownerships and permissions for files. This is basically because it was conceived as a networked system where different people would be using a variety of programs, files, etc. Obviously, there&rsquo;s a need to keep things organized and secure.</p>
+
+<h2 id="file-permission-symbols">File permission symbols</h2>
+
+<pre><code class="language-sh">ls -l
+</code></pre>
+
+<p>in your home directory, you will get a list of files that may include something like this</p>
+
+<pre><code class="language-bash">Code:
+-rw-r--r--  1  nix  nix  2793  Jul 01  18:30 notes.txt
+</code></pre>
+
+<p>This basically says, interpreting this from RIGHT to LEFT that the file, notes.txt was created at 6:30 PM on July 1 and is 2793 bytes large. It belongs to the group nix (i.e, the people who use this computer). It belongs to nix in particular and it is one (1) file. Then come the file permission symbols.</p>
+
+<h2 id="let-s-look-at-what-these-symbols-mean">Let&rsquo;s look at what these symbols mean</h2>
+
+<p>The dashes - separate the permissions into three types</p>
+
+<p>The first part refers to the owner&rsquo;s permissions.</p>
+
+<p>The dash - before the rw means that this is a normal file that contains any type of data. A directory, for example, would have a d instead of a dash.</p>
+
+<p>The rw that follows means that bob can read and write to (modify) his own file. That&rsquo;s pretty logical. If you own it, you can do what you want with it.</p>
+
+<p>The second part of the these symbols after the second dash, are the permissions for the group. Linux can establish different types of groups for file access. In a one home computer environment anyone who uses the computer can read this file but cannot write to (modify) it. This is a completely normal situation. You, as a user, may want to take away the rights of others to read your file. We&rsquo;ll cover how to do that later.</p>
+
+<p>After the two dashes (two here because there is no write permissions for the group) come the overall user permissions. Anyone who might have access to the computer from inside or outside (in the case of a network) can read this file. Once again, we can take away the possibility of people reading this file if we so choose.</p>
+
+<p>Let&rsquo;s take a look at some other examples. An interesting place to look at different kinds of file permissions is the /bin directory. Here we have the commands that anybody can use on the Linux system. Let&rsquo;s look at the command for gzip, a file compression utility for Linux.</p>
+
+<pre><code class="language-bash">Code:
+-rwxr-xr-x  1 root    root        53468 May  1  1999 gzip
+</code></pre>
+
+<p>As we see here, there are some differences.</p>
+
+<p>The program name, date, bytes are all standard. Even though this is obviously different information, the idea is the same as before.</p>
+
+<p>The changes are in the owner and group. Root owns the file and it is in the group &ldquo;root&rdquo;. Root is actually the only member of that group.</p>
+
+<p>The file is an executable (program) so that&rsquo;s why the letter x is among the symbols.</p>
+
+<p>This file can be executed by everybody: the owner (root), the group (root) and all others that have access to the computer</p>
+
+<p>As we mentioned, the file is a program, so there is no need for anybody other than root to &ldquo;write&rdquo; to the file, so there is no w permissions for it for anybody but root.</p>
+
+<p>If we look at a file in /sbin which are files that only root can use or execute, the permissions would look like this:</p>
+
+<pre><code class="language-bash">Code:
+-rwxr--r--  1 root    root        1065 Jan 14  1999 cron
+</code></pre>
+
+<p>&lsquo;cron&rsquo; is a program on Linux systems that allows programs to be run automatically at certain times and under certain conditions. As we can see here, only root, the owner of the file, is allowed to use this program. There are no xpermissions for the rest of the users.</p>
+
+<p>We hope you enjoyed this little walk-through of file permissions in Linux. Now that we know what we&rsquo;re looking for, we can talk about changing certain permissions.</p>
+
+<blockquote>
+<p>chmod
+chmod is a Linux command that will let you set permissions (aka, assign who can read/write/execute) on a file.</p>
+</blockquote>
+
+<pre><code class="language-bash">Code:
+chmod permissions file
+</code></pre>
+
+<p>When using chmod, you need to be aware that there are three types of Linux users that you are setting permissions for. Therefore, when setting permissions, you are assigning them for yourself, &ldquo;your group&rdquo; and &ldquo;everyone else&rdquo; in the world. These users are technically know as:</p>
+
+<ul>
+<li><p>Owner</p></li>
+
+<li><p>Group</p></li>
+
+<li><p>World</p></li>
+</ul>
+
+<p>Therefore, when setting permissions on a file, you will want to assign all three levels of permissions, and not just one user.</p>
+
+<p>Think of the chmod command actually having the following syntax&hellip;</p>
+
+<p>chmod owner group world FileName</p>
+
+<p>Now that you understand that you are setting permissions for THREE user levels, you just have to wrap your head around what permissions you are able to set!</p>
+
+<p>There are three types of permissions that Linux allows for each file.</p>
+
+<ul>
+<li><p>read</p></li>
+
+<li><p>write</p></li>
+
+<li><p>execute</p></li>
+</ul>
+
+<p>chmod read &amp; write read read FileName
+Code:
+chmod 644 myDoc.txt
+Wait! What are those numbers?!?</p>
+
+<p>Computers like numbers, not words. Sorry. You will have to deal with it. Take a look at the following output of <code>ls -l</code></p>
+
+<pre><code class="language-bash">Code:
+-rw-r--r-- 1 gcawood iqnection 382 Dec 19 6:49 myDoc.txt
+</code></pre>
+
+<h2 id="number-values">Number Values</h2>
+
+<p>You will need to convert the word read or write or execute into the numeric equivalent (octal) based on the table below.</p>
+
+<ul>
+<li>4 read (r)</li>
+<li>2 write (w)</li>
+
+<li><p>1 execute (x)</p></li>
+
+<li><p>7 = 4+2+1 (read/write/execute)</p></li>
+
+<li><p>6 = 4+2 (read/write)</p></li>
+
+<li><p>5 = 4+1 (read/execute)</p></li>
+
+<li><p>4 = 4 (read)</p></li>
+
+<li><p>3 = 2+1 (write/execute)</p></li>
+
+<li><p>2 = 2 (write)</p></li>
+
+<li><p>1 = 1 (execute)</p></li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th align="left">cmd</th>
+<th align="center">num</th>
+<th align="left">Details</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">chmod</td>
+<td align="center">666</td>
+<td align="left">mydoc.txt read/write by anybody! (the devil loves this one!)</td>
+</tr>
+
+<tr>
+<td align="left">chmod</td>
+<td align="center">755</td>
+<td align="left">mydoc.txt rwx for owner, rx for group and rx for the world</td>
+</tr>
+
+<tr>
+<td align="left">chmod</td>
+<td align="center">777</td>
+<td align="left">mydoc.txt read, write, execute for all! (may not be the best plan in the world&hellip;)</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="explicitly-defining-permissions">Explicitly Defining Permissions</h3>
+
+<p>To explicity define permissions you will need to reference the Permission Group and Permission Types.</p>
+
+<p>The Permission Groups used are:</p>
+
+<p>u – Owner</p>
+
+<p>g – Group</p>
+
+<p>o – Others</p>
+
+<p>a – All users</p>
+
+<p>The potential Assignment Operators are + (plus) and – (minus); these are used to tell the system whether to add or remove the specific permissions.</p>
+
+<p>The Permission Types that are used are:</p>
+
+<p>r – Read</p>
+
+<p>w – Write</p>
+
+<p>x – Execute</p>
+
+<p>So for an example, lets say I have a file named file1 that currently has the permissions set to <strong>rw_rw_rw</strong>, which means that the owner, group and all users have read and write permission. Now we want to remove the read and write permissions from the all users group.</p>
+
+<p>To make this modification you would invoke the command: <strong>chmod a-rw file1</strong>
+To add the permissions above you would invoke the command: <strong>chmod a+rw file1</strong></p>
+
+<p>As you can see, if you want to grant those permissions you would change the minus character to a plus to add those permissions.</p>
+
+<h3 id="using-binary-references-to-set-permissions">Using Binary References to Set permissions</h3>
+
+<p>Now that you understand the permissions groups and types this one should feel natural. To set the permission using binary references you must first understand that the input is done by entering three integers/numbers.</p>
+
+<p>A sample permission string would be chmod 640 file1, which means that the owner has read and write permissions, the group has read permissions, and all other user have no rights to the file.</p>
+
+<p>The first number represents the Owner permission; the second represents the Group permissions; and the last number represents the permissions for all other users. The numbers are a binary representation of the rwx string.</p>
+
+<ul>
+<li>r = 4</li>
+<li>w = 2</li>
+<li>x = 1</li>
+</ul>
+
+<p>You add the numbers to get the integer/number representing the permissions you wish to set. You will need to include the binary permissions for each of the three permission groups.</p>
+
+<p>So to set a file to permissions on file1 to read <strong>_rwxr_____</strong>, you would enter chmod 740 file1.</p>
+
+<h4 id="owners-and-groups">Owners and Groups</h4>
+
+<p>I have made several references to Owners and Groups above, but have not yet told you how to assign or change the Owner and Group assigned to a file or directory.</p>
+
+<p>You use the chown command to change owner and group assignments, the syntax is simplechown owner:group filename, so to change the owner of file1 to user1 and the group to family you would enter chown user1:family file1.</p>
+
+<h4 id="advanced-permissions">Advanced Permissions</h4>
+
+<p>The special permissions flag can be marked with any of the following:</p>
+
+<ul>
+<li>_ – no special permissions</li>
+<li>d – directory</li>
+<li>l– The file or directory is a symbolic link</li>
+<li>s – This indicated the setuid/setgid permissions. This is not set displayed in the special permission part of the permissions display, but is represented as a s in the read portion of the owner or group permissions.</li>
+<li>t – This indicates the sticky bit permissions. This is not set displayed in the special permission part of the permissions display, but is represented as a t in the executable portion of the all users permissions</li>
+</ul>
+
+<p><strong><em>Setuid/Setgid Special Permissions</em></strong></p>
+
+<p>The setuid/setguid permissions are used to tell the system to run an executable as the owner with the owner’s permissions.</p>
+
+<p>Be careful using setuid/setgid bits in permissions. If you incorrectly assign permissions to a file owned by root with the setuid/setgid bit set, then you can open your system to intrusion.</p>
+
+<p>You can only assign the setuid/setgid bit by explicitly defining permissions. The character for the setuid/setguid bit is s.</p>
+
+<p>So do set the setuid/setguid bit on file2.sh you would issue the command <strong>chmod g+s file2.sh.</strong></p>
+
+<p>Sticky Bit Special Permissions</p>
+
+<p>The sticky bit can be very useful in shared environment because when it has been assigned to the permissions on a directory it sets it so only file owner can rename or delete the said file.</p>
+
+<p>You can only assign the sticky bit by explicitly defining permissions. The character for the sticky bit is t.</p>
+
+<p>To set the sticky bit on a directory named dir1 you would issue the command chmod +t dir1.</p>
+
+<p>When Permissions Are Important</p>
+
+<p>To some users of Mac- or Windows-based computers you don’t think about permissions, but those environments don’t focus so aggressively on user based rights on files unless you are in a corporate environment. But now you are running a Linux-based system and permission based security is simplified and can be easily used to restrict access as you please.</p>
+
+<p>So I will show you some documents and folders that you want to focus on and show you how the optimal permissions should be set.</p>
+
+<p>home directories– The users’ home directories are important because you do not want other users to be able to view and modify the files in another user’s documents of desktop. To remedy this you will want the directory to have the drwx______ (700) permissions, so lets say we want to enforce the correct permissions on the user user1’s home directory that can be done by issuing the command chmod 700 /home/user1.
+bootloader configuration files– If you decide to implement password to boot specific operating systems then you will want to remove read and write permissions from the configuration file from all users but root. To do you can change the permissions of the file to 700.
+system and daemon configuration files– It is very important to restrict rights to system and daemon configuration files to restrict users from editing the contents, it may not be advisable to restrict read permissions, but restricting write permissions is a must. In these cases it may be best to modify the rights to 644.</p>
+
+<h2 id="firewall-scripts-it-may-not-always-be-necessary-to-block-all-users-from-reading-the-firewall-file-but-it-is-advisable-to-restrict-the-users-from-writing-to-the-file-in-this-case-the-firewall-script-is-run-by-the-root-user-automatically-on-boot-so-all-other-users-need-no-rights-so-you-can-assign-the-700-permissions">firewall scripts – It may not always be necessary to block all users from reading the firewall file, but it is advisable to restrict the users from writing to the file. In this case the firewall script is run by the root user automatically on boot, so all other users need no rights, so you can assign the 700 permissions.</h2>
+
+                    </div>
+                    
+                    
+                    <div class="after-post-tags">
+                        <ul class="tags">
+                        
+                        <li>
+                        <a href="/class/tags/linux">Linux</a>
+                        </li>
+                        
+                        </ul>
+                    </div>
+                    
+                    
+                    
+                    <div class="row PageNavigation d-flex justify-content-between font-weight-bold">
+                    
+                        <a class="d-block col-md-6" href="/class/blog/linux-3/"> &laquo; Linux | Basic Commands</a>
+                    
+                    
+                        <a class="d-block col-md-6 text-lg-right" href="/class/blog/linux-1/">Linux Intro &raquo;</a>
+                    
+                    <div class="clearfix"></div>
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+<div class="container">
+    <div id="comments" class="row justify-content-center mb-5">
+        <div class="col-md-8">              
+            <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "anir0y" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>               
+        </div>
+    </div>
+</div>
+
+    </div>
+
+
+            </div>
+<div class="jumbotron fortags">
+	<div class="d-md-flex h-100">
+		<div class="col-md-4 transpdark align-self-center text-center h-100">
+			<div class="d-md-flex align-items-center justify-content-center h-100">
+				<h2 class="d-md-block d-none align-self-center py-1 font-weight-light">Explore <span class="d-none d-md-inline">→</span></h2>
+			</div>
+		</div>
+		<div class="col-md-8 p-5 align-self-center text-center">
+			
+			<a class="mt-1 mb-1" href="/class/tags/aws">aws</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/bash">bash</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/books">books</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/bot">bot</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/cheatsheet">cheatsheet</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/class">class</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/linux">linux</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/msf">msf</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/nmap">nmap</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/osint">osint</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/pentesting">pentesting</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/policy">policy</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/powershell">powershell</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/telegram">telegram</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/threat-model">threat-model</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/tmux">tmux</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/windows">windows</a>
+			
+		</div>
+	</div>
+</div>
+
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            
+            <div class="col-md-6 col-sm-6 text-center text-lg-left">
+                &copy; Copyright anir0y
+            </div>
+            
+        </div>
+    </div>
+</footer>
+
+        </div>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+<script src="/class/js/mediumish.js"></script>
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-142104594-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    </body>
+</html>

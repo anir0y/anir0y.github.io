@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en-us"><head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	
+	<title>Cheatsheet Vim | ClassRoom</title>
+	
+	<meta name="description" content="" />
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+	 crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Righteous%7CMerriweather:300,300i,400,400i,700,700i" rel="stylesheet">
+	<link href="/class/css/medium.css" rel="stylesheet">
+	<link href="/class/css/additional.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top mediumnavigation nav-down">
+    <div class="container pr-0">
+        
+        <a class="navbar-brand" href="https://anir0y.github.io/class//">
+
+            
+            <span style="font-family:Righteous;">ClassRoom</span>
+            
+        </a>
+        
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMediumish" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        
+        <div class="collapse navbar-collapse" id="navbarMediumish">
+            
+            <ul class="navbar-nav ml-auto">
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="https://hackerinside.xyz">Lab</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/class/quickbits/">Quick Bits</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/class/kle">KLE </a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/class/static/enroll">Enroll</a>
+                </li>
+                
+            </ul>
+        </div>
+        
+    </div>
+</nav>
+
+
+        <div class="site-content">   
+            <div class="container">
+<div class="mainheading">
+    <h1 class="sitetitle">ClassRoom</h1>
+    <p class="lead">
+         
+    </p>
+</div><div class="main-content">
+        
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-md-2 pl-0"><div class="share sticky-top sticky-top-offset">
+    <p>Share</p>
+    <ul>
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://twitter.com/intent/tweet?text=Cheatsheet%20Vim&url=https%3a%2f%2fanir0y.github.io%2fclass%2fblog%2fcheatsheet-vim%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=435');return false;">
+        <i class="fab fa-twitter"></i>
+        </a>
+        </li>
+        
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://facebook.com/sharer.php?u=https%3a%2f%2fanir0y.github.io%2fclass%2fblog%2fcheatsheet-vim%2f" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+        <i class="fab fa-facebook-f"></i>
+        </a>
+        </li>      
+    </ul>
+
+    
+        <div class="sep">
+        </div>				
+        <ul>
+            <li> 
+            <a  class="small smoothscroll" href="#disqus_thread"></a>
+            </li>
+        </ul>
+    
+</div>
+</div>
+                                
+                <div class="col-md-9 flex-first flex-md-unordered">
+                    <div class="mainheading">
+                        	
+                        
+                        
+                                                
+                        
+                        <h1 class="posttitle">Cheatsheet Vim</h1> 
+                    </div>
+
+                    
+                    
+                        <img class="featured-image img-fluid" src="/class/images/blog/vim-logo.jpg" alt="thumbnail for this post">
+                    
+                    
+                    
+                    
+                    <div class="article-post">
+                        
+
+<blockquote>
+<p>Vim is a CLI text editor. and here we have some usefull commands.</p>
+</blockquote>
+
+<hr />
+
+<h3 id="modes-and-basic-movement">Modes and Basic movement</h3>
+
+<pre><code>vim -  shows info about vim
+default mode is command mode
+j/k/h/l - navigation
+i - insert mode
+esc - go back to command mode
+</code></pre>
+
+<hr />
+
+<h3 id="faster-movement">Faster Movement</h3>
+
+<pre><code>w - jump from word to word
+W - move whole word
+b - go back to word
+B - back to whole word
+A - append at the end of line 
+$ - go to end of line
+^ - go to first non space char of line
+0 - go to very beginning of line
+gg - begining of file
+G - go to end of file
+} - jump to next paragraph
+{ - back to paragraph
+f* - will find the first occurance of * in the line
+F* - find backwords the * char
+t* - till the occurence of *
+T* - backward occurence of *
+8gg - 8th line
+8G - 8th line
+:8 - go to 8th line
+; - repeat the last search
+, - repeat last search on opposite direction
+</code></pre>
+
+<h3 id="basic-editing">Basic Editing</h3>
+
+<pre><code>:e ~/.vimrc
+x - delete current character
+u - undo the previous change
+dw - delete the word
+db - delete the previous word
+5dw - delete 5 words
+cw - change the word
+dd - delete the current line
+cc - change the whole line
+dt&quot; - delete inside quotes
+ct&quot; - change the string inside the &quot;&quot;
+ci&quot; - change inside &quot;/{/[/' and so on
+ca&quot; - change around &quot;
+</code></pre>
+
+<h3 id="cut-copy-and-paste">Cut, Copy and Paste</h3>
+
+<pre><code>dw - delete the word
+p - paste from buffer
+P - paste from buffer starting from one column behind
+dj - delete current and immediate follwing line
+yw - copy the current word
+yy - copy the current line
+y0 - copy everything before the cursor to beginning of the line
+dh - delete  previous character  
+dl - delete current char
+dj - delete current line and next line
+dk - delete current line and above line
+x - delete char under the cursor
+</code></pre>
+
+<h3 id="searching">Searching</h3>
+
+<pre><code>/text - search for text {case sensitive}
+n - go to next search result
+N - back back to previous search result
+?text - search for text backwards
+:set incsearch - set incremental search
+:set ignorecase - case insensitive search
+:set hlsearch - highlight search
+:nohlsearch - disable highligh search
+:noh - a shortcut for :nohlsearch
+d/chalam - delete all the text from the postion of cursor to text
+it works the same with change and yank.
+/.[gain] - finds *gain
+/\n\n - finds all empty lines in the file
+</code></pre>
+
+<h3 id="replace">Replace</h3>
+
+<pre><code>:s/find/replace - substitute a word for another
+:%s/find/replace - repeat the above for entire file
+:%/find/replace/g - substitute globally ( all occurances in the file )
+v - visual mode
+shit + v - visual line mode
+shift + % - finding matched brace
+:%/find/replace/gc - substitute after conformation
+gv - select previous visually
+:s/find/replace/gci - case insensitive replacement
+/[^ ](
+/[^ ]\zs(
+/),
+/)\ze,
+</code></pre>
+
+<h3 id="macros-and-registers">Macros and registers</h3>
+
+<pre><code>:registers
+qa - to record a macro
+@a -execute a macro
+ctrl + g - inforamtion about current file
+</code></pre>
+
+<h3 id="advanced-movements">Advanced Movements</h3>
+
+<pre><code>ctrl + d - move half wat down in the current screen
+crtl + u - move half up in current screenct
+ctrl + f - full screen down
+crtl + b - full screen up
+M - go to middle
+L - last line of window
+H - go to top
+3L - 3rd line from the last
+3H - 3rd from the top
+zt - current line stays on the top of page
+zb - bottom
+zz - middle of the window
+Markers
+m followed by register to mark
+' followed by register to go to mark
+'' - go to visited places
+</code></pre>
+
+<h3 id="invoking-the-command-line-directly-from-vim">Invoking the command line directly from vim</h3>
+
+<pre><code>:! - can use commands
+:read !command - brings command result into the file
+:r  !curl --silent url - brings url to file
+:se ft=javascript
+</code></pre>
+
+<h3 id="buffers">Buffers</h3>
+
+<pre><code>:bn - navigate to the next buffer
+:bp - previous buffer in the list
+:b# - navigate to previous buffer
+:bf - first buffer
+O - inset new line before
+@@ - recent macro again
+:bd - delete current buffer
+:bd12 - delete 12 buffer
+</code></pre>
+
+<h3 id="windows-and-tabs">Windows and tabs</h3>
+
+<pre><code>:e url - edit a file
+:vsplit url - vertical split the screen
+ctrl + w + hjkl - switch between files in a screen
+ctrl + w + +/- to resize the window
+ctrl + w + e - resize all windows equally
+:sb2 - new split window in top
+:vert sb3 - 
+:tabedit url -
+:tabe url - open a new tab
+gt - go to next tab
+gT - go to previous tab
+:gf - go to first tab
+</code></pre>
+
+<h3 id="indents-and-folds">Indents and folds</h3>
+
+<pre><code>&gt;&gt; - indentation of tab
+:set list - 
+:set expandtab
+:set noexpandtab
+:set shiftwidth = 4
+&lt;&lt; - undo indent
+2&gt;&gt; - indent 2 lines
+:set nolist
+'o' - other side of visual selection
+gv - reselect the previous select
+o - go to new after the cursor
+:set smartindent
+= - auto indentation
+=3j - auto indent 3 lines next to current postion
+:set softtabstop = 4
+ctrl + t - indent in insert mod3e
+ctrl + d - undo indent
+zf5j - fold the next five lines
+zo - open fold
+zc - close
+zd - delete
+zi - invert foldings
+:set foldmenthod = s:yntax
+:se fdm = syntax
+zC - close fold from current to top
+zO - to every single folding inside
+:se fmd = marker 
+:set foldmarker = {{{,}}}
+</code></pre>
+
+<h3 id="vimrc-file">Vimrc file</h3>
+
+<pre><code>set nocompatible
+filetype on
+filetype indent on
+filetype plugin on
+set backspace=indent,eol,start
+set smartcase
+set gdefault
+set incsearch
+set showmatch
+set list
+:so %
+set noswapfile
+set visualbell
+set cursorline
+</code></pre>
+
+<h3 id="others">Others</h3>
+
+<pre><code>:newtab - open a new tab
+</code></pre>
+
+<p><a target="_blank" href="https://developereconomics.net?utm_campaign=referrer&utm_source=website&utm_medium=banner&utm_content=1500x750&member_id=f9KZNy4u&lang=en"><img src="https://developer-economics.cdn.prismic.io/developer-economics/de7534bec98de830fffd502913842c3f6395e2e5_twitter_post_506x253.jpg"></a></p>
+
+                    </div>
+                    
+                    
+                    <div class="after-post-tags">
+                        <ul class="tags">
+                        
+                        </ul>
+                    </div>
+                    
+                    
+                    
+                    <div class="row PageNavigation d-flex justify-content-between font-weight-bold">
+                    
+                        <a class="d-block col-md-6" href="/class/blog/cheatsheet-msfpaylods/"> &laquo; Cheatsheet Msfpaylods</a>
+                    
+                    
+                        <a class="d-block col-md-6 text-lg-right" href="/class/blog/tmux-cheatsheet/">Tmux Cheatsheet &raquo;</a>
+                    
+                    <div class="clearfix"></div>
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+<div class="container">
+    <div id="comments" class="row justify-content-center mb-5">
+        <div class="col-md-8">              
+            <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "anir0y" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>               
+        </div>
+    </div>
+</div>
+
+    </div>
+
+
+            </div>
+<div class="jumbotron fortags">
+	<div class="d-md-flex h-100">
+		<div class="col-md-4 transpdark align-self-center text-center h-100">
+			<div class="d-md-flex align-items-center justify-content-center h-100">
+				<h2 class="d-md-block d-none align-self-center py-1 font-weight-light">Explore <span class="d-none d-md-inline">→</span></h2>
+			</div>
+		</div>
+		<div class="col-md-8 p-5 align-self-center text-center">
+			
+			<a class="mt-1 mb-1" href="/class/tags/aws">aws</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/bash">bash</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/books">books</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/bot">bot</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/cheatsheet">cheatsheet</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/class">class</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/linux">linux</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/msf">msf</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/nmap">nmap</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/osint">osint</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/pentesting">pentesting</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/policy">policy</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/powershell">powershell</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/telegram">telegram</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/threat-model">threat-model</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/tmux">tmux</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/windows">windows</a>
+			
+		</div>
+	</div>
+</div>
+
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            
+            <div class="col-md-6 col-sm-6 text-center text-lg-left">
+                &copy; Copyright anir0y
+            </div>
+            
+        </div>
+    </div>
+</footer>
+
+        </div>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+<script src="/class/js/mediumish.js"></script>
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-142104594-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    </body>
+</html>

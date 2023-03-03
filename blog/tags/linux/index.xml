@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Linux on ClassRoom</title>
+    <link>https://anir0y.github.io/class/tags/linux/</link>
+    <description>Recent content in Linux on ClassRoom</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>anir0y</copyright>
+    <lastBuildDate>Sat, 06 Jul 2019 21:13:49 +0530</lastBuildDate>
+    
+	<atom:link href="https://anir0y.github.io/class/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Linux| Linux firewalls</title>
+      <link>https://anir0y.github.io/class/blog/linux-4/</link>
+      <pubDate>Sat, 06 Jul 2019 21:13:49 +0530</pubDate>
+      
+      <guid>https://anir0y.github.io/class/blog/linux-4/</guid>
+      <description>The Firewall A firewall is a set of rules. When a data packet moves into or out of a protected network space, its contents (in particular, information about its origin, target, and the protocol it plans to use) are tested against the firewall rules to see if it should be allowed through.</description>
+    </item>
+    
+    <item>
+      <title>Linux | Basic Commands</title>
+      <link>https://anir0y.github.io/class/blog/linux-3/</link>
+      <pubDate>Thu, 04 Jul 2019 22:04:17 +0530</pubDate>
+      
+      <guid>https://anir0y.github.io/class/blog/linux-3/</guid>
+      <description>Usage Note: Hold option (alt) and click a position in the current line to move your cursor to that position.
+Clear history: ctrl + l</description>
+    </item>
+    
+    <item>
+      <title>Linux | File Permissions</title>
+      <link>https://anir0y.github.io/class/blog/linux-2/</link>
+      <pubDate>Thu, 04 Jul 2019 19:01:36 +0530</pubDate>
+      
+      <guid>https://anir0y.github.io/class/blog/linux-2/</guid>
+      <description>File Permissions - chmod Linux has inherited from UNIX the concept of ownerships and permissions for files. This is basically because it was conceived as a networked system where different people would be using a variety of programs, files, etc.</description>
+    </item>
+    
+    <item>
+      <title>Linux Intro</title>
+      <link>https://anir0y.github.io/class/blog/linux-1/</link>
+      <pubDate>Thu, 04 Jul 2019 18:28:43 +0530</pubDate>
+      
+      <guid>https://anir0y.github.io/class/blog/linux-1/</guid>
+      <description>What is Linux? Linux is a family of open source Unix-like operating systems based on the Linux kernel, an operating system kernel first released on September 17, 1991 by Linus Torvalds.</description>
+    </item>
+    
+  </channel>
+</rss>

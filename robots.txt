@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Sitemap: https://anir0y.in/sitemap.xml
+Host: https://anir0y.in

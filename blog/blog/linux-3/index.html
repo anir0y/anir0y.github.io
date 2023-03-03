@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en-us"><head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	
+	<title>Linux | Basic Commands | ClassRoom</title>
+	
+	<meta name="description" content="" />
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+	 crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Righteous%7CMerriweather:300,300i,400,400i,700,700i" rel="stylesheet">
+	<link href="/class/css/medium.css" rel="stylesheet">
+	<link href="/class/css/additional.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top mediumnavigation nav-down">
+    <div class="container pr-0">
+        
+        <a class="navbar-brand" href="https://anir0y.github.io/class//">
+
+            
+            <span style="font-family:Righteous;">ClassRoom</span>
+            
+        </a>
+        
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMediumish" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        
+        <div class="collapse navbar-collapse" id="navbarMediumish">
+            
+            <ul class="navbar-nav ml-auto">
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="https://hackerinside.xyz">Lab</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/class/quickbits/">Quick Bits</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/class/kle">KLE </a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/class/static/enroll">Enroll</a>
+                </li>
+                
+            </ul>
+        </div>
+        
+    </div>
+</nav>
+
+
+        <div class="site-content">   
+            <div class="container">
+<div class="mainheading">
+    <h1 class="sitetitle">ClassRoom</h1>
+    <p class="lead">
+         
+    </p>
+</div><div class="main-content">
+        
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-md-2 pl-0"><div class="share sticky-top sticky-top-offset">
+    <p>Share</p>
+    <ul>
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://twitter.com/intent/tweet?text=Linux%20%7c%20Basic%20Commands&url=https%3a%2f%2fanir0y.github.io%2fclass%2fblog%2flinux-3%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=435');return false;">
+        <i class="fab fa-twitter"></i>
+        </a>
+        </li>
+        
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://facebook.com/sharer.php?u=https%3a%2f%2fanir0y.github.io%2fclass%2fblog%2flinux-3%2f" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+        <i class="fab fa-facebook-f"></i>
+        </a>
+        </li>      
+    </ul>
+
+    
+        <div class="sep">
+        </div>				
+        <ul>
+            <li> 
+            <a  class="small smoothscroll" href="#disqus_thread"></a>
+            </li>
+        </ul>
+    
+</div>
+</div>
+                                
+                <div class="col-md-9 flex-first flex-md-unordered">
+                    <div class="mainheading">
+                        	
+                        
+                        
+                                                
+                        
+                        <h1 class="posttitle">Linux | Basic Commands</h1> 
+                    </div>
+
+                    
+                    
+                        <img class="featured-image img-fluid" src="/class/images/blog/linux-logo.png" alt="thumbnail for this post">
+                    
+                    
+                    
+                    
+                    <div class="article-post">
+                        
+
+<h2 id="usage">Usage</h2>
+
+<p>Note: Hold option (<code>alt</code>) and click a position in the current line to move your cursor to that position.</p>
+
+<p>Clear history: <code>ctrl + l</code></p>
+
+<p>Clear everything left from current cursor position: <code>ctrl + u</code></p>
+
+<p>Clear everything right from current cursor position: <code>ctrl + k</code></p>
+
+<p>Re-call last input with sudo: <code>sudo !!</code></p>
+
+<p>Stop current process: <code>ctrl + c</code></p>
+
+<p>Jump to left: <code>ctrl + a</code></p>
+
+<p>Jump to right: <code>ctrl + e</code></p>
+
+<p>Help: <code>help cd</code> / <code>help dir</code> (&hellip;)</p>
+
+<p>Finding Help: <code>apropos directory</code> / <code>apropos search</code> (&hellip;)</p>
+
+<p>Define custom startup screen: <code>sudo nano /etc/motd</code></p>
+
+<p>Run a script as background process: <code>python script.py &amp;</code></p>
+
+<p>List all running process&rsquo;s: <code>ps aux</code></p>
+
+<p>Kill a running process: <code>sudo kill 12345</code></p>
+
+<h2 id="system">System</h2>
+
+<p>Get the current path: <code>pwd</code></p>
+
+<p>Copy to clipboard: <code>pwd | pbcopy</code></p>
+
+<p>Paste: <code>pbpaste</code></p>
+
+<p>Get the current hostname: <code>hostname</code></p>
+
+<p>Get the current users: <code>users</code></p>
+
+<p>Get all info about the environment: <code>env</code></p>
+
+<p>Show calendar: <code>cal</code></p>
+
+<p>Show today&rsquo;s date: <code>date</code></p>
+
+<p>Exit terminal: <code>exit</code></p>
+
+<h2 id="permissions">Permissions</h2>
+
+<p>Use <code>-R</code> option to change permissions recursively.</p>
+
+<p>List: <code>ps -ef | grep apache | grep -v grep</code></p>
+
+<p>Change permissions: <code>chmod 755 index.php</code></p>
+
+<p>Change owner: <code>chown root index.php</code> (<code>root</code> is the username)</p>
+
+<p>Change group: <code>chgrp www-data index.php</code> (<code>www-data</code> is the groupname)</p>
+
+<h3 id="web-files-folder-permissions">Web Files/Folder Permissions</h3>
+
+<p>Let apache be owner: <code>chown www-data:www-data -R *</code></p>
+
+<p>Change directory permissions rwxr-xr-x: <code>find . -type d -exec chmod 755 {} \;</code></p>
+
+<p>Change file permissions rw-r&ndash;r&ndash;: <code>find . -type f -exec chmod 644 {} \;</code></p>
+
+<h2 id="directories">Directories</h2>
+
+<p>List directory contents: <code>ls</code></p>
+
+<p>List all directory contents: <code>ll</code></p>
+
+<p>List all directory contents sorted by time edited: <code>ls -alt</code></p>
+
+<p>List directory (wildcard matching): <code>ls *.txt</code></p>
+
+<p>List all files of type: <code>find . -name &quot;*.txt&quot; -print</code></p>
+
+<p>Go back to previous directory: <code>cd -</code></p>
+
+<p>Make (empty) directory: <code>mkdir sample-dirname</code></p>
+
+<p>Remove (empty) directory: <code>rmdir sample-dirname</code></p>
+
+<p>Remove directory with all contents: <code>rm -rf sample-dirname/</code></p>
+
+<p>Remove directory contents and keep directory: <code>rm -rf *</code></p>
+
+<p>Checkout directory: <code>cd sample-dirname</code></p>
+
+<p>Browsing directories: <code>pushd sample-dirname</code> / <code>popd</code> / <code>dirs</code></p>
+
+<p><a href="http://unix.stackexchange.com/a/77081">more</a></p>
+
+<h2 id="symlinks">Symlinks</h2>
+
+<p>Create symlink: <code>ln -s source-dirname destination-dirname</code></p>
+
+<p>Update symlink: <code>ln -sfn source-dirname destination-dirname</code></p>
+
+<p>Remove symlink: <code>unlink sample-dirname</code></p>
+
+<ul>
+<li><code>-s</code>: Create a symbolic link.</li>
+<li><code>-f</code>: If the target file already exists, then unlink it.</li>
+<li><code>-F</code>: If the target file already exists and is a directory, then remove/overwrite it.</li>
+<li><code>-h</code>: If the target file or directory is a symbolic link, do not follow it.</li>
+<li><code>-n</code>: Same as <code>-h</code>, for compatibility with other <code>ln</code> implementations.</li>
+</ul>
+
+<h2 id="files">Files</h2>
+
+<p>Make (empty) file: <code>touch sample-filename.txt</code></p>
+
+<p>Change creation date: <code>touch –t 201401011337 sample-filename.txt</code></p>
+
+<p>Change modified date: <code>touch –mt 201401011337 sample-filename.txt</code></p>
+
+<p>Duplicate file: <code>cp sample-filename.txt sample-filename-copy.txt</code></p>
+
+<p>Copy/Page folder with content: <code>cp -a folder/ new_folder</code></p>
+
+<p>Move/Rename file: <code>mv current-filename.txt new-filename.txt</code></p>
+
+<p>Move/Rename file and prompt before overwriting an existing file: <code>mv -i current-filename.txt new-filename.txt</code></p>
+
+<p>Remove file: <code>rm sample-filename.txt</code></p>
+
+<p>View file: <code>less sample-filename.txt</code> / <code>more sample-filename.txt</code></p>
+
+<p>Write to file (will overwrite existing content): <code>cat &gt; sample-filename.txt</code> (quit with <code>ctrl+d</code>)</p>
+
+<p>Search for a filename (not content!) in the current directory: <code>find sample-filename.txt</code></p>
+
+<p>Search for a string (not filename!) inside all files in the current directory: <code>ack &quot;string&quot; --php</code> (<a href="https://beyondgrep.com/documentation/">documentation</a>)</p>
+
+<p>Search for a string inside all files in the current directory and subdrectories: <code>grep -r &quot;string&quot; *</code></p>
+
+<p>Search and replace within file: <code>sed -i '' 's/original-text/new-text/g' sample-filename.txt</code></p>
+
+<p>MD5 hash for files: <code>md5 sample-filename.txt</code></p>
+
+<p>MD5 hash for folders: <code>tar c folder | md5sum</code></p>
+
+<p>Encrypt file: <code>openssl enc -aes-256-cbc -e -in sample-filename.txt -out sample-encrypted.txt</code></p>
+
+<p>Decrypt file: <code>openssl enc -aes-256-cbc -d -in sample-encrypted.txt -out sample-filename.txt</code></p>
+
+<h2 id="server">Server</h2>
+
+<p>Access via ssh: <code>ssh pi@192.168.0.0</code></p>
+
+<blockquote>
+<p>Copy file from server to local:
+<code>scp pi@192.168.0.0:/path/to/file.png ~/Desktop/</code>
+(use <code>-r</code> to recursively get complete folder)</p>
+
+<p>Copy file from local to server:
+<code>scp ~/Desktop/file.png pi@192.168.0.0:/path/to/folder</code>
+(use <code>-r</code> to recursively get complete folder)</p>
+
+<p>Copy file from local to server:
+<code>rsync --exclude=&quot;.DS_Store&quot; -vzcrSLh ~/Desktop/file.png &gt;pi@192.168.0.0:/path/to/folder</code></p>
+
+<p>Escape files with spaces in name like this:
+<code>/path/to/file\\\ name.png</code></p>
+</blockquote>
+
+<h2 id="system-1">System</h2>
+
+<p>Show disc space: <code>df -h</code></p>
+
+<p>Show disc space (inodes): <code>df -i</code></p>
+
+<p>Show disc space for current directory: <code>du -hs</code></p>
+
+<p>Current processes (also CPS usage): <code>top</code> or <code>htop</code></p>
+
+<p>Show running php processes: <code>ps aux | grep php</code></p>
+
+<p>Monitor error log (stream as file grows): <code>tail error.log -f -n 0</code></p>
+
+<h2 id="apps">Apps</h2>
+
+<p>Start appliction: <code>open -a [name-of-programm]</code> e.g. <code>open -a firefox</code></p>
+
+<p>Open finder with current folder: <code>open .</code></p>
+
+<h2 id="variables">Variables</h2>
+
+<p>Register variable: <code>export TESTING=&quot;Sample Text&quot;</code></p>
+
+<p>Echo variable: <code>echo $TESTING</code></p>
+
+<p>Unset variable: <code>unset TESTING</code></p>
+
+<h2 id="output-redirects">Output &amp; Redirects</h2>
+
+<p>Write to file: <code>echo &quot;Hello&quot; &gt; hello.txt</code></p>
+
+<p>Append content from a file to another file: <code>cat file1.txt &gt;&gt; file2.txt</code></p>
+
+<p>Add the amount of lines, words, and characters to <code>file2.txt</code>: <code>cat file1.txt | wc | cat &gt; file2.txt</code></p>
+
+<p>Sort the content of a file (like <code>cat</code>): <code>sort hello.txt</code></p>
+
+<p>Save to sorted content to a new file: <code>cat file1.txt | sort &gt; sorted-file1.txt</code></p>
+
+<p>Sort and remove duplicates and save to a new file: <code>sort file1.txt | uniq &gt; uniq-file1.txt</code></p>
+
+<h2 id="functions">Functions</h2>
+
+<p>Calculate (returns only <code>int</code>): <code>echo $((123/2))</code></p>
+
+<h2 id="http">HTTP</h2>
+
+<p>Check site feedback: <code>ping google.com</code></p>
+
+<p>Show site IP: <code>dig +short google.com</code></p>
+
+<p>Show A Record: <code>dig a google.com</code> (Returns: <code>google.com.    43  IN  A   123.123.123.123</code> aka <code>public-name ttl internet record-type server-address</code>)</p>
+
+<p>Webservice: <a href="https://www.whatsmydns.net/">https://www.whatsmydns.net/</a></p>
+
+<p>Curl headers: <code>curl -I https://hofmannsven.com</code></p>
+
+<hr />
+
+<blockquote>
+<h3 id="to-be-continued">to be continued&hellip;</h3>
+
+<hr />
+</blockquote>
+
+                    </div>
+                    
+                    
+                    <div class="after-post-tags">
+                        <ul class="tags">
+                        
+                        <li>
+                        <a href="/class/tags/linux">Linux</a>
+                        </li>
+                        
+                        </ul>
+                    </div>
+                    
+                    
+                    
+                    <div class="row PageNavigation d-flex justify-content-between font-weight-bold">
+                    
+                        <a class="d-block col-md-6" href="/class/blog/linux-4/"> &laquo; Linux| Linux firewalls</a>
+                    
+                    
+                        <a class="d-block col-md-6 text-lg-right" href="/class/blog/linux-2/">Linux | File Permissions &raquo;</a>
+                    
+                    <div class="clearfix"></div>
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+<div class="container">
+    <div id="comments" class="row justify-content-center mb-5">
+        <div class="col-md-8">              
+            <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "anir0y" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>               
+        </div>
+    </div>
+</div>
+
+    </div>
+
+
+            </div>
+<div class="jumbotron fortags">
+	<div class="d-md-flex h-100">
+		<div class="col-md-4 transpdark align-self-center text-center h-100">
+			<div class="d-md-flex align-items-center justify-content-center h-100">
+				<h2 class="d-md-block d-none align-self-center py-1 font-weight-light">Explore <span class="d-none d-md-inline">→</span></h2>
+			</div>
+		</div>
+		<div class="col-md-8 p-5 align-self-center text-center">
+			
+			<a class="mt-1 mb-1" href="/class/tags/aws">aws</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/bash">bash</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/books">books</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/bot">bot</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/cheatsheet">cheatsheet</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/class">class</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/linux">linux</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/msf">msf</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/nmap">nmap</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/osint">osint</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/pentesting">pentesting</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/policy">policy</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/powershell">powershell</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/telegram">telegram</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/threat-model">threat-model</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/tmux">tmux</a>
+			
+			<a class="mt-1 mb-1" href="/class/tags/windows">windows</a>
+			
+		</div>
+	</div>
+</div>
+
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            
+            <div class="col-md-6 col-sm-6 text-center text-lg-left">
+                &copy; Copyright anir0y
+            </div>
+            
+        </div>
+    </div>
+</footer>
+
+        </div>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+<script src="/class/js/mediumish.js"></script>
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-142104594-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    </body>
+</html>

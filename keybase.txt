@@ -1,0 +1,56 @@
+==================================================================
+https://keybase.io/aniroy
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://anir0y.in
+  * I am aniroy (https://keybase.io/aniroy) on keybase.
+  * I have a public key ASBGkcEo3DbHmI-wDyoCWkznuJauhZ2NktxEvew4VOL4Rwo
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "01204691c128dc36c7988fb00f2a025a4ce7b896ae859d8d92dc44bdec3854e2f8470a",
+      "host": "keybase.io",
+      "kid": "01204691c128dc36c7988fb00f2a025a4ce7b896ae859d8d92dc44bdec3854e2f8470a",
+      "uid": "cc00fe92e5d8806fe156dff8afb5ba19",
+      "username": "aniroy"
+    },
+    "merkle_root": {
+      "ctime": 1655203366,
+      "hash": "04dcde75a2de7772f0eb67cbb68797c8dc672ed5ce58eac38ff32bb0b8a2d5d9d8c91f540df8b4d55bf892a85b0a7df5a67a5591d3a65395ceb7ede9b3177219",
+      "hash_meta": "99ebfd56b1378b039fdc9317c393d893ca72fce3bab1f25713899f09d3c4a368",
+      "seqno": 22671287
+    },
+    "service": {
+      "entropy": "MgAKrldIcFAKBJ6tG1zTMRU7",
+      "hostname": "anir0y.in",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 2
+  },
+  "client": {
+    "name": "keybase.io go client",
+    "version": "5.9.0"
+  },
+  "ctime": 1655203419,
+  "expire_in": 504576000,
+  "prev": "494baa45e9f57457dd4d8810b5ad173e4b9dfc1570c743bab309d23741141623",
+  "seqno": 13,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEgRpHBKNw2x5iPsA8qAlpM57iWroWdjZLcRL3sOFTi+EcKp3BheWxvYWTESpcCDcQgSUuqRen1dFfdTYgQta0XPkud/BVwx0O6swnSN0EUFiPEIPCQxmPr/eNSAcpXVLhZ8GY8nssWKQhVM6mW3krb78R7AgHCo3NpZ8RAwPf6lXH3vAkjQV/9IzAWVjslkzARtYg2H1jMZkRmn4ANxORbj6r5ka+zLNjJ3gVz8M1bnslgBfDCYtDFkzJdD6hzaWdfdHlwZSCkaGFzaIKkdHlwZQildmFsdWXEIPyI6EP+tT79PzbQAqXclkZTzQ7GFffy4goj+SxW0hs3o3RhZ80CAqd2ZXJzaW9uAQ==
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/aniroy
+
+==================================================================

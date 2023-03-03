@@ -1,0 +1,6 @@
+[{
+        "relation": ["delegate_permission/common.handle_all_urls"],
+        "target" : { "namespace": "android_app", "package_name": "in.anir0y.twa",
+                     "sha256_cert_fingerprints": ["6C:E3:0E:FE:1E:BB:B8:F7:63:65:08:BD:A3:7D:6A:43:6B:D8:3E:0B:05:0F:3C:02:89:B1:37:59:47:96:C2:97"] }
+      }
+]
