@@ -45,6 +45,7 @@ p {
 .social-links a {
     margin: 0 10px;
     color: white;
+    font-size: 33px; /* Enlarge social icons for mobile */
 }
 
 .button-container {
@@ -93,6 +94,7 @@ p {
         max-width: 80%; /* Limit width for better readability on smaller screens */
     }
     .social-links a {
+        font-size: 33px; /* Enlarge social icons for smaller screens */
         margin-right: 5px; /* Adjusted margin for smaller screens */
     }
     .button-container {
