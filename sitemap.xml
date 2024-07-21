@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://anir0y.in/</loc>
+  <lastmod>2024-07-20T08:37:42+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://anir0y.in/redirects.html</loc>
+  <lastmod>2024-07-20T08:37:42+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://anir0y.in/key/</loc>
+  <lastmod>2024-07-19T12:21:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://anir0y.in/snort2-rulgen/</loc>
+  <lastmod>2024-07-19T17:39:23+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+
+
+</urlset>
