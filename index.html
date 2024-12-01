@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,182 +40,15 @@
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-0LMGC1DZ6C"></script>
     <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-0LMGC1DZ6C');
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-0LMGC1DZ6C');
     </script>
 
-    <style>
-        html, body {
-            height: 100%;
-            margin: 0;
-            max-width: 100vw;
-            overflow-x: hidden;
-            display: flex;
-            flex-direction: column;
-        }
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            transition: background-color 0.5s ease, color 0.5s ease;
-        }
-        .container {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            max-width: 100%;
-        }
-        .profile-image {
-            width: 150px;
-            border-radius: 50%;
-        }
-        .social-links a {
-            margin: 0 10px;
-            color: #000;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        .button-container a {
-            display: inline-block;
-            margin: 10px;
-            padding: 10px 20px;
-            background-color: #007BFF;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-        }
-        footer {
-            margin-top: 20px;
-            padding: 15px;
-            background-color: #f1f1f1;
-            width: 100%;
-            text-align: center;
-            transition: background-color 0.5s ease, color 0.5s ease;
-        }
-        .dark-mode {
-            background-color: #121212;
-            color: #ffffff;
-        }
-        .dark-mode .social-links a {
-            color: #ffffff;
-        }
-        .dark-mode footer {
-            background-color: #222;
-            color: #ffffff;
-        }
-        .switch {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            display: flex;
-            align-items: center;
-        }
-        .switch input {
-            display: none;
-        }
-        .slider {
-            width: 50px;
-            height: 25px;
-            background-color: #ccc;
-            border-radius: 25px;
-            position: relative;
-            cursor: pointer;
-            transition: background-color 0.3s, box-shadow 0.3s;
-        }
-        .slider:before {
-            content: "";
-            position: absolute;
-            width: 21px;
-            height: 21px;
-            background-color: #fff;
-            border-radius: 50%;
-            top: 2px;
-            left: 2px;
-            transition: transform 0.3s ease;
-        }
-        input:checked + .slider {
-            background-color: #007BFF;
-        }
-        input:checked + .slider:before {
-            transform: translateX(25px);
-        }
-        /* Fade effect */
-        .fade {
-            animation: fadeEffect 0.5s;
-        }
-        @keyframes fadeEffect {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        .slider .icon-sun,
-        .slider .icon-moon {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 16px;
-            transition: opacity 0.3s;
-        }
-        .slider .icon-sun {
-            left: 5px;
-            opacity: 1;
-        }
-        .slider .icon-moon {
-            right: 5px;
-            opacity: 0;
-        }
-        input:checked + .slider .icon-sun {
-            opacity: 0;
-        }
-        input:checked + .slider .icon-moon {
-            opacity: 1;
-        }
-    </style>
-</head>
-<body>
-    <div class="container fade">
-        <img src="img/ani.svg" alt="Animesh Roy" class="profile-image">
-        <h1>Animesh Roy</h1>
-        <p>Personality of a Cat, Expertise of a Tech Guy</p>
-        <div class="social-links">
-            <a href="https://x.com/anir0y" target="_blank"><i class="fab fa-twitter"></i></a>
-            <a href="https://linkedin.com/in/anir0y" target="_blank"><i class="fab fa-linkedin"></i></a>
-            <a href="https://google.com/search?q=anir0y" target="_blank"><i class="fab fa-google"></i></a>
-            <a href="https://t.me/anir0y" target="_blank"><i class="fab fa-telegram"></i></a>
-            <a href="https://github.com/anir0y" target="_blank"><i class="fab fa-github"></i></a>
-            <a href="https://www.youtube.com/@anir0y" target="_blank"><i class="fab fa-youtube"></i></a>
-        </div>
-        <p>Accidental hacker, professional manager, and mental researcher – all wrapped up in a CAT with a curious, tech-tinkering monkey brain. Embracing the digital jungle one code at a time.</p>
-        <div class="button-container">
-            <a href="https://book.anir0y.in" target="_blank">Connect</a>
-            <a href="https://classroom.anir0y.in" target="_blank">Writings</a>
-            <a href="/redirects.html" target="_blank">Projects</a>
-        </div>
-    </div>
-    <div class="switch">
-        <input type="checkbox" id="theme-switch">
-        <label for="theme-switch" class="slider">
-            <i class="fas fa-sun icon-sun"></i>
-            <i class="fas fa-moon icon-moon"></i>
-        </label>
-    </div>
-    <footer>
-        ❤️© 2024 - anir0y.in
-    </footer>
-    <script>
-        const themeSwitch = document.getElementById('theme-switch');
-        themeSwitch.addEventListener('change', () => {
-            document.body.classList.toggle('dark-mode');
-            document.querySelector('.container').classList.toggle('fade');
-        });
-    </script>
-
-<!---
-𝓪𝓷𝓲𝓻0𝔂
--->
-</body>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>
