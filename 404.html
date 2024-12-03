@@ -4,6 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>404 - Page Not Found</title>
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-DZ9M04CMED"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+    
+          gtag('config', 'G-DZ9M04CMED');
+        </script>
+    
+        <!-- Google reCAPTCHA -->
+        <script src="https://www.google.com/recaptcha/api.js?render=6LcSV48qAAAAAM6snEXZd57ePDOtv05HWAIZathr"></script>
     <style>
         body {
             background-color: #f0f0f0;
@@ -13,26 +25,36 @@
             align-items: center;
             height: 100vh;
             margin: 0;
+            padding: 0 15px; /* Adds padding for smaller screens */
         }
         .container {
             text-align: center;
+            max-width: 500px; /* Ensures content doesn't stretch too wide on larger screens */
+            width: 100%;
         }
         h1 {
             color: #333;
             font-size: 2em;
+            margin-bottom: 20px;
         }
         .cat-image {
-            width: 300px;
-            height: 200px;
-            background-image: url('https://i.imgur.com/uRzs0aV.png'); /* Replace this with an actual URL or path to an image of a confused cat */
+            width: 100%; /* Image width adjusts to container */
+            height: 0;
+            padding-bottom: 66.67%; /* 3:2 aspect ratio for responsive image */
+            background-image: url('https://i.imgur.com/uRzs0aV.png'); /* Replace with actual image URL */
             background-size: cover;
-            margin: 30px auto;
+            background-position: center;
+            margin: 20px 0;
         }
         #code {
             font-family: 'Courier New', monospace;
             font-size: 14px;
             white-space: pre-wrap;
             color: #000;
+            text-align: left;
+            background-color: #e0e0e0;
+            padding: 10px;
+            border-radius: 5px;
         }
         .blink {
             animation: blink-animation 1s steps(5, start) infinite;
@@ -46,6 +68,19 @@
         @-webkit-keyframes blink-animation {
             to {
                 visibility: hidden;
+            }
+        }
+        
+        /* Media queries for responsiveness */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.5em;
+            }
+            .cat-image {
+                padding-bottom: 75%; /* Adjust aspect ratio for smaller screens */
+            }
+            #code {
+                font-size: 12px;
             }
         }
     </style>
