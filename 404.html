@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found</title>
+    <style>
+        body {
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+            font-size: 2em;
+        }
+        .cat-image {
+            width: 300px;
+            height: 200px;
+            background-image: url('https://i.imgur.com/uRzs0aV.png'); /* Replace this with an actual URL or path to an image of a confused cat */
+            background-size: cover;
+            margin: 30px auto;
+        }
+        #code {
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            white-space: pre-wrap;
+            color: #000;
+        }
+        .blink {
+            animation: blink-animation 1s steps(5, start) infinite;
+            -webkit-animation: blink-animation 1s steps(5, start) infinite;
+        }
+        @keyframes blink-animation {
+            to {
+                visibility: hidden;
+            }
+        }
+        @-webkit-keyframes blink-animation {
+            to {
+                visibility: hidden;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>404 - Page Not Found</h1>
+        <div class="cat-image"></div>
+        <p>Oh no! Even the cat is confused by this error.</p>
+        <div id="code" class="blink">
+            {
+              "error": "404",
+              "message": "File not found",
+              "status": "Meow, where's the page?"
+            }
+        </div>
+    </div>
+</body>
+</html>
