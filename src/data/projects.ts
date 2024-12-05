@@ -7,7 +7,7 @@ export const projects: Project[] = [
     technologies: ["docekr", "php", "mysql", "brain"],
     imageUrl: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=800&q=80",
     link: "https://hub.docker.com/r/anir0y/vwa",
-    github: "https://github.com/anir0y/simulator"
+    github: "https://hub.docker.com/r/anir0y/vwa"
   },
   {
     title: "Red Teaming as a IAC",
@@ -15,7 +15,7 @@ export const projects: Project[] = [
     technologies: ["Python", "teraform", "cloud"],
     imageUrl: "https://i.imgur.com/sc7xTbR.png",
     link: "https://github.com/vatsal-mob/IAC-C2",
-    github: "https://github.com/anir0y/simulator"
+    github: "https://github.com/vatsal-mob/IAC-C2"
   },
   
   {
