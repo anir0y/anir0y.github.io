@@ -40,8 +40,7 @@ export const Hero: React.FC = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               href="#contact"
-              className="bg-green-500 text-black px-6 py-3 rounded-md flex items-center justify-center space-x-2"
-            >
+              className="bg-green-500 text-black px-6 py-3 rounded-md flex items-center justify-center space-x-2">
               <Shield size={20} />
               <span>Hire Me</span>
             </motion.a>
@@ -49,11 +48,19 @@ export const Hero: React.FC = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               href="#projects"
-              className="border border-green-500 text-green-500 px-6 py-3 rounded-md flex items-center justify-center space-x-2"
-            >
+              className="border border-green-500 text-green-500 px-6 py-3 rounded-md flex items-center justify-center space-x-2">
               <Terminal size={20} />
               <span>View Projects</span>
             </motion.a>
+            <motion.a
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              href="https://classroom.anir0y.in"
+              className="border border-green-500 text-green-500 px-6 py-3 rounded-md flex items-center justify-center space-x-2">
+              <Terminal size={20} />
+              <span>Blog</span>
+            </motion.a>
+            
           </div>
         </motion.div>
         
