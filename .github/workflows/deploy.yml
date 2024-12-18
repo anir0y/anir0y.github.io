@@ -36,6 +36,10 @@ jobs:
       - name: Copy ads.txt
         run: cp ads.txt dist/ads.txt
 
+      - name: Copy well-known
+        run: cp -r .well-known dist/.well-known
+
+
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
