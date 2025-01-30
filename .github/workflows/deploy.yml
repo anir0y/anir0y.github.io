@@ -36,7 +36,7 @@ jobs:
       - name: Copy ads.txt
         run: cp ads.txt dist/ads.txt
 
-      -name: copy meow.html
+      - name: copy meow.html
         run: cp meow.html dist/meow.html
 
       - name: Copy well-known
