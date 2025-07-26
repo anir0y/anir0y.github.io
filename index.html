@@ -74,7 +74,7 @@
     </script>
     <!-- Use code PKMKB for free consulting call at book.anir0y.in-->
     <script type="text/javascript" data-cmp-ab="1" src="https://cdn.consentmanager.net/delivery/autoblocking/d33cb86fe179d.js" data-cmp-host="c.delivery.consentmanager.net" data-cmp-cdn="cdn.consentmanager.net" data-cmp-codesrc="16"></script>
-  <script type="module" crossorigin src="https://anir0y.in/assets/index-CONK-l9A.js"></script>
+  <script type="module" crossorigin src="https://anir0y.in/assets/index-BN89NWyE.js"></script>
   <link rel="stylesheet" crossorigin href="https://anir0y.in/assets/index-DVTr_CNx.css">
 </head>
 <body>
@@ -83,26 +83,31 @@
     <!-- Your TypeScript Application -->
 
     <!-- Inline reCAPTCHA Integration -->
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        if (window.grecaptcha) {
             grecaptcha.ready(() => {
                 grecaptcha.execute("6LcSV48qAAAAAM6snEXZd57ePDOtv05HWAIZathr", { action: "homepage" })
                     .then((token) => {
                         console.log("reCAPTCHA token:", token);
-                        // Handle the token (log it, or send it to a third-party service)
                         handleRecaptchaToken(token);
+                    })
+                    .catch((err) => {
+                        alert("reCAPTCHA failed to verify. Please refresh or try again.");
+                        console.error("reCAPTCHA error:", err);
                     });
             });
+        } else {
+            alert("reCAPTCHA failed to load. Please check your connection or try later.");
+        }
 
-            function handleRecaptchaToken(token) {
-                console.log("Token received:", token);
-
-                // Optionally: Use the token for additional client-side checks
-                if (!token) {
-                    alert("Failed to verify reCAPTCHA. Please refresh the page.");
-                }
+        function handleRecaptchaToken(token) {
+            console.log("Token received:", token);
+            if (!token) {
+                alert("Failed to verify reCAPTCHA. Please refresh the page.");
             }
-        });
-    </script>
+        }
+    });
+</script>
 </body>
 </html>
