@@ -8,20 +8,20 @@ export const Header: React.FC = () => {
 
   const handleDownload = () => {
     // In a real app, this would be a real PDF URL
-    const pdfUrl = 'https://bit.ly/anir0y-profile';
+    const pdfUrl = 'https://flowcv.com/resume/m0s15rrp9ewf';
     window.open(pdfUrl, '_blank');
   };
 
 
 
   return (
-    <header className="fixed top-0 w-full bg-black/90 backdrop-blur-sm z-50">
+    <header className="fixed top-0 w-full bg-black/90 backdrop-blur-sm z-50 analog-glitch-effect">
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            className="text-2xl font-bold text-green-500"
+            className="text-2xl font-bold text-white"
           >
             <span className="font-mono">&gt;_</span> anir0y
           </motion.div>
@@ -31,21 +31,23 @@ export const Header: React.FC = () => {
             <NavLink href="#skills">Skills</NavLink>
             <NavLink href="#contact">Contact</NavLink>
 
+            {/*
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={handleDownload}
-              className="bg-green-500 text-black px-4 py-2 rounded-md flex items-center space-x-2 hover:bg-green-400 transition-colors">
+              className="bg-purple-700 text-white px-4 py-2 rounded-md flex items-center space-x-2 hover:bg-purple-800 transition-colors">
               <Download size={18} />
-              <span>Download Profile</span>
+              <span>Profile</span>
             </motion.button>
+            */}
           </nav>
           
           <button 
-            className="md:hidden text-white hover:text-green-500 transition-colors"
+            className="md:hidden text-white hover:text-white transition-colors"
             onClick={() => setIsMobileMenuOpen(true)}
           >
-            <Menu size={24} />
+            <Menu size={24} className="text-white" />
           </button>
         </div>
       </div>
@@ -59,15 +61,17 @@ export const Header: React.FC = () => {
 };
 
 const NavLink: React.FC<{ href: string; children: React.ReactNode }> = ({ href, children }) => (
-  <a
+  <motion.a
+    whileHover={{ scale: 1.05 }}
+    whileTap={{ scale: 0.95 }}
     href={href}
     onClick={(e) => {
       e.preventDefault();
       const element = document.querySelector(href);
       element?.scrollIntoView({ behavior: 'smooth' });
     }}
-    className="text-gray-300 hover:text-green-500 transition-colors duration-200"
+    className="text-white hover:text-purple transition-colors duration-200"
   >
     {children}
-  </a>
+  </motion.a>
 );

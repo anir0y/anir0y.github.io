@@ -26,6 +26,62 @@ body {
   @apply bg-green-500 rounded-full;
 }
 
+.glitch-effect {
+  animation: glitch 2.5s infinite;
+}
+
+@keyframes glitch {
+  0% {
+    filter: brightness(1) contrast(1) saturate(1) blur(0px);
+    transform: translate(0, 0);
+  }
+  20% {
+    filter: brightness(1.2) contrast(1.1) saturate(1.1) blur(0.5px);
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    filter: brightness(0.8) contrast(0.9) saturate(0.9) blur(0.2px);
+    transform: translate(2px, -2px);
+  }
+  60% {
+    filter: brightness(1.1) contrast(1.05) saturate(1.05) blur(0.3px);
+    transform: translate(-1px, 1px);
+  }
+  80% {
+    filter: brightness(0.9) contrast(0.95) saturate(0.95) blur(0.1px);
+    transform: translate(1px, -1px);
+  }
+  100% {
+    filter: brightness(1) contrast(1) saturate(1) blur(0px);
+    transform: translate(0, 0);
+  }
+}
+
+.analog-glitch-effect {
+  animation: analog-glitch 5s infinite;
+}
+
+@keyframes analog-glitch {
+  0% {
+    transform: skewX(0deg);
+  }
+  20% {
+    transform: skewX(5deg);
+  }
+  40% {
+    transform: skewX(-5deg);
+  }
+  60% {
+    transform: skewX(2deg);
+  }
+  80% {
+    transform: skewX(-2deg);
+  }
+  100% {
+    transform: skewX(0deg);
+  }
+}
+
 ::-webkit-scrollbar-thumb:hover {
   @apply bg-green-400;
 }

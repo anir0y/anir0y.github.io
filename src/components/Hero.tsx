@@ -16,7 +16,7 @@ export const Hero: React.FC = () => {
           className="relative z-20 w-full"
         >
           <h1 className="text-4xl md:text-6xl font-bold mb-4">
-            <span className="text-green-500">Animesh</span> Roy,
+            <span className="text-purple">Animesh</span> Roy,
             <br />
             
           </h1>
@@ -29,12 +29,19 @@ export const Hero: React.FC = () => {
                   1000,
                   'Red Teamer',
                   1000,
-
+                  'Penetration Tester',
+                  1000,
+                  'Cybersecurity Consultant',
+                  1000,
+                  'RF researcher',
+                  1000,
                 ]}
               repeat={Infinity}
             />
           </div>
-          <p className="text-gray-400 mb-8">
+          root~$ cat /etc/animesh/intro.txt <br />
+          <br />
+          <p className="text-gray-300 mb-8">
             Specializing in cybersecurity, penetration testing, and secure application development.
             Protecting digital assets through innovative solutions and constant vigilance.
           </p>
@@ -43,24 +50,24 @@ export const Hero: React.FC = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               href="#contact"
-              className="bg-green-500 text-black px-6 py-3 rounded-md flex items-center justify-center space-x-2">
-              <Shield size={20} />
+              className="bg-purple text-white px-6 py-3 rounded-md flex items-center justify-center space-x-2">
+              <Shield size={20} className="text-white" />
               <span>Hire Me</span>
             </motion.a>
             <motion.a
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               href="#projects"
-              className="border border-green-500 text-green-500 px-6 py-3 rounded-md flex items-center justify-center space-x-2">
-              <Terminal size={20} />
+              className="border border-purple text-purple px-6 py-3 rounded-md flex items-center justify-center space-x-2">
+              <Terminal size={20} className="text-white" />
               <span>View Projects</span>
             </motion.a>
             <motion.a
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               href="https://classroom.anir0y.in"
-              className="border border-green-500 text-green-500 px-6 py-3 rounded-md flex items-center justify-center space-x-2">
-              <Terminal size={20} />
+              className="border border-purple text-purple px-6 py-3 rounded-md flex items-center justify-center space-x-2">
+              <Terminal size={20} className="text-white" />
               <span>Blog</span>
             </motion.a>
             
@@ -77,9 +84,9 @@ export const Hero: React.FC = () => {
             <img
               src="https://pbs.twimg.com/profile_images/1706703769751506944/L-sDbc-Q_400x400.jpg"
               alt="Profile"
-              className="rounded-full w-full h-full object-cover border-4 border-green-500"
+              className="rounded-full w-full h-full object-cover border-4 border-purple"
             />
-            <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-green-500/20 to-transparent" />
+            <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-purple/20 to-transparent" />
           </div>
         </motion.div>
       </div>

@@ -22,9 +22,9 @@ export const MobileNav: React.FC<MobileNavProps> = ({ isOpen, onClose }) => {
             <div className="flex justify-end p-4">
               <button
                 onClick={onClose}
-                className="text-white hover:text-green-500 transition-colors"
+                className="text-white hover:text-white transition-colors"
               >
-                <X size={24} />
+                <X size={24} className="text-white" />
               </button>
             </div>
             
@@ -33,15 +33,17 @@ export const MobileNav: React.FC<MobileNavProps> = ({ isOpen, onClose }) => {
               <MobileNavLink href="#projects" onClick={onClose}>Projects</MobileNavLink>
               <MobileNavLink href="#skills" onClick={onClose}>Skills</MobileNavLink>
               <MobileNavLink href="#contact" onClick={onClose}>Contact</MobileNavLink>
+              {/*
               <button
                 onClick={() => {
-                  window.open('https://bit.ly/anir0y-profile', '_blank');
+                  window.open('https://flowcv.com/resume/m0s15rrp9ewf', '_blank');
                   onClose();
                 }}
-                className="bg-green-500 text-black px-6 py-3 rounded-md hover:bg-green-400 transition-colors"
+                className="bg-purple text-white px-6 py-3 rounded-md hover:bg-purple-400 transition-colors"
               >
                 View Profile
               </button>
+              */}
             </nav>
           </div>
         </motion.div>
@@ -55,7 +57,9 @@ const MobileNavLink: React.FC<{
   children: React.ReactNode;
   onClick: () => void;
 }> = ({ href, children, onClick }) => (
-  <a
+  <motion.a
+    whileHover={{ scale: 1.05 }}
+    whileTap={{ scale: 0.95 }}
     href={href}
     onClick={(e) => {
       e.preventDefault();
@@ -63,8 +67,8 @@ const MobileNavLink: React.FC<{
       element?.scrollIntoView({ behavior: 'smooth' });
       onClick();
     }}
-    className="text-2xl text-white hover:text-green-500 transition-colors"
+    className="text-2xl text-white hover:text-purple transition-colors"
   >
     {children}
-  </a>
+  </motion.a>
 );
