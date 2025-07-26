@@ -82,26 +82,31 @@
     <script type="module" src="/src/main.tsx"></script>
 
     <!-- Inline reCAPTCHA Integration -->
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        if (window.grecaptcha) {
             grecaptcha.ready(() => {
                 grecaptcha.execute("6LcSV48qAAAAAM6snEXZd57ePDOtv05HWAIZathr", { action: "homepage" })
                     .then((token) => {
                         console.log("reCAPTCHA token:", token);
-                        // Handle the token (log it, or send it to a third-party service)
                         handleRecaptchaToken(token);
+                    })
+                    .catch((err) => {
+                        alert("reCAPTCHA failed to verify. Please refresh or try again.");
+                        console.error("reCAPTCHA error:", err);
                     });
             });
+        } else {
+            alert("reCAPTCHA failed to load. Please check your connection or try later.");
+        }
 
-            function handleRecaptchaToken(token) {
-                console.log("Token received:", token);
-
-                // Optionally: Use the token for additional client-side checks
-                if (!token) {
-                    alert("Failed to verify reCAPTCHA. Please refresh the page.");
-                }
+        function handleRecaptchaToken(token) {
+            console.log("Token received:", token);
+            if (!token) {
+                alert("Failed to verify reCAPTCHA. Please refresh the page.");
             }
-        });
-    </script>
+        }
+    });
+</script>
 </body>
 </html>

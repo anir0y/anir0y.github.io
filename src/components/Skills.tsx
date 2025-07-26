@@ -12,16 +12,19 @@ const iconMap = {
   box: Box,
 };
 
+// Fallback icon for missing mappings
+const DefaultIcon = Shield;
+
 export const Skills: React.FC = () => {
-  const categories = ['security',  'tools'];
-  
+  // Dynamically generate unique categories from skills data
+  const categories = Array.from(new Set(skills.map(skill => skill.category)));
+
   return (
     <section id="skills" className="py-20 bg-gray-800">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold text-white mb-12 text-center">
           Technical <span className="text-green-500">Skills</span>
         </h2>
-        
         <div className="grid gap-8">
           {categories.map((category, categoryIndex) => (
             <motion.div
@@ -33,13 +36,11 @@ export const Skills: React.FC = () => {
               <h3 className="text-xl font-bold text-green-500 mb-4 capitalize">
                 {category}
               </h3>
-              
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 {skills
                   .filter((skill) => skill.category === category)
                   .map((skill, index) => {
-                    const Icon = iconMap[skill.icon as keyof typeof iconMap];
-                    
+                    const Icon = iconMap[skill.icon as keyof typeof iconMap] || DefaultIcon;
                     return (
                       <motion.div
                         key={index}
