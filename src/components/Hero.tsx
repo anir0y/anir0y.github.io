@@ -2,32 +2,31 @@ import React from 'react';
 
 const Hero: React.FC = () => {
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
       {/* Background Effects */}
       <div className="absolute inset-0">
-        {/* Tech Grid Pattern */}
+        {/* Animated Grid */}
         <div className="absolute inset-0 opacity-10">
-          <div className="tech-grid-bg"></div>
+          <div className="grid-pattern"></div>
         </div>
         
-        {/* Circuit Pattern */}
-        <div className="absolute inset-0 opacity-15">
-          <div className="circuit-pattern"></div>
-        </div>
-        
-        {/* Hexagonal Grid */}
-        <div className="absolute inset-0 opacity-8">
-          <div className="hex-grid"></div>
-        </div>
-        
-        {/* Data Stream Lines */}
-        <div className="absolute inset-0 opacity-12">
-          <div className="data-streams"></div>
-        </div>
-        
-        {/* Subtle Pulse Effect */}
+        {/* Glitch Overlay */}
         <div className="absolute inset-0 opacity-5">
-          <div className="pulse-overlay"></div>
+          <div className="glitch-overlay"></div>
+        </div>
+        
+        {/* Scanning Lines */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="scan-lines"></div>
+        </div>
+        
+        {/* Floating Particles */}
+        <div className="absolute inset-0 opacity-20">
+          <div className="particle particle-1"></div>
+          <div className="particle particle-2"></div>
+          <div className="particle particle-3"></div>
+          <div className="particle particle-4"></div>
+          <div className="particle particle-5"></div>
         </div>
       </div>
 
@@ -45,18 +44,12 @@ const Hero: React.FC = () => {
         </p>
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <a 
-            href="#projects" 
-            className="px-8 py-3 bg-cyan-600 hover:bg-cyan-700 text-white font-semibold rounded-lg transition-colors duration-300 text-center"
-          >
+          <button className="px-8 py-3 bg-cyan-600 hover:bg-cyan-700 text-white font-semibold rounded-lg transition-colors duration-300">
             View My Work
-          </a>
-          <a 
-            href="#contact" 
-            className="px-8 py-3 border border-cyan-600 text-cyan-400 hover:bg-cyan-600 hover:text-white font-semibold rounded-lg transition-colors duration-300 text-center"
-          >
+          </button>
+          <button className="px-8 py-3 border border-cyan-600 text-cyan-400 hover:bg-cyan-600 hover:text-white font-semibold rounded-lg transition-colors duration-300">
             Contact Me
-          </a>
+          </button>
         </div>
       </div>
     </section>
