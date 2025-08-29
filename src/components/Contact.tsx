@@ -1,179 +1,471 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Mail, Github, Linkedin, Twitter, MailCheckIcon, BookIcon, BookDashed, Calendar, X, GitBranchIcon } from 'lucide-react';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-export const Contact: React.FC = () => {
-  return (
-    <section id="contact" className="py-20 bg-gray-900 relative overflow-hidden">
-      {/* Digital Grid Background */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="grid-pattern"></div>
-      </div>
-      
-      {/* Glitch Overlay */}
-      <div className="glitch-overlay"></div>
-      
-      <div className="container mx-auto px-4 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-6xl font-bold text-white mb-4 font-mono glitch-text" data-text="GET_IN_TOUCH">
-            <span className="text-cyan-400">GET_IN_</span>
-            <span className="text-purple-400">TOUCH</span>
-          </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-cyan-400 to-purple-400 mx-auto glitch-line"></div>
-        </motion.div>
-        
-        <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
-          {/* Left Column - Info */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            className="space-y-8"
-          >
-            <div className="tech-card">
-              <div className="tech-card-header">
-                <span className="text-cyan-400 font-mono text-sm">// SYSTEM_STATUS</span>
-              </div>
-              <h3 className="text-2xl font-bold text-white mb-4 font-mono">
-                <span className="text-green-400">&gt;</span> READY_FOR_CONNECTION
-              </h3>
-              <p className="text-gray-300 leading-relaxed">
-                Whether you're interested in cybersecurity consulting, need a security audit,
-                or want to discuss potential collaborations, I'm always open to new opportunities.
-                Let's build something secure together.
-              </p>
-            </div>
+/* Import modern tech-inspired fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600&display=swap');
 
-            {/* Social Links Grid */}
-            <div className="grid grid-cols-2 gap-4">
-              <SocialCard 
-                href="https://github.com/anir0y" 
-                icon={Github} 
-                label="GITHUB"
-                description="Code Repository"
-              />
-              <SocialCard 
-                href="https://www.linkedin.com/in/anir0y/" 
-                icon={Linkedin} 
-                label="LINKEDIN"
-                description="Professional Network"
-              />
-              <SocialCard 
-                href="https://x.com/anir0y" 
-                icon={X} 
-                label="X/TWITTER"
-                description="Tech Updates"
-              />
-              <SocialCard 
-                href="https://book.anir0y.in" 
-                icon={Calendar} 
-                label="CALENDAR"
-                description="Schedule Meeting"
-              />
-            </div>
-          </motion.div>
-          
-          {/* Right Column - Contact Form */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="space-y-6"
-          >
-            <div className="tech-card">
-              <div className="tech-card-header">
-                <span className="text-purple-400 font-mono text-sm">// BOOKING_SYSTEM</span>
-              </div>
-              
-              <div className="space-y-6">
-                <div className="booking-option">
-                  <div className="flex items-center space-x-3 mb-3">
-                    <Calendar className="text-cyan-400" size={24} />
-                    <h4 className="text-white font-mono text-lg">DIRECT_BOOKING</h4>
-                  </div>
-                  <p className="text-gray-300 text-sm mb-4">
-                    Schedule a consultation session directly through my calendar system.
-                  </p>
-                  <motion.a
-                    href="https://book.anir0y.in"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="tech-button primary"
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    <span>BOOK_SESSION</span>
-                    <div className="button-glitch"></div>
-                  </motion.a>
-                </div>
+html {
+  scroll-behavior: smooth;
+}
 
-                <div className="divider">
-                  <span className="text-gray-500 font-mono text-xs">OR</span>
-                </div>
+body {
+  @apply bg-white text-gray-900;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+}
 
-                <div className="booking-option">
-                  <div className="flex items-center space-x-3 mb-3">
-                    <BookIcon className="text-purple-400" size={24} />
-                    <h4 className="text-white font-mono text-lg">TOPMATE_PLATFORM</h4>
-                  </div>
-                  <p className="text-gray-300 text-sm mb-4">
-                    Connect through Topmate.io for structured mentoring sessions.
-                  </p>
-                  <motion.a
-                    href="https://topmate.io/anir0y/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="tech-button secondary"
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    <span>CONNECT_VIA_TOPMATE</span>
-                    <div className="button-glitch"></div>
-                  </motion.a>
-                </div>
-              </div>
-            </div>
+/* Custom scrollbar - minimalistic */
+::-webkit-scrollbar {
+  width: 4px;
+}
 
-            {/* Status Indicator */}
-            <div className="status-indicator">
-              <div className="flex items-center space-x-2">
-                <div className="status-dot"></div>
-                <span className="text-green-400 font-mono text-sm">SYSTEM_ONLINE</span>
-              </div>
-              <span className="text-gray-400 font-mono text-xs">Response time: &lt; 24hrs</span>
-            </div>
-          </motion.div>
-        </div>
-      </div>
-    </section>
-  );
-};
+::-webkit-scrollbar-track {
+  @apply bg-gray-50;
+}
 
-const SocialCard: React.FC<{
-  href: string;
-  icon: React.FC<{ size?: number; className?: string }>;
-  label: string;
-  description: string;
-}> = ({ href, icon: Icon, label, description }) => (
-  <motion.a
-    href={href}
-    target="_blank"
-    rel="noopener noreferrer"
-    className="social-card"
-    whileHover={{ scale: 1.05 }}
-    whileTap={{ scale: 0.95 }}
-  >
-    <div className="social-card-content">
-      <Icon size={20} className="text-cyan-400" />
-      <div>
-        <div className="text-white font-mono text-sm">{label}</div>
-        <div className="text-gray-400 text-xs">{description}</div>
-      </div>
-    </div>
-    <div className="social-card-glitch"></div>
-  </motion.a>
-);
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 rounded-full;
+  transition: background-color 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-400;
+}
+
+/* Minimalistic animations */
+@keyframes fadeInUp {
+  from { 
+    opacity: 0; 
+    transform: translateY(20px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+@keyframes slideInLeft {
+  from { 
+    opacity: 0; 
+    transform: translateX(-20px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateX(0); 
+  }
+}
+
+@keyframes subtlePulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+@keyframes gentleFloat {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.animate-slideInLeft {
+  animation: slideInLeft 0.6s ease-out;
+}
+
+.animate-subtlePulse {
+  animation: subtlePulse 3s infinite;
+}
+
+.animate-gentleFloat {
+  animation: gentleFloat 4s ease-in-out infinite;
+}
+
+/* Clean card styles with subtle tech elements */
+.minimal-card {
+  @apply bg-white rounded-xl border border-gray-100 shadow-sm;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.minimal-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #3b82f6, transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.minimal-card:hover {
+  @apply shadow-lg border-gray-200;
+  transform: translateY(-2px);
+}
+
+.minimal-card:hover::before {
+  opacity: 1;
+}
+
+/* Tech-inspired typography */
+.tech-mono {
+  font-family: 'JetBrains Mono', 'SF Mono', 'Monaco', monospace;
+  font-weight: 400;
+}
+
+.tech-heading {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+}
+
+/* Subtle grid background for tech feel */
+.tech-grid {
+  background-image: 
+    linear-gradient(rgba(59, 130, 246, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(59, 130, 246, 0.03) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Status indicators - minimalistic */
+.status-dot {
+  @apply w-2 h-2 rounded-full;
+  position: relative;
+}
+
+.status-dot::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 50%;
+  background: inherit;
+  opacity: 0.3;
+  animation: subtlePulse 2s infinite;
+}
+
+.status-online {
+  @apply bg-emerald-500;
+}
+
+.status-warning {
+  @apply bg-amber-500;
+}
+
+.status-error {
+  @apply bg-red-500;
+}
+
+/* Clean button styles */
+.btn-primary {
+  @apply bg-gray-900 text-white px-6 py-3 rounded-lg font-medium;
+  @apply hover:bg-gray-800 transition-all duration-200;
+  @apply focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.btn-primary:hover::before {
+  left: 100%;
+}
+
+.btn-secondary {
+  @apply bg-white text-gray-900 px-6 py-3 rounded-lg font-medium border border-gray-200;
+  @apply hover:bg-gray-50 hover:border-gray-300 transition-all duration-200;
+  @apply focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2;
+}
+
+/* Header backdrop with subtle tech effect */
+.header-backdrop {
+  @apply bg-white/80 backdrop-blur-md border-b border-gray-100;
+  position: relative;
+}
+
+.header-backdrop::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #3b82f6, transparent);
+  opacity: 0.5;
+}
+
+/* Navigation improvements */
+.nav-link {
+  @apply text-gray-600 hover:text-gray-900 transition-colors duration-200;
+  @apply relative font-medium;
+  position: relative;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #3b82f6;
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Project cards with minimal tech aesthetic */
+.project-card {
+  @apply minimal-card p-6;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+}
+
+.project-image {
+  @apply rounded-lg overflow-hidden;
+  position: relative;
+}
+
+.project-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(147, 51, 234, 0.1));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.project-card:hover .project-image::after {
+  opacity: 1;
+}
+
+/* Skills section improvements */
+.skill-category {
+  @apply minimal-card p-8;
+}
+
+.skill-item {
+  @apply flex items-center space-x-3 p-3 rounded-lg;
+  @apply hover:bg-gray-50 transition-colors duration-200;
+  position: relative;
+}
+
+.skill-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 0;
+  height: 2px;
+  background: #3b82f6;
+  transform: translateY(-50%);
+  transition: width 0.3s ease;
+}
+
+.skill-item:hover::before {
+  width: 4px;
+}
+
+/* Contact section enhancements */
+.contact-card {
+  @apply minimal-card p-8;
+}
+
+.social-link {
+  @apply flex items-center space-x-3 p-4 rounded-lg;
+  @apply hover:bg-gray-50 transition-all duration-200;
+  @apply border border-transparent hover:border-gray-200;
+  position: relative;
+  overflow: hidden;
+}
+
+.social-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.05), transparent);
+  transition: left 0.5s ease;
+}
+
+.social-link:hover::before {
+  left: 100%;
+}
+
+/* Hero section improvements */
+.hero-section {
+  @apply min-h-screen flex items-center justify-center;
+  @apply bg-gradient-to-br from-gray-50 to-white;
+  position: relative;
+}
+
+.hero-content {
+  @apply max-w-4xl mx-auto text-center px-6;
+}
+
+.hero-title {
+  @apply text-5xl md:text-7xl font-bold mb-6 tech-heading;
+  @apply bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent;
+}
+
+.hero-subtitle {
+  @apply text-xl md:text-2xl text-gray-600 mb-8;
+  @apply max-w-2xl mx-auto;
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+  .minimal-card {
+    @apply mx-4;
+  }
+  
+  .hero-title {
+    @apply text-4xl;
+  }
+  
+  .hero-subtitle {
+    @apply text-lg;
+  }
+  
+  .project-card:hover {
+    transform: none;
+  }
+}
+
+/* Focus states for accessibility */
+*:focus {
+  @apply outline-none;
+}
+
+button:focus,
+a:focus,
+input:focus,
+textarea:focus {
+  @apply ring-2 ring-blue-500 ring-offset-2;
+}
+
+/* Subtle shadows for depth */
+.shadow-subtle {
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px 0 rgba(0, 0, 0, 0.03);
+}
+
+.shadow-subtle-lg {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+}
+
+/* Typography scale improvements */
+.text-xs { font-size: 0.75rem; line-height: 1.5; }
+.text-sm { font-size: 0.875rem; line-height: 1.5; }
+.text-base { font-size: 1rem; line-height: 1.6; }
+.text-lg { font-size: 1.125rem; line-height: 1.6; }
+.text-xl { font-size: 1.25rem; line-height: 1.5; }
+.text-2xl { font-size: 1.5rem; line-height: 1.4; }
+.text-3xl { font-size: 1.875rem; line-height: 1.3; }
+.text-4xl { font-size: 2.25rem; line-height: 1.2; }
+.text-5xl { font-size: 3rem; line-height: 1.1; }
+
+/* Spacing system - 8px base */
+.space-y-2 > * + * { margin-top: 0.5rem; }
+.space-y-4 > * + * { margin-top: 1rem; }
+.space-y-6 > * + * { margin-top: 1.5rem; }
+.space-y-8 > * + * { margin-top: 2rem; }
+.space-y-12 > * + * { margin-top: 3rem; }
+.space-y-16 > * + * { margin-top: 4rem; }
+
+/* Performance optimizations */
+.will-change-transform {
+  will-change: transform;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+/* Print styles */
+@media print {
+  * {
+    @apply text-black bg-white;
+  }
+  
+  .no-print {
+    display: none !important;
+  }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .minimal-card {
+    @apply border-2 border-gray-900;
+  }
+  
+  .btn-primary {
+    @apply border-2 border-gray-900;
+  }
+}
+
+/* Loading states */
+.loading-skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Micro-interactions */
+.interactive-element {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.interactive-element:hover {
+  transform: translateY(-1px);
+}
+
+.interactive-element:active {
+  transform: translateY(0);
+}
