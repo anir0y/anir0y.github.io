@@ -14,10 +14,10 @@ const Hero: React.FC = () => {
       {/* Content */}
       <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
         <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white animate-fadeIn">
-          Anir0y
+          Animesh Roy
         </h1>
         <p className="text-xl md:text-2xl mb-8 text-cyan-300 animate-slideIn">
-          Cybersecurity Expert & Ethical Hacker
+          Cybersecurity Guy
         </p>
         <p className="text-lg mb-12 text-gray-300 max-w-2xl mx-auto animate-fadeIn" style={{ animationDelay: '0.3s' }}>
           Protecting digital assets through advanced penetration testing, vulnerability assessment, 
