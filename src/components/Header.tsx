@@ -8,7 +8,6 @@ const Header: React.FC = () => {
         <nav className="flex items-center justify-between">
           <div className="flex items-center space-x-3">
             <Terminal className="text-cyan-400" size={24} />
-            <span className="text-cyan-400">{">_"}</span>
             <span className="text-white font-mono text-xl font-bold hover:text-cyan-400 transition-colors duration-300">anir0y</span>
           </div>
           
