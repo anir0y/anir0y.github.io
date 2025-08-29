@@ -14,7 +14,7 @@ interface StatusFeedProps {
   maxEvents?: number;
 }
 
-export const StatusFeed: React.FC<StatusFeedProps> = ({ maxEvents = 5 }) => {
+export const StatusFeed: React.FC<StatusFeedProps> = ({ maxEvents = 3 }) => {
   const [events, setEvents] = useState<StatusEvent[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);

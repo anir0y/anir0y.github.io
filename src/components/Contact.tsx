@@ -37,7 +37,7 @@ export const Contact: React.FC = () => {
             transition={{ duration: 0.6 }}
             className="lg:col-span-1"
           >
-            <StatusFeed maxEvents={5} />
+            <StatusFeed maxEvents={3} />
           </motion.div>
           
           {/* Middle Column - Info */}
@@ -151,30 +151,7 @@ export const Contact: React.FC = () => {
               </div>
             </div>
 
-  
 
-            {/* Status Monitoring Link */}
-            <div className="tech-card mt-6">
-              <div className="tech-card-header">
-                <span className="text-green-400 font-mono text-sm">// SYSTEM_MONITORING</span>
-              </div>
-              <div className="flex items-center justify-between">
-                <div>
-                  <h4 className="text-white font-mono text-lg mb-1">SERVICE_STATUS</h4>
-                  <p className="text-gray-400 text-sm">Real-time system monitoring</p>
-                </div>
-                <motion.a
-                  href="https://anir0y.cronitorstatus.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-4 py-2 bg-green-600/20 border border-green-500/30 text-green-400 hover:bg-green-600/30 hover:border-green-400 rounded font-mono text-sm transition-all duration-300 hover:scale-105"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  VIEW_STATUS
-                </motion.a>
-              </div>
-            </div>
           </motion.div>
         </div>
       </div>
