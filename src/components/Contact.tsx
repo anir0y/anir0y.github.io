@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Github, Linkedin, Twitter, MailCheckIcon, BookIcon, BookDashed, Calendar, X, GitBranchIcon } from 'lucide-react';
+import { StatusFeed } from './StatusFeed';
 
 export const Contact: React.FC = () => {
   return (
@@ -28,13 +29,23 @@ export const Contact: React.FC = () => {
           <div className="w-24 h-1 bg-gradient-to-r from-cyan-400 to-purple-400 mx-auto"></div>
         </motion.div>
         
-        <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
-          {/* Left Column - Info */}
+        <div className="grid lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+          {/* Status Feed - Left Column */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
-            className="space-y-8"
+            className="lg:col-span-1"
+          >
+            <StatusFeed maxEvents={5} />
+          </motion.div>
+          
+          {/* Middle Column - Info */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            className="space-y-8 lg:col-span-1"
           >
             <div className="tech-card">
               <div className="tech-card-header">
@@ -84,7 +95,7 @@ export const Contact: React.FC = () => {
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="space-y-6"
+            className="space-y-6 lg:col-span-1"
           >
             <div className="tech-card">
               <div className="tech-card-header">
