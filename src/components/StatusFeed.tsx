@@ -171,7 +171,7 @@ export const StatusFeed: React.FC<StatusFeedProps> = ({ maxEvents = 5 }) => {
         
         <div className="flex items-center justify-between mb-4">
           <h3 className="text-white font-mono text-lg">
-            <span className="text-cyan-400">></span> STATUS_FEED
+            <span className="text-cyan-400">{'>'}</span> STATUS_FEED
           </h3>
           <div className="flex items-center space-x-2">
             <div className="status-dot bg-green-400"></div>
