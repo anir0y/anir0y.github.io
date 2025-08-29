@@ -24,7 +24,7 @@ export const Header: React.FC = () => {
             className="text-2xl font-bold text-white font-mono flex items-center space-x-2"
           >
             <Terminal className="text-cyan-400" size={24} />
-            <span className="text-cyan-400">{">_"}</span> 
+            <span className="text-cyan-400">>_</span> 
             <span className="glitch-text" data-text="anir0y">anir0y</span>
           </motion.div>
           
