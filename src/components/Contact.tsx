@@ -24,6 +24,11 @@ export const Contact: React.FC = () => {
             <span className="text-purple-400">TOUCH</span>
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-cyan-400 to-purple-400 mx-auto glitch-line"></div>
+          <h2 className="text-4xl md:text-6xl font-bold text-white mb-4 font-mono">
+            <span className="text-cyan-400">GET_IN_</span>
+            <span className="text-purple-400">TOUCH</span>
+          </h2>
+          <div className="w-24 h-1 bg-gradient-to-r from-cyan-400 to-purple-400 mx-auto"></div>
         </motion.div>
         
         <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
