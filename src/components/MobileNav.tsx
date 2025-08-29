@@ -1,88 +1,74 @@
 import React from 'react';
-import { X, Menu } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { X } from 'lucide-react';
 
 interface MobileNavProps {
   isOpen: boolean;
-  onToggle: () => void;
+  onClose: () => void;
 }
 
-export default function MobileNav({ isOpen, onToggle }: MobileNavProps) {
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      onToggle(); // Close mobile nav after clicking
-    }
-  };
-
+export const MobileNav: React.FC<MobileNavProps> = ({ isOpen, onClose }) => {
   return (
-    <>
-      {/* Mobile menu button */}
-      <button
-        onClick={onToggle}
-        className="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
-        aria-label="Toggle mobile menu"
-      >
-        {isOpen ? (
-          <X className="w-6 h-6 text-gray-700" />
-        ) : (
-          <Menu className="w-6 h-6 text-gray-700" />
-        )}
-      </button>
-
-      {/* Mobile navigation overlay */}
+    <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-50 md:hidden">
-          {/* Backdrop */}
-          <div 
-            className="fixed inset-0 bg-black/20 backdrop-blur-sm"
-            onClick={onToggle}
-          />
+        <motion.div
+          initial={{ opacity: 0, x: '100%' }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: '100%' }}
+          transition={{ type: 'tween', duration: 0.3 }}
+          className="fixed inset-0 bg-gray-900/98 backdrop-blur-md z-50 md:hidden border-l border-cyan-400/20"
+        >
+          {/* Tech Grid Background */}
+          <div className="absolute inset-0 opacity-10">
+            <div className="grid-pattern"></div>
+          </div>
           
-          {/* Navigation panel */}
-          <div className="fixed top-0 right-0 h-full w-80 max-w-[80vw] bg-white shadow-xl">
-            <div className="flex items-center justify-between p-6 border-b border-gray-100">
-              <span className="text-lg font-semibold text-gray-900">Menu</span>
+          <div className="flex flex-col h-full">
+            <div className="flex justify-between items-center p-4 border-b border-cyan-400/20">
+              <div className="font-mono text-cyan-400 text-sm">// NAVIGATION_MENU</div>
               <button
-                onClick={onToggle}
-                className="p-2 rounded-lg hover:bg-gray-100 transition-colors"
-                aria-label="Close menu"
+                onClick={onClose}
+                className="text-cyan-400 hover:text-white transition-colors"
               >
-                <X className="w-5 h-5 text-gray-700" />
+                <X size={24} />
               </button>
             </div>
             
-            <nav className="p-6">
-              <div className="space-y-4">
-                <button
-                  onClick={() => scrollToSection('hero')}
-                  className="block w-full text-left px-4 py-3 text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-colors"
-                >
-                  Home
-                </button>
-                <button
-                  onClick={() => scrollToSection('projects')}
-                  className="block w-full text-left px-4 py-3 text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-colors"
-                >
-                  Projects
-                </button>
-                <button
-                  onClick={() => scrollToSection('skills')}
-                  className="block w-full text-left px-4 py-3 text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-colors"
-                >
-                  Skills
-                </button>
-                <button
-                  onClick={() => scrollToSection('contact')}
-                  className="block w-full text-left px-4 py-3 text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-colors"
-                >
-                  Contact
-                </button>
-              </div>
+            <nav className="flex flex-col items-center space-y-8 mt-16 relative z-10">
+              <MobileNavLink href="https://classroom.anir0y.in" onClick={onClose}>Blog</MobileNavLink>
+              <MobileNavLink href="#projects" onClick={onClose}>Projects</MobileNavLink>
+              <MobileNavLink href="#skills" onClick={onClose}>Skills</MobileNavLink>
+              <MobileNavLink href="#contact" onClick={onClose}>Contact</MobileNavLink>
             </nav>
           </div>
-        </div>
+        </motion.div>
       )}
-    </>
+    </AnimatePresence>
   );
-}
+};
+
+const MobileNavLink: React.FC<{
+  href: string;
+  children: React.ReactNode;
+  onClick: () => void;
+}> = ({ href, children, onClick }) => (
+  <motion.a
+    whileHover={{ scale: 1.05 }}
+    whileTap={{ scale: 0.95 }}
+    href={href}
+    onClick={(e) => {
+      e.preventDefault();
+      if (href.startsWith('http')) {
+        window.open(href, '_blank');
+      } else {
+        const element = document.querySelector(href);
+        element?.scrollIntoView({ behavior: 'smooth' });
+      }
+      onClick();
+    }}
+    className="text-2xl text-gray-300 hover:text-cyan-400 transition-colors font-mono relative group"
+  >
+    <span className="relative z-10">{children.toString().toUpperCase()}</span>
+    <div className="absolute inset-0 bg-cyan-400/10 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left rounded"></div>
+  </motion.a>
+);

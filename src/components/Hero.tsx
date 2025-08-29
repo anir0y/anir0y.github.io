@@ -1,109 +1,118 @@
 import React from 'react';
-import { ArrowRight, Download, MapPin, Calendar, Users, Code } from 'lucide-react';
+import { TypeAnimation } from 'react-type-animation';
+import { motion } from 'framer-motion';
+import { Shield, Terminal } from 'lucide-react';
+import Matrix from './Matrix'; // Import the Matrix component
 
-const Hero: React.FC = () => {
+export const Hero: React.FC = () => {
   return (
-    <section className="hero-section">
-      <div className="hero-content">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Left Column - Main Content */}
-          <div className="space-y-8">
-            <div className="space-y-4">
-              <div className="flex items-center space-x-2 text-sm text-gray-600">
-                <div className="status-dot status-online"></div>
-                <span>Available for new projects</span>
-              </div>
-              
-              <h1 className="hero-title animate-fadeInUp">
-                Full-Stack Developer & UI/UX Designer
-              </h1>
-              
-              <p className="hero-subtitle animate-fadeInUp">
-                I create digital experiences that combine beautiful design with robust functionality. 
-                Specializing in modern web technologies and user-centered design principles.
-              </p>
-            </div>
-
-            {/* Stats */}
-            <div className="grid grid-cols-3 gap-6 animate-slideInLeft">
-              <div className="text-center">
-                <div className="text-2xl font-bold text-gray-900">50+</div>
-                <div className="text-sm text-gray-600">Projects</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl font-bold text-gray-900">3+</div>
-                <div className="text-sm text-gray-600">Years</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl font-bold text-gray-900">25+</div>
-                <div className="text-sm text-gray-600">Clients</div>
-              </div>
-            </div>
-
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 animate-fadeInUp">
-              <button className="btn-primary group">
-                View My Work
-                <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-              </button>
-              <button className="btn-secondary group">
-                <Download className="w-4 h-4 mr-2" />
-                Download CV
-              </button>
-            </div>
+    <section className="min-h-screen relative flex items-center justify-center bg-gray-900 text-white pt-20 overflow-hidden">
+      <Matrix /> {/* Add the Matrix component here */}
+      
+      {/* Tech Grid Background */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="grid-pattern"></div>
+      </div>
+      
+      <div className="container mx-auto px-4 grid md:grid-cols-2 gap-12 items-center relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="relative z-20 w-full tech-card"
+        >
+          <div className="tech-card-header">
+            <span className="text-cyan-400 font-mono text-sm">// SYSTEM_IDENTITY</span>
           </div>
-
-          {/* Right Column - Profile Card */}
-          <div className="flex justify-center lg:justify-end">
-            <div className="minimal-card p-8 max-w-sm w-full animate-gentleFloat">
-              <div className="text-center space-y-6">
-                <div className="w-32 h-32 mx-auto bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
-                  <Code className="w-16 h-16 text-white" />
-                </div>
-                
-                <div className="space-y-2">
-                  <h3 className="text-xl font-semibold text-gray-900">John Doe</h3>
-                  <p className="text-gray-600">Senior Developer</p>
-                </div>
-
-                <div className="space-y-3 text-sm text-gray-600">
-                  <div className="flex items-center justify-center space-x-2">
-                    <MapPin className="w-4 h-4" />
-                    <span>San Francisco, CA</span>
-                  </div>
-                  <div className="flex items-center justify-center space-x-2">
-                    <Calendar className="w-4 h-4" />
-                    <span>Available Now</span>
-                  </div>
-                  <div className="flex items-center justify-center space-x-2">
-                    <Users className="w-4 h-4" />
-                    <span>Remote & On-site</span>
-                  </div>
-                </div>
-
-                <div className="pt-4 border-t border-gray-100">
-                  <div className="flex justify-center space-x-4">
-                    <div className="text-center">
-                      <div className="text-lg font-semibold text-gray-900">4.9</div>
-                      <div className="text-xs text-gray-600">Rating</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-lg font-semibold text-gray-900">98%</div>
-                      <div className="text-xs text-gray-600">Success</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-lg font-semibold text-gray-900">24h</div>
-                      <div className="text-xs text-gray-600">Response</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 font-mono">
+            <span className="text-cyan-400 glitch-text" data-text="Animesh">Animesh</span> 
+            <span className="text-purple-400">Roy</span>
+            <br />
+          </h1>
+          
+          <div className="text-xl md:text-2xl text-gray-300 mb-8 h-20 font-mono">
+            <span className="text-green-400">{">"}</span> 
+            <TypeAnimation
+              sequence={[
+                  'TEACHER',
+                  1000,
+                  'SECURITY_RESEARCHER',
+                  1000,
+                  'RED_TEAMER',
+                  1000,
+                  'PENETRATION_TESTER',
+                  1000,
+                  'CYBERSECURITY_CONSULTANT',
+                  1000,
+                  'RF_RESEARCHER',
+                  1000,
+                ]}
+              repeat={Infinity}
+            />
           </div>
-        </div>
+          
+          <div className="mb-6 font-mono text-sm text-gray-400">
+            <span className="text-green-400">root@anir0y:~$</span> cat /etc/animesh/intro.txt
+          </div>
+          
+          <p className="text-gray-300 mb-8 leading-relaxed">
+            Specializing in cybersecurity, penetration testing, and secure application development.
+            Protecting digital assets through innovative solutions and constant vigilance.
+          </p>
+          
+          <div className="flex flex-col sm:flex-row gap-4">
+            <motion.a
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              href="#contact"
+              className="tech-button primary"
+            >
+              <Shield size={20} />
+              <span>HIRE_ME</span>
+            </motion.a>
+            <motion.a
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              href="#projects"
+              className="tech-button secondary"
+            >
+              <Terminal size={20} />
+              <span>VIEW_PROJECTS</span>
+            </motion.a>
+            <motion.a
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              href="https://classroom.anir0y.in"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="tech-button tertiary"
+            >
+              <Terminal size={20} />
+              <span>ACCESS_BLOG</span>
+            </motion.a>
+          </div>
+        </motion.div>
+        
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="relative hidden md:block w-full floating"
+        >
+          <div className="w-64 h-64 md:w-96 md:h-96 mx-auto relative tech-card p-4 glow-pulse">
+            <div className="tech-card-header">
+              <span className="text-purple-400 font-mono text-sm">// PROFILE_IMAGE</span>
+            </div>
+            <img
+              src="https://pbs.twimg.com/profile_images/1706703769751506944/L-sDbc-Q_400x400.jpg"
+              alt="Profile"
+              className="rounded-lg w-full h-full object-cover border-2 border-cyan-400/30 mt-4"
+            />
+            <div className="absolute inset-4 mt-8 rounded-lg bg-gradient-to-tr from-cyan-400/10 to-purple-400/10 pointer-events-none" />
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
 };
-
-export default Hero;
