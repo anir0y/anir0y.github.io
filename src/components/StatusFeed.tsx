@@ -25,13 +25,41 @@ export const StatusFeed: React.FC<StatusFeedProps> = ({ maxEvents = 5 }) => {
       setLoading(true);
       setError(null);
 
-      // Use a CORS proxy to fetch the RSS feed
-      const proxyUrl = 'https://api.allorigins.win/raw?url=';
-      const rssUrl = 'https://anir0y.cronitorstatus.com/history/rss';
-      const response = await fetch(`${proxyUrl}${encodeURIComponent(rssUrl)}`);
+      // Try multiple CORS proxies as fallbacks
+      const proxies = [
+        'https://api.allorigins.win/raw?url=',
+        'https://cors-anywhere.herokuapp.com/',
+        'https://api.codetabs.com/v1/proxy?quest='
+      ];
       
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+      const rssUrl = 'https://anir0y.cronitorstatus.com/history/rss';
+      
+      let response;
+      let lastError;
+      
+      // Try each proxy until one works
+      for (const proxyUrl of proxies) {
+        try {
+          response = await fetch(`${proxyUrl}${encodeURIComponent(rssUrl)}`, {
+            method: 'GET',
+            headers: {
+              'Accept': 'application/rss+xml, application/xml, text/xml',
+            },
+            timeout: 10000 // 10 second timeout
+          });
+          
+          if (response.ok) {
+            break; // Success, exit the loop
+          }
+        } catch (err) {
+          lastError = err;
+          console.warn(`Proxy ${proxyUrl} failed:`, err);
+          continue; // Try next proxy
+        }
+      }
+      
+      if (!response || !response.ok) {
+        throw lastError || new Error(`All proxy services failed. Status: ${response?.status || 'Network Error'}`);
       }
 
       const xmlText = await response.text();
