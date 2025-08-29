@@ -32,8 +32,8 @@ const Hero: React.FC = () => {
 
       {/* Content */}
       <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-        <h1 className="text-5xl md:text-7xl font-bold mb-6 glitch-text" data-text="John Doe">
-          John Doe
+        <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white">
+          Anir0y
         </h1>
         <p className="text-xl md:text-2xl mb-8 text-cyan-300">
           Cybersecurity Expert & Ethical Hacker
