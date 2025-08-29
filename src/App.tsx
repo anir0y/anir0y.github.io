@@ -19,7 +19,7 @@ function App() {
       <footer className="py-6 text-gray-300 text-center bg-gray-800 border-t border-cyan-400/20">
         <div className="container mx-auto px-4">
           <div className="font-mono text-sm">
-            <span className="text-green-400">></span> System Health Monitoring: 
+            <span className="text-green-400">&gt;</span> System Health Monitoring: 
             <a 
               href="https://anir0y.cronitorstatus.com" 
               target="_blank" 
