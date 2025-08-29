@@ -9,7 +9,7 @@ const Header: React.FC = () => {
           <div className="flex items-center space-x-3">
             <Terminal className="text-cyan-400" size={24} />
             <span className="text-cyan-400">{">_"}</span>
-            <span className="glitch-text text-white font-mono text-xl font-bold">anir0y</span>
+            <span className="text-white font-mono text-xl font-bold hover:text-cyan-400 transition-colors duration-300">anir0y</span>
           </div>
           
           <div className="hidden md:flex items-center space-x-8">

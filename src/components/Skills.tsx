@@ -32,11 +32,11 @@ export const Skills: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 font-mono glitch-text" data-text="TECHNICAL_SKILLS">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 font-mono">
             <span className="text-cyan-400">TECHNICAL_</span>
             <span className="text-purple-400">SKILLS</span>
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-cyan-400 to-purple-400 mx-auto glitch-line"></div>
+          <div className="w-24 h-1 bg-gradient-to-r from-cyan-400 to-purple-400 mx-auto"></div>
           <div className="mt-4 font-mono text-sm text-gray-400">
             <span className="text-green-400">root@anir0y:~$</span> cat /proc/skills
           </div>

@@ -20,11 +20,11 @@ export const Projects: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 font-mono glitch-text" data-text="FEATURED_PROJECTS">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 font-mono">
             <span className="text-cyan-400">FEATURED_</span>
             <span className="text-purple-400">PROJECTS</span>
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-cyan-400 to-purple-400 mx-auto glitch-line"></div>
+          <div className="w-24 h-1 bg-gradient-to-r from-cyan-400 to-purple-400 mx-auto"></div>
           <div className="mt-4 font-mono text-sm text-gray-400">
             <span className="text-green-400">root@anir0y:~$</span> ls -la /projects/
           </div>
