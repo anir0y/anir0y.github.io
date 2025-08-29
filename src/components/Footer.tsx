@@ -147,7 +147,7 @@ export const Footer: React.FC = () => {
                 Security Policy
               </a>
               <a 
-                href="/privacy" 
+                href="/privacy.html" 
                 className="text-gray-400 hover:text-cyan-400 transition-colors font-mono"
               >
                 Privacy
