@@ -160,7 +160,7 @@ export const Contact: React.FC = () => {
                   <p className="text-gray-400 text-sm">Real-time system monitoring</p>
                 </div>
                 <motion.a
-                  href="https://status.anir0y.in"
+                  href="https://anir0y.cronitorstatus.com/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-4 py-2 bg-green-600/20 border border-green-500/30 text-green-400 hover:bg-green-600/30 hover:border-green-400 rounded font-mono text-sm transition-all duration-300 hover:scale-105"
