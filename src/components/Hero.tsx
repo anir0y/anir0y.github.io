@@ -20,8 +20,8 @@ const Hero: React.FC = () => {
           Cybersecurity Guy
         </p>
         <p className="text-lg mb-12 text-gray-300 max-w-2xl mx-auto animate-fadeIn" style={{ animationDelay: '0.3s' }}>
-          Protecting digital assets through advanced penetration testing, vulnerability assessment, 
-          and security consulting. Specialized in network security and threat analysis.
+          I help organizations stay secure by finding vulnerabilities before the bad guys do. 
+          From penetration testing to security consulting, I make cybersecurity accessible and effective for everyone.
         </p>
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fadeIn" style={{ animationDelay: '0.6s' }}>
