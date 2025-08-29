@@ -31,7 +31,7 @@ export const Hero: React.FC = () => {
           </h1>
           
           <div className="text-xl md:text-2xl text-gray-300 mb-8 h-20 font-mono">
-            <span className="text-green-400">></span> 
+            <span className="text-green-400">{">"}</span> 
             <TypeAnimation
               sequence={[
                   'TEACHER',
