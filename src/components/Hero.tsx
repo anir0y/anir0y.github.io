@@ -2,33 +2,14 @@ import React from 'react';
 
 const Hero: React.FC = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
-      {/* Background Effects */}
-      <div className="absolute inset-0">
-        {/* Animated Grid */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="grid-pattern"></div>
-        </div>
-        
-        {/* Glitch Overlay */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="glitch-overlay"></div>
-        </div>
-        
-        {/* Scanning Lines */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="scan-lines"></div>
-        </div>
-        
-        {/* Floating Particles */}
-        <div className="absolute inset-0 opacity-20">
-          <div className="particle particle-1"></div>
-          <div className="particle particle-2"></div>
-          <div className="particle particle-3"></div>
-          <div className="particle particle-4"></div>
-          <div className="particle particle-5"></div>
-        </div>
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gray-900">
+      {/* Digital Grid Background */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="grid-pattern"></div>
       </div>
+      
+      {/* Glitch Overlay */}
+      <div className="glitch-overlay"></div>
 
       {/* Content */}
       <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
