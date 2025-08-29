@@ -5,7 +5,6 @@ import { Projects } from './components/Projects';
 import { Skills } from './components/Skills';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
-import { SystemStatusDashboard } from './components/SystemStatusDashboard';
 import Matrix from './components/Matrix';
 
 function App() {
@@ -22,7 +21,6 @@ function App() {
         <main>
           <Hero />
           <Projects />
-          <SystemStatusDashboard />
           <Skills />
           <Contact />
           <Footer />
