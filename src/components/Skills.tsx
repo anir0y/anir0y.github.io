@@ -57,7 +57,7 @@ export const Skills: React.FC = () => {
                 </span>
               </div>
               <h3 className="text-2xl font-bold text-white mb-6 capitalize font-mono">
-                <span className="text-cyan-400">></span> {category.toUpperCase()}
+                <span className="text-cyan-400">{">"}</span> {category.toUpperCase()}
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                 {skills
