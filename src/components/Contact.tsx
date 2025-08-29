@@ -151,14 +151,7 @@ export const Contact: React.FC = () => {
               </div>
             </div>
 
-            {/* Status Indicator */}
-            <div className="status-indicator">
-              <div className="flex items-center space-x-2">
-                <div className="status-dot"></div>
-                <span className="text-green-400 font-mono text-sm">SYSTEM_ONLINE</span>
-              </div>
-              <span className="text-gray-400 font-mono text-xs">Response time: &lt; 24hrs</span>
-            </div>
+  
 
             {/* Status Monitoring Link */}
             <div className="tech-card mt-6">
