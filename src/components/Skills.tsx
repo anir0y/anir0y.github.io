@@ -20,11 +20,28 @@ export const Skills: React.FC = () => {
   const categories = Array.from(new Set(skills.map(skill => skill.category)));
 
   return (
-    <section id="skills" className="py-20 bg-gray-800">
+    <section id="skills" className="py-20 bg-gray-900 relative overflow-hidden">
+      {/* Tech Grid Background */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="grid-pattern"></div>
+      </div>
+      
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-white mb-12 text-center">
-          Technical <span className="text-white">Skills</span>
-        </h2>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 font-mono glitch-text" data-text="TECHNICAL_SKILLS">
+            <span className="text-cyan-400">TECHNICAL_</span>
+            <span className="text-purple-400">SKILLS</span>
+          </h2>
+          <div className="w-24 h-1 bg-gradient-to-r from-cyan-400 to-purple-400 mx-auto glitch-line"></div>
+          <div className="mt-4 font-mono text-sm text-gray-400">
+            <span className="text-green-400">root@anir0y:~$</span> cat /proc/skills
+          </div>
+        </motion.div>
+        
         <div className="grid gap-8">
           {categories.map((category, categoryIndex) => (
             <motion.div
@@ -32,11 +49,17 @@ export const Skills: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: categoryIndex * 0.1 }}
+              className="tech-card"
             >
-              <h3 className="text-xl font-bold text-white mb-4 capitalize">
-                {category}
+              <div className="tech-card-header">
+                <span className="text-purple-400 font-mono text-sm">
+                  // {category.toUpperCase()}_MODULES
+                </span>
+              </div>
+              <h3 className="text-2xl font-bold text-white mb-6 capitalize font-mono">
+                <span className="text-cyan-400">></span> {category.toUpperCase()}
               </h3>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                 {skills
                   .filter((skill) => skill.category === category)
                   .map((skill, index) => {
@@ -45,10 +68,11 @@ export const Skills: React.FC = () => {
                       <motion.div
                         key={index}
                         whileHover={{ scale: 1.05 }}
-                        className="bg-gray-900 p-4 rounded-lg flex items-center space-x-3"
+                        className="bg-gray-800/50 p-4 rounded border border-cyan-400/20 flex items-center space-x-3 hover:border-cyan-400/50 transition-colors group"
                       >
-                        <Icon className="text-white" size={24} />
-                        <span className="text-white">{skill.name}</span>
+                        <Icon className="text-cyan-400 group-hover:text-white transition-colors" size={20} />
+                        <span className="text-gray-300 group-hover:text-white font-mono text-sm transition-colors">{skill.name}</span>
+                        <div className="ml-auto w-2 h-2 bg-green-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
                       </motion.div>
                     );
                   })}

@@ -23,7 +23,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-green-500 rounded-full;
+  @apply bg-cyan-400 rounded-full;
 }
 
 .glitch-effect {
@@ -83,8 +83,77 @@ body {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-green-400;
+  @apply bg-cyan-300;
 }
+
+/* Enhanced Tech Button Styles */
+.tech-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 24px;
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  border: 2px solid;
+  background: transparent;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 14px;
+}
+
+.tech-button.primary {
+  color: #00ffff;
+  border-color: #00ffff;
+}
+
+.tech-button.primary:hover {
+  color: #000;
+  background: #00ffff;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+}
+
+.tech-button.secondary {
+  color: #ff00ff;
+  border-color: #ff00ff;
+}
+
+.tech-button.secondary:hover {
+  color: #000;
+  background: #ff00ff;
+  box-shadow: 0 0 20px rgba(255, 0, 255, 0.5);
+}
+
+.tech-button.tertiary {
+  color: #9333ea;
+  border-color: #9333ea;
+}
+
+.tech-button.tertiary:hover {
+  color: #fff;
+  background: #9333ea;
+  box-shadow: 0 0 20px rgba(147, 51, 234, 0.5);
+}
+
+.button-glitch {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.tech-button:hover .button-glitch {
+  left: 100%;
+}
+
 /* Tech Contact Section Styles */
 .grid-pattern {
   background-image: 

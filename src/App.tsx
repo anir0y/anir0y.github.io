@@ -16,9 +16,19 @@ function App() {
         <Skills />
         <Contact />
       </main>
-      <footer className="py-4 text-gray-300 text-center">
-        <div>
-          System Health Monitoring: <a href="https://anir0y.cronitorstatus.com" target="_blank" rel="noopener noreferrer" className="text-purple hover:underline">anir0y.cronitorstatus.com</a>
+      <footer className="py-6 text-gray-300 text-center bg-gray-800 border-t border-cyan-400/20">
+        <div className="container mx-auto px-4">
+          <div className="font-mono text-sm">
+            <span className="text-green-400">></span> System Health Monitoring: 
+            <a 
+              href="https://anir0y.cronitorstatus.com" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-cyan-400 hover:text-white transition-colors ml-2"
+            >
+              anir0y.cronitorstatus.com
+            </a>
+          </div>
         </div>
       </footer>
     </div>
