@@ -19,7 +19,7 @@ export const Contact: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-6xl font-bold text-white mb-4 font-mono glitch-text" data-text="GET_IN_TOUCH">
+          
             <span className="text-cyan-400">GET_IN_</span>
             <span className="text-purple-400">TOUCH</span>
           </h2>
