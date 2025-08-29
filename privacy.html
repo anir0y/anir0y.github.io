@@ -101,6 +101,181 @@
             font-style: italic;
             margin-bottom: 20px;
         }
+        
+        .agreement-section {
+            background-color: #f8f9fa;
+            border: 2px solid #e74c3c;
+            border-radius: 10px;
+            padding: 30px;
+            margin-top: 30px;
+            text-align: center;
+        }
+        
+        .agreement-box {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .checkbox-container {
+            margin: 20px 0;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .agreement-checkbox {
+            width: 20px;
+            height: 20px;
+            margin-top: 2px;
+            cursor: pointer;
+        }
+        
+        .checkbox-label {
+            font-size: 16px;
+            line-height: 1.4;
+            color: #2c3e50;
+            cursor: pointer;
+            max-width: 500px;
+            text-align: left;
+        }
+        
+        .submit-button {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            opacity: 0.5;
+            transform: scale(0.95);
+        }
+        
+        .submit-button:disabled {
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+        
+        .submit-button.enabled {
+            opacity: 1;
+            transform: scale(1);
+            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+        }
+        
+        .submit-button.enabled:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(231, 76, 60, 0.4);
+        }
+        
+        .cat-section {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border: 3px solid #6c757d;
+            border-radius: 15px;
+            padding: 40px;
+            margin-top: 30px;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        
+        .cat-section.fade-in {
+            opacity: 1;
+        }
+        
+        .cat-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .cat-image-container {
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .disappointed-cat {
+            max-width: 300px;
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            animation: disappointment-shake 2s ease-in-out;
+        }
+        
+        @keyframes disappointment-shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+            20%, 40%, 60%, 80% { transform: translateX(5px); }
+        }
+        
+        .cat-message {
+            margin: 20px 0;
+            color: #495057;
+        }
+        
+        .cat-message p {
+            margin-bottom: 10px;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+        
+        .privacy-tip {
+            background-color: #d1ecf1;
+            border: 1px solid #bee5eb;
+            border-radius: 5px;
+            padding: 15px;
+            margin-top: 20px;
+            font-style: italic;
+        }
+        
+        .reset-button {
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+        
+        .reset-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+        }
+        
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .agreement-section, .cat-section {
+                padding: 20px;
+                margin: 20px 10px;
+            }
+            
+            .checkbox-container {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            
+            .checkbox-label {
+                text-align: center;
+                max-width: 100%;
+            }
+            
+            .submit-button {
+                padding: 12px 20px;
+                font-size: 16px;
+            }
+            
+            .disappointed-cat {
+                max-width: 250px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -235,6 +410,93 @@
             <br><br>
             <em>Digital Privacy Tip: Always review what data you're sharing online.</em>
         </div>
+
+        <!-- Agreement Section -->
+        <div id="agreement-section" class="agreement-section">
+            <div class="agreement-box">
+                <h3 style="color: #e74c3c; margin-bottom: 15px;">📋 User Agreement</h3>
+                <div class="checkbox-container">
+                    <input type="checkbox" id="agree-checkbox" class="agreement-checkbox">
+                    <label for="agree-checkbox" class="checkbox-label">
+                        I have read and agree to sell my soul to anir0y - Evil Guy Inc. and understand that my privacy is now a distant memory.
+                    </label>
+                </div>
+                <button id="submit-agreement" class="submit-button" disabled>
+                    🔥 SUBMIT MY SOUL 🔥
+                </button>
+            </div>
+        </div>
+
+        <!-- Disappointed Cat Section (Hidden Initially) -->
+        <div id="cat-disappointment" class="cat-section" style="display: none;">
+            <div class="cat-container">
+                <h2 style="color: #e74c3c; text-align: center; margin-bottom: 20px;">
+                    😿 Really? You Actually Clicked That?
+                </h2>
+                <div class="cat-image-container">
+                    <img src="https://i.imgur.com/uRzs0aV.png" alt="Disappointed Cat" class="disappointed-cat">
+                </div>
+                <div class="cat-message">
+                    <p><strong>This cat is very disappointed in your privacy choices.</strong></p>
+                    <p>In the real world, please think twice before agreeing to privacy policies without reading them!</p>
+                    <p class="privacy-tip">💡 <em>Always read the fine print and consider what data you're actually sharing.</em></p>
+                </div>
+                <button id="reset-button" class="reset-button">
+                    🔄 I've Learned My Lesson
+                </button>
+            </div>
+        </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const checkbox = document.getElementById('agree-checkbox');
+            const submitButton = document.getElementById('submit-agreement');
+            const agreementSection = document.getElementById('agreement-section');
+            const catSection = document.getElementById('cat-disappointment');
+            const resetButton = document.getElementById('reset-button');
+
+            // Enable submit button when checkbox is checked
+            checkbox.addEventListener('change', function() {
+                submitButton.disabled = !this.checked;
+                if (this.checked) {
+                    submitButton.classList.add('enabled');
+                } else {
+                    submitButton.classList.remove('enabled');
+                }
+            });
+
+            // Handle submit button click
+            submitButton.addEventListener('click', function() {
+                if (checkbox.checked) {
+                    // Hide agreement section
+                    agreementSection.style.display = 'none';
+                    
+                    // Show disappointed cat with animation
+                    catSection.style.display = 'block';
+                    catSection.scrollIntoView({ behavior: 'smooth' });
+                    
+                    // Add some dramatic effect
+                    setTimeout(() => {
+                        catSection.classList.add('fade-in');
+                    }, 100);
+                }
+            });
+
+            // Handle reset button
+            resetButton.addEventListener('click', function() {
+                // Reset everything
+                checkbox.checked = false;
+                submitButton.disabled = true;
+                submitButton.classList.remove('enabled');
+                catSection.style.display = 'none';
+                catSection.classList.remove('fade-in');
+                agreementSection.style.display = 'block';
+                
+                // Scroll back to agreement section
+                agreementSection.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
 </body>
 </html>
