@@ -97,9 +97,9 @@ export const Hero: React.FC = () => {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="relative hidden md:block w-full"
+          className="relative hidden md:block w-full floating"
         >
-          <div className="w-64 h-64 md:w-96 md:h-96 mx-auto relative tech-card p-4">
+          <div className="w-64 h-64 md:w-96 md:h-96 mx-auto relative tech-card p-4 glow-pulse">
             <div className="tech-card-header">
               <span className="text-purple-400 font-mono text-sm">// PROFILE_IMAGE</span>
             </div>

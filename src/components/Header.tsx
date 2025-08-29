@@ -15,7 +15,7 @@ export const Header: React.FC = () => {
 
 
   return (
-    <header className="fixed top-0 w-full bg-gray-900/95 backdrop-blur-md z-50 border-b border-cyan-400/20">
+    <header className="fixed top-0 w-full header-backdrop z-50 relative">
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           <motion.div
@@ -72,9 +72,8 @@ const NavLink: React.FC<{ href: string; children: React.ReactNode }> = ({ href, 
       const element = document.querySelector(href);
       element?.scrollIntoView({ behavior: 'smooth' });
     }}
-    className="text-gray-300 hover:text-cyan-400 transition-colors duration-200 font-mono relative group"
+    className="nav-link text-gray-300 hover:text-cyan-400 transition-colors duration-200 font-mono relative group"
   >
     <span className="relative z-10">{children}</span>
-    <div className="absolute inset-0 bg-cyan-400/10 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left rounded"></div>
   </motion.a>
 );

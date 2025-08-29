@@ -68,7 +68,7 @@ export const Skills: React.FC = () => {
                       <motion.div
                         key={index}
                         whileHover={{ scale: 1.05 }}
-                        className="bg-gray-800/50 p-4 rounded border border-cyan-400/20 flex items-center space-x-3 hover:border-cyan-400/50 transition-colors group"
+                        className="skill-item flex items-center space-x-3 group"
                       >
                         <Icon className="text-cyan-400 group-hover:text-white transition-colors" size={20} />
                         <span className="text-gray-300 group-hover:text-white font-mono text-sm transition-colors">{skill.name}</span>
