@@ -37,7 +37,9 @@ export const Contact: React.FC = () => {
             transition={{ duration: 0.6 }}
             className="lg:col-span-1"
           >
-            <StatusFeed maxEvents={3} />
+            <div className="space-y-6">
+              <StatusFeed maxEvents={3} />
+            </div>
           </motion.div>
           
           {/* Middle Column - Info */}
