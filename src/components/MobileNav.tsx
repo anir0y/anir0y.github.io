@@ -37,6 +37,7 @@ export const MobileNav: React.FC<MobileNavProps> = ({ isOpen, onClose }) => {
             <nav className="flex flex-col items-center space-y-8 mt-16 relative z-10">
               <MobileNavLink href="https://classroom.anir0y.in" onClick={onClose}>Blog</MobileNavLink>
               <MobileNavLink href="#projects" onClick={onClose}>Projects</MobileNavLink>
+              <MobileNavLink href="#labs" onClick={onClose}>Labs</MobileNavLink>
               <MobileNavLink href="#skills" onClick={onClose}>Skills</MobileNavLink>
               <MobileNavLink href="#contact" onClick={onClose}>Contact</MobileNavLink>
             </nav>

@@ -68,6 +68,7 @@ export const Footer: React.FC = () => {
             <nav className="space-y-3">
               <FooterLink href="#home" icon={Terminal}>Home</FooterLink>
               <FooterLink href="#projects" icon={Shield}>Projects</FooterLink>
+              <FooterLink href="#labs" icon={BookDashed}>Labs</FooterLink>
               <FooterLink href="#skills" icon={BookOpen}>Skills</FooterLink>
               <FooterLink href="#contact" icon={Mail}>Contact</FooterLink>
               <FooterLink href="https://classroom.anir0y.in" icon={ExternalLink} external>Blog</FooterLink>
