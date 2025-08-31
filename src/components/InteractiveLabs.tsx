@@ -127,7 +127,7 @@ export const InteractiveLabs: React.FC = () => {
               <span className="text-green-400 font-mono text-sm">// LEARNING_OBJECTIVES</span>
             </div>
             <h3 className="text-xl font-bold text-white mb-4 font-mono">
-              <span className="text-cyan-400">></span> HANDS_ON_EXPERIENCE
+              <span className="text-cyan-400">&gt;</span> HANDS_ON_EXPERIENCE
             </h3>
             <p className="text-gray-300 text-sm leading-relaxed">
               Each lab is designed to provide practical, real-world experience with cybersecurity concepts. 
