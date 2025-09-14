@@ -89,7 +89,7 @@ export const Footer: React.FC = () => {
             <nav className="space-y-3">
               <FooterLink href="https://book.anir0y.in" icon={Calendar} external>Book Consultation</FooterLink>
               <FooterLink href="https://topmate.io/anir0y/" icon={BookOpen} external>Mentoring</FooterLink>
-              <FooterLink href="https://anir0y.cronitorstatus.com/" icon={Shield} external>System Status</FooterLink>
+              <FooterLink href="https://status.anir0y.in/" icon={Shield} external>System Status</FooterLink>
             </nav>
           </motion.div>
 
