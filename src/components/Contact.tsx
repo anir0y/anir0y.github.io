@@ -2,7 +2,6 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Github, Linkedin, Twitter, Calendar, X, Shield, CheckCircle, AlertCircle } from 'lucide-react';
 import { StatusFeed } from './StatusFeed';
-import { CaptchaValidator } from './CaptchaValidator';
 
 export const Contact: React.FC = () => {
   return (
@@ -38,9 +37,6 @@ export const Contact: React.FC = () => {
             className="space-y-6"
           >
             <StatusFeed maxEvents={3} />
-            
-            {/* Enhanced CAPTCHA Diagnostics */}
-            <CaptchaValidator />
           </motion.div>
           
           {/* Right Column - Contact Options */}
