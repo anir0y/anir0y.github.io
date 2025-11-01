@@ -1,0 +1,17 @@
+# Google Cloud Configuration
+GOOGLE_CLOUD_PROJECT_ID=anir0y
+RECAPTCHA_SITE_KEY=6LcSV48qAAAAAM6snEXZd57ePDOtv05HWAIZathr
+
+# Server Configuration
+PORT=3000
+NODE_ENV=production
+
+# CORS Configuration (optional)
+ALLOWED_ORIGINS=https://anir0y.in,https://localhost:5173
+
+# Google Cloud Authentication
+# Option 1: Service Account Key File
+GOOGLE_APPLICATION_CREDENTIALS=/path/to/service-account-key.json
+
+# Option 2: Service Account Key JSON (for cloud deployment)
+# GOOGLE_APPLICATION_CREDENTIALS_JSON={"type":"service_account",...}

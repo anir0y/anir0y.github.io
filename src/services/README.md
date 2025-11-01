@@ -1,6 +1,6 @@
-# reCAPTCHA Enterprise Integration
+# reCAPTCHA Enterprise Integration with Node.js Backend
 
-This directory contains the reCAPTCHA Enterprise integration for secure form validation.
+This directory contains the reCAPTCHA Enterprise integration that works with your Node.js backend for secure form validation.
 
 ## Setup Instructions
 
@@ -15,10 +15,11 @@ This directory contains the reCAPTCHA Enterprise integration for secure form val
    - Search for "reCAPTCHA Enterprise API"
    - Click "Enable"
 
-3. **Create API Key**:
-   - Go to APIs & Services > Credentials
-   - Click "Create Credentials" > "API Key"
-   - Copy the API key for later use
+3. **Create Service Account**:
+   - Go to IAM & Admin > Service Accounts
+   - Create a new service account
+   - Download the JSON key file
+   - Grant "reCAPTCHA Enterprise Agent" role
 
 4. **Create reCAPTCHA Site Key**:
    - Go to reCAPTCHA Enterprise in the console
@@ -27,62 +28,53 @@ This directory contains the reCAPTCHA Enterprise integration for secure form val
    - Add your domain(s)
    - Copy the site key
 
-### 2. Environment Configuration
+### 2. Backend Setup
 
-Create a `.env` file in your project root:
+1. **Install Dependencies**:
+   ```bash
+   npm install @google-cloud/recaptcha-enterprise express cors dotenv
+   ```
+
+2. **Environment Configuration** (Backend `.env`):
+   ```env
+   GOOGLE_CLOUD_PROJECT_ID=anir0y
+   RECAPTCHA_SITE_KEY=6LcSV48qAAAAAM6snEXZd57ePDOtv05HWAIZathr
+   GOOGLE_APPLICATION_CREDENTIALS=/path/to/service-account-key.json
+   PORT=3000
+   ```
+
+3. **Start Backend Server**:
+   ```bash
+   node server.js
+   ```
+
+### 3. Frontend Environment Configuration
+
+Create a `.env` file in your frontend project root:
 
 ```env
 VITE_RECAPTCHA_SITE_KEY=your-site-key-here
-VITE_RECAPTCHA_PROJECT_ID=your-project-id-here
-VITE_RECAPTCHA_API_KEY=your-api-key-here
+VITE_BACKEND_URL=http://localhost:3000
 ```
 
-### 3. Security Considerations
+### 4. Security Considerations
 
-**Important**: The current implementation includes the API key in the frontend for demonstration purposes. In production, you should:
+**✅ Secure Implementation**: This setup properly separates concerns:
 
-1. **Move API calls to your backend server**
-2. **Never expose API keys in frontend code**
-3. **Use server-side verification only**
+1. **✅ Backend handles all Google API calls**
+2. **✅ No API keys exposed in frontend**
+3. **✅ Server-side verification only**
+4. **✅ Proper authentication with service account**
 
-### 4. Production Backend Implementation
+### 5. API Endpoints
 
-For production, create a backend endpoint like this:
+Your Node.js backend provides these endpoints:
 
-```javascript
-// Example Node.js/Express endpoint
-app.post('/api/verify-recaptcha', async (req, res) => {
-  const { token, action } = req.body;
-  
-  const response = await fetch(
-    `https://recaptchaenterprise.googleapis.com/v1/projects/${PROJECT_ID}/assessments?key=${API_KEY}`,
-    {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        event: {
-          token,
-          expectedAction: action,
-          siteKey: SITE_KEY,
-          userIpAddress: req.ip,
-          userAgent: req.get('User-Agent'),
-        },
-      }),
-    }
-  );
-  
-  const data = await response.json();
-  
-  // Validate the response
-  const isValid = data.tokenProperties?.valid && 
-                  data.tokenProperties?.action === action &&
-                  data.riskAnalysis?.score >= 0.5;
-  
-  res.json({ success: isValid, score: data.riskAnalysis?.score });
-});
-```
+- **POST `/api/recaptcha/assess`** - Verify reCAPTCHA tokens
+- **POST `/api/contact`** - Contact form with reCAPTCHA validation
+- **GET `/api/health`** - Health check endpoint
 
-### 5. Usage in Components
+### 6. Usage in Components
 
 The reCAPTCHA integration is already set up in the ContactForm component. To use it in other forms:
 
@@ -101,13 +93,13 @@ const MyForm = () => {
       return;
     }
     
-    // Send token to your backend for verification
+    // Token is automatically sent to your backend for verification
     // ... rest of form submission logic
   };
 };
 ```
 
-### 6. Score Interpretation
+### 7. Score Interpretation
 
 reCAPTCHA Enterprise returns a score from 0.0 to 1.0:
 - **1.0**: Very likely a good interaction
@@ -120,13 +112,30 @@ reCAPTCHA Enterprise returns a score from 0.0 to 1.0:
 
 Adjust the minimum score threshold based on your security requirements.
 
-### 7. Testing
+### 8. Testing
 
 - **Development**: Use localhost domains in reCAPTCHA console
 - **Staging**: Add staging domain to allowed domains
 - **Production**: Add production domain to allowed domains
 
-### 8. Monitoring
+### 9. Deployment
+
+**Backend Deployment Options:**
+- **Google Cloud Run** - Recommended for Google Cloud integration
+- **Heroku** - Easy deployment with environment variables
+- **AWS Lambda** - Serverless option
+- **DigitalOcean App Platform** - Simple container deployment
+
+**Environment Variables for Production:**
+```env
+GOOGLE_CLOUD_PROJECT_ID=anir0y
+RECAPTCHA_SITE_KEY=6LcSV48qAAAAAM6snEXZd57ePDOtv05HWAIZathr
+GOOGLE_APPLICATION_CREDENTIALS_JSON={"type":"service_account",...}
+PORT=3000
+NODE_ENV=production
+```
+
+### 10. Monitoring
 
 Monitor your reCAPTCHA usage in the Google Cloud Console:
 - Go to reCAPTCHA Enterprise

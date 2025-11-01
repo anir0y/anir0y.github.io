@@ -64,7 +64,7 @@ export const ContactForm: React.FC = () => {
 
       // Verify reCAPTCHA token
       const config = getRecaptchaConfig();
-      const recaptchaService = new RecaptchaService(config.projectId, config.apiKey, config.siteKey);
+      const recaptchaService = new RecaptchaService(config.backendUrl, config.siteKey);
       
       const userIP = await recaptchaService.getUserIP();
       const verificationResult = await recaptchaService.verifyToken({

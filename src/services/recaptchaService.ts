@@ -18,35 +18,43 @@ interface RecaptchaVerificationResponse {
   };
 }
 
+interface BackendAssessmentRequest {
+  token: string;
+  recaptchaAction: string;
+  userIpAddress?: string;
+  userAgent?: string;
+}
+
+interface BackendAssessmentResponse {
+  success: boolean;
+  score?: number;
+  reasons?: string[];
+  error?: string;
+  invalidReason?: string;
+}
+
 export class RecaptchaService {
-  private projectId: string;
-  private apiKey: string;
+  private backendUrl: string;
   private siteKey: string;
 
-  constructor(projectId: string, apiKey: string, siteKey: string) {
-    this.projectId = projectId;
-    this.apiKey = apiKey;
+  constructor(backendUrl: string, siteKey: string) {
+    this.backendUrl = backendUrl;
     this.siteKey = siteKey;
   }
 
   /**
-   * Verify reCAPTCHA token using Google reCAPTCHA Enterprise API
+   * Verify reCAPTCHA token using your Node.js backend
    */
   async verifyToken(request: RecaptchaVerificationRequest): Promise<RecaptchaVerificationResponse> {
-    const url = `https://recaptchaenterprise.googleapis.com/v1/projects/${this.projectId}/assessments?key=${this.apiKey}`;
-
-    const payload = {
-      event: {
-        token: request.token,
-        expectedAction: request.expectedAction,
-        siteKey: this.siteKey,
-        userIpAddress: request.userIpAddress,
-        userAgent: request.userAgent,
-      },
+    const payload: BackendAssessmentRequest = {
+      token: request.token,
+      recaptchaAction: request.expectedAction,
+      userIpAddress: request.userIpAddress,
+      userAgent: request.userAgent,
     };
 
     try {
-      const response = await fetch(url, {
+      const response = await fetch(`${this.backendUrl}/api/recaptcha/assess`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -58,18 +66,18 @@ export class RecaptchaService {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 
-      const data = await response.json();
+      const data: BackendAssessmentResponse = await response.json();
 
       return {
-        success: data.tokenProperties?.valid || false,
-        score: data.riskAnalysis?.score,
-        action: data.tokenProperties?.action,
-        challenge_ts: data.tokenProperties?.createTime,
-        hostname: data.tokenProperties?.hostname,
-        error_codes: data.tokenProperties?.invalidReason ? [data.tokenProperties.invalidReason] : [],
+        success: data.success,
+        score: data.score,
+        action: request.expectedAction,
+        challenge_ts: new Date().toISOString(),
+        hostname: window.location.hostname,
+        error_codes: data.error ? [data.error] : data.invalidReason ? [data.invalidReason] : [],
         risk_analysis: {
-          score: data.riskAnalysis?.score || 0,
-          reasons: data.riskAnalysis?.reasons || [],
+          score: data.score || 0,
+          reasons: data.reasons || [],
         },
       };
     } catch (error) {
@@ -125,7 +133,6 @@ export class RecaptchaService {
 export const getRecaptchaConfig = () => {
   return {
     siteKey: import.meta.env.VITE_RECAPTCHA_SITE_KEY || '6LcSV48qAAAAAM6snEXZd57ePDOtv05HWAIZathr',
-    projectId: import.meta.env.VITE_RECAPTCHA_PROJECT_ID || 'your-project-id',
-    apiKey: import.meta.env.VITE_RECAPTCHA_API_KEY || 'your-api-key',
+    backendUrl: import.meta.env.VITE_BACKEND_URL || 'http://localhost:3000',
   };
 };
