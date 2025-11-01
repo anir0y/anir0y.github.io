@@ -54,7 +54,7 @@ export const Contact: React.FC = () => {
                 <span className="text-cyan-400 font-mono text-sm">// CONTACT_METHODS</span>
               </div>
               <h3 className="text-2xl font-bold text-white mb-4 font-mono">
-                <span className="text-green-400">></span> AVAILABLE_CHANNELS
+                <span className="text-green-400">&gt;</span> AVAILABLE_CHANNELS
               </h3>
               <p className="text-gray-300 leading-relaxed mb-6">
                 Connect with me through these secure channels for cybersecurity consulting, 
@@ -197,7 +197,7 @@ const CaptchaStatusValidator: React.FC = () => {
       </div>
       
       <h3 className="text-xl font-bold text-white mb-4 font-mono">
-        <span className="text-cyan-400">></span> SECURITY_VALIDATION
+        <span className="text-cyan-400">&gt;</span> SECURITY_VALIDATION
       </h3>
       
       <div className="space-y-3">
