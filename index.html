@@ -20,7 +20,7 @@
     <meta property="og:url" content="https://anir0y.in/" />
     <meta property="og:title" content="Anir0y" />
     <meta property="og:description" content="Dive into the dynamic world of cybersecurity with Animesh Roy! Discover hacking insights, cutting-edge tools, and expert resources designed for tech enthusiasts and pros alike. Unleash your potential and break into the digital realm with confidence!" />
-    <Cmeta property="og:image" content="https://anir0y.in/img/meta.png" />
+    <meta property="og:image" content="https://anir0y.in/img/meta.png" />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
@@ -82,100 +82,74 @@
     <script type="module" src="/src/main.tsx"></script>
 
     <!-- Inline reCAPTCHA Integration -->
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
-        // Enhanced error handling for reCAPTCHA
-        let recaptchaRetries = 0;
-        const maxRetries = 3;
-        
-        function initializeRecaptcha() {
-            if (typeof window.grecaptcha === 'undefined') {
-                console.warn('reCAPTCHA not loaded, retrying...');
-                if (recaptchaRetries < maxRetries) {
-                    recaptchaRetries++;
-                    setTimeout(initializeRecaptcha, 1000);
-                } else {
-                    console.error('reCAPTCHA failed to load after multiple attempts');
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Enhanced error handling for reCAPTCHA
+            let recaptchaRetries = 0;
+            const maxRetries = 3;
+            
+            function initializeRecaptcha() {
+                if (typeof window.grecaptcha === 'undefined') {
+                    console.warn('reCAPTCHA not loaded, retrying...');
+                    if (recaptchaRetries < maxRetries) {
+                        recaptchaRetries++;
+                        setTimeout(initializeRecaptcha, 1000);
+                    } else {
+                        console.error('reCAPTCHA failed to load after multiple attempts');
+                    }
+                    return;
                 }
-                return;
+                
+                grecaptcha.ready(() => {
+                    console.log('reCAPTCHA ready');
+                    grecaptcha.execute("6LcSV48qAAAAAM6snEXZd57ePDOtv05HWAIZathr", { action: "homepage" })
+                        .then((token) => {
+                            console.log("reCAPTCHA token generated:", token ? "✓" : "✗");
+                            handleRecaptchaToken(token);
+                        })
+                        .catch((err) => {
+                            console.error("reCAPTCHA execution error:", err);
+                            // Don't show alert for diagnostic purposes
+                        });
+                });
             }
             
-            grecaptcha.ready(() => {
-                console.log('reCAPTCHA ready');
-                grecaptcha.execute("6LcSV48qAAAAAM6snEXZd57ePDOtv05HWAIZathr", { action: "homepage" })
-                    .then((token) => {
-                        console.log("reCAPTCHA token generated:", token ? "✓" : "✗");
-                        handleRecaptchaToken(token);
-                    })
-                    .catch((err) => {
-                        console.error("reCAPTCHA execution error:", err);
-                        // Don't show alert for diagnostic purposes
-                    });
-            });
-        }
-        
-        // Start initialization
-        initializeRecaptcha();
-        
-        function handleRecaptchaToken(token) {
-            if (!token) {
-                console.warn("Empty reCAPTCHA token received");
-            } else {
-                console.log("reCAPTCHA token validated successfully");
+            // Start initialization
+            initializeRecaptcha();
+            
+            function handleRecaptchaToken(token) {
+                if (!token) {
+                    console.warn("Empty reCAPTCHA token received");
+                } else {
+                    console.log("reCAPTCHA token validated successfully");
+                }
             }
-        }
-    });
-</script>
+        });
+    </script>
 
-<!-- Fallback script loading -->
-<script>
-    // Fallback reCAPTCHA loading with error handling
-    window.addEventListener('load', () => {
-        if (typeof window.grecaptcha === 'undefined') {
-            console.warn('Primary reCAPTCHA script failed, attempting fallback...');
-            
-            const fallbackScript = document.createElement('script');
-            fallbackScript.src = 'https://www.recaptcha.net/recaptcha/api.js?render=6LcSV48qAAAAAM6snEXZd57ePDOtv05HWAIZathr';
-            fallbackScript.async = true;
-            fallbackScript.defer = true;
-            
-            fallbackScript.onload = () => {
-                console.log('Fallback reCAPTCHA script loaded successfully');
-            };
-            
-            fallbackScript.onerror = () => {
-                console.error('Both primary and fallback reCAPTCHA scripts failed to load');
-            };
-            
-            document.head.appendChild(fallbackScript);
-        }
-    });
-</script>
-</body>
-</html>
-        if (window.grecaptcha) {
-            grecaptcha.ready(() => {
-                grecaptcha.execute("6LcSV48qAAAAAM6snEXZd57ePDOtv05HWAIZathr", { action: "homepage" })
-                    .then((token) => {
-                        console.log("reCAPTCHA token:", token);
-                        handleRecaptchaToken(token);
-                    })
-                    .catch((err) => {
-                        alert("reCAPTCHA failed to verify. Please refresh or try again.");
-                        console.error("reCAPTCHA error:", err);
-                    });
-            });
-        } else {
-            alert("reCAPTCHA failed to load. Please check your connection or try later.");
-        }
-
-        function handleRecaptchaToken(token) {
-            console.log("Token received:", token);
-            if (!token) {
-                alert("Failed to verify reCAPTCHA. Please refresh the page.");
+    <!-- Fallback script loading -->
+    <script>
+        // Fallback reCAPTCHA loading with error handling
+        window.addEventListener('load', () => {
+            if (typeof window.grecaptcha === 'undefined') {
+                console.warn('Primary reCAPTCHA script failed, attempting fallback...');
+                
+                const fallbackScript = document.createElement('script');
+                fallbackScript.src = 'https://www.recaptcha.net/recaptcha/api.js?render=6LcSV48qAAAAAM6snEXZd57ePDOtv05HWAIZathr';
+                fallbackScript.async = true;
+                fallbackScript.defer = true;
+                
+                fallbackScript.onload = () => {
+                    console.log('Fallback reCAPTCHA script loaded successfully');
+                };
+                
+                fallbackScript.onerror = () => {
+                    console.error('Both primary and fallback reCAPTCHA scripts failed to load');
+                };
+                
+                document.head.appendChild(fallbackScript);
             }
-        }
-    });
-</script>
+        });
+    </script>
 </body>
 </html>
