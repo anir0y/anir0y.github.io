@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const { RecaptchaEnterpriseServiceClient } = require('@google-cloud/recaptcha-enterprise');
@@ -31,7 +32,7 @@ async function createAssessment({
     // For development/testing without Google Cloud credentials
     if (!process.env.GOOGLE_APPLICATION_CREDENTIALS && !process.env.GOOGLE_APPLICATION_CREDENTIALS_JSON) {
       console.log('⚠️ No Google Cloud credentials found - using mock validation for development');
-      
+
       // Mock validation for development
       if (!token || token.length < 10) {
         return {
@@ -39,7 +40,7 @@ async function createAssessment({
           error: 'Invalid token format',
         };
       }
-      
+
       // Return mock successful response
       return {
         success: true,
@@ -49,8 +50,22 @@ async function createAssessment({
       };
     }
 
+    // Parse credentials if provided as JSON string
+    let clientOptions = {};
+    if (process.env.GOOGLE_APPLICATION_CREDENTIALS_JSON) {
+      try {
+        const credentials = JSON.parse(process.env.GOOGLE_APPLICATION_CREDENTIALS_JSON);
+        clientOptions = {
+          credentials: credentials
+        };
+      } catch (parseError) {
+        console.error('Failed to parse GOOGLE_APPLICATION_CREDENTIALS_JSON:', parseError.message);
+        throw new Error('Invalid credentials format');
+      }
+    }
+
     // Create the reCAPTCHA client
-    const client = new RecaptchaEnterpriseServiceClient();
+    const client = new RecaptchaEnterpriseServiceClient(clientOptions);
     const projectPath = client.projectPath(projectID);
 
     // Build the assessment request
