@@ -184,6 +184,44 @@ app.get('/api/health', (req, res) => {
   });
 });
 
+// RSS feed proxy endpoint
+app.get('/api/proxy/rss', async (req, res) => {
+  try {
+    const rssUrl = 'https://anir0y.cronitorstatus.com/history/rss';
+
+    console.log('Fetching RSS feed from:', rssUrl);
+
+    const response = await fetch(rssUrl, {
+      method: 'GET',
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (compatible; StatusFeedBot/1.0)',
+        'Accept': 'application/rss+xml, application/xml, text/xml, */*',
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error(`RSS feed request failed with status: ${response.status}`);
+    }
+
+    const xmlText = await response.text();
+
+    res.set({
+      'Content-Type': 'application/xml',
+      'Cache-Control': 'public, max-age=300',
+    });
+
+    res.send(xmlText);
+
+  } catch (error) {
+    console.error('RSS proxy error:', error);
+    res.status(500).json({
+      success: false,
+      error: 'Failed to fetch RSS feed',
+      details: error.message,
+    });
+  }
+});
+
 // Contact form endpoint (example)
 app.post('/api/contact', async (req, res) => {
   try {
