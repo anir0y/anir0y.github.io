@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Github, Linkedin, Twitter, MailCheckIcon, BookIcon, BookDashed, Calendar, X, GitBranchIcon } from 'lucide-react';
 import { StatusFeed } from './StatusFeed';
+import { ContactForm } from './ContactForm';
 
 export const Contact: React.FC = () => {
   return (
@@ -99,6 +100,8 @@ export const Contact: React.FC = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="space-y-6 lg:col-span-1"
           >
+            <ContactForm />
+            
             <div className="tech-card">
               <div className="tech-card-header">
                 <span className="text-purple-400 font-mono text-sm">// BOOKING_SYSTEM</span>
@@ -129,6 +132,12 @@ export const Contact: React.FC = () => {
                 <div className="divider">
                   <span className="text-gray-500 font-mono text-xs">OR</span>
                 </div>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+};
 
                 <div className="booking-option">
                   <div className="flex items-center space-x-3 mb-3">
@@ -152,15 +161,6 @@ export const Contact: React.FC = () => {
                 </div>
               </div>
             </div>
-
-
-          </motion.div>
-        </div>
-      </div>
-    </section>
-  );
-};
-
 const SocialCard: React.FC<{
   href: string;
   icon: React.FC<{ size?: number; className?: string }>;
