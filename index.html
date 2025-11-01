@@ -4,15 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anir0y</title>
+    
     <!-- Cronitor RUM -->
     <script async src="https://rum.cronitor.io/script.js"></script>
     <script>
         window.cronitor = window.cronitor || function() { (window.cronitor.q = window.cronitor.q || []).push(arguments); };
         cronitor('config', { clientKey: 'cb0b831aed3df3a78b091665fb2a474c' });
     </script>
+    
     <!-- Primary Meta Tags -->
     <meta name="title" content="Anir0y" />
-    <meta author="Anir0y" content="anir0y" />
+    <meta name="author" content="anir0y" />
     <meta name="description" content="Dive into the dynamic world of cybersecurity with Animesh Roy! Discover hacking insights, cutting-edge tools, and expert resources designed for tech enthusiasts and pros alike. Unleash your potential and break into the digital realm with confidence!" />
 
     <!-- Open Graph / Facebook -->
@@ -29,9 +31,7 @@
     <meta property="twitter:description" content="Dive into the dynamic world of cybersecurity with Animesh Roy! Discover hacking insights, cutting-edge tools, and expert resources designed for tech enthusiasts and pros alike. Unleash your potential and break into the digital realm with confidence!" />
     <meta property="twitter:image" content="https://anir0y.in/img/meta.png" />
 
-    <!-- Meta Tags Generated with https://metatags.io -->
-
-    <!---Favicon-->
+    <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="57x57" href="https://anir0y.in/assets/apple-icon-57x57-BPCxh1r4.png">
     <link rel="apple-touch-icon" sizes="60x60" href="https://anir0y.in/assets/apple-icon-60x60-BHx3Gkym.png">
     <link rel="apple-touch-icon" sizes="72x72" href="https://anir0y.in/assets/apple-icon-72x72-Dps-0eVa.png">
@@ -41,30 +41,31 @@
     <link rel="apple-touch-icon" sizes="144x144" href="https://anir0y.in/assets/apple-icon-144x144-B0RdahKN.png">
     <link rel="apple-touch-icon" sizes="152x152" href="https://anir0y.in/assets/apple-icon-152x152-Dt9k6RMH.png">
     <link rel="apple-touch-icon" sizes="180x180" href="https://anir0y.in/assets/apple-icon-180x180-CpqqpGP8.png">
-    <link rel="icon" type="image/png" sizes="192x192"  href="https://anir0y.in/assets/android-icon-192x192-CTXFqrJk.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="https://anir0y.in/assets/android-icon-192x192-CTXFqrJk.png">
     <link rel="icon" type="image/png" sizes="32x32" href="https://anir0y.in/assets/favicon-32x32-B8mq4AHk.png">
     <link rel="icon" type="image/png" sizes="96x96" href="https://anir0y.in/assets/favicon-96x96-CHLN7apV.png">
     <link rel="icon" type="image/png" sizes="16x16" href="https://anir0y.in/assets/favicon-16x16-BOKykYtk.png">
-    <link rel="manifest" href="/manifest.json">
+    <link rel="manifest" href="https://anir0y.in/assets/manifest-CO0q9IVi.json">
     <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="msapplication-TileImage" content="img/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
 
-    <!---CSS-->
+    <!-- CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
-    <!-- Google tag (gtag.js) -->
+    <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-DZ9M04CMED"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'G-DZ9M04CMED');
     </script>
 
     <!-- Google reCAPTCHA -->
     <script src="https://www.google.com/recaptcha/api.js?render=6LcSV48qAAAAAM6snEXZd57ePDOtv05HWAIZathr" async defer></script>
+    
+    <!-- Microsoft Clarity -->
     <script type="text/javascript">
         (function(c,l,a,r,i,t,y){
             c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
@@ -72,7 +73,8 @@
             y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
         })(window, document, "clarity", "script", "6bd6d9vgmz");
     </script>
-    <!-- Use code PKMKB for free consulting call at book.anir0y.in-->
+    
+    <!-- Consent Manager -->
     <script type="text/javascript" data-cmp-ab="1" src="https://cdn.consentmanager.net/delivery/autoblocking/d33cb86fe179d.js" data-cmp-host="c.delivery.consentmanager.net" data-cmp-cdn="cdn.consentmanager.net" data-cmp-codesrc="16"></script>
   <script type="module" crossorigin src="https://anir0y.in/assets/index-C_P7Dnyq.js"></script>
   <link rel="stylesheet" crossorigin href="https://anir0y.in/assets/index-CWV6xhCD.css">
@@ -80,12 +82,11 @@
 <body>
     <div id="root"></div>
 
-    <!-- Your TypeScript Application -->
+    <!-- React Application -->
 
-    <!-- Inline reCAPTCHA Integration -->
+    <!-- reCAPTCHA Integration -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            // Enhanced error handling for reCAPTCHA
             let recaptchaRetries = 0;
             const maxRetries = 3;
             
@@ -110,12 +111,10 @@
                         })
                         .catch((err) => {
                             console.error("reCAPTCHA execution error:", err);
-                            // Don't show alert for diagnostic purposes
                         });
                 });
             }
             
-            // Start initialization
             initializeRecaptcha();
             
             function handleRecaptchaToken(token) {
@@ -128,9 +127,8 @@
         });
     </script>
 
-    <!-- Fallback script loading -->
+    <!-- Fallback reCAPTCHA Loading -->
     <script>
-        // Fallback reCAPTCHA loading with error handling
         window.addEventListener('load', () => {
             if (typeof window.grecaptcha === 'undefined') {
                 console.warn('Primary reCAPTCHA script failed, attempting fallback...');
