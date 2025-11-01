@@ -7,7 +7,8 @@ import { Skills } from './components/Skills';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 import Matrix from './components/Matrix';
-import { RecaptchaProvider, getRecaptchaConfig } from './components/RecaptchaProvider';
+import { RecaptchaProvider } from './components/RecaptchaProvider';
+import { getRecaptchaConfig } from './services/recaptchaService';
 
 function App() {
   const recaptchaConfig = getRecaptchaConfig();
