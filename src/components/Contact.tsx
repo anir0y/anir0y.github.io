@@ -132,12 +132,6 @@ export const Contact: React.FC = () => {
                 <div className="divider">
                   <span className="text-gray-500 font-mono text-xs">OR</span>
                 </div>
-          </motion.div>
-        </div>
-      </div>
-    </section>
-  );
-};
 
                 <div className="booking-option">
                   <div className="flex items-center space-x-3 mb-3">
@@ -161,8 +155,12 @@ export const Contact: React.FC = () => {
                 </div>
               </div>
             </div>
-  )
-}
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+};
 const SocialCard: React.FC<{
   href: string;
   icon: React.FC<{ size?: number; className?: string }>;
