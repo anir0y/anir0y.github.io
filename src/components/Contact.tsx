@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Github, Linkedin, Twitter, MailCheckIcon, BookIcon, BookDashed, Calendar, X, GitBranchIcon } from 'lucide-react';
+import { Mail, Github, Linkedin, Twitter, MailCheck as MailCheckIcon, Book as BookIcon, BookDashed, Calendar, X, GitBranch as GitBranchIcon } from 'lucide-react';
 import { StatusFeed } from './StatusFeed';
 import { ContactForm } from './ContactForm';
 
@@ -161,6 +161,8 @@ export const Contact: React.FC = () => {
                 </div>
               </div>
             </div>
+  )
+}
 const SocialCard: React.FC<{
   href: string;
   icon: React.FC<{ size?: number; className?: string }>;
