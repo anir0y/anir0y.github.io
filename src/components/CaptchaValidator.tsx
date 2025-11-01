@@ -33,6 +33,9 @@ export const CaptchaValidator: React.FC = () => {
   const siteKey = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
   const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:3000';
 
+  // Verify site key matches expected value
+  const expectedSiteKey = '6LcSV48qAAAAAM6snEXZd57ePDOtv05HWAIZathr';
+
   useEffect(() => {
     runDiagnostics();
   }, []);
@@ -74,12 +77,12 @@ export const CaptchaValidator: React.FC = () => {
     }
 
     // 2. Check site key configuration
-    if (!siteKey || siteKey === 'your-recaptcha-site-key') {
+    if (!siteKey || siteKey === 'your-recaptcha-site-key' || siteKey !== expectedSiteKey) {
       newStatus.errors.push('Invalid or missing site key');
-      addTestResult('❌ Site key not configured');
+      addTestResult(`❌ Site key mismatch. Expected: ${expectedSiteKey}, Got: ${siteKey}`);
     } else {
       newStatus.siteKeyValid = true;
-      addTestResult('✅ Site key configured');
+      addTestResult(`✅ Site key configured correctly: ${siteKey}`);
     }
 
     // 3. Test reCAPTCHA API readiness
