@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { AlertCircle, CheckCircle, Clock, Wifi, WifiOff } from 'lucide-react';
-import sanitizeHtml from 'sanitize-html';
 
 interface StatusEvent {
   title: string;
@@ -213,7 +212,7 @@ export const StatusFeed: React.FC<StatusFeedProps> = ({ maxEvents = 3 }) => {
                     </h4>
                     {event.description && (
                       <p className="text-gray-400 text-xs mb-2 line-clamp-2">
-                        {sanitizeHtml(event.description || '', { allowedTags: [], allowedAttributes: {} }).substring(0, 100)}
+                        {event.description.replace(/<[^>]*>/g, '').substring(0, 100)}
                         {event.description.length > 100 ? '...' : ''}
                       </p>
                     )}
