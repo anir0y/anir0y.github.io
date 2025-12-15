@@ -117,11 +117,37 @@
             
             initializeRecaptcha();
             
-            function handleRecaptchaToken(token) {
+            async function handleRecaptchaToken(token) {
                 if (!token) {
                     console.warn("Empty reCAPTCHA token received");
-                } else {
-                    console.log("reCAPTCHA token validated successfully");
+                    return;
+                }
+
+                try {
+                    const supabaseUrl = 'https://bhpivamzydfscpliqepx.supabase.co';
+                    const response = await fetch(`${supabaseUrl}/functions/v1/recaptcha-validate`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            token: token,
+                            recaptchaAction: 'homepage'
+                        })
+                    });
+
+                    if (response.ok) {
+                        const result = await response.json();
+                        if (result.success) {
+                            console.log(`reCAPTCHA validated - Score: ${result.score}`);
+                        } else {
+                            console.warn('reCAPTCHA validation failed:', result.error);
+                        }
+                    } else {
+                        console.warn('reCAPTCHA validation request failed');
+                    }
+                } catch (error) {
+                    console.error('reCAPTCHA validation error:', error);
                 }
             }
         });
