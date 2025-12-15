@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Github, Linkedin, Calendar, X } from 'lucide-react';
-import { StatusFeed } from './StatusFeed';
+import { Mail, Github, Linkedin, Calendar, X, Shield } from 'lucide-react';
 
 export const Contact: React.FC = () => {
   return (
@@ -23,48 +22,46 @@ export const Contact: React.FC = () => {
           <div className="section-divider"></div>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+        <div className="max-w-4xl mx-auto space-y-8">
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="space-y-6"
+            className="minimal-card"
           >
-            <StatusFeed maxEvents={3} />
+            <div className="flex items-center space-x-3 mb-6">
+              <Shield className="text-cyber-blue" size={24} />
+              <h3 className="text-2xl font-bold text-cyber-text">
+                Contact Methods
+              </h3>
+            </div>
+            <p className="text-cyber-muted leading-relaxed mb-8">
+              Connect with me through these secure channels for cybersecurity consulting,
+              security audits, or collaboration opportunities.
+            </p>
+
+            <div className="space-y-4">
+              <ContactMethod
+                icon={Mail}
+                label="Email"
+                value="mail@anir0y.in"
+                href="mailto:mail@anir0y.in"
+              />
+              <ContactMethod
+                icon={Calendar}
+                label="Calendar"
+                value="book.anir0y.in"
+                href="https://book.anir0y.in"
+              />
+            </div>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            className="space-y-6"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <div className="minimal-card">
-              <h3 className="text-xl font-bold text-cyber-text mb-4">
-                Contact Methods
-              </h3>
-              <p className="text-cyber-muted leading-relaxed mb-8">
-                Connect with me through these secure channels for cybersecurity consulting,
-                security audits, or collaboration opportunities.
-              </p>
-
-              <div className="space-y-4">
-                <ContactMethod
-                  icon={Mail}
-                  label="Email"
-                  value="mail@anir0y.in"
-                  href="mailto:mail@anir0y.in"
-                />
-                <ContactMethod
-                  icon={Calendar}
-                  label="Calendar"
-                  value="book.anir0y.in"
-                  href="https://book.anir0y.in"
-                />
-              </div>
-            </div>
-
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               <SocialCard
                 href="https://github.com/anir0y"
                 icon={Github}
