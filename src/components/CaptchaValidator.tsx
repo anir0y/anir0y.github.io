@@ -31,7 +31,8 @@ export const CaptchaValidator: React.FC = () => {
   const [testResults, setTestResults] = useState<string[]>([]);
 
   const siteKey = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
-  const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:3000';
+  const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+  const validationUrl = `${supabaseUrl}/functions/v1/recaptcha-validate`;
 
   // Verify site key matches expected value
   const expectedSiteKey = '6LcSV48qAAAAAM6snEXZd57ePDOtv05HWAIZathr';
@@ -114,7 +115,7 @@ export const CaptchaValidator: React.FC = () => {
           
           // 5. Test server-side validation
           try {
-            const response = await fetch(`${backendUrl}/api/recaptcha/assess`, {
+            const response = await fetch(validationUrl, {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
