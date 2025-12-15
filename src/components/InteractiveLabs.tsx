@@ -36,105 +36,69 @@ const labs: Lab[] = [
 
 export const InteractiveLabs: React.FC = () => {
   return (
-    <section id="labs" className="py-20 bg-gray-800 relative overflow-hidden">
-      {/* Tech Grid Background */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="grid-pattern"></div>
-      </div>
-      
-      {/* Scan Line Effect */}
-      <div className="glitch-overlay"></div>
-      
-      <div className="container mx-auto px-4">
+    <section id="labs" className="py-24 bg-cyber-dark relative overflow-hidden border-t border-cyber-border">
+      <div className="absolute inset-0 bg-pattern opacity-100"></div>
+
+      <div className="container mx-auto px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 font-mono">
-            <span className="text-cyan-400">INTERACTIVE_</span>
-            <span className="text-purple-400">LABS</span>
-          </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-cyan-400 to-purple-400 mx-auto"></div>
-          <div className="mt-4 font-mono text-sm text-gray-400">
-            <span className="text-green-400">root@anir0y:~$</span> ls -la /labs/
+          <div className="mb-4">
+            <span className="terminal-prompt text-xs">ls /labs</span>
           </div>
-          <p className="text-gray-300 mt-6 max-w-3xl mx-auto leading-relaxed">
-            Enhance your learning with these hands-on laboratory exercises. 
-            These interactive labs provide practical experience to reinforce theoretical knowledge 
+          <h2 className="text-4xl md:text-5xl font-bold text-cyber-text mb-6">
+            Interactive Labs
+          </h2>
+          <div className="section-divider"></div>
+          <p className="text-cyber-muted mt-8 max-w-3xl mx-auto leading-relaxed">
+            Enhance your learning with these hands-on laboratory exercises.
+            These interactive labs provide practical experience to reinforce theoretical knowledge
             and develop hands-on skills in cybersecurity and networking concepts.
           </p>
         </motion.div>
-        
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {labs.map((lab, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="project-card group cursor-pointer p-6"
-              whileHover={{ scale: 1.02 }}
+              className="minimal-card group cursor-pointer"
             >
-              <div className="tech-card-header">
-                <span className="text-cyan-400 font-mono text-xs">
-                  // LAB_{String(index + 1).padStart(2, '0')}
-                </span>
-              </div>
-              
               <div className="flex items-center space-x-4 mb-4">
-                <div className="p-3 bg-gray-900/50 border border-cyan-400/30 rounded">
-                  <lab.icon className="text-cyan-400" size={24} />
+                <div className="p-3 bg-cyber-dark/50 border border-cyber-blue/30 rounded">
+                  <lab.icon className="text-cyber-blue" size={24} />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-white font-mono">{lab.title}</h3>
-                  <span className="text-purple-400 font-mono text-sm">{lab.category}</span>
+                  <h3 className="text-lg font-bold text-cyber-text">{lab.title}</h3>
+                  <span className="text-cyber-blue text-xs uppercase tracking-wider">{lab.category}</span>
                 </div>
               </div>
-              
-              <p className="text-gray-300 mb-6 text-sm leading-relaxed">{lab.description}</p>
-              
-              <div className="flex items-center justify-between">
-                <motion.a
+
+              <p className="text-cyber-muted mb-6 text-sm leading-relaxed">{lab.description}</p>
+
+              <div className="flex items-center justify-between pt-4 border-t border-cyber-border">
+                <a
                   href={lab.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center space-x-2 text-cyan-400 hover:text-white group font-mono text-sm transition-colors"
-                  whileHover={{ x: 3 }}
-                  transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                  className="flex items-center space-x-2 text-cyber-muted hover:text-cyber-blue text-sm transition-colors"
                 >
-                  <span>LAUNCH_LAB</span>
-                  <ExternalLink size={16} className="group-hover:text-white transition-colors" />
-                </motion.a>
-                
+                  <span>Launch</span>
+                  <ExternalLink size={14} />
+                </a>
+
                 <div className="flex items-center space-x-2">
-                  <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                  <span className="text-green-400 font-mono text-xs">ONLINE</span>
+                  <div className="status-active"></div>
+                  <span className="text-cyber-green font-mono text-xs">Online</span>
                 </div>
               </div>
             </motion.div>
           ))}
         </div>
-        
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="text-center mt-12"
-        >
-          <div className="tech-card max-w-2xl mx-auto">
-            <div className="tech-card-header">
-              <span className="text-green-400 font-mono text-sm">// LEARNING_OBJECTIVES</span>
-            </div>
-            <h3 className="text-xl font-bold text-white mb-4 font-mono">
-              <span className="text-cyan-400">&gt;</span> HANDS_ON_EXPERIENCE
-            </h3>
-            <p className="text-gray-300 text-sm leading-relaxed">
-              Each lab is designed to provide practical, real-world experience with cybersecurity concepts. 
-              Work through these exercises to build your skills in a safe, controlled environment.
-            </p>
-          </div>
-        </motion.div>
       </div>
     </section>
   );

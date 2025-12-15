@@ -6,28 +6,19 @@ import { InteractiveLabs } from './components/InteractiveLabs';
 import { Skills } from './components/Skills';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
-import Matrix from './components/Matrix';
 
 function App() {
   return (
-    <div className="min-h-screen bg-black text-white relative overflow-x-hidden">
-      {/* Matrix Background */}
-      <div className="fixed inset-0 z-0">
-        <Matrix />
-      </div>
-      
-      {/* Main Content */}
-      <div className="relative z-10">
-        <Header />
-        <main>
-          <Hero />
-          <Projects />
-          <InteractiveLabs />
-          <Skills />
-          <Contact />
-          <Footer />
-        </main>
-      </div>
+    <div className="min-h-screen bg-cyber-dark text-cyber-text relative overflow-x-hidden">
+      <Header />
+      <main>
+        <Hero />
+        <Projects />
+        <InteractiveLabs />
+        <Skills />
+        <Contact />
+      </main>
+      <Footer />
     </div>
   );
 }

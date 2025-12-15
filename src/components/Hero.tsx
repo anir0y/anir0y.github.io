@@ -2,40 +2,33 @@ import React from 'react';
 
 const Hero: React.FC = () => {
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gray-900">
-      {/* Digital Grid Background */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="grid-pattern"></div>
-      </div>
-      
-      {/* Glitch Overlay */}
-      <div className="glitch-overlay"></div>
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-cyber-dark">
+      <div className="absolute inset-0 bg-pattern opacity-100"></div>
 
-      {/* Content */}
-      <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-        <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white animate-fadeIn">
+      <div className="relative z-10 text-center px-6 max-w-4xl mx-auto py-24">
+        <div className="mb-6">
+          <span className="terminal-prompt text-xs">root@sec:~$</span>
+        </div>
+
+        <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-8 text-cyber-text leading-tight">
           Animesh Roy
         </h1>
-        <p className="text-xl md:text-2xl mb-8 text-cyan-300 animate-slideIn">
-          Cybersecurity Guy
+
+        <p className="text-xl md:text-2xl mb-12 text-cyber-blue font-medium tracking-wide">
+          Cybersecurity Specialist
         </p>
-        <p className="text-lg mb-12 text-gray-300 max-w-2xl mx-auto animate-fadeIn" style={{ animationDelay: '0.3s' }}>
-          I help organizations stay secure by finding vulnerabilities before the bad guys do. 
+
+        <p className="text-base md:text-lg mb-16 text-cyber-muted max-w-2xl mx-auto leading-relaxed">
+          I help organizations stay secure by finding vulnerabilities before the bad guys do.
           From penetration testing to security consulting, I make cybersecurity accessible and effective for everyone.
         </p>
-        
-        <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fadeIn" style={{ animationDelay: '0.6s' }}>
-          <button 
+
+        <div className="flex flex-col sm:flex-row gap-6 justify-center">
+          <button
             onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
-            className="px-8 py-3 bg-cyan-600 hover:bg-cyan-700 hover:scale-105 text-white font-semibold rounded-lg transition-all duration-300 shadow-lg hover:shadow-cyan-500/25"
+            className="cyber-button-primary"
           >
-            View My Work
-          </button>
-          <button 
-            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-            className="px-8 py-3 border border-cyan-600 text-cyan-400 hover:bg-cyan-600 hover:text-white hover:scale-105 font-semibold rounded-lg transition-all duration-300 shadow-lg hover:shadow-cyan-500/25"
-          >
-            Contact Me
+            View Projects
           </button>
         </div>
       </div>

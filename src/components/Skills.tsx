@@ -12,54 +12,42 @@ const iconMap = {
   box: Box,
 };
 
-// Fallback icon for missing mappings
 const DefaultIcon = Shield;
 
 export const Skills: React.FC = () => {
-  // Dynamically generate unique categories from skills data
   const categories = Array.from(new Set(skills.map(skill => skill.category)));
 
   return (
-    <section id="skills" className="py-20 bg-gray-900 relative overflow-hidden">
-      {/* Tech Grid Background */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="grid-pattern"></div>
-      </div>
-      
-      <div className="container mx-auto px-4">
+    <section id="skills" className="py-24 bg-cyber-dark relative overflow-hidden border-t border-cyber-border">
+      <div className="absolute inset-0 bg-pattern opacity-100"></div>
+
+      <div className="container mx-auto px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 font-mono">
-            <span className="text-cyan-400">TECHNICAL_</span>
-            <span className="text-purple-400">SKILLS</span>
-          </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-cyan-400 to-purple-400 mx-auto"></div>
-          <div className="mt-4 font-mono text-sm text-gray-400">
-            <span className="text-green-400">root@anir0y:~$</span> cat /proc/skills
+          <div className="mb-4">
+            <span className="terminal-prompt text-xs">cat /skills</span>
           </div>
+          <h2 className="text-4xl md:text-5xl font-bold text-cyber-text mb-6">
+            Technical Skills
+          </h2>
+          <div className="section-divider"></div>
         </motion.div>
-        
-        <div className="grid gap-8">
+
+        <div className="space-y-12 max-w-6xl mx-auto">
           {categories.map((category, categoryIndex) => (
             <motion.div
               key={category}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: categoryIndex * 0.1 }}
-              className="tech-card"
             >
-              <div className="tech-card-header">
-                <span className="text-purple-400 font-mono text-sm">
-                  // {category.toUpperCase()}_MODULES
-                </span>
-              </div>
-              <h3 className="text-2xl font-bold text-white mb-6 capitalize font-mono">
-                <span className="text-cyan-400">{">"}</span> {category.toUpperCase()}
+              <h3 className="text-xl font-bold text-cyber-blue mb-6 uppercase tracking-wider">
+                {category}
               </h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {skills
                   .filter((skill) => skill.category === category)
                   .map((skill, index) => {
@@ -67,16 +55,18 @@ export const Skills: React.FC = () => {
                     return (
                       <motion.div
                         key={index}
-                        whileHover={{ scale: 1.05 }}
+                        whileHover={{ scale: 1.02 }}
                         className="skill-item flex items-center space-x-3 group"
                       >
-                        <Icon className="text-cyan-400 group-hover:text-white transition-colors" size={20} />
-                        <span className="text-gray-300 group-hover:text-white font-mono text-sm transition-colors">{skill.name}</span>
-                        <div className="ml-auto w-2 h-2 bg-green-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                        <Icon className="text-cyber-blue group-hover:text-cyber-green transition-colors flex-shrink-0" size={18} />
+                        <span className="text-cyber-muted group-hover:text-cyber-text text-sm transition-colors">{skill.name}</span>
                       </motion.div>
                     );
                   })}
               </div>
+              {categoryIndex < categories.length - 1 && (
+                <div className="mt-12 circuit-divider"></div>
+              )}
             </motion.div>
           ))}
         </div>

@@ -5,31 +5,24 @@ import { ExternalLink, Github } from 'lucide-react';
 
 export const Projects: React.FC = () => {
   return (
-    <section id="projects" className="py-20 bg-gray-800 relative overflow-hidden">
-      {/* Tech Grid Background */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="grid-pattern"></div>
-      </div>
-      
-      {/* Scan Line Effect */}
-      <div className="glitch-overlay"></div>
-      
-      <div className="container mx-auto px-4">
+    <section id="projects" className="py-24 bg-cyber-dark relative overflow-hidden">
+      <div className="absolute inset-0 bg-pattern opacity-100"></div>
+
+      <div className="container mx-auto px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 font-mono">
-            <span className="text-cyan-400">FEATURED_</span>
-            <span className="text-purple-400">PROJECTS</span>
-          </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-cyan-400 to-purple-400 mx-auto"></div>
-          <div className="mt-4 font-mono text-sm text-gray-400">
-            <span className="text-green-400">root@anir0y:~$</span> ls -la /projects/
+          <div className="mb-4">
+            <span className="terminal-prompt text-xs">ls /projects</span>
           </div>
+          <h2 className="text-4xl md:text-5xl font-bold text-cyber-text mb-6">
+            Featured Projects
+          </h2>
+          <div className="section-divider"></div>
         </motion.div>
-        
+
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
             <motion.div
@@ -37,68 +30,49 @@ export const Projects: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="project-card group cursor-pointer p-6"
-              whileHover={{ scale: 1.02 }}
+              className="project-card group cursor-pointer p-0 overflow-hidden"
             >
-              <div className="tech-card-header">
-                <span className="text-cyan-400 font-mono text-xs">
-                  // PROJECT_{String(index + 1).padStart(2, '0')}
-                </span>
-              </div>
-              
-              <div className="relative group">
+              <div className="relative overflow-hidden">
                 <img
                   src={project.imageUrl}
                   alt={project.title}
-                  className="w-full h-48 object-cover rounded border border-cyan-400/20"
+                  className="w-full h-48 object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-tr from-cyan-400/20 to-purple-400/20 opacity-0 group-hover:opacity-100 transition-opacity rounded" />
-                <div className="absolute top-2 right-2 w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                <div className="absolute top-3 right-3">
+                  <div className="status-active"></div>
+                </div>
               </div>
-              
-              <div className="mt-4">
-                <h3 className="text-xl font-bold text-white mb-2 font-mono">{project.title}</h3>
-                <p className="text-gray-300 mb-4 text-sm leading-relaxed">{project.description}</p>
-                
-                <div className="flex flex-wrap gap-2 mb-4">
+
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-cyber-text mb-3">{project.title}</h3>
+                <p className="text-cyber-muted mb-4 text-sm leading-relaxed">{project.description}</p>
+
+                <div className="flex flex-wrap gap-2 mb-6">
                   {project.technologies.map((tech, i) => (
-                    <span
-                      key={i}
-                      className="px-3 py-1 text-xs bg-gray-900/50 text-cyan-400 rounded border border-cyan-400/30 font-mono"
-                    >
+                    <span key={i} className="tech-badge">
                       {tech}
                     </span>
                   ))}
                 </div>
-                
-                <div className="flex space-x-4">
+
+                <div className="flex space-x-6 pt-4 border-t border-cyber-border">
                   <a
                     href={project.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-400 hover:text-cyan-400 flex items-center space-x-1 group font-mono text-sm transition-colors"
+                    className="text-cyber-muted hover:text-cyber-blue flex items-center space-x-2 text-sm transition-colors"
                   >
-                    <motion.span
-                      whileHover={{ x: 3 }}
-                      transition={{ type: "spring", stiffness: 500, damping: 30 }}
-                    >
-                      <ExternalLink size={16} />
-                    </motion.span>
-                    <span>LEARN_MORE</span>
+                    <ExternalLink size={16} />
+                    <span>View</span>
                   </a>
                   <a
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-400 hover:text-purple-400 flex items-center space-x-1 group font-mono text-sm transition-colors"
+                    className="text-cyber-muted hover:text-cyber-blue flex items-center space-x-2 text-sm transition-colors"
                   >
-                    <motion.span
-                      whileHover={{ x: 3 }}
-                      transition={{ type: "spring", stiffness: 500, damping: 30 }}
-                    >
-                      <Github size={16} />
-                    </motion.span>
-                    <span>SOURCE</span>
+                    <Github size={16} />
+                    <span>Source</span>
                   </a>
                 </div>
               </div>
