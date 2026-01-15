@@ -5,7 +5,7 @@ export const projects: Project[] = [
     title: "Morse Code Learning",
     description: "Interactive Morse code learning platform with real-time translation, practice exercises, and audio playback. Master the classic communication method through hands-on practice and gamified learning experience.",
     technologies: ["JavaScript", "Web Audio API", "Education"],
-    imageUrl: "https://images.unsplash.com/photo-1614680376593-902f74cf0d41?auto=format&fit=crop&w=800&q=80",
+    imageUrl: "https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=800&q=80",
     link: "https://morse.anir0y.in/",
     github: "https://morse.anir0y.in/"
   },
