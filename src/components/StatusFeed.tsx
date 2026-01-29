@@ -25,16 +25,12 @@ export const StatusFeed: React.FC<StatusFeedProps> = ({ maxEvents = 3 }) => {
       setLoading(true);
       setError(null);
 
-      const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
-      const proxyEndpoint = `${supabaseUrl}/functions/v1/rss-proxy`;
-
-      const anonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+      const proxyEndpoint = '/.netlify/functions/rss-proxy';
 
       const response = await fetch(proxyEndpoint, {
         method: 'GET',
         headers: {
           'Accept': 'application/xml, text/xml',
-          'Authorization': `Bearer ${anonKey}`,
         },
       });
 
