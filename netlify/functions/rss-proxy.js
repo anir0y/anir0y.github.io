@@ -1,24 +1,25 @@
-exports.handler = async (event, context) => {
+export default async (req, context) => {
   const headers = {
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Methods': 'GET, OPTIONS',
     'Access-Control-Allow-Headers': 'Content-Type, Authorization',
   };
 
-  if (event.httpMethod === 'OPTIONS') {
-    return {
-      statusCode: 200,
+  if (req.method === 'OPTIONS') {
+    return new Response('', {
+      status: 200,
       headers,
-      body: '',
-    };
+    });
   }
 
-  if (event.httpMethod !== 'GET') {
-    return {
-      statusCode: 405,
-      headers,
-      body: JSON.stringify({ error: 'Method not allowed' }),
-    };
+  if (req.method !== 'GET') {
+    return new Response(JSON.stringify({ error: 'Method not allowed' }), {
+      status: 405,
+      headers: {
+        ...headers,
+        'Content-Type': 'application/json',
+      },
+    });
   }
 
   try {
@@ -40,29 +41,27 @@ exports.handler = async (event, context) => {
 
     const xmlText = await response.text();
 
-    return {
-      statusCode: 200,
+    return new Response(xmlText, {
+      status: 200,
       headers: {
         ...headers,
         'Content-Type': 'application/xml',
         'Cache-Control': 'public, max-age=300',
       },
-      body: xmlText,
-    };
+    });
 
   } catch (error) {
     console.error('RSS proxy error:', error);
-    return {
-      statusCode: 500,
+    return new Response(JSON.stringify({
+      success: false,
+      error: 'Failed to fetch RSS feed',
+      details: error.message,
+    }), {
+      status: 500,
       headers: {
         ...headers,
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({
-        success: false,
-        error: 'Failed to fetch RSS feed',
-        details: error.message,
-      }),
-    };
+    });
   }
 };
