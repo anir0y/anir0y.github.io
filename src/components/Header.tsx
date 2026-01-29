@@ -1,5 +1,4 @@
 import React from 'react';
-import { Shield } from 'lucide-react';
 
 const Header: React.FC = () => {
   return (
@@ -7,7 +6,11 @@ const Header: React.FC = () => {
       <div className="container mx-auto px-6 py-6">
         <nav className="flex items-center justify-between">
           <div className="flex items-center space-x-3">
-            <Shield className="text-cyber-blue" size={20} />
+            <img
+              src="/img/anir0y-logo.svg"
+              alt="anir0y logo"
+              className="h-8 w-8 object-contain"
+            />
             <span className="text-cyber-text font-mono text-lg font-medium tracking-wide">anir0y</span>
           </div>
 
