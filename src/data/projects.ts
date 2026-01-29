@@ -36,4 +36,13 @@ export const projects: Project[] = [
 
   },
 
+  {
+    title: "Unified Courier Tracker (India)",
+    description: "Comprehensive courier tracking system for India that unifies tracking across multiple courier services. Track shipments from various carriers in one place with real-time status updates and delivery notifications.",
+    technologies: ["TypeScript", "React", "API Integration"],
+    imageUrl: "https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55?auto=format&fit=crop&w=800&q=80",
+    link: "https://courier.anir0y.in/",
+    github: "https://github.com/anir0y/unified-courier-tracker"
+  }
+
 ];
