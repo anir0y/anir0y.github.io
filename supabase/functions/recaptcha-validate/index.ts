@@ -7,7 +7,6 @@ const corsHeaders = {
     "Content-Type, Authorization, X-Client-Info, Apikey",
 };
 
-const PROJECT_ID = "anir0y";
 const SITE_KEY = "6LcSV48qAAAAAM6snEXZd57ePDOtv05HWAIZathr";
 
 interface RecaptchaRequest {
@@ -15,84 +14,7 @@ interface RecaptchaRequest {
   recaptchaAction: string;
 }
 
-function base64UrlEncode(buf: ArrayBuffer): string {
-  const bytes = new Uint8Array(buf);
-  let binary = "";
-  for (let i = 0; i < bytes.length; i++) {
-    binary += String.fromCharCode(bytes[i]);
-  }
-  return btoa(binary)
-    .replace(/\+/g, "-")
-    .replace(/\//g, "_")
-    .replace(/=+$/, "");
-}
-
-function base64UrlEncodeStr(str: string): string {
-  return base64UrlEncode(new TextEncoder().encode(str));
-}
-
-async function getAccessToken(credentials: {
-  client_email: string;
-  private_key: string;
-  token_uri: string;
-}): Promise<string> {
-  const now = Math.floor(Date.now() / 1000);
-
-  const header = base64UrlEncodeStr(
-    JSON.stringify({ alg: "RS256", typ: "JWT" })
-  );
-  const payload = base64UrlEncodeStr(
-    JSON.stringify({
-      iss: credentials.client_email,
-      scope: "https://www.googleapis.com/auth/cloud-platform",
-      aud: credentials.token_uri,
-      iat: now,
-      exp: now + 3600,
-    })
-  );
-
-  const signingInput = `${header}.${payload}`;
-
-  const pemBody = credentials.private_key
-    .replace(/-----BEGIN PRIVATE KEY-----/, "")
-    .replace(/-----END PRIVATE KEY-----/, "")
-    .replace(/[\n\r\s]/g, "");
-
-  const binaryKey = Uint8Array.from(atob(pemBody), (c) => c.charCodeAt(0));
-
-  const cryptoKey = await crypto.subtle.importKey(
-    "pkcs8",
-    binaryKey,
-    { name: "RSASSA-PKCS1-v1_5", hash: "SHA-256" },
-    false,
-    ["sign"]
-  );
-
-  const signature = await crypto.subtle.sign(
-    "RSASSA-PKCS1-v1_5",
-    cryptoKey,
-    new TextEncoder().encode(signingInput)
-  );
-
-  const jwt = `${signingInput}.${base64UrlEncode(signature)}`;
-
-  const res = await fetch(credentials.token_uri, {
-    method: "POST",
-    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body: `grant_type=urn:ietf:params:oauth:grant-type:jwt-bearer&assertion=${jwt}`,
-  });
-
-  if (!res.ok) {
-    const errorText = await res.text();
-    console.error("Token exchange failed:", errorText);
-    throw new Error(`Token exchange failed: ${res.status}`);
-  }
-
-  const data = await res.json();
-  return data.access_token;
-}
-
-async function getCredentialsFromDb(): Promise<string | null> {
+async function getSecretKeyFromDb(): Promise<string | null> {
   const supabaseUrl = Deno.env.get("SUPABASE_URL");
   const serviceRoleKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
 
@@ -101,7 +23,7 @@ async function getCredentialsFromDb(): Promise<string | null> {
     return null;
   }
 
-  const url = `${supabaseUrl}/rest/v1/app_secrets?key=eq.GOOGLE_APPLICATION_CREDENTIALS_JSON&select=value&limit=1`;
+  const url = `${supabaseUrl}/rest/v1/app_secrets?key=eq.RECAPTCHA_LEGACY_SECRET&select=value&limit=1`;
 
   const res = await fetch(url, {
     headers: {
@@ -118,7 +40,7 @@ async function getCredentialsFromDb(): Promise<string | null> {
 
   const rows = await res.json();
   if (!Array.isArray(rows) || rows.length === 0) {
-    console.error("No credentials found in app_secrets table");
+    console.error("No secret key found in app_secrets table");
     return null;
   }
 
@@ -150,97 +72,55 @@ Deno.serve(async (req: Request) => {
       );
     }
 
-    let credentialsJson = Deno.env.get("GOOGLE_APPLICATION_CREDENTIALS_JSON");
+    const secretKey = await getSecretKeyFromDb();
 
-    if (!credentialsJson) {
-      console.log("Env var not found, reading credentials from database...");
-      credentialsJson = await getCredentialsFromDb();
-    }
-
-    if (!credentialsJson) {
+    if (!secretKey) {
       return jsonResponse(
         { success: false, error: "Server configuration error" },
         500
       );
     }
 
-    let credentials;
-    try {
-      credentials = JSON.parse(credentialsJson);
-    } catch (e) {
-      console.error("Failed to parse credentials JSON:", e);
-      return jsonResponse(
-        { success: false, error: "Server configuration error" },
-        500
-      );
-    }
-
-    if (!credentials.client_email || !credentials.private_key || !credentials.token_uri) {
-      console.error("Credentials missing required fields");
-      return jsonResponse(
-        { success: false, error: "Server configuration error" },
-        500
-      );
-    }
-
-    let accessToken;
-    try {
-      accessToken = await getAccessToken(credentials);
-    } catch (e) {
-      console.error("Failed to get access token:", e);
-      return jsonResponse(
-        { success: false, error: "Authentication with Google failed" },
-        500
-      );
-    }
-
-    const assessmentUrl = `https://recaptchaenterprise.googleapis.com/v1/projects/${PROJECT_ID}/assessments`;
-
-    const assessmentRes = await fetch(assessmentUrl, {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        event: {
-          token,
-          expectedAction: recaptchaAction,
-          siteKey: SITE_KEY,
-        },
-      }),
+    const verifyUrl = "https://www.google.com/recaptcha/api/siteverify";
+    const params = new URLSearchParams({
+      secret: secretKey,
+      response: token,
     });
 
-    if (!assessmentRes.ok) {
-      const errorBody = await assessmentRes.text();
-      console.error("Assessment API error:", assessmentRes.status, errorBody);
+    const verifyRes = await fetch(verifyUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: params.toString(),
+    });
+
+    if (!verifyRes.ok) {
+      console.error("siteverify error:", verifyRes.status, await verifyRes.text());
       return jsonResponse(
-        { success: false, error: "Assessment request failed" },
+        { success: false, error: "Verification request failed" },
         500
       );
     }
 
-    const assessment = await assessmentRes.json();
+    const result = await verifyRes.json();
 
-    if (!assessment.tokenProperties?.valid) {
+    if (!result.success) {
       return jsonResponse(
         {
           success: false,
-          error: "Invalid token",
-          reason: assessment.tokenProperties?.invalidReason || "Unknown",
+          error: "Verification failed",
+          errorCodes: result["error-codes"] || [],
         },
         400
       );
     }
 
-    if (assessment.tokenProperties?.action !== recaptchaAction) {
+    if (result.action && result.action !== recaptchaAction) {
       return jsonResponse({ success: false, error: "Action mismatch" }, 400);
     }
 
-    const score = assessment.riskAnalysis?.score || 0;
-    const reasons = assessment.riskAnalysis?.reasons || [];
+    const score = result.score || 0;
 
-    return jsonResponse({ success: true, score, reasons });
+    return jsonResponse({ success: true, score });
   } catch (error) {
     console.error("reCAPTCHA validation error:", error);
     return jsonResponse(
