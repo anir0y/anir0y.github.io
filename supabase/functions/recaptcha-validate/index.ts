@@ -1,5 +1,4 @@
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
-import { createClient } from "npm:@supabase/supabase-js@2";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -57,7 +56,7 @@ async function getAccessToken(credentials: {
   const pemBody = credentials.private_key
     .replace(/-----BEGIN PRIVATE KEY-----/, "")
     .replace(/-----END PRIVATE KEY-----/, "")
-    .replace(/\n/g, "");
+    .replace(/[\n\r\s]/g, "");
 
   const binaryKey = Uint8Array.from(atob(pemBody), (c) => c.charCodeAt(0));
 
@@ -84,7 +83,9 @@ async function getAccessToken(credentials: {
   });
 
   if (!res.ok) {
-    throw new Error(`Token exchange failed: ${await res.text()}`);
+    const errorText = await res.text();
+    console.error("Token exchange failed:", errorText);
+    throw new Error(`Token exchange failed: ${res.status}`);
   }
 
   const data = await res.json();
@@ -92,23 +93,36 @@ async function getAccessToken(credentials: {
 }
 
 async function getCredentialsFromDb(): Promise<string | null> {
-  const supabaseUrl = Deno.env.get("SUPABASE_URL")!;
-  const serviceRoleKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
+  const supabaseUrl = Deno.env.get("SUPABASE_URL");
+  const serviceRoleKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
 
-  const supabase = createClient(supabaseUrl, serviceRoleKey);
-
-  const { data, error } = await supabase
-    .from("app_secrets")
-    .select("value")
-    .eq("key", "GOOGLE_APPLICATION_CREDENTIALS_JSON")
-    .maybeSingle();
-
-  if (error) {
-    console.error("Failed to read credentials from database:", error.message);
+  if (!supabaseUrl || !serviceRoleKey) {
+    console.error("Missing SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY");
     return null;
   }
 
-  return data?.value ?? null;
+  const url = `${supabaseUrl}/rest/v1/app_secrets?key=eq.GOOGLE_APPLICATION_CREDENTIALS_JSON&select=value&limit=1`;
+
+  const res = await fetch(url, {
+    headers: {
+      apikey: serviceRoleKey,
+      Authorization: `Bearer ${serviceRoleKey}`,
+      Accept: "application/json",
+    },
+  });
+
+  if (!res.ok) {
+    console.error("DB fetch failed:", res.status, await res.text());
+    return null;
+  }
+
+  const rows = await res.json();
+  if (!Array.isArray(rows) || rows.length === 0) {
+    console.error("No credentials found in app_secrets table");
+    return null;
+  }
+
+  return rows[0].value;
 }
 
 function jsonResponse(body: Record<string, unknown>, status = 200) {
@@ -136,20 +150,49 @@ Deno.serve(async (req: Request) => {
       );
     }
 
-    const credentialsJson =
-      Deno.env.get("GOOGLE_APPLICATION_CREDENTIALS_JSON") ||
-      (await getCredentialsFromDb());
+    let credentialsJson = Deno.env.get("GOOGLE_APPLICATION_CREDENTIALS_JSON");
 
     if (!credentialsJson) {
-      console.error("Google credentials not found in env or database");
+      console.log("Env var not found, reading credentials from database...");
+      credentialsJson = await getCredentialsFromDb();
+    }
+
+    if (!credentialsJson) {
       return jsonResponse(
         { success: false, error: "Server configuration error" },
         500
       );
     }
 
-    const credentials = JSON.parse(credentialsJson);
-    const accessToken = await getAccessToken(credentials);
+    let credentials;
+    try {
+      credentials = JSON.parse(credentialsJson);
+    } catch (e) {
+      console.error("Failed to parse credentials JSON:", e);
+      return jsonResponse(
+        { success: false, error: "Server configuration error" },
+        500
+      );
+    }
+
+    if (!credentials.client_email || !credentials.private_key || !credentials.token_uri) {
+      console.error("Credentials missing required fields");
+      return jsonResponse(
+        { success: false, error: "Server configuration error" },
+        500
+      );
+    }
+
+    let accessToken;
+    try {
+      accessToken = await getAccessToken(credentials);
+    } catch (e) {
+      console.error("Failed to get access token:", e);
+      return jsonResponse(
+        { success: false, error: "Authentication with Google failed" },
+        500
+      );
+    }
 
     const assessmentUrl = `https://recaptchaenterprise.googleapis.com/v1/projects/${PROJECT_ID}/assessments`;
 
@@ -170,7 +213,7 @@ Deno.serve(async (req: Request) => {
 
     if (!assessmentRes.ok) {
       const errorBody = await assessmentRes.text();
-      console.error("Assessment API error:", errorBody);
+      console.error("Assessment API error:", assessmentRes.status, errorBody);
       return jsonResponse(
         { success: false, error: "Assessment request failed" },
         500
@@ -196,8 +239,6 @@ Deno.serve(async (req: Request) => {
 
     const score = assessment.riskAnalysis?.score || 0;
     const reasons = assessment.riskAnalysis?.reasons || [];
-
-    console.log(`reCAPTCHA validated - Score: ${score}`);
 
     return jsonResponse({ success: true, score, reasons });
   } catch (error) {
