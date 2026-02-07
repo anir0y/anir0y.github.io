@@ -26,6 +26,9 @@ export const StatusFeed: React.FC<StatusFeedProps> = ({ maxEvents = 3 }) => {
       setError(null);
 
       const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+      if (!supabaseUrl) {
+        throw new Error('Supabase URL is not configured');
+      }
       const proxyEndpoint = `${supabaseUrl}/functions/v1/rss-proxy`;
 
       const response = await fetch(proxyEndpoint, {
