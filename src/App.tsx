@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
-import { Projects } from './components/Projects';
-import { InteractiveLabs } from './components/InteractiveLabs';
-import { Skills } from './components/Skills';
-import { Contact } from './components/Contact';
-import { Footer } from './components/Footer';
+
+const Projects = lazy(() => import('./components/Projects').then(m => ({ default: m.Projects })));
+const InteractiveLabs = lazy(() => import('./components/InteractiveLabs').then(m => ({ default: m.InteractiveLabs })));
+const Skills = lazy(() => import('./components/Skills').then(m => ({ default: m.Skills })));
+const Contact = lazy(() => import('./components/Contact').then(m => ({ default: m.Contact })));
+const Footer = lazy(() => import('./components/Footer').then(m => ({ default: m.Footer })));
 
 function App() {
   return (
@@ -13,12 +14,16 @@ function App() {
       <Header />
       <main>
         <Hero />
-        <Projects />
-        <InteractiveLabs />
-        <Skills />
-        <Contact />
+        <Suspense fallback={null}>
+          <Projects />
+          <InteractiveLabs />
+          <Skills />
+          <Contact />
+        </Suspense>
       </main>
-      <Footer />
+      <Suspense fallback={null}>
+        <Footer />
+      </Suspense>
     </div>
   );
 }

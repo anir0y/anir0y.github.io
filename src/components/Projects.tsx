@@ -37,6 +37,10 @@ export const Projects: React.FC = () => {
                   src={project.imageUrl}
                   alt={project.title}
                   className="w-full h-48 object-cover"
+                  loading="lazy"
+                  decoding="async"
+                  width={480}
+                  height={192}
                 />
                 <div className="absolute top-3 right-3">
                   <div className="status-active"></div>
