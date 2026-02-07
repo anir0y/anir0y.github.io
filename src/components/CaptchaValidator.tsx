@@ -87,28 +87,28 @@ export const CaptchaValidator: React.FC = () => {
     }
 
     // 3. Test reCAPTCHA API readiness
-    if (newStatus.scriptLoaded && window.grecaptcha) {
+    if (newStatus.scriptLoaded && window.grecaptcha?.enterprise) {
       try {
         await new Promise<void>((resolve, reject) => {
           const timeout = setTimeout(() => reject(new Error('Timeout')), 5000);
-          
-          window.grecaptcha.ready(() => {
+
+          window.grecaptcha.enterprise.ready(() => {
             clearTimeout(timeout);
             newStatus.apiReady = true;
-            addTestResult('✅ reCAPTCHA API ready');
+            addTestResult('✅ reCAPTCHA Enterprise API ready');
             resolve();
           });
         });
       } catch (error) {
-        newStatus.errors.push('reCAPTCHA API not ready');
-        addTestResult('❌ reCAPTCHA API timeout');
+        newStatus.errors.push('reCAPTCHA Enterprise API not ready');
+        addTestResult('❌ reCAPTCHA Enterprise API timeout');
       }
     }
 
     // 4. Test token generation
     if (newStatus.apiReady && newStatus.siteKeyValid) {
       try {
-        const token = await window.grecaptcha.execute(siteKey, { action: 'diagnostic_test' });
+        const token = await window.grecaptcha.enterprise.execute(siteKey, { action: 'diagnostic_test' });
         if (token) {
           newStatus.tokenGenerated = true;
           addTestResult('✅ Token generated successfully');
@@ -357,6 +357,10 @@ declare global {
     grecaptcha: {
       ready: (callback: () => void) => void;
       execute: (siteKey: string, options: { action: string }) => Promise<string>;
+      enterprise: {
+        ready: (callback: () => void) => void;
+        execute: (siteKey: string, options: { action: string }) => Promise<string>;
+      };
     };
   }
 }

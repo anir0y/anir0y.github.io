@@ -1,4 +1,5 @@
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
+import { createClient } from "npm:@supabase/supabase-js@2";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -21,7 +22,10 @@ function base64UrlEncode(buf: ArrayBuffer): string {
   for (let i = 0; i < bytes.length; i++) {
     binary += String.fromCharCode(bytes[i]);
   }
-  return btoa(binary).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
+  return btoa(binary)
+    .replace(/\+/g, "-")
+    .replace(/\//g, "_")
+    .replace(/=+$/, "");
 }
 
 function base64UrlEncodeStr(str: string): string {
@@ -87,6 +91,26 @@ async function getAccessToken(credentials: {
   return data.access_token;
 }
 
+async function getCredentialsFromDb(): Promise<string | null> {
+  const supabaseUrl = Deno.env.get("SUPABASE_URL")!;
+  const serviceRoleKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
+
+  const supabase = createClient(supabaseUrl, serviceRoleKey);
+
+  const { data, error } = await supabase
+    .from("app_secrets")
+    .select("value")
+    .eq("key", "GOOGLE_APPLICATION_CREDENTIALS_JSON")
+    .maybeSingle();
+
+  if (error) {
+    console.error("Failed to read credentials from database:", error.message);
+    return null;
+  }
+
+  return data?.value ?? null;
+}
+
 function jsonResponse(body: Record<string, unknown>, status = 200) {
   return new Response(JSON.stringify(body), {
     status,
@@ -104,15 +128,24 @@ Deno.serve(async (req: Request) => {
 
     if (!token || !recaptchaAction) {
       return jsonResponse(
-        { success: false, error: "Missing required fields: token and recaptchaAction" },
+        {
+          success: false,
+          error: "Missing required fields: token and recaptchaAction",
+        },
         400
       );
     }
 
-    const credentialsJson = Deno.env.get("GOOGLE_APPLICATION_CREDENTIALS_JSON");
+    const credentialsJson =
+      Deno.env.get("GOOGLE_APPLICATION_CREDENTIALS_JSON") ||
+      (await getCredentialsFromDb());
+
     if (!credentialsJson) {
-      console.error("GOOGLE_APPLICATION_CREDENTIALS_JSON not set");
-      return jsonResponse({ success: false, error: "Server configuration error" }, 500);
+      console.error("Google credentials not found in env or database");
+      return jsonResponse(
+        { success: false, error: "Server configuration error" },
+        500
+      );
     }
 
     const credentials = JSON.parse(credentialsJson);
@@ -136,8 +169,12 @@ Deno.serve(async (req: Request) => {
     });
 
     if (!assessmentRes.ok) {
-      console.error("Assessment API error:", await assessmentRes.text());
-      return jsonResponse({ success: false, error: "Assessment request failed" }, 500);
+      const errorBody = await assessmentRes.text();
+      console.error("Assessment API error:", errorBody);
+      return jsonResponse(
+        { success: false, error: "Assessment request failed" },
+        500
+      );
     }
 
     const assessment = await assessmentRes.json();
@@ -165,6 +202,9 @@ Deno.serve(async (req: Request) => {
     return jsonResponse({ success: true, score, reasons });
   } catch (error) {
     console.error("reCAPTCHA validation error:", error);
-    return jsonResponse({ success: false, error: "Internal server error" }, 500);
+    return jsonResponse(
+      { success: false, error: "Internal server error" },
+      500
+    );
   }
 });

@@ -62,8 +62,8 @@
       gtag('config', 'G-DZ9M04CMED');
     </script>
 
-    <!-- Google reCAPTCHA -->
-    <script src="https://www.google.com/recaptcha/api.js?render=6LcSV48qAAAAAM6snEXZd57ePDOtv05HWAIZathr" async defer></script>
+    <!-- Google reCAPTCHA Enterprise -->
+    <script src="https://www.google.com/recaptcha/enterprise.js?render=6LcSV48qAAAAAM6snEXZd57ePDOtv05HWAIZathr" async defer></script>
     
     <!-- Microsoft Clarity -->
     <script type="text/javascript">
@@ -90,20 +90,20 @@
             const maxRetries = 3;
             
             function initializeRecaptcha() {
-                if (typeof window.grecaptcha === 'undefined') {
-                    console.warn('reCAPTCHA not loaded, retrying...');
+                if (typeof window.grecaptcha === 'undefined' || typeof window.grecaptcha.enterprise === 'undefined') {
+                    console.warn('reCAPTCHA Enterprise not loaded, retrying...');
                     if (recaptchaRetries < maxRetries) {
                         recaptchaRetries++;
                         setTimeout(initializeRecaptcha, 1000);
                     } else {
-                        console.error('reCAPTCHA failed to load after multiple attempts');
+                        console.error('reCAPTCHA Enterprise failed to load after multiple attempts');
                     }
                     return;
                 }
-                
-                grecaptcha.ready(() => {
-                    console.log('reCAPTCHA ready');
-                    grecaptcha.execute("6LcSV48qAAAAAM6snEXZd57ePDOtv05HWAIZathr", { action: "homepage" })
+
+                grecaptcha.enterprise.ready(() => {
+                    console.log('reCAPTCHA Enterprise ready');
+                    grecaptcha.enterprise.execute("6LcSV48qAAAAAM6snEXZd57ePDOtv05HWAIZathr", { action: "homepage" })
                         .then((token) => {
                             console.log("reCAPTCHA token generated:", token ? "✓" : "✗");
                             handleRecaptchaToken(token);
@@ -159,7 +159,7 @@
                 console.warn('Primary reCAPTCHA script failed, attempting fallback...');
                 
                 const fallbackScript = document.createElement('script');
-                fallbackScript.src = 'https://www.recaptcha.net/recaptcha/api.js?render=6LcSV48qAAAAAM6snEXZd57ePDOtv05HWAIZathr';
+                fallbackScript.src = 'https://www.recaptcha.net/recaptcha/enterprise.js?render=6LcSV48qAAAAAM6snEXZd57ePDOtv05HWAIZathr';
                 fallbackScript.async = true;
                 fallbackScript.defer = true;
                 
