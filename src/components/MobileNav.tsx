@@ -25,7 +25,10 @@ export const MobileNav: React.FC<MobileNavProps> = ({ isOpen, onClose }) => {
           
           <div className="flex flex-col h-full">
             <div className="flex justify-between items-center p-4 border-b border-cyan-400/20">
-              <div className="font-mono text-cyan-400 text-sm">// NAVIGATION_MENU</div>
+              <div className="flex items-center space-x-2">
+                <img src="/img/anir0y-logo.svg" alt="anir0y logo" className="h-6 w-6 object-contain" />
+                <span className="font-mono text-cyan-400 text-sm">anir0y</span>
+              </div>
               <button
                 onClick={onClose}
                 className="text-cyan-400 hover:text-white transition-colors"

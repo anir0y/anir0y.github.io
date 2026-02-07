@@ -29,7 +29,7 @@ export const Footer: React.FC = () => {
             className="lg:col-span-1"
           >
             <div className="flex items-center space-x-3 mb-6">
-              <Shield className="text-cyber-blue" size={24} />
+              <img src="/img/anir0y-logo.svg" alt="anir0y logo" className="h-6 w-6 object-contain" />
               <span className="text-cyber-text font-mono text-xl font-medium">anir0y</span>
             </div>
             <p className="text-cyber-muted text-sm leading-relaxed mb-6">
