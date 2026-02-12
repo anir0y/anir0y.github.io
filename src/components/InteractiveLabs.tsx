@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, Terminal, Shield, Network } from 'lucide-react';
+import { ExternalLink, Terminal, Shield, Network, Mail } from 'lucide-react';
 
 interface Lab {
   title: string;
@@ -28,9 +28,16 @@ const labs: Lab[] = [
   {
     title: "Buffer Overflow Lab",
     url: "https://0x414141.anir0y.in/",
-    description: "Learn about buffer overflow vulnerabilities and exploitation techniques", 
+    description: "Learn about buffer overflow vulnerabilities and exploitation techniques",
     icon: Terminal,
     category: "Exploitation"
+  },
+  {
+    title: "DKIM Lab",
+    url: "https://lab-dkim.anir0y.in/",
+    description: "An interactive lab to understand email authentication, replay attacks, and defenses",
+    icon: Mail,
+    category: "Email Security"
   }
 ];
 
