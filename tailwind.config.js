@@ -5,13 +5,13 @@ export default {
     extend: {
       colors: {
         'cyber-dark': '#111111',
-        'cyber-blue': '#888888',
-        'cyber-green': '#666666',
-        'cyber-text': '#CCCCCC',
-        'cyber-muted': '#666666',
-        'cyber-border': '#222222',
-        'cyber-card': '#1A1A1A',
-        'cyber-red': '#999999',
+        'cyber-blue': '#00d9ff',
+        'cyber-green': '#00ff41',
+        'cyber-text': '#e0e0e0',
+        'cyber-muted': '#888888',
+        'cyber-border': '#333333',
+        'cyber-card': '#1a1a1a',
+        'cyber-red': '#ff0040',
       },
       fontFamily: {
         sans: ['monospace', 'Courier New', 'monospace'],
