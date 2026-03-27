@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, Terminal, Shield, Network, Mail } from 'lucide-react';
+import { ExternalLink, Terminal, Shield, Network, Mail, ArrowUpRight } from 'lucide-react';
 
 interface Lab {
   title: string;
@@ -19,7 +19,7 @@ const labs: Lab[] = [
     category: "Cryptography"
   },
   {
-    title: "OSI Packet Lab", 
+    title: "OSI Packet Lab",
     url: "https://osi.anir0y.in/",
     description: "Explore network packet analysis and the OSI model layers",
     icon: Network,
@@ -43,67 +43,74 @@ const labs: Lab[] = [
 
 export const InteractiveLabs: React.FC = () => {
   return (
-    <section id="labs" className="py-24 bg-cyber-dark relative overflow-hidden border-t border-cyber-border">
-      <div className="absolute inset-0 bg-pattern opacity-100"></div>
+    <section id="labs" className="py-32 bg-cyber-dark relative overflow-hidden">
+      <div className="absolute inset-0 bg-grid opacity-30" />
+
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-cyber-blue/20 to-transparent" />
 
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          className="text-center mb-16"
+          viewport={{ once: true }}
+          className="mb-20"
         >
           <div className="mb-4">
             <span className="terminal-prompt text-xs">ls /labs</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-cyber-text mb-6">
+          <h2 className="text-4xl md:text-6xl font-display font-bold text-white mb-4 tracking-tight">
             Interactive Labs
           </h2>
-          <div className="section-divider"></div>
-          <p className="text-cyber-muted mt-8 max-w-3xl mx-auto leading-relaxed">
-            Enhance your learning with these hands-on laboratory exercises.
-            These interactive labs provide practical experience to reinforce theoretical knowledge
-            and develop hands-on skills in cybersecurity and networking concepts.
+          <p className="text-cyber-muted max-w-xl text-base font-display">
+            Hands-on laboratory exercises for practical cybersecurity experience.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-6 max-w-5xl">
           {labs.map((lab, index) => (
-            <motion.div
+            <motion.a
               key={index}
+              href={lab.url}
+              target="_blank"
+              rel="noopener noreferrer"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="minimal-card group cursor-pointer"
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.08 }}
+              className="glass-card p-6 group block"
             >
-              <div className="flex items-center space-x-4 mb-4">
-                <div className="p-3 bg-cyber-dark/50 border border-cyber-blue/30 rounded">
-                  <lab.icon className="text-cyber-blue" size={24} />
+              <div className="flex items-start justify-between mb-4">
+                <div className="flex items-center space-x-4">
+                  <div className="w-10 h-10 flex items-center justify-center border border-cyber-blue/20 bg-cyber-blue/5 group-hover:border-cyber-blue/40 transition-colors">
+                    <lab.icon className="text-cyber-blue" size={18} />
+                  </div>
+                  <div>
+                    <h3 className="text-base font-display font-semibold text-white group-hover:text-cyber-blue transition-colors">
+                      {lab.title}
+                    </h3>
+                    <span className="text-cyber-blue/60 text-xs font-mono uppercase tracking-wider">
+                      {lab.category}
+                    </span>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="text-lg font-bold text-cyber-text">{lab.title}</h3>
-                  <span className="text-cyber-blue text-xs uppercase tracking-wider">{lab.category}</span>
-                </div>
+                <ArrowUpRight size={16} className="text-cyber-muted opacity-0 group-hover:opacity-100 transition-all group-hover:text-cyber-blue" />
               </div>
 
-              <p className="text-cyber-muted mb-6 text-sm leading-relaxed">{lab.description}</p>
+              <p className="text-cyber-muted text-sm leading-relaxed mb-5">
+                {lab.description}
+              </p>
 
-              <div className="flex items-center justify-between pt-4 border-t border-cyber-border">
-                <a
-                  href={lab.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center space-x-2 text-cyber-muted hover:text-cyber-blue text-sm transition-colors"
-                >
-                  <span>Launch</span>
-                  <ExternalLink size={14} />
-                </a>
-
+              <div className="flex items-center justify-between pt-4 border-t border-cyber-border/30">
+                <span className="text-cyber-muted text-xs font-mono group-hover:text-cyber-blue transition-colors flex items-center space-x-2">
+                  <ExternalLink size={12} />
+                  <span>Launch Lab</span>
+                </span>
                 <div className="flex items-center space-x-2">
-                  <div className="status-active"></div>
-                  <span className="text-cyber-green font-mono text-xs">Online</span>
+                  <div className="status-active" />
+                  <span className="text-cyber-green/70 font-mono text-xs">Online</span>
                 </div>
               </div>
-            </motion.div>
+            </motion.a>
           ))}
         </div>
       </div>

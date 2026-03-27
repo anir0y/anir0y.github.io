@@ -1,80 +1,60 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Github, Linkedin, Calendar, X } from 'lucide-react';
+import { Mail, Github, Linkedin, Calendar, X, ArrowUpRight } from 'lucide-react';
 
 export const Contact: React.FC = () => {
   return (
-    <section id="contact" className="py-24 bg-cyber-dark relative overflow-hidden border-t border-cyber-border">
-      <div className="absolute inset-0 bg-pattern opacity-100"></div>
+    <section id="contact" className="py-32 bg-cyber-dark relative overflow-hidden">
+      <div className="absolute inset-0 bg-grid opacity-30" />
+
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-cyber-blue/20 to-transparent" />
 
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          className="text-center mb-16"
+          viewport={{ once: true }}
+          className="mb-20"
         >
           <div className="mb-4">
             <span className="terminal-prompt text-xs">cat /contact</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-cyber-text mb-6">
+          <h2 className="text-4xl md:text-6xl font-display font-bold text-white mb-4 tracking-tight">
             Get In Touch
           </h2>
-          <div className="section-divider"></div>
+          <p className="text-cyber-muted max-w-lg text-base font-display">
+            Connect through secure channels for consulting, audits, or collaboration.
+          </p>
         </motion.div>
 
-        <div className="max-w-2xl mx-auto">
+        <div className="max-w-3xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             transition={{ duration: 0.6 }}
             className="space-y-6"
           >
-            <div className="minimal-card">
-              <h3 className="text-xl font-bold text-cyber-text mb-4">
-                Contact Methods
-              </h3>
-              <p className="text-cyber-muted leading-relaxed mb-8">
-                Connect with me through these secure channels for cybersecurity consulting,
-                security audits, or collaboration opportunities.
-              </p>
-
-              <div className="space-y-4">
-                <ContactMethod
-                  icon={Mail}
-                  label="Email"
-                  value="mail@anir0y.in"
-                  href="mailto:mail@anir0y.in"
-                />
-                <ContactMethod
-                  icon={Calendar}
-                  label="Calendar"
-                  value="book.anir0y.in"
-                  href="https://book.anir0y.in"
-                />
-              </div>
+            <div className="grid md:grid-cols-2 gap-4">
+              <ContactMethod
+                icon={Mail}
+                label="Email"
+                value="mail@anir0y.in"
+                href="mailto:mail@anir0y.in"
+              />
+              <ContactMethod
+                icon={Calendar}
+                label="Schedule"
+                value="book.anir0y.in"
+                href="https://book.anir0y.in"
+              />
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
-              <SocialCard
-                href="https://github.com/anir0y"
-                icon={Github}
-                label="GitHub"
-              />
-              <SocialCard
-                href="https://www.linkedin.com/in/anir0y/"
-                icon={Linkedin}
-                label="LinkedIn"
-              />
-              <SocialCard
-                href="https://x.com/anir0y"
-                icon={X}
-                label="X/Twitter"
-              />
-              <SocialCard
-                href="https://topmate.io/anir0y/"
-                icon={Calendar}
-                label="Topmate"
-              />
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+              <SocialCard href="https://github.com/anir0y" icon={Github} label="GitHub" />
+              <SocialCard href="https://www.linkedin.com/in/anir0y/" icon={Linkedin} label="LinkedIn" />
+              <SocialCard href="https://x.com/anir0y" icon={X} label="X" />
+              <SocialCard href="https://topmate.io/anir0y/" icon={Calendar} label="Topmate" />
             </div>
           </motion.div>
         </div>
@@ -93,13 +73,16 @@ const ContactMethod: React.FC<{
     href={href}
     target={href.startsWith('http') ? '_blank' : undefined}
     rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
-    className="flex items-center space-x-4 p-4 bg-cyber-dark/30 border border-cyber-blue/20 hover:border-cyber-blue/40 rounded transition-all"
+    className="glass-card p-5 flex items-center space-x-4 group"
   >
-    <Icon className="text-cyber-blue flex-shrink-0" size={20} />
-    <div className="flex-1">
-      <div className="text-cyber-text text-sm font-medium">{label}</div>
-      <div className="text-cyber-blue text-xs font-mono">{value}</div>
+    <div className="w-10 h-10 flex items-center justify-center border border-cyber-blue/20 bg-cyber-blue/5 group-hover:border-cyber-blue/40 transition-colors flex-shrink-0">
+      <Icon className="text-cyber-blue" size={18} />
     </div>
+    <div className="flex-1 min-w-0">
+      <div className="text-cyber-muted text-xs font-mono uppercase tracking-wider mb-1">{label}</div>
+      <div className="text-white text-sm font-display truncate">{value}</div>
+    </div>
+    <ArrowUpRight size={14} className="text-cyber-muted opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0" />
   </a>
 );
 
@@ -112,9 +95,11 @@ const SocialCard: React.FC<{
     href={href}
     target="_blank"
     rel="noopener noreferrer"
-    className="flex items-center justify-center space-x-3 p-4 bg-cyber-dark/30 border border-cyber-blue/20 hover:border-cyber-blue/40 rounded transition-all group"
+    className="glass-card flex flex-col items-center justify-center p-5 space-y-2 group"
   >
-    <Icon size={18} className="text-cyber-blue group-hover:text-cyber-green transition-colors" />
-    <span className="text-cyber-muted text-sm group-hover:text-cyber-text transition-colors">{label}</span>
+    <Icon size={18} className="text-cyber-muted group-hover:text-cyber-blue transition-colors" />
+    <span className="text-cyber-muted text-xs font-mono group-hover:text-cyber-text transition-colors">
+      {label}
+    </span>
   </a>
 );
