@@ -3,46 +3,89 @@ import { Project } from '../types';
 export const projects: Project[] = [
   {
     title: "Morse Code Learning",
-    description: "Interactive Morse code learning platform with real-time translation, practice exercises, and audio playback. Master the classic communication method through hands-on practice and gamified learning experience.",
+    description: "Interactive Morse code learning platform with real-time translation, practice exercises, and audio playback. Master the classic communication method through hands-on practice.",
     technologies: ["JavaScript", "Web Audio API", "Education"],
-    imageUrl: "https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=480&q=75",
+    imageUrl: "https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=800&q=75",
     link: "https://morse.anir0y.in/",
-    github: "https://morse.anir0y.in/"
+    github: "https://morse.anir0y.in/",
+    span: 'hero',
+    type: 'project',
   },
   {
     title: "VWA - Vulnerable Web App",
-    description: "WebApp Lab for training.",
-    technologies: ["docekr", "php", "mysql", "brain"],
+    description: "WebApp Lab for security training and vulnerability practice.",
+    technologies: ["Docker", "PHP", "MySQL"],
     imageUrl: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=480&q=75",
     link: "https://hub.docker.com/r/anir0y/vwa",
-    github: "https://hub.docker.com/r/anir0y/vwa"
+    github: "https://hub.docker.com/r/anir0y/vwa",
+    type: 'project',
   },
   {
-    title: "Red Teaming as a IAC",
-    description: "Automates Covenant C2 deployment using Terraform on DigitalOcean with Cloudflare integration, enabling secure, scalable, and stealthy infrastructure for red teaming and post-exploitation tasks with ease and consistency.",
-    technologies: ["Python", "teraform", "cloud"],
+    title: "Red Teaming as IAC",
+    description: "Automates Covenant C2 deployment using Terraform on DigitalOcean with Cloudflare integration for red teaming.",
+    technologies: ["Python", "Terraform", "Cloud"],
     imageUrl: "https://i.imgur.com/sc7xTbRl.png",
     link: "https://github.com/vatsal-mob/IAC-C2",
-    github: "https://github.com/vatsal-mob/IAC-C2"
+    github: "https://github.com/vatsal-mob/IAC-C2",
+    type: 'project',
   },
-  
   {
     title: "CANBus Simulator",
-    description: "A CANBus Simulator mimics Controller Area Network communication, enabling testing, debugging, and development of CAN-enabled devices by simulating real-world scenarios without requiring physical hardware systems, ideal for automotive and industrial applications.",
-    technologies: ["C++", "car hacking", "security"],
+    description: "Mimics Controller Area Network communication for testing CAN-enabled devices without physical hardware.",
+    technologies: ["C++", "Car Hacking", "Security"],
     imageUrl: "https://i.imgur.com/1ziuUECl.png",
     link: "https://github.com/anir0y/simulator",
-    github: "https://github.com/anir0y/simulator"
-
+    github: "https://github.com/anir0y/simulator",
+    span: 'wide',
+    type: 'project',
   },
-
   {
-    title: "Unified Courier Tracker (India)",
-    description: "Comprehensive courier tracking system for India that unifies tracking across multiple courier services. Track shipments from various carriers in one place with real-time status updates and delivery notifications.",
-    technologies: ["TypeScript", "React", "API Integration"],
+    title: "Unified Courier Tracker",
+    description: "Comprehensive courier tracking system for India that unifies tracking across multiple courier services.",
+    technologies: ["TypeScript", "React", "API"],
     imageUrl: "https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55?auto=format&fit=crop&w=480&q=75",
     link: "https://courier.anir0y.in/",
-    github: "https://github.com/anir0y/unified-courier-tracker"
-  }
-
+    github: "https://github.com/anir0y/unified-courier-tracker",
+    type: 'project',
+  },
+  {
+    title: "StickyBombs",
+    description: "Anonymous confession boards with beautiful themes. Drop sticky notes, connect ideas, and confess anonymously.",
+    technologies: ["Web App", "Social", "Community"],
+    imageUrl: "https://images.unsplash.com/photo-1531346878377-a5be20888e57?auto=format&fit=crop&w=480&q=75",
+    link: "https://stickybombs.app/",
+    type: 'project',
+  },
+  {
+    title: "PKI Lab",
+    description: "Practice Public Key Infrastructure concepts and certificate management in an interactive environment.",
+    technologies: ["Cryptography", "PKI", "Interactive"],
+    imageUrl: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=480&q=75",
+    link: "https://anir0y.in/pki/",
+    type: 'lab',
+  },
+  {
+    title: "OSI Packet Lab",
+    description: "Explore network packet analysis and the OSI model layers through hands-on exercises.",
+    technologies: ["Networking", "OSI", "Interactive"],
+    imageUrl: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=480&q=75",
+    link: "https://osi.anir0y.in/",
+    type: 'lab',
+  },
+  {
+    title: "Buffer Overflow Lab",
+    description: "Learn about buffer overflow vulnerabilities and exploitation techniques.",
+    technologies: ["Exploitation", "Memory", "Security"],
+    imageUrl: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=480&q=75",
+    link: "https://0x414141.anir0y.in/",
+    type: 'lab',
+  },
+  {
+    title: "DKIM Lab",
+    description: "Interactive lab to understand email authentication, replay attacks, and defenses.",
+    technologies: ["Email Security", "DKIM", "Interactive"],
+    imageUrl: "/img/dkim-lab.png",
+    link: "https://lab-dkim.anir0y.in/",
+    type: 'lab',
+  },
 ];

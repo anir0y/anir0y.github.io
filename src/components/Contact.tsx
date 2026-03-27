@@ -1,105 +1,92 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-import { Mail, Github, Linkedin, Calendar, X, ArrowUpRight } from 'lucide-react';
+import { Mail, Calendar, Github, Linkedin, ArrowUpRight } from 'lucide-react';
+import { ScrollReveal } from './ScrollReveal';
+import { Threads } from './Threads';
+import { XIcon } from './XIcon';
+
+const socials = [
+  { href: 'https://github.com/anir0y', icon: Github, label: 'GitHub' },
+  { href: 'https://www.linkedin.com/in/anir0y/', icon: Linkedin, label: 'LinkedIn' },
+  { href: 'https://x.com/anir0y', icon: XIcon, label: '' },
+  { href: 'https://topmate.io/anir0y/', label: 'Topmate' },
+];
 
 export const Contact: React.FC = () => {
   return (
-    <section id="contact" className="py-32 bg-cyber-dark relative overflow-hidden">
-      <div className="absolute inset-0 bg-grid opacity-30" />
+    <section id="contact" className="relative py-sp-3xl px-sp-md overflow-hidden" style={{ background: 'var(--bg)' }}>
+      {/* Threads background — fills entire section */}
+      <div className="absolute inset-0 z-0">
+        <Threads amplitude={1} />
+      </div>
 
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-cyber-blue/20 to-transparent" />
+      <div className="w-[min(90%,1120px)] mx-auto relative z-[1]">
+        <div className="grid md:grid-cols-2 gap-sp-2xl">
+          {/* Left: headline */}
+          <ScrollReveal>
+            <span className="font-mono text-[0.7rem] font-semibold uppercase tracking-[0.15em] text-accent mb-4 block">
+              Contact
+            </span>
+            <h2 className="text-[clamp(1.8rem,4vw,3rem)] font-bold tracking-[-0.03em] leading-[1.1] mb-4">
+              Let's work together
+            </h2>
+            <p className="text-fg-muted text-[1.05rem] leading-relaxed">
+              Available for security consulting, penetration testing, and collaboration.
+              Reach out through any channel below.
+            </p>
+          </ScrollReveal>
 
-      <div className="container mx-auto px-6 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mb-20"
-        >
-          <div className="mb-4">
-            <span className="terminal-prompt text-xs">cat /contact</span>
-          </div>
-          <h2 className="text-4xl md:text-6xl font-display font-bold text-white mb-4 tracking-tight">
-            Get In Touch
-          </h2>
-          <p className="text-cyber-muted max-w-lg text-base font-display">
-            Connect through secure channels for consulting, audits, or collaboration.
-          </p>
-        </motion.div>
-
-        <div className="max-w-3xl">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="space-y-6"
-          >
-            <div className="grid md:grid-cols-2 gap-4">
-              <ContactMethod
-                icon={Mail}
-                label="Email"
-                value="mail@anir0y.in"
+          {/* Right: contact card */}
+          <ScrollReveal delay={1}>
+            <div className="rounded-xl border border-border bg-bg-card/90 backdrop-blur-sm p-8 space-y-6">
+              <a
                 href="mailto:mail@anir0y.in"
-              />
-              <ContactMethod
-                icon={Calendar}
-                label="Schedule"
-                value="book.anir0y.in"
-                href="https://book.anir0y.in"
-              />
-            </div>
+                className="flex items-center justify-between p-4 rounded-lg border border-border hover:border-border-strong hover:bg-bg-inset transition-all group"
+              >
+                <div className="flex items-center gap-3">
+                  <Mail size={18} className="text-accent" />
+                  <div>
+                    <div className="text-[0.7rem] font-mono uppercase tracking-[0.1em] text-fg-faint">Email</div>
+                    <div className="text-fg text-sm font-medium">mail@anir0y.in</div>
+                  </div>
+                </div>
+                <ArrowUpRight size={14} className="text-fg-faint group-hover:text-fg transition-colors" />
+              </a>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-              <SocialCard href="https://github.com/anir0y" icon={Github} label="GitHub" />
-              <SocialCard href="https://www.linkedin.com/in/anir0y/" icon={Linkedin} label="LinkedIn" />
-              <SocialCard href="https://x.com/anir0y" icon={X} label="X" />
-              <SocialCard href="https://topmate.io/anir0y/" icon={Calendar} label="Topmate" />
+              <a
+                href="https://topmate.io/anir0y"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-between p-4 rounded-lg border border-border hover:border-border-strong hover:bg-bg-inset transition-all group"
+              >
+                <div className="flex items-center gap-3">
+                  <Calendar size={18} className="text-accent" />
+                  <div>
+                    <div className="text-[0.7rem] font-mono uppercase tracking-[0.1em] text-fg-faint">Schedule</div>
+                    <div className="text-fg text-sm font-medium">topmate.io/anir0y</div>
+                  </div>
+                </div>
+                <ArrowUpRight size={14} className="text-fg-faint group-hover:text-fg transition-colors" />
+              </a>
+
+              {/* Social pills */}
+              <div className="flex flex-wrap gap-2 pt-2">
+                {socials.map((social) => (
+                  <a
+                    key={social.label}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`flex items-center gap-2 rounded border border-border text-fg-muted text-[0.8rem] font-medium hover:border-border-strong hover:text-fg transition-all ${social.label ? 'px-3.5 py-2' : 'p-2.5'}`}
+                  >
+                    {social.icon && <social.icon size={14} />}
+                    {social.label && <span>{social.label}</span>}
+                  </a>
+                ))}
+              </div>
             </div>
-          </motion.div>
+          </ScrollReveal>
         </div>
       </div>
     </section>
   );
 };
-
-const ContactMethod: React.FC<{
-  icon: React.FC<{ size?: number; className?: string }>;
-  label: string;
-  value: string;
-  href: string;
-}> = ({ icon: Icon, label, value, href }) => (
-  <a
-    href={href}
-    target={href.startsWith('http') ? '_blank' : undefined}
-    rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
-    className="glass-card p-5 flex items-center space-x-4 group"
-  >
-    <div className="w-10 h-10 flex items-center justify-center border border-cyber-blue/20 bg-cyber-blue/5 group-hover:border-cyber-blue/40 transition-colors flex-shrink-0">
-      <Icon className="text-cyber-blue" size={18} />
-    </div>
-    <div className="flex-1 min-w-0">
-      <div className="text-cyber-muted text-xs font-mono uppercase tracking-wider mb-1">{label}</div>
-      <div className="text-white text-sm font-display truncate">{value}</div>
-    </div>
-    <ArrowUpRight size={14} className="text-cyber-muted opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0" />
-  </a>
-);
-
-const SocialCard: React.FC<{
-  href: string;
-  icon: React.FC<{ size?: number; className?: string }>;
-  label: string;
-}> = ({ href, icon: Icon, label }) => (
-  <a
-    href={href}
-    target="_blank"
-    rel="noopener noreferrer"
-    className="glass-card flex flex-col items-center justify-center p-5 space-y-2 group"
-  >
-    <Icon size={18} className="text-cyber-muted group-hover:text-cyber-blue transition-colors" />
-    <span className="text-cyber-muted text-xs font-mono group-hover:text-cyber-text transition-colors">
-      {label}
-    </span>
-  </a>
-);

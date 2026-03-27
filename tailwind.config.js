@@ -4,51 +4,68 @@ export default {
   theme: {
     extend: {
       colors: {
-        'cyber-dark': '#0a0a0a',
-        'cyber-darker': '#050505',
-        'cyber-blue': '#00d4ff',
-        'cyber-green': '#00ff88',
-        'cyber-text': '#e8e8e8',
-        'cyber-muted': '#6b7280',
-        'cyber-border': '#1f1f1f',
-        'cyber-card': '#111111',
-        'cyber-red': '#ff3366',
-        'cyber-surface': '#161616',
+        bg: 'var(--bg)',
+        'bg-alt': 'var(--bg-alt)',
+        'bg-card': 'var(--bg-card)',
+        'bg-inset': 'var(--bg-inset)',
+        fg: 'var(--fg)',
+        'fg-muted': 'var(--fg-muted)',
+        'fg-faint': 'var(--fg-faint)',
+        accent: 'var(--accent)',
+        'accent-dim': 'var(--accent-dim)',
+        'accent-glow': 'var(--accent-glow)',
+        border: 'var(--border)',
+        'border-strong': 'var(--border-strong)',
       },
       fontFamily: {
-        sans: ['"SF Mono"', '"Fira Code"', '"JetBrains Mono"', 'monospace'],
-        mono: ['"SF Mono"', '"Fira Code"', '"JetBrains Mono"', 'monospace'],
-        display: ['"Inter"', 'system-ui', '-apple-system', 'sans-serif'],
+        sans: ['"Inter"', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'sans-serif'],
+        mono: ['"JetBrains Mono"', '"Courier New"', 'monospace'],
+      },
+      maxWidth: {
+        container: '1120px',
+      },
+      borderRadius: {
+        DEFAULT: '6px',
+        lg: '14px',
+        xl: '20px',
+        card: '20px',
+        nav: '1rem',
       },
       spacing: {
-        '18': '4.5rem',
-        '88': '22rem',
+        'sp-xs': '4px',
+        'sp-sm': '8px',
+        'sp-md': '16px',
+        'sp-lg': '24px',
+        'sp-xl': '40px',
+        'sp-2xl': '64px',
+        'sp-3xl': '96px',
       },
       animation: {
         'fade-up': 'fadeUp 0.8s ease-out',
-        'glow-pulse': 'glowPulse 3s ease-in-out infinite',
-        'float': 'float 6s ease-in-out infinite',
+        'marquee': 'marquee 40s linear infinite',
+        'status-pulse': 'statusPulse 2s ease-in-out infinite',
+        'bob': 'bob 2.4s ease-in-out infinite',
       },
       keyframes: {
         fadeUp: {
           from: { opacity: '0', transform: 'translateY(30px)' },
           to: { opacity: '1', transform: 'translateY(0)' },
         },
-        glowPulse: {
-          '0%, 100%': { opacity: '0.4' },
-          '50%': { opacity: '0.8' },
+        marquee: {
+          from: { transform: 'translateX(0)' },
+          to: { transform: 'translateX(-50%)' },
         },
-        float: {
+        statusPulse: {
+          '0%, 100%': { opacity: '1', transform: 'scale(1)', boxShadow: '0 0 4px var(--accent)' },
+          '50%': { opacity: '0.6', transform: 'scale(0.8)', boxShadow: '0 0 10px var(--accent)' },
+        },
+        bob: {
           '0%, 100%': { transform: 'translateY(0)' },
-          '50%': { transform: 'translateY(-10px)' },
+          '50%': { transform: 'translateY(8px)' },
         },
       },
-      backgroundImage: {
-        'grid-pattern': 'linear-gradient(rgba(0,212,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,212,255,0.03) 1px, transparent 1px)',
-        'radial-glow': 'radial-gradient(circle at 50% 50%, rgba(0,212,255,0.08) 0%, transparent 70%)',
-      },
-      backgroundSize: {
-        'grid': '64px 64px',
+      transitionTimingFunction: {
+        'out-expo': 'cubic-bezier(.16, 1, .3, 1)',
       },
     },
   },

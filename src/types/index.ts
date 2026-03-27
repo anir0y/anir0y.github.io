@@ -4,12 +4,15 @@ export interface Project {
   technologies: string[];
   imageUrl: string;
   link: string;
+  github?: string;
+  span?: 'hero' | 'wide' | 'normal';
+  type: 'project' | 'lab';
 }
 
 export interface Skill {
   name: string;
   icon: string;
-  category: 'security'| 'tools';
+  category: 'security' | 'tools';
 }
 
 export interface SocialLink {
