@@ -14,7 +14,7 @@ html {
 
 body {
   @apply bg-cyber-dark text-cyber-text;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: monospace, 'Courier New', monospace;
 }
 
 ::-webkit-scrollbar {
@@ -45,15 +45,15 @@ body {
 
 /* Minimalist Card Styles */
 .minimal-card {
-  @apply bg-cyber-card/50 backdrop-blur-sm;
-  border: 1px solid rgba(0, 217, 255, 0.15);
-  border-radius: 8px;
+  @apply bg-cyber-card/50;
+  border: 1px solid rgba(136, 136, 136, 0.2);
+  border-radius: 0px;
   padding: 32px;
   transition: all 0.2s ease;
 }
 
 .minimal-card:hover {
-  border-color: rgba(0, 217, 255, 0.4);
+  border-color: rgba(136, 136, 136, 0.4);
   transform: translateY(-2px);
 }
 
@@ -87,10 +87,7 @@ body {
 
 /* Subtle Background Grid Pattern */
 .bg-pattern {
-  background-image:
-    linear-gradient(rgba(0, 217, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 217, 255, 0.03) 1px, transparent 1px);
-  background-size: 50px 50px;
+  background-image: none;
 }
 
 /* Terminal Text (limited use) */
@@ -126,8 +123,8 @@ body {
 
 /* Header Backdrop */
 .header-backdrop {
-  @apply bg-cyber-dark/90 backdrop-blur-sm;
-  border-bottom: 1px solid rgba(0, 217, 255, 0.1);
+  @apply bg-cyber-dark;
+  border-bottom: 1px solid rgba(136, 136, 136, 0.1);
 }
 
 /* Navigation Links */
@@ -157,30 +154,30 @@ body {
 
 /* Project Card Styles */
 .project-card {
-  @apply bg-cyber-card/50 backdrop-blur-sm;
-  border: 1px solid rgba(0, 217, 255, 0.15);
-  border-radius: 8px;
+  @apply bg-cyber-card/50;
+  border: 1px solid rgba(136, 136, 136, 0.2);
+  border-radius: 0px;
   overflow: hidden;
   transition: all 0.2s ease;
 }
 
 .project-card:hover {
-  border-color: rgba(0, 217, 255, 0.4);
+  border-color: rgba(136, 136, 136, 0.4);
   transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(0, 217, 255, 0.1);
+  box-shadow: none;
 }
 
 /* Skill Item Styles */
 .skill-item {
-  @apply bg-cyber-dark/60 backdrop-blur-sm;
-  border: 1px solid rgba(0, 217, 255, 0.15);
-  border-radius: 6px;
+  @apply bg-cyber-dark/60;
+  border: 1px solid rgba(136, 136, 136, 0.2);
+  border-radius: 0px;
   padding: 12px 16px;
   transition: all 0.2s ease;
 }
 
 .skill-item:hover {
-  border-color: rgba(0, 217, 255, 0.3);
+  border-color: rgba(136, 136, 136, 0.4);
   @apply bg-cyber-dark/80;
 }
 
@@ -194,7 +191,7 @@ body {
   height: 1px;
   width: 96px;
   margin: 0 auto;
-  background: linear-gradient(90deg, transparent, theme('colors.cyber-blue'), transparent);
+  background: rgba(136, 136, 136, 0.3);
 }
 
 /* Circuit Divider */

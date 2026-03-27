@@ -4,18 +4,18 @@ export default {
   theme: {
     extend: {
       colors: {
-        'cyber-dark': '#0A0E27',
-        'cyber-blue': '#00D9FF',
-        'cyber-green': '#00FF88',
-        'cyber-text': '#E8EDF2',
-        'cyber-muted': '#8B95A5',
-        'cyber-border': '#1A2332',
-        'cyber-card': '#1A2332',
-        'cyber-red': '#FF6B6B',
+        'cyber-dark': '#111111',
+        'cyber-blue': '#888888',
+        'cyber-green': '#666666',
+        'cyber-text': '#CCCCCC',
+        'cyber-muted': '#666666',
+        'cyber-border': '#222222',
+        'cyber-card': '#1A1A1A',
+        'cyber-red': '#999999',
       },
       fontFamily: {
-        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
-        mono: ['JetBrains Mono', 'Fira Code', 'SF Mono', 'Courier New', 'monospace'],
+        sans: ['monospace', 'Courier New', 'monospace'],
+        mono: ['monospace', 'Courier New', 'monospace'],
       },
       spacing: {
         '18': '4.5rem',
