@@ -27,3 +27,4 @@ dist-ssr
 *.sw?
 .dccache
 .env
+.gitnexus

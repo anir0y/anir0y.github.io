@@ -2,7 +2,7 @@ import React from 'react';
 import { ScrollReveal } from './ScrollReveal';
 
 const stats = [
-  { value: '8+', label: 'Years Experience' },
+  { value: '13 +', label: 'Years Experience' },
   { value: '100+', label: 'Security Assessments' },
   { value: '20+', label: 'Open Source Projects' },
 ];
