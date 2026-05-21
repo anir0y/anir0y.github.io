@@ -52,7 +52,7 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="./assets/ms-icon-144x144-CA5IyKYd.png">
     <meta name="theme-color" content="#0d1117">
-  <script type="module" crossorigin src="./assets/index-ClJNeDXE.js"></script>
+  <script type="module" crossorigin src="./assets/index-Fn3mUbJx.js"></script>
   <link rel="stylesheet" crossorigin href="./assets/index-BLITaqXG.css">
 </head>
 <body>
@@ -139,7 +139,11 @@
             }).catch(function() {});
         }
 
-        if ('requestIdleCallback' in window) {
+        var isLocalReview = ['localhost', '127.0.0.1', '0.0.0.0'].indexOf(window.location.hostname) !== -1;
+
+        if (isLocalReview) {
+            // Keep local review focused on the app UI; production still loads the deferred services.
+        } else if ('requestIdleCallback' in window) {
             requestIdleCallback(loadDeferredScripts, { timeout: 3000 });
         } else {
             window.addEventListener('load', function() {
