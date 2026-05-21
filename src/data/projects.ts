@@ -49,6 +49,15 @@ export const projects: Project[] = [
     type: 'project',
   },
   {
+    title: "Offline Statement Tracker",
+    description: "Local-only finance tracker that ingests password-protected bank and credit-card PDFs, deduplicates transfers, categorizes spend, and powers a Streamlit dashboard with private LLM chat.",
+    technologies: ["Python", "Streamlit", "Finance"],
+    imageUrl: "https://raw.githubusercontent.com/anir0y/offline-statement-tracker/main/docs/screenshots/01-dashboard.png",
+    link: "https://github.com/anir0y/offline-statement-tracker",
+    github: "https://github.com/anir0y/offline-statement-tracker",
+    type: 'project',
+  },
+  {
     title: "StickyBombs",
     description: "Anonymous confession boards with beautiful themes. Drop sticky notes, connect ideas, and confess anonymously.",
     technologies: ["Web App", "Social", "Community"],
