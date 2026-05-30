@@ -3,7 +3,7 @@
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: geolocation=(), microphone=(), camera=(), interest-cohort=()
-  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://api.ipapi.is https://ipwho.is https://api.ipify.org; base-uri 'self'; frame-ancestors 'none'; form-action 'self'
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://www.clarity.ms https://rum.cronitor.io https://cdn.consentmanager.net https://*.consentmanager.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://www.google-analytics.com https://*.google-analytics.com https://*.clarity.ms https://*.consentmanager.net https://cataas.com; connect-src 'self' https://api.ipapi.is https://ipwho.is https://api.ipify.org https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://stats.g.doubleclick.net https://*.clarity.ms https://rum.cronitor.io https://*.cronitor.io https://*.consentmanager.net; frame-src https://*.consentmanager.net; base-uri 'self'; frame-ancestors 'none'; form-action 'self'
 
 # Fingerprinted assets are immutable — cache hard.
 /assets/*

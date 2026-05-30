@@ -1,5 +1,13 @@
 # anir0y // Security Operations Command — v3
 
+<p align="center">
+  <a href="https://anir0y.in"><img src="public/og.jpg" alt="anir0y · Security Operations Command" width="100%" /></a>
+</p>
+
+<p align="center">
+  <strong>🌐 Live: <a href="https://anir0y.in">anir0y.in</a></strong>
+</p>
+
 A cinematic **Vite + React + TypeScript** portfolio for **Animesh Roy (anir0y)**.
 Aesthetic: **Tactical Cyber-Noir** — deep obsidian, electric cyan data-lines, hazard-orange threat highlights.
 A WebGL **Global Threat Map** (Three.js) renders behind layered glassmorphism, with a boot-time security

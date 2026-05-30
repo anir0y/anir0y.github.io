@@ -1,2 +1,3 @@
-# Single source of truth for SPA fallback — honoured by Cloudflare Pages and Netlify.
-/*    /index.html   200
+# No SPA catch-all: this is a single-page anchor site, so unknown paths should
+# surface a real 404 (Cloudflare Pages & Netlify serve /404.html — the cat page).
+# Keep the apex on the canonical host; explicit redirects only.
