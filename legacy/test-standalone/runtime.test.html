@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>anir0y SECOPS · runtime self-test</title>
+<style>
+  body{background:#05070a;color:#cfe9f2;font-family:'JetBrains Mono',ui-monospace,monospace;margin:0;padding:28px;line-height:1.7}
+  h1{color:#00e5ff;font-size:18px;letter-spacing:1px}
+  .sub{color:#4a5b66;font-size:12px;margin-bottom:22px}
+  .row{padding:7px 12px;border-left:2px solid #16323f;margin:4px 0;font-size:13px}
+  .pass{color:#3ef0a0;border-left-color:#3ef0a0}
+  .failx{color:#ff7a18;border-left-color:#ff7a18}
+  #summary{margin-top:22px;padding:14px 18px;border:1px solid rgba(0,229,255,.2);border-radius:10px;font-size:14px}
+  iframe{position:fixed;width:1280px;height:800px;left:-4000px;top:0;border:0}
+  a{color:#00e5ff}
+</style>
+</head>
+<body>
+<h1>anir0y // SECOPS · runtime self-test</h1>
+<div class="sub">Loads ../index.html in a hidden frame and asserts live DOM + WebGL behaviour. Open this file over http:// (e.g. <code>npx serve</code>) for accurate results · file:// blocks cross-frame reads in some browsers.</div>
+<div id="out"></div>
+<div id="summary">running…</div>
+<iframe id="frame" src="../index.html" title="site under test"></iframe>
+
+<script>
+const out = document.getElementById('out');
+const results = [];
+function assert(name, cond, detail){
+  results.push({name, pass: !!cond, detail});
+  const d = document.createElement('div');
+  d.className = 'row ' + (cond ? 'pass' : 'failx');
+  d.textContent = (cond ? '✔ ' : '✘ ') + name + (cond ? '' : '  → ' + (detail||''));
+  out.appendChild(d);
+}
+
+const frame = document.getElementById('frame');
+const errors = [];
+window.addEventListener('error', e => errors.push(e.message));
+
+frame.addEventListener('load', () => {
+  // give the boot sequence + first render a beat
+  setTimeout(run, 1600);
+});
+
+function run(){
+  let doc, win;
+  try { doc = frame.contentDocument; win = frame.contentWindow; }
+  catch(e){ assert('cross-frame access (serve over http://)', false, e.message); return finish(); }
+
+  assert('document loaded', !!doc && !!doc.body);
+  assert('THREE.js loaded', typeof win.THREE !== 'undefined' || doc.documentElement.classList.contains('no-webgl'),
+         'THREE missing and no fallback flag');
+
+  // canvas sized
+  const cv = doc.getElementById('bg');
+  assert('#bg canvas present', !!cv);
+  if (cv && !doc.documentElement.classList.contains('no-webgl')) {
+    assert('canvas has pixels', cv.width > 0 && cv.height > 0, cv.width + 'x' + cv.height);
+    let gl = null;
+    try { gl = cv.getContext('webgl') || cv.getContext('experimental-webgl'); } catch(e){}
+    assert('WebGL context acquired', !!gl);
+  }
+
+  // sections render
+  ['hero','about','arsenal','services','training','research','projects','contact'].forEach(id => {
+    const el = doc.getElementById(id);
+    assert('section #'+id+' in DOM', !!el && el.offsetHeight > 0, el ? 'height 0' : 'absent');
+  });
+
+  // training modules injected + unlock works
+  const mods = doc.querySelectorAll('#training-grid .module.scan');
+  assert('training modules injected (5)', mods.length === 5, 'got ' + mods.length);
+  if (mods.length){
+    const m = mods[0];
+    m.dispatchEvent(new win.PointerEvent('pointerenter'));
+    assert('biometric unlock toggles class', m.classList.contains('unlocked'));
+    const reveal = m.querySelector('.mod-reveal');
+    assert('unlocked reveal expands', reveal && win.getComputedStyle(reveal).maxHeight !== '0px');
+  }
+
+  // arsenal marquee populated (duplicated set for seamless loop)
+  const marq = doc.getElementById('marquee');
+  assert('arsenal marquee populated', marq && marq.querySelectorAll('.chip').length >= 20, marq ? (marq.children.length+' chips') : 'no marquee');
+
+  // interactive labs render
+  const labs = doc.querySelectorAll('#projects .lab');
+  assert('interactive labs rendered (5)', labs.length === 5, 'got ' + labs.length);
+
+  // boot screen dismisses
+  const boot = doc.getElementById('boot');
+  assert('boot screen dismissed', boot && boot.classList.contains('done'), 'still visible after 1.6s');
+
+  // stats counters ran (visible ones)
+  const firstStat = doc.querySelector('.stat .n');
+  assert('stat counter rendered', firstStat && /\d/.test(firstStat.textContent), firstStat ? firstStat.textContent : 'none');
+
+  // year + uptime populated
+  assert('footer year set', /\d{4}/.test(doc.getElementById('year').textContent));
+  assert('uptime ticking', /\d\d:\d\d:\d\d/.test(doc.getElementById('uptime').textContent));
+
+  // no runtime errors thrown by the page
+  assert('no uncaught JS errors', errors.length === 0, errors.join(' | '));
+
+  finish();
+}
+
+function finish(){
+  const pass = results.filter(r=>r.pass).length, total = results.length;
+  const s = document.getElementById('summary');
+  s.style.color = pass===total ? '#3ef0a0' : '#ff7a18';
+  s.textContent = pass + '/' + total + ' runtime checks passed' + (pass===total ? ' · ALL GREEN.' : ' · see failures above.');
+}
+</script>
+</body>
+</html>

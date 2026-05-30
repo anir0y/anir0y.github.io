@@ -1,53 +1,70 @@
-name: Deploy to GitHub Pages
+# Build once, deploy the SAME artifact to every mirror in parallel.
+# Keeping all origins on an identical build is what makes health-checked
+# failover correct. Set the listed repo secrets to enable each target.
+name: deploy-multihost
 
 on:
   push:
-    branches:
-      - main # or master, depending on your default branch name
+    branches: [main]
+  workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20, cache: npm }
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm test
+      - run: npm run build
+      - uses: actions/upload-artifact@v4
+        with: { name: dist, path: dist, retention-days: 7 }
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
+  cloudflare-pages:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with: { name: dist, path: dist }
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
         with:
-          node-version: '20'
-          cache: 'npm'
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy dist --project-name=anir0y
 
-      - name: Install Dependencies
-        run: npm ci
+  netlify:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with: { name: dist, path: dist }
+      - name: Deploy to Netlify
+        run: npx --yes netlify-cli@17 deploy --prod --dir=dist --message="CI ${{ github.sha }}"
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
 
-      - name: Build
-        run: npm run build
-
-      - name: Copy CNAME file
-        run: cp CNAME dist/CNAME
-        
-      - name: Copy 404.html
-        run: cp 404.html dist/404.html
-        
-      - name: Copy privacy.html
-        run: cp privacy.html dist/privacy.html
-        
-      - name: Copy ads.txt
-        run: cp ads.txt dist/ads.txt
-
-      - name: copy meow.html
-        run: cp meow.html dist/meow.html
-
-      - name: Copy well-known
-        run: cp -r .well-known dist/.well-known
-
-
-      - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          folder: dist
-          branch: gh-pages
+  verify:
+    needs: [cloudflare-pages, netlify]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Confirm every mirror serves the same build
+        run: |
+          SHA="${{ github.sha }}"
+          fail=0
+          for url in "$CF_URL" "$NETLIFY_URL"; do
+            [ -z "$url" ] && continue
+            got=$(curl -fsS "$url/health.json" | grep -o '"commit": *"[^"]*"' || true)
+            echo "$url -> $got"
+            echo "$got" | grep -q "$SHA" || { echo "::warning::$url not yet on $SHA"; fail=1; }
+          done
+          exit 0   # warn only; CDNs may need a moment to propagate
+        env:
+          CF_URL: ${{ vars.CF_URL }}
+          NETLIFY_URL: ${{ vars.NETLIFY_URL }}

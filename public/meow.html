@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>404 · signal lost — anir0y</title>
+<meta name="robots" content="noindex, follow" />
+<meta name="theme-color" content="#05070a" />
+<meta name="color-scheme" content="dark" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DZ9M04CMED"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-DZ9M04CMED');
+</script>
+<!-- Cronitor RUM -->
+<script async src="https://rum.cronitor.io/script.js"></script>
+<script>
+  window.cronitor = window.cronitor || function() { (window.cronitor.q = window.cronitor.q || []).push(arguments); };
+  cronitor('config', { clientKey: 'cb0b831aed3df3a78b091665fb2a474c' });
+</script>
+
+<style>
+  :root {
+    --bg: #05070a; --bg-2: #090d13; --ink: #e6f0f5; --ink-dim: #8aa0ac;
+    --line: rgba(0, 229, 255, 0.16); --cyan: #00e5ff; --orange: #ff7a18;
+    --font-display: "Chakra Petch", system-ui, sans-serif;
+    --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body {
+    background:
+      radial-gradient(1200px 600px at 50% -10%, rgba(0,229,255,0.08), transparent 60%),
+      var(--bg);
+    color: var(--ink);
+    font-family: var(--font-mono);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    min-height: 100vh; padding: 24px; text-align: center;
+    background-attachment: fixed;
+  }
+  .code {
+    font-family: var(--font-display);
+    font-size: clamp(64px, 18vw, 160px);
+    font-weight: 700; line-height: 0.9; letter-spacing: 2px;
+    color: var(--cyan);
+    text-shadow: 0 0 24px rgba(0,229,255,0.35);
+  }
+  .tag {
+    margin-top: 8px; font-size: 13px; letter-spacing: 4px; text-transform: uppercase;
+    color: var(--orange);
+  }
+  h1 { font-family: var(--font-display); font-size: clamp(20px, 4vw, 28px); margin: 18px 0 6px; font-weight: 600; }
+  p.lead { color: var(--ink-dim); font-size: 14px; max-width: 460px; margin: 0 auto; line-height: 1.6; }
+  .frame {
+    margin: 26px auto 8px; max-width: 520px; width: 100%;
+    border: 1px solid var(--line); border-radius: 14px; overflow: hidden;
+    background: var(--bg-2); box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  }
+  .frame .bar {
+    display: flex; align-items: center; gap: 8px; padding: 10px 14px;
+    border-bottom: 1px solid var(--line); font-size: 11px; color: var(--ink-dim);
+    letter-spacing: 2px; text-transform: uppercase;
+  }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--orange); box-shadow: 0 0 8px var(--orange); }
+  .frame img { display: block; width: 100%; height: auto; min-height: 200px; background: #0b0f15; }
+  .actions { margin-top: 22px; display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+  .btn {
+    font-family: var(--font-mono); font-size: 13px; letter-spacing: 1px;
+    padding: 11px 20px; border-radius: 10px; cursor: pointer; text-decoration: none;
+    border: 1px solid var(--line); color: var(--ink); background: rgba(0,229,255,0.04);
+    transition: border-color .2s, color .2s, background .2s;
+  }
+  .btn:hover { border-color: var(--cyan); color: var(--cyan); background: rgba(0,229,255,0.10); }
+  .btn.primary { border-color: var(--cyan); color: var(--cyan); }
+  .meta { margin-top: 28px; font-size: 11px; color: var(--ink-dim); letter-spacing: 2px; }
+</style>
+</head>
+<body>
+  <div class="code">404</div>
+  <div class="tag">signal lost</div>
+  <h1>This route doesn't exist.</h1>
+  <p class="lead">The packet you requested never made it home. Here's a cat instead — refresh for a new one.</p>
+
+  <div class="frame">
+    <div class="bar"><span class="dot"></span> recon://fallback/feline</div>
+    <img id="cat" src="https://cataas.com/cat/says/404?width=520" alt="A random cat saying 404" />
+  </div>
+
+  <div class="actions">
+    <a class="btn primary" href="/">⟵ Return to base</a>
+    <button class="btn" onclick="document.getElementById('cat').src='https://cataas.com/cat/says/404?width=520&_=' + Date.now()">↻ New cat</button>
+  </div>
+
+  <div class="meta">anir0y · security operations command</div>
+</body>
+</html>
