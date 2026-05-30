@@ -9,6 +9,9 @@ import * as THREE from "three";
 export function initScene(canvas: HTMLCanvasElement): () => void {
   const REDUCED = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ?? false;
   const MOBILE = window.matchMedia?.("(max-width: 760px)").matches ?? false;
+  // Track last applied viewport so we can ignore mobile URL-bar show/hide,
+  // which fires resize with a height-only change and otherwise causes jank.
+  let lastW = window.innerWidth, lastH = window.innerHeight;
 
   const renderer = new THREE.WebGLRenderer({
     canvas, antialias: !MOBILE, alpha: true, powerPreference: "high-performance",
@@ -163,8 +166,13 @@ export function initScene(canvas: HTMLCanvasElement): () => void {
   const onPointer = (e: PointerEvent) => { pointer.tx = e.clientX / window.innerWidth - 0.5; pointer.ty = e.clientY / window.innerHeight - 0.5; };
   const onScroll = () => { const max = document.documentElement.scrollHeight - window.innerHeight; scrollP = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0; };
   const onResize = () => {
-    camera.aspect = window.innerWidth / window.innerHeight; camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
+    const w = window.innerWidth, h = window.innerHeight;
+    // Skip pure URL-bar collapse on mobile (width unchanged, small height delta):
+    // re-rendering on every scroll-driven toolbar toggle is the main mobile jank.
+    if (w === lastW && Math.abs(h - lastH) < 120) return;
+    lastW = w; lastH = h;
+    camera.aspect = w / h; camera.updateProjectionMatrix();
+    renderer.setSize(w, h);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, MOBILE ? 1.5 : 2));
   };
   window.addEventListener("pointermove", onPointer, { passive: true });
