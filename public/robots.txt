@@ -1,0 +1,5 @@
+# anir0y // Security Operations Command
+User-agent: *
+Allow: /
+
+Sitemap: https://anir0y.in/sitemap.xml

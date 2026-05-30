@@ -1,36 +1,52 @@
-import React, { lazy, Suspense } from 'react';
-import { useTheme } from './hooks/useTheme';
-import { CardNav } from './components/CardNav';
-import { BackToTop } from './components/BackToTop';
-import Hero from './components/Hero';
+import { useEffect, useState } from "react";
+import Background from "./components/Background";
+import Footer from "./components/Footer";
+import { Boot, Nav, ScrollProgress, TelemetryStream, CommandPalette } from "./components/Chrome";
+import { Hero, About, Arsenal, Services, Training, Research, Projects, Contact, ThreadsDivider } from "./components/Sections";
 
-const About = lazy(() => import('./components/About').then(m => ({ default: m.About })));
-const TechMarquee = lazy(() => import('./components/TechMarquee').then(m => ({ default: m.TechMarquee })));
-const BentoGrid = lazy(() => import('./components/BentoGrid').then(m => ({ default: m.BentoGrid })));
-const Contact = lazy(() => import('./components/Contact').then(m => ({ default: m.Contact })));
-const Footer = lazy(() => import('./components/Footer').then(m => ({ default: m.Footer })));
+export default function App() {
+  const [cmdk, setCmdk] = useState(false);
 
-function App() {
-  const { theme, toggleTheme } = useTheme();
+  // Global ⌘K / Ctrl+K (and "/" when not typing) opens the command palette.
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      const tag = (e.target as HTMLElement)?.tagName;
+      const typing = tag === "INPUT" || tag === "TEXTAREA";
+      if ((e.key === "k" || e.key === "K") && (e.metaKey || e.ctrlKey)) { e.preventDefault(); setCmdk((o) => !o); }
+      else if (e.key === "/" && !typing && !cmdk) { e.preventDefault(); setCmdk(true); }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [cmdk]);
 
   return (
-    <div className="min-h-screen bg-bg text-fg relative overflow-x-hidden transition-colors">
-      <CardNav theme={theme} onThemeToggle={toggleTheme} />
-      <main>
+    <>
+      <a className="skip" href="#about">Skip to content</a>
+      <Background />
+      <div className="fx grain" />
+      <div className="fx scanlines" />
+      <div className="fx vignette" />
+      <TelemetryStream />
+      <Boot />
+      <ScrollProgress />
+      <Nav onCmdk={() => setCmdk(true)} />
+      <CommandPalette open={cmdk} onClose={() => setCmdk(false)} />
+
+      <main className="content">
         <Hero />
-        <Suspense fallback={null}>
-          <About />
-          <TechMarquee />
-          <BentoGrid />
-          <Contact />
-        </Suspense>
+        <About />
+        <Arsenal />
+        <Services />
+        <ThreadsDivider />
+        <Training />
+        <ThreadsDivider />
+        <Research />
+        <ThreadsDivider />
+        <Projects />
+        <Contact />
       </main>
-      <Suspense fallback={null}>
-        <Footer />
-      </Suspense>
-      <BackToTop />
-    </div>
+
+      <Footer />
+    </>
   );
 }
-
-export default App;

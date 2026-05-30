@@ -1,51 +1,35 @@
 {
-  "name": "anir0y",
+  "name": "anir0y-secops",
   "private": true,
-  "version": "1.0.0",
+  "version": "3.0.0",
   "type": "module",
+  "description": "anir0y // Security Operations Command \u2014 cinematic WebGL portfolio for Animesh Roy",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "lint": "eslint .",
-    "server": "node server.cjs",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "prebuild": "node scripts/gen-health.mjs",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview --port 8009",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "deploy:cf": "npx -y wrangler pages deploy dist --project-name anir0y",
+    "deploy:netlify": "npx -y netlify-cli deploy --prod --dir dist"
   },
   "dependencies": {
-    "@google-cloud/recaptcha-enterprise": "^6.3.1",
-    "dotenv": "^17.2.3",
-    "framer-motion": "^11.0.8",
-    "lucide-react": "^0.344.0",
+    "framer-motion": "^11.11.17",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-type-animation": "^3.2.0",
-    "sanitize-html": "^2.17.0"
+    "three": "^0.169.0"
   },
   "devDependencies": {
-    "@eslint/js": "^9.39.4",
-    "@types/react": "^18.3.5",
-    "@types/react-dom": "^18.3.0",
-    "@vitejs/plugin-react": "^4.7.0",
-    "autoprefixer": "^10.4.18",
-    "cors": "^2.8.5",
-    "eslint": "^9.39.4",
-    "eslint-plugin-react-hooks": "^7.0.1",
-    "eslint-plugin-react-refresh": "^0.5.2",
-    "express": "^4.22.1",
-    "gh-pages": "^6.1.1",
-    "globals": "^15.9.0",
-    "postcss": "^8.4.35",
-    "tailwindcss": "^3.4.1",
-    "typescript": "^5.5.3",
-    "typescript-eslint": "^8.3.0",
-    "vite": "^7.3.2"
-  },
-  "description": "Anir0y website",
-  "main": "eslint.config.js",
-  "repository": {
-    "type": "git",
-    "url": "anir0y.github.io"
-  },
-  "author": "animesh roy",
-  "license": "ISC"
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@types/three": "^0.169.0",
+    "@vitejs/plugin-react": "^4.3.3",
+    "jsdom": "^25.0.1",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.11",
+    "vitest": "^2.1.8"
+  }
 }
