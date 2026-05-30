@@ -14,3 +14,6 @@ secret.conf.bak.*
 # Local Netlify folder
 .netlify
 .ogbuild
+
+# Claude Code session runtime state
+.claude/scheduled_tasks.lock
