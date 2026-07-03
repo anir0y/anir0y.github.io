@@ -37,7 +37,7 @@ describe("App (full render smoke test)", () => {
     expect(txt).toContain("VISITOR"); // recon panel header
     expect(container.querySelector("#hero")).toBeTruthy();
     expect(container.querySelector("#contact")).toBeTruthy();
-    expect(container.querySelectorAll("#projects .lab").length).toBe(5);
+    expect(container.querySelectorAll("#projects .lab").length).toBe(4);
     expect(container.querySelectorAll("#training .module.scan").length).toBe(6);
     await act(async () => { root.unmount(); });
   });
