@@ -1,8 +1,14 @@
-import { useEffect, useState } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 import Background from "./components/Background";
 import Footer from "./components/Footer";
 import { Boot, Nav, ScrollProgress, TelemetryStream, CommandPalette } from "./components/Chrome";
 import { Hero, About, Arsenal, Services, Training, Research, Projects, Contact, ThreadsDivider } from "./components/Sections";
+
+// Standalone product showcase at /pentestreport — code-split so it never weighs
+// down the portfolio bundle. Path is fixed at load (full-page nav, no client router).
+const PentestReport = lazy(() => import("./components/PentestReport"));
+const IS_PENTESTREPORT =
+  typeof window !== "undefined" && /^\/pentestreport\/?$/.test(window.location.pathname);
 
 export default function App() {
   const [cmdk, setCmdk] = useState(false);
@@ -18,6 +24,14 @@ export default function App() {
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [cmdk]);
+
+  if (IS_PENTESTREPORT) {
+    return (
+      <Suspense fallback={null}>
+        <PentestReport />
+      </Suspense>
+    );
+  }
 
   return (
     <>

@@ -1,3 +1,8 @@
 # No SPA catch-all: this is a single-page anchor site, so unknown paths should
 # surface a real 404 (Cloudflare Pages & Netlify serve /404.html — the cat page).
 # Keep the apex on the canonical host; explicit redirects only.
+
+# PentestPad product showcase — served by the SPA (App.tsx routes /pentestreport
+# to the lazy PentestReport page). Rewrite (200), not redirect, so the URL stays clean.
+/pentestreport      /index.html   200
+/pentestreport/     /index.html   200
