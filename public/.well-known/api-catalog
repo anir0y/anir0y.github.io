@@ -1,0 +1,28 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://anir0y.in/",
+      "service-desc": [
+        {
+          "href": "https://anir0y.in/openapi.json",
+          "type": "application/openapi+json",
+          "title": "anir0y.in public discovery OpenAPI description"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://anir0y.in/docs/api",
+          "type": "text/markdown",
+          "title": "Public discovery API documentation"
+        }
+      ],
+      "status": [
+        {
+          "href": "https://anir0y.in/health.json",
+          "type": "application/json",
+          "title": "Deployment health"
+        }
+      ]
+    }
+  ]
+}

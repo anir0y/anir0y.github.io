@@ -3,6 +3,7 @@ import Background from "./components/Background";
 import Footer from "./components/Footer";
 import { Boot, Nav, ScrollProgress, TelemetryStream, CommandPalette } from "./components/Chrome";
 import { Hero, About, Arsenal, Services, Training, Research, Projects, Contact, ThreadsDivider } from "./components/Sections";
+import { registerWebMcpTools } from "./lib/webmcp";
 
 // Standalone product showcase at /pentestreport — code-split so it never weighs
 // down the portfolio bundle. Path is fixed at load (full-page nav, no client router).
@@ -12,6 +13,8 @@ const IS_PENTESTREPORT =
 
 export default function App() {
   const [cmdk, setCmdk] = useState(false);
+
+  useEffect(() => registerWebMcpTools(), []);
 
   // Global ⌘K / Ctrl+K (and "/" when not typing) opens the command palette.
   useEffect(() => {

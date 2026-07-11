@@ -1,0 +1,18 @@
+{
+  "serverInfo": {
+    "name": "anir0y.in",
+    "version": "3.0.0"
+  },
+  "transport": {
+    "type": "streamable-http",
+    "endpoint": "https://anir0y.in/mcp"
+  },
+  "capabilities": {
+    "tools": {
+      "listChanged": false
+    },
+    "resources": {},
+    "prompts": {}
+  },
+  "description": "Discovery card for the public anir0y.in site. A remote MCP service is not currently enabled; browser-side WebMCP tools are provided when supported by the user agent."
+}

@@ -1,0 +1,83 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "anir0y.in Public Discovery API",
+    "version": "3.0.0",
+    "description": "Public, read-only discovery endpoints for the anir0y.in security operations portfolio."
+  },
+  "servers": [
+    {
+      "url": "https://anir0y.in"
+    }
+  ],
+  "paths": {
+    "/health.json": {
+      "get": {
+        "summary": "Deployment health",
+        "responses": {
+          "200": {
+            "description": "Current deployment health metadata",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/.well-known/api-catalog": {
+      "get": {
+        "summary": "RFC 9727 API catalog",
+        "responses": {
+          "200": {
+            "description": "Linkset catalog for public discovery endpoints",
+            "content": {
+              "application/linkset+json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/.well-known/oauth-protected-resource": {
+      "get": {
+        "summary": "OAuth protected resource metadata",
+        "responses": {
+          "200": {
+            "description": "Resource metadata for agent authentication discovery",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/.well-known/mcp/server-card.json": {
+      "get": {
+        "summary": "MCP server card",
+        "responses": {
+          "200": {
+            "description": "MCP server discovery card",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

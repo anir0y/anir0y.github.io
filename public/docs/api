@@ -1,0 +1,21 @@
+# anir0y.in Public Discovery API
+
+The public site exposes read-only discovery metadata for automated agents.
+
+## Endpoints
+
+- `GET /health.json` returns deployment health metadata.
+- `GET /.well-known/api-catalog` returns an RFC 9727 linkset catalog.
+- `GET /openapi.json` returns the OpenAPI description for public discovery endpoints.
+- `GET /.well-known/oauth-protected-resource` returns OAuth resource metadata for agent discovery.
+- `GET /.well-known/oauth-authorization-server` returns authorization server metadata.
+- `GET /auth.md` explains current agent registration and authentication support.
+- `GET /.well-known/mcp/server-card.json` returns MCP discovery metadata.
+- `GET /.well-known/agent-skills/index.json` returns the public agent skills index.
+
+## Authentication
+
+The public site and public discovery endpoints do not require authentication.
+Self-service protected API access is not currently offered. Agents should read
+`/auth.md` before assuming registration, token issuance, or protected API access
+is available.
