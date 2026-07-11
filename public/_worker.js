@@ -233,6 +233,53 @@ function mcpServerCard(origin) {
   };
 }
 
+function agentSkillsIndex(origin) {
+  return {
+    $schema: "https://schemas.agentskills.io/discovery/0.2.0/schema.json",
+    skills: [
+      {
+        name: "site-navigation",
+        type: "skill-md",
+        description: "Navigate the public anir0y.in portfolio, discovery metadata, health endpoint, and contact paths.",
+        url: `${origin}/.well-known/agent-skills/site-navigation/SKILL.md`,
+        digest: "sha256:6789fbe0f7c66d14cf55aa5af463dd86da910fca3938e7dcd2a03d5235d3b053",
+      },
+    ],
+  };
+}
+
+function siteNavigationSkill() {
+  return `# Skill: Navigate anir0y.in
+
+Use this skill when an agent needs to understand or navigate the public
+anir0y.in security operations portfolio.
+
+## Available Public Sections
+
+- \`about\` - operator profile and current focus.
+- \`services\` - security consulting and offensive security capabilities.
+- \`training\` - public training and lab offerings.
+- \`research\` - security research and writing.
+- \`projects\` - public tools and project work.
+- \`contact\` - public contact links for engagement requests.
+
+## Recommended Agent Flow
+
+1. Fetch \`/\` with \`Accept: text/markdown\` when possible.
+2. Read \`/.well-known/api-catalog\` for machine-readable discovery links.
+3. Use \`/health.json\` for deployment health.
+4. Use \`/auth.md\` before assuming agent registration or protected API access.
+
+## Constraints
+
+- Public pages do not require authentication.
+- Protected API access and self-service agent registration are not currently
+  offered.
+- For security work, only contact the operator for engagements that have
+  explicit written authorization.
+`;
+}
+
 function apiDocs(origin) {
   return `# ${SITE_NAME} Public Discovery API
 
@@ -316,6 +363,10 @@ async function handleDiscovery(request) {
       return jsonResponse({ keys: [] });
     case "/.well-known/mcp/server-card.json":
       return jsonResponse(mcpServerCard(origin));
+    case "/.well-known/agent-skills/index.json":
+      return jsonResponse(agentSkillsIndex(origin));
+    case "/.well-known/agent-skills/site-navigation/SKILL.md":
+      return markdownResponse(siteNavigationSkill());
     case "/mcp":
       return notImplemented("Remote MCP transport is not enabled on this static portfolio.");
     case "/agent/auth/authorize":
