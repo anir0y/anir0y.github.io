@@ -153,12 +153,12 @@ export function CommandPalette({ open, onClose }: { open: boolean; onClose: () =
   const inputRef = useRef<HTMLInputElement>(null);
 
   const cmds = useMemo<Cmd[]>(() => {
-    const ext = (url: string) => () => window.open(url, "_blank", "noopener,noreferrer");
+    const ext = (url: string) => () => { onClose(); window.open(url, "_blank", "noopener,noreferrer"); };
     const nav: Cmd[] = NAV.map((n) => ({ id: "go-" + n.id, label: "Go to " + n.label, icon: "→", hint: "section", run: () => { onClose(); scrollTo(n.id); } }));
     return [
       ...nav,
       { id: "call", label: "Book a Call", icon: "◷", hint: "topmate", run: ext(LINKS.topmate) },
-      { id: "mail", label: "Email Animesh", icon: "✉", hint: "mail@anir0y.in", run: () => { window.location.href = LINKS.email; } },
+      { id: "mail", label: "Email Animesh", icon: "✉", hint: "mail@anir0y.in", run: () => { onClose(); window.location.href = LINKS.email; } },
       { id: "gh", label: "GitHub", icon: "⌗", hint: "github.com/anir0y", run: ext(LINKS.github) },
       { id: "in", label: "LinkedIn", icon: "in", hint: "linkedin", run: ext(LINKS.linkedin) },
       { id: "x", label: "X / Twitter", icon: "𝕏", hint: "@anir0y", run: ext(LINKS.x) },

@@ -1,0 +1,177 @@
+/* ═══════════════════════════════════════════════════════════════
+   FIELD UNIT — phone edition. Tactical cyber-noir, zero motion.
+   Hard rule: no `animation`, no `transition`, no smooth scroll.
+   Every interaction is an instant state flip.
+   ═══════════════════════════════════════════════════════════════ */
+:root{
+  --obsidian:#05070a; --obsidian-2:#0a0e14; --panel:#0d141d;
+  --line:rgba(0,229,255,.16); --line-hard:rgba(0,229,255,.34);
+  --cyan:#00e5ff; --cyan-soft:#22d3ee;
+  --orange:#ff7a18; --hazard:#ffb020; --green:#3ef0a0;
+  --text:#cfe9f2; --dim:#8ba3b0; --faint:#5d7280;
+  --mono:'JetBrains Mono','SF Mono',Menlo,monospace;
+  --display:'Chakra Petch',system-ui,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:auto;-webkit-text-size-adjust:100%}
+body{
+  background:
+    radial-gradient(120% 55% at 50% -8%,rgba(0,229,255,.08),transparent 60%),
+    radial-gradient(95% 40% at 50% 108%,rgba(255,122,24,.06),transparent 60%),
+    repeating-linear-gradient(0deg,transparent 0 31px,rgba(0,229,255,.03) 31px 32px),
+    repeating-linear-gradient(90deg,transparent 0 31px,rgba(0,229,255,.03) 31px 32px),
+    var(--obsidian);
+  color:var(--text);font-family:var(--mono);font-size:14px;line-height:1.6;
+  min-height:100svh;-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent;
+}
+:focus-visible{outline:2px solid var(--orange);outline-offset:2px}
+[hidden]{display:none !important}
+b{font-weight:700;color:var(--text)}
+
+/* ── Skip link ────────────────────────────────────────────── */
+.skip{position:absolute;left:-9999px;top:0;z-index:50;background:var(--cyan);color:#03151a;padding:10px 14px;text-decoration:none;font-weight:700}
+.skip:focus{left:12px;top:calc(12px + env(safe-area-inset-top))}
+
+/* ── Top status strip ─────────────────────────────────────── */
+.top{position:fixed;top:0;left:0;right:0;z-index:10;display:flex;align-items:center;justify-content:space-between;gap:10px;
+  padding:11px 14px;padding-top:calc(11px + env(safe-area-inset-top));
+  background:rgba(5,7,10,.94);border-bottom:1px solid var(--line)}
+.top .brand{font-family:var(--display);font-weight:700;font-size:13px;letter-spacing:2px;text-transform:uppercase}
+.top .brand i{font-style:normal;color:var(--cyan)}
+.top .brand .unit{color:var(--faint);font-size:10px;letter-spacing:1.5px}
+.top .readout{display:flex;align-items:center;gap:7px;color:var(--dim);font-size:10px;letter-spacing:1.4px;text-transform:uppercase}
+.top .clk{color:var(--cyan-soft);font-variant-numeric:tabular-nums}
+.pip{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 8px var(--green)}
+
+/* ── Content viewport ─────────────────────────────────────── */
+main{position:relative;max-width:640px;margin:0 auto;
+  padding:calc(62px + env(safe-area-inset-top)) 16px calc(80px + env(safe-area-inset-bottom))}
+section{padding-top:10px}
+
+/* ── Type ─────────────────────────────────────────────────── */
+h1,h2,h3,h4{font-family:var(--display);text-transform:uppercase}
+h1{font-size:clamp(30px,10vw,40px);line-height:1.05;letter-spacing:1px;margin:8px 0 4px}
+h1 .handle{color:var(--cyan);display:block;font-size:.48em;letter-spacing:2px;margin-top:4px}
+h2{font-size:clamp(20px,6.4vw,26px);line-height:1.18;margin:2px 0 10px}
+h2 em{font-style:normal;color:var(--cyan)}
+h3{font-size:15.5px;letter-spacing:.5px;margin:2px 0}
+h4{font-size:13.5px;letter-spacing:.4px}
+.tagline{font-family:var(--display);font-size:15px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;margin:4px 0 14px;color:var(--dim)}
+.tagline .or{color:var(--orange)} .tagline .hz{color:var(--hazard)}
+.lead,.copy{color:var(--dim);margin-bottom:14px}
+.note{color:var(--dim);font-size:12.5px;border:1px dashed var(--line);padding:12px;margin-top:14px}
+.sub{color:var(--orange);font-size:10.5px;letter-spacing:2px;text-transform:uppercase;margin:22px 0 10px}
+
+/* ── Eyebrow (section marker) ─────────────────────────────── */
+.eyebrow{display:inline-block;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--cyan);
+  border:1px solid var(--line);border-left:3px solid var(--orange);background:rgba(13,20,29,.6);padding:5px 10px;margin:18px 0 10px}
+
+/* ── Mission log terminal ─────────────────────────────────── */
+.term{border:1px solid var(--line);background:rgba(10,14,20,.85);padding:13px 14px;margin:14px 0;font-size:12.5px}
+.term .th{color:var(--faint);border-bottom:1px solid var(--line);padding-bottom:8px;margin-bottom:10px;font-size:10px;letter-spacing:2px;text-transform:uppercase}
+.term .ln{display:block;padding:2px 0;color:var(--cyan-soft)}
+.term .ln b{color:var(--orange);font-weight:500}
+
+/* ── Pills / CTA / readout ────────────────────────────────── */
+.pills{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
+.pill{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);padding:7px 11px;font-size:11px;letter-spacing:1px;text-transform:uppercase}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 6px var(--green)}
+.cta{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:16px 0}
+.btn{display:flex;align-items:center;justify-content:center;min-height:48px;padding:10px 12px;border:1px solid var(--line-hard);
+  font-family:var(--mono);font-size:12px;letter-spacing:1px;text-transform:uppercase;text-align:center;text-decoration:none;overflow-wrap:anywhere}
+.btn.primary{background:var(--cyan);border-color:var(--cyan);color:#03151a;font-weight:700}
+.btn.primary:active{background:var(--orange);border-color:var(--orange)}
+.btn.ghost{color:var(--cyan)}
+.btn.ghost:active{background:rgba(0,229,255,.12)}
+.hero-readout{display:grid;grid-template-columns:1fr 1fr;gap:6px 12px;margin:16px 0;font-size:10.5px;letter-spacing:1px;text-transform:uppercase;color:var(--dim)}
+.hero-readout b{color:var(--cyan);font-weight:500}
+
+/* ── Stats ────────────────────────────────────────────────── */
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:16px 0}
+.stat{position:relative;border:1px solid var(--line);background:var(--panel);padding:14px 12px}
+.stat::before{content:"";position:absolute;top:-1px;left:-1px;width:14px;height:14px;border-top:2px solid var(--cyan);border-left:2px solid var(--cyan)}
+.stat .n{font-family:var(--display);font-weight:700;font-size:27px;color:var(--cyan)}
+.stat .l{font-size:10px;letter-spacing:1.4px;text-transform:uppercase;color:var(--dim);margin-top:2px}
+
+/* ── Arsenal chips ────────────────────────────────────────── */
+.chips{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0}
+.chip{display:flex;align-items:center;gap:8px;border:1px solid var(--line);background:rgba(13,20,29,.7);padding:9px 10px;font-size:12px}
+
+/* ── Services accordion ───────────────────────────────────── */
+.acc{border:1px solid var(--line);background:var(--panel);margin-bottom:10px}
+.acc.open{border-color:var(--line-hard)}
+.acc-head{display:flex;align-items:center;gap:10px;width:100%;min-height:54px;padding:12px 14px;
+  background:none;border:0;color:var(--text);font-family:var(--mono);text-align:left;cursor:pointer}
+.acc-head:active{background:rgba(0,229,255,.07)}
+.acc-idx{flex:0 0 auto;color:var(--orange);font-size:10.5px;letter-spacing:1px}
+.acc-title{flex:1;font-family:var(--display);font-weight:600;font-size:14px;letter-spacing:.5px;text-transform:uppercase}
+.acc-x{flex:0 0 auto;color:var(--cyan);font-size:18px;line-height:1}
+.acc-body{padding:0 14px 14px;color:var(--dim)}
+.acc-body p{margin-bottom:10px}
+
+/* ── Tags ─────────────────────────────────────────────────── */
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.tag{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--cyan-soft);border:1px solid var(--line);padding:3px 8px}
+
+/* ── Training cards ───────────────────────────────────────── */
+.mcard{position:relative;border:1px solid var(--line);background:var(--panel);padding:14px;margin-bottom:12px}
+.mcard-idx{color:var(--orange);font-size:10.5px;letter-spacing:1px;margin-bottom:6px}
+.mcard p{color:var(--dim);margin:8px 0 10px}
+.mcard .reveal{color:var(--text);border-left:2px solid var(--green);padding-left:10px;margin:12px 0 2px}
+.trn.open{border-color:rgba(62,240,160,.5)}
+.trn-btn{display:flex;align-items:center;gap:9px;width:100%;min-height:44px;margin-top:12px;padding:9px 10px;
+  background:rgba(0,229,255,.05);border:1px dashed var(--line-hard);color:var(--cyan);
+  font-family:var(--mono);font-size:10.5px;letter-spacing:1.6px;text-transform:uppercase;text-align:left;cursor:pointer}
+.trn-btn::after{content:"";position:absolute;inset:0}  /* whole card is the tap target */
+.trn.open .trn-btn{border-style:solid;border-color:rgba(62,240,160,.55);background:rgba(62,240,160,.06);color:var(--green)}
+.led{flex:0 0 auto;width:8px;height:8px;border-radius:50%;background:var(--orange);box-shadow:0 0 7px var(--orange)}
+.trn.open .led{background:var(--green);box-shadow:0 0 7px var(--green)}
+
+/* ── Intel nodes (research / projects / labs) ─────────────── */
+.node{display:block;border:1px solid var(--line);background:var(--panel);padding:13px 14px;margin-bottom:10px;color:var(--text);text-decoration:none}
+a.node:active{border-color:var(--cyan);background:rgba(0,229,255,.05)}
+.node p{color:var(--dim);font-size:13px;margin:7px 0 0}
+.node .ix{display:block;color:var(--orange);font-size:10px;letter-spacing:1.4px;text-transform:uppercase;margin-bottom:5px}
+.node .meta,.node .go{display:block;margin-top:9px;font-size:10.5px;letter-spacing:1.2px;text-transform:uppercase;color:var(--cyan-soft)}
+.ping{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--faint);margin-right:8px;vertical-align:1px}
+.ping.live{background:var(--green);box-shadow:0 0 7px var(--green)}
+
+/* ── Social grid ──────────────────────────────────────────── */
+.social{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:14px 0}
+.social a{display:flex;align-items:center;min-height:46px;padding:10px 12px;border:1px solid var(--line);color:var(--text);text-decoration:none;font-size:12.5px}
+.social a:active{border-color:var(--cyan);color:var(--cyan)}
+
+/* ── Visitor recon ────────────────────────────────────────── */
+.recon{border:1px solid var(--line);background:rgba(10,14,20,.85);margin:18px 0}
+.recon-head{display:flex;align-items:center;gap:8px;padding:10px 12px;border-bottom:1px solid var(--line);
+  font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--dim)}
+.rspacer{margin-left:auto;color:var(--faint);letter-spacing:1px}
+.rdot{width:8px;height:8px;border-radius:50%;background:var(--hazard)}
+.rdot.ok{background:var(--green);box-shadow:0 0 7px var(--green)}
+.recon-grid{display:grid;grid-template-columns:1fr 1fr}
+.rcell{padding:10px 12px;border-top:1px solid rgba(0,229,255,.07);font-size:12px;overflow-wrap:anywhere}
+.rcell:nth-child(odd){border-right:1px solid rgba(0,229,255,.07)}
+.rk{font-size:9.5px;letter-spacing:1.4px;text-transform:uppercase;color:var(--dim);margin-bottom:2px}
+.rv.clean{color:var(--green)} .rv.flag{color:var(--hazard)} .rv.dim{color:var(--faint)}
+.rv.skel{display:inline-block;width:70%;height:12px;background:rgba(0,229,255,.12)}
+.recon-note{padding:10px 12px;border-top:1px solid var(--line);font-size:11px;color:var(--dim)}
+
+/* ── Foot / desktop switch ────────────────────────────────── */
+.foot{margin:22px 0 4px;padding-top:14px;border-top:1px solid var(--line);color:var(--dim);font-size:11px;line-height:1.8}
+.foot a{color:var(--cyan);text-decoration:none}
+.foot .up{color:var(--green)}
+.foot .legal{color:var(--faint)}
+.deskswitch{display:flex;justify-content:center;margin:22px 0 6px}
+.deskswitch a{color:var(--dim);border:1px solid var(--line);padding:11px 16px;text-decoration:none;font-size:11px;letter-spacing:1.5px;text-transform:uppercase}
+.deskswitch a:active{color:var(--cyan);border-color:var(--cyan)}
+
+/* ── Command deck (bottom tab bar) ────────────────────────── */
+.deck{position:fixed;bottom:0;left:0;right:0;z-index:10;display:grid;grid-template-columns:repeat(5,1fr);
+  background:rgba(5,7,10,.96);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom)}
+.deck button{appearance:none;background:none;border:0;border-top:2px solid transparent;color:var(--dim);
+  min-height:56px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;
+  font-family:var(--mono);font-size:9.5px;letter-spacing:1.2px;text-transform:uppercase;cursor:pointer}
+.deck button .g{font-size:17px;line-height:1}
+.deck button:active{color:var(--text)}
+.deck button[aria-current="page"]{color:var(--cyan);border-top-color:var(--cyan);
+  background:linear-gradient(180deg,rgba(0,229,255,.09),transparent)}

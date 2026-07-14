@@ -54,9 +54,10 @@ export default function Threads({
       const dpr = dprOf();
       canvas.width = Math.max(1, rect.width * dpr);
       canvas.height = Math.max(1, rect.height * dpr);
+      // Assigning canvas.width/height wipes the bitmap; with no animation loop
+      // in reduced-motion mode the canvas would stay blank after any resize.
+      if (reduced) render(8000);
     };
-    window.addEventListener("resize", resize);
-    resize();
 
     const section = canvas.closest("section");
     const onMouseMove = (e: Event) => {
@@ -122,11 +123,9 @@ export default function Threads({
       render(time);
     };
 
-    if (reduced) {
-      render(8000); // one static frame, no animation loop
-    } else {
-      animId = requestAnimationFrame(loop);
-    }
+    window.addEventListener("resize", resize);
+    resize(); // sizes the canvas; in reduced-motion mode this also paints the static frame
+    if (!reduced) animId = requestAnimationFrame(loop);
 
     return () => {
       cancelAnimationFrame(animId);

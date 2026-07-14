@@ -18,6 +18,8 @@
   Cache-Control: public, max-age=0, must-revalidate
   Link: </.well-known/api-catalog>; rel="api-catalog"; type="application/linkset+json", </openapi.json>; rel="service-desc"; type="application/openapi+json", </docs/api>; rel="service-doc"; type="text/markdown", </auth.md>; rel="describedby"; type="text/markdown", </.well-known/agent-skills/index.json>; rel="describedby"; type="application/json", </.well-known/mcp/server-card.json>; rel="describedby"; type="application/json"
   Vary: Accept
+/m/*
+  Cache-Control: public, max-age=0, must-revalidate
 /health.json
   Cache-Control: public, max-age=0, must-revalidate
 /.well-known/api-catalog
