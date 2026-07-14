@@ -12,5 +12,7 @@
 # Entry + health must always re-validate so new deploys go live instantly.
 /index.html
   Cache-Control: public, max-age=0, must-revalidate
+/m/*
+  Cache-Control: public, max-age=0, must-revalidate
 /health.json
   Cache-Control: public, max-age=0, must-revalidate

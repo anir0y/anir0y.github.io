@@ -228,7 +228,9 @@ export function initScene(canvas: HTMLCanvasElement): () => void {
     renderer.render(scene, camera);
   };
 
-  const onVisibility = () => { running = !document.hidden; if (running) { clock.start(); loop(); } };
+  // Cancel the RAF that was frozen while the tab was hidden — it resumes on
+  // visibility and would otherwise run as a second, parallel render chain.
+  const onVisibility = () => { running = !document.hidden; if (running) { cancelAnimationFrame(raf); clock.start(); loop(); } };
   document.addEventListener("visibilitychange", onVisibility);
 
   // first-frame guard: swap to GridHelper if the shader floor throws

@@ -12,7 +12,24 @@
 <meta name="theme-color" content="#05070a" />
 <meta name="color-scheme" content="dark" />
 <meta name="format-detection" content="telephone=no" />
+<script>
+/* Forward guard: phones get the dedicated zero-animation edition at m/.
+   ?view=mobile|desktop pins an explicit choice in localStorage; the m/ page
+   carries the mirror-image reverse guard. */
+(function () {
+  try {
+    var pick = new URLSearchParams(location.search).get("view");
+    if (pick === "desktop" || pick === "mobile") localStorage.setItem("anir0y:view", pick);
+    var pref = localStorage.getItem("anir0y:view");
+    if (pref === "desktop") return;
+    var phone = /Mobi|iPhone|iPod/i.test(navigator.userAgent);
+    var coarse = !!(window.matchMedia && matchMedia("(pointer: coarse)").matches);
+    if (pref === "mobile" || (phone && coarse)) location.replace("m/" + location.hash);
+  } catch (e) { /* stay */ }
+})();
+</script>
 <link rel="canonical" href="https://anir0y.in/" />
+<link rel="alternate" media="only screen and (max-width: 640px)" href="https://anir0y.in/m/" />
 
 <!-- Open Graph -->
 <meta property="og:type" content="website" />

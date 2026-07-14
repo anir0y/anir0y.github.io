@@ -1,14 +1,13 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import App from "./App";
-import { initAnalytics } from "./lib/analytics";
-import "./index.css";
+import MobileApp from "./MobileApp";
+import { initAnalytics } from "../lib/analytics";
+import "./mobile.css";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <App />
+    <MobileApp />
   </StrictMode>
 );
 
-// Defers internally until window load — never blocks first paint.
 initAnalytics();
