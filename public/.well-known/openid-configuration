@@ -1,0 +1,13 @@
+{
+  "issuer": "https://anir0y.in",
+  "authorization_endpoint": "https://anir0y.in/agent/auth/authorize",
+  "token_endpoint": "https://anir0y.in/agent/auth/token",
+  "jwks_uri": "https://anir0y.in/.well-known/jwks.json",
+  "grant_types_supported": [],
+  "response_types_supported": [],
+  "scopes_supported": [
+    "public:read"
+  ],
+  "subject_types_supported": [],
+  "id_token_signing_alg_values_supported": []
+}

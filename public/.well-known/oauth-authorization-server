@@ -1,0 +1,29 @@
+{
+  "issuer": "https://anir0y.in",
+  "authorization_endpoint": "https://anir0y.in/agent/auth/authorize",
+  "token_endpoint": "https://anir0y.in/agent/auth/token",
+  "jwks_uri": "https://anir0y.in/.well-known/jwks.json",
+  "registration_endpoint": "https://anir0y.in/agent/auth/register",
+  "grant_types_supported": [],
+  "response_types_supported": [],
+  "scopes_supported": [
+    "public:read"
+  ],
+  "token_endpoint_auth_methods_supported": [],
+  "agent_auth": {
+    "skill": "https://anir0y.in/auth.md",
+    "register_uri": "mailto:mail@anir0y.in?subject=Agent%20Access%20Registration",
+    "identity_types_supported": [
+      "verified_email"
+    ],
+    "verified_email": {
+      "assertion_types_supported": [
+        "verified_email"
+      ],
+      "credential_types_supported": [
+        "manual_provisioning"
+      ],
+      "claim_uri": "mailto:mail@anir0y.in?subject=Agent%20Identity%20Claim"
+    }
+  }
+}

@@ -1,5 +1,7 @@
 export interface Project { ix: string; title: string; desc: string; go: string; href: string; }
 export const PROJECTS: Project[] = [
+  { ix: "SAAS · pentest reporting", title: "VulnQuill", go: "explore →", href: "/pentestreport",
+    desc: "Multi-tenant penetration-test engagement & reporting platform. Findings with CWE/CVE/CVSS and evidence, AI assist, recon, and branded PDF/DOCX/XLSX reports — clients get a read-only portal." },
   { ix: "REPO · pcap analysis", title: "PCaptor", go: "view repo →", href: "https://github.com/anir0y/PCaptor",
     desc: "Large pcap and pcapng analyzer that emits full JSON, HTML and CSV reports. Built for red team, CTF and threat hunting." },
   { ix: "REPO · data-loss prevention", title: "Sentinel DLP", go: "view repo →", href: "https://github.com/anir0y/sentinel-dlp",

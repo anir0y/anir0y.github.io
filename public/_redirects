@@ -1,3 +1,10 @@
 # No SPA catch-all: this is a single-page anchor site, so unknown paths should
 # surface a real 404 (Cloudflare Pages & Netlify serve /404.html — the cat page).
 # Keep the apex on the canonical host; explicit redirects only.
+
+# VulnQuill product showcase — served by the SPA (App.tsx routes /pentestreport
+# to the lazy PentestReport page). Rewrite (200) to "/" — NOT "/index.html", which
+# Cloudflare Pages canonicalizes back to "/" as a 308 redirect (dropping the path).
+# Serving "/" keeps the URL at /pentestreport; base:'./' assets resolve to /assets.
+/pentestreport      /   200
+/pentestreport/     /   200

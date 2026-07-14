@@ -3,6 +3,9 @@ import { describe, it, expect, vi, beforeEach } from "vitest";
 import { act } from "react";
 import { createRoot } from "react-dom/client";
 import MobileApp from "./MobileApp";
+import { RESEARCH } from "../data/research";
+import { PROJECTS } from "../data/projects";
+import { LABS } from "../data/labs";
 
 beforeEach(() => {
   (globalThis as unknown as { IS_REACT_ACT_ENVIRONMENT: boolean }).IS_REACT_ACT_ENVIRONMENT = true;
@@ -82,7 +85,7 @@ describe("MobileApp (field unit smoke test)", () => {
     const { container, root } = await mount();
     const panels = container.querySelectorAll("main > div");
     expect(panels[3].hasAttribute("hidden")).toBe(false); // intel panel
-    expect(container.querySelectorAll(".node").length).toBe(3 + 9 + 5); // research + projects + labs
+    expect(container.querySelectorAll(".node").length).toBe(RESEARCH.length + PROJECTS.length + LABS.length);
     await act(async () => { root.unmount(); });
   });
 });

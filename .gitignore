@@ -17,3 +17,5 @@ secret.conf.bak.*
 
 # Claude Code session runtime state
 .claude/scheduled_tasks.lock
+agents*
+.claude-ops-notes.local.md
