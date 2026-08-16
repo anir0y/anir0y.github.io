@@ -369,6 +369,8 @@ async function handleDiscovery(request) {
       return markdownResponse(siteNavigationSkill());
     case "/mcp":
       return notImplemented("Remote MCP transport is not enabled on this static portfolio.");
+    case "/a2a":
+      return notImplemented("A2A JSON-RPC transport is not enabled on this static portfolio. See /.well-known/agent-card.json for discovery metadata.");
     case "/agent/auth/authorize":
     case "/agent/auth/token":
     case "/agent/auth/register":

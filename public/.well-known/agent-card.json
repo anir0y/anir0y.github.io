@@ -1,0 +1,38 @@
+{
+  "protocolVersion": "0.3.0",
+  "name": "anir0y.in",
+  "description": "Public portfolio and security-operations site for anir0y. Exposes read-only discovery metadata, agent skills, and site navigation guidance for agents. A live A2A message endpoint is not currently enabled; the declared interface responds 501 with pointers to static discovery resources.",
+  "version": "3.0.0",
+  "url": "https://anir0y.in/a2a",
+  "preferredTransport": "JSONRPC",
+  "supportedInterfaces": [
+    {
+      "url": "https://anir0y.in/a2a",
+      "transport": "JSONRPC"
+    }
+  ],
+  "provider": {
+    "organization": "anir0y",
+    "url": "https://anir0y.in"
+  },
+  "documentationUrl": "https://anir0y.in/docs/api",
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false,
+    "stateTransitionHistory": false
+  },
+  "defaultInputModes": ["text/plain"],
+  "defaultOutputModes": ["text/plain", "application/json"],
+  "skills": [
+    {
+      "id": "site-navigation",
+      "name": "Site Navigation",
+      "description": "Navigate the public anir0y.in portfolio, discovery metadata, health endpoint, and contact paths.",
+      "tags": ["discovery", "navigation", "portfolio"],
+      "examples": [
+        "Where is the API catalog for anir0y.in?",
+        "How do I check whether anir0y.in is healthy?"
+      ]
+    }
+  ]
+}
