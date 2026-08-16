@@ -19,3 +19,4 @@ secret.conf.bak.*
 .claude/scheduled_tasks.lock
 agents*
 .claude-ops-notes.local.md
+secret.webbotauth-ed25519.pem
