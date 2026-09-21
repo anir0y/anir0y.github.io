@@ -66,7 +66,7 @@ function HomePanel() {
         <span className="pill"><span className="dot" />Cloud Security</span>
       </div>
       <div className="cta">
-        <a className="btn primary" href={LINKS.topmate} target="_blank" rel="noopener noreferrer">▸ Book a Call</a>
+          <a className="btn primary" href={LINKS.booking} target="_blank" rel="noopener noreferrer">▸ Book on OpenHour</a>
         <a className="btn ghost" href={LINKS.email}>✉ Email</a>
       </div>
       <div className="hero-readout">
@@ -168,9 +168,9 @@ function TrainingPanel() {
 function IntelPanel() {
   return (
     <section aria-label="Intel — research, projects and labs">
-      <span className="eyebrow">03 · Intel</span>
-      <h2>Shipped <em>tooling</em>, not slideware.</h2>
-      <p className="lead">Open-source security tools, published research and live labs. Each card opens the source.</p>
+      <span className="eyebrow">Selected work</span>
+      <h2>Products, tools, and <em>working proof.</em></h2>
+      <p className="lead">Products, open-source security tools, published research and live labs. Each card opens the live product or its source.</p>
 
       <div className="sub">// research nodes</div>
       {RESEARCH.map((n) => {
@@ -192,6 +192,7 @@ function IntelPanel() {
           <span className="ix">{p.ix}</span>
           <h4>{p.title}</h4>
           <p>{p.desc}</p>
+          {p.proof && <span className="mobile-proof">{p.proof.map((item) => <span key={item}>{item}</span>)}</span>}
           <span className="go">{p.go}</span>
         </a>
       ))}
@@ -237,14 +238,14 @@ function LinkPanel() {
       <h2>Let's <em>work together</em>.</h2>
       <p className="lead">Available for security consulting, penetration testing, and collaboration. Scope an engagement, book a call, or just trade notes.</p>
       <div className="cta">
-        <a className="btn primary" href={LINKS.topmate} target="_blank" rel="noopener noreferrer">▸ Book a Call</a>
+        <a className="btn primary" href={LINKS.booking} target="_blank" rel="noopener noreferrer">▸ Book on OpenHour</a>
         <a className="btn ghost" href={LINKS.email}>{LINKS.emailPlain}</a>
       </div>
       <div className="social">
         <a href={LINKS.github} target="_blank" rel="noopener noreferrer">⌗ GitHub</a>
         <a href={LINKS.linkedin} target="_blank" rel="noopener noreferrer">in · LinkedIn</a>
         <a href={LINKS.x} target="_blank" rel="noopener noreferrer">𝕏 · @anir0y</a>
-        <a href={LINKS.topmate} target="_blank" rel="noopener noreferrer">◷ Topmate</a>
+        <a href={LINKS.booking} target="_blank" rel="noopener noreferrer">◷ OpenHour</a>
         <a href={LINKS.youtube} target="_blank" rel="noopener noreferrer">▶ YouTube</a>
         <a href={LINKS.classroom} target="_blank" rel="noopener noreferrer">⌬ Classroom</a>
       </div>

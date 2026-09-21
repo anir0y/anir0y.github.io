@@ -1,6 +1,5 @@
 import { useRef, useState, type ReactNode } from "react";
 import { motion } from "framer-motion";
-import { TypeAnimation } from "react-type-animation";
 import { LINKS } from "../data/links";
 import { SERVICES } from "../data/services";
 import { COURSES } from "../data/training";
@@ -18,10 +17,10 @@ function Reveal({ children, className = "", glitch = false }: { children: ReactN
   return (
     <motion.div
       className={className + (seen && glitch ? " glitch-on" : "")}
-      initial={{ opacity: 0, y: 34, filter: "blur(6px)" }}
-      whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+      initial={REDUCED ? false : { opacity: 0, y: 16 }}
+      whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "0px 0px -12% 0px" }}
-      transition={{ duration: 0.8, ease: EASE }}
+      transition={{ duration: REDUCED ? 0 : 0.5, ease: EASE }}
       onViewportEnter={() => setSeen(true)}
     >
       {children}
@@ -54,42 +53,47 @@ function CountUp({ to, suffix = "" }: { to: number; suffix?: string }) {
 export function Hero() {
   return (
     <section id="hero">
-      <div className="wrap">
-        <div className="hero-tag">Cybersecurity Specialist&nbsp;&nbsp;·&nbsp;&nbsp;Cat Dad</div>
-        <h1>Animesh&nbsp;Roy <span className="handle">@anir0y</span></h1>
-        <p className="hero-tagline"><span className="accent">break</span> it before they <span className="haz">breach</span> it.</p>
-        <div className="hero-typed">
-          <span className="tc">&gt;_ </span>
-          {REDUCED ? "finding vulnerabilities before adversaries do" : (
-            <TypeAnimation
-              sequence={[
-                "finding vulnerabilities before adversaries do", 2200,
-                "mapping the attack surface", 1800,
-                "emulating the adversary, end to end", 2000,
-                "hardening what actually matters", 2000,
-              ]}
-              wrapper="span" repeat={Infinity} cursor speed={55}
-            />
-          )}
+      <div className="wrap hero-poster">
+        <div className="poster-index">
+          <span>Independent security research practice</span>
+          <span>India / worldwide</span>
         </div>
-        <p className="hero-sub">I work in <b>offensive security, security consulting and open-source tooling</b>, and I take it from the attack surface through to remediation.</p>
-        <div className="disciplines">
-          <span className="pill"><span className="dot" />Penetration Testing</span>
-          <span className="pill"><span className="dot" />Red Teaming</span>
-          <span className="pill"><span className="dot" />Cloud Security</span>
+
+        <h1 className="poster-name" aria-label="Animesh Roy">
+          <span className="poster-first">Animesh</span>
+          <span className="poster-last">Roy</span>
+        </h1>
+
+        <div className="poster-lower">
+          <div className="poster-copy">
+            <p className="hero-tagline">Find the path before the adversary does.</p>
+            <p className="hero-sub">I pressure-test systems, map real attack paths, and stay through remediation. Offensive security with enough technical depth for the engineers—and enough clarity for the board.</p>
+            <p className="hero-disciplines">Penetration testing / Red teaming / Cloud security / Training</p>
+            <div className="hero-cta">
+              <a className="btn primary" href={LINKS.booking} target="_blank" rel="noopener noreferrer">Book a working session</a>
+              <a className="btn ghost" href="#projects" onClick={(e) => { e.preventDefault(); scrollTo("projects"); }}>See the work</a>
+            </div>
+          </div>
+
+          <aside className="hero-scope" aria-hidden="true">
+            <div className="scope-aperture">
+              <span className="scope-logo" />
+              <span className="scope-sweep" />
+              <span className="scope-cross cross-x" />
+              <span className="scope-cross cross-y" />
+            </div>
+            <p>Find the path.<br />Prove the risk.<br />Fix what matters.</p>
+          </aside>
         </div>
-        <div className="hero-cta">
-          <a className="btn primary" href={LINKS.topmate} target="_blank" rel="noopener noreferrer">▸ Book a Call</a>
-          <a className="btn ghost" href="#projects" onClick={(e) => { e.preventDefault(); scrollTo("projects"); }}>View Work</a>
-        </div>
-        <div className="hero-readout">
-          <span><b>STATUS</b> · operational</span>
-          <span><b>BASE</b> · India · remote-first</span>
-          <span><b>POSTURE</b> · zero-trust</span>
-          <span><b>UPLINK</b> · classroom.anir0y.in</span>
+
+        <div className="hero-proof" aria-label="Professional highlights">
+          <span><b>13+</b> years in security</span>
+          <span><b>100+</b> assessments</span>
+          <span><b>20+</b> open tools</span>
+          <span className="availability"><i /> Taking select engagements</span>
         </div>
       </div>
-      <div className="scrollcue">scroll to traverse grid<i /></div>
+      <div className="scrollcue">Scroll to inspect<i /></div>
     </section>
   );
 }
@@ -101,7 +105,7 @@ export function About() {
       <div className="wrap">
         <Reveal className="about-grid">
           <div className="about-copy">
-            <span className="eyebrow">00 · Operator Profile</span>
+            <span className="eyebrow">Operator profile</span>
             <h2>Security researcher &amp; <em>consultant</em>.</h2>
             <p>With a background spanning <b>offensive security, threat intelligence, and cloud infrastructure</b>, I bridge the gap between identifying risks and building defenses that actually work.</p>
             <p>Currently focused on red-teaming engagements, building interactive security labs for the community, and mentoring the next generation of security professionals. Founder of the <b>Vapra Shiksha Foundation</b>.</p>
@@ -157,8 +161,8 @@ export function Services() {
     <section id="services">
       <div className="wrap">
         <Reveal glitch>
-          <span className="eyebrow">01 · Strategic Defense</span>
-          <h2 className="title"><span className="glitch">Capabilities</span>, weaponised for <em>your perimeter</em>.</h2>
+          <span className="eyebrow">What I do</span>
+          <h2 className="title">I pressure-test what you <em>cannot afford to lose.</em></h2>
           <p className="lead">Independent, hands-on offensive security. Every engagement is scoped and evidence-driven, and it ends with a remediation path you can act on, not a raw vulnerability dump.</p>
         </Reveal>
         <Reveal className="grid cols-2">
@@ -238,8 +242,8 @@ export function Training() {
     <section id="training">
       <div className="wrap">
         <Reveal glitch>
-          <span className="eyebrow">02 · Sandboxed Knowledge</span>
-          <h2 className="title"><span className="glitch">Training</span> that runs in a <em>live fire range</em>.</h2>
+          <span className="eyebrow">Teach the trade</span>
+          <h2 className="title">Training built from <em>real failure modes.</em></h2>
           <p className="lead">Hands-on courses and workshops drawn from real conference deliveries. Hover a module to unlock the syllabus — pick the lock on the physical course, authenticate on the rest.</p>
         </Reveal>
         <Reveal className="grid cols-3">{COURSES.map((c) => <TrainingCard key={c.idx} c={c} />)}</Reveal>
@@ -255,8 +259,8 @@ export function Research() {
     <section id="research">
       <div className="wrap">
         <Reveal>
-          <span className="eyebrow">03 · Digital Twin</span>
-          <h2 className="title">Research <em>nodes</em> across the surface.</h2>
+          <span className="eyebrow">Research</span>
+          <h2 className="title">Research that <em>escapes the lab.</em></h2>
           <p className="lead">A live map of where I spend my cycles: offensive research, open-source tooling and published tradecraft. Each node is an active line of work.</p>
         </Reveal>
         <Reveal className="board">
@@ -284,14 +288,17 @@ export function Projects() {
     <section id="projects">
       <div className="wrap">
         <Reveal glitch>
-          <span className="eyebrow">04 · Featured Work</span>
-          <h2 className="title">Shipped <em>tooling</em>, not slideware.</h2>
-          <p className="lead">Open-source security tools I build and maintain for red teamers, threat hunters and defenders. Each card opens the repository.</p>
+          <span className="eyebrow">Selected work</span>
+          <h2 className="title">Products, tools, and <em>working proof.</em></h2>
+          <p className="lead">Products and open-source security tools I build for practitioners, teams, and people who want to work with me. Each card opens the live product or its source.</p>
         </Reveal>
         <Reveal className="intel-row">
           {PROJECTS.map((p) => (
-            <a className="intel" key={p.title} href={p.href} target="_blank" rel="noopener noreferrer">
-              <span className="ix">{p.ix}</span><h4>{p.title}</h4><p>{p.desc}</p><span className="go">{p.go}</span>
+            <a className={"intel" + (p.feature ? ` intel-${p.feature}` : "") + (p.watermark ? " intel-watermarked" : "")} key={p.title} href={p.href} target="_blank" rel="noopener noreferrer">
+              {p.watermark && <span className="project-watermark" aria-hidden="true">{p.watermark}</span>}
+              <span className="ix">{p.ix}</span><h4>{p.title}</h4><p>{p.desc}</p>
+              {p.proof && <span className="project-proof">{p.proof.map((item) => <span key={item}>{item}</span>)}</span>}
+              <span className="go">{p.go}</span>
             </a>
           ))}
         </Reveal>
@@ -317,18 +324,18 @@ export function Contact() {
       <div className="contact-threads"><Threads color="rgba(0,229,255,0.4)" amplitude={1.15} lineCount={26} /></div>
       <div className="wrap">
         <Reveal className="panel">
-          <span className="eyebrow" style={{ justifyContent: "center" }}>05 · Establish Link</span>
-          <h2>Let's <em>work together</em>.</h2>
+          <span className="eyebrow" style={{ justifyContent: "center" }}>Start a conversation</span>
+          <h2>Bring me the <em>hard problem.</em></h2>
           <p className="lead">Available for security consulting, penetration testing, and collaboration. Scope an engagement, book a call, or just trade notes. Reach out through any channel below.</p>
           <div className="handshake">
-            <a className="btn primary" href={LINKS.topmate} target="_blank" rel="noopener noreferrer">▸ Book a Call</a>
+            <a className="btn primary" href={LINKS.booking} target="_blank" rel="noopener noreferrer">▸ Book on OpenHour</a>
             <a className="btn ghost" href={LINKS.email}>{LINKS.emailPlain}</a>
           </div>
           <div className="social">
             <a href={LINKS.github} target="_blank" rel="noopener noreferrer">⌗ GitHub</a>
             <a href={LINKS.linkedin} target="_blank" rel="noopener noreferrer">in · LinkedIn</a>
             <a href={LINKS.x} target="_blank" rel="noopener noreferrer">𝕏 · @anir0y</a>
-            <a href={LINKS.topmate + "/"} target="_blank" rel="noopener noreferrer">◷ Topmate</a>
+            <a href={LINKS.booking} target="_blank" rel="noopener noreferrer">◷ OpenHour</a>
             <a href={LINKS.youtube} target="_blank" rel="noopener noreferrer">▶ YouTube</a>
             <a href={LINKS.classroom} target="_blank" rel="noopener noreferrer">⌬ Classroom</a>
           </div>

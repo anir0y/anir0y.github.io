@@ -157,13 +157,15 @@ export function CommandPalette({ open, onClose }: { open: boolean; onClose: () =
     const nav: Cmd[] = NAV.map((n) => ({ id: "go-" + n.id, label: "Go to " + n.label, icon: "→", hint: "section", run: () => { onClose(); scrollTo(n.id); } }));
     return [
       ...nav,
-      { id: "call", label: "Book a Call", icon: "◷", hint: "topmate", run: ext(LINKS.topmate) },
+      { id: "call", label: "Book on OpenHour", icon: "◷", hint: "openhour.me/anir0y", run: ext(LINKS.booking) },
       { id: "mail", label: "Email Animesh", icon: "✉", hint: "mail@anir0y.in", run: () => { onClose(); window.location.href = LINKS.email; } },
       { id: "gh", label: "GitHub", icon: "⌗", hint: "github.com/anir0y", run: ext(LINKS.github) },
       { id: "in", label: "LinkedIn", icon: "in", hint: "linkedin", run: ext(LINKS.linkedin) },
       { id: "x", label: "X / Twitter", icon: "𝕏", hint: "@anir0y", run: ext(LINKS.x) },
       { id: "yt", label: "YouTube", icon: "▶", hint: "youtube", run: ext(LINKS.youtube) },
       { id: "cls", label: "Classroom", icon: "⌬", hint: "classroom.anir0y.in", run: ext(LINKS.classroom) },
+      { id: "openhour", label: "OpenHour project", icon: "◷", hint: "openhour.me", run: ext(LINKS.openhour) },
+      { id: "seetha", label: "SeethaAI command", icon: "◉", hint: "hunter.anir0y.in", run: ext(LINKS.seetha) },
       { id: "top", label: "Back to top", icon: "↑", hint: "", run: () => { onClose(); window.scrollTo({ top: 0, behavior: REDUCED ? "auto" : "smooth" }); } },
     ];
   }, [onClose]);

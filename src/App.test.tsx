@@ -33,7 +33,9 @@ describe("App (full render smoke test)", () => {
     const txt = container.textContent || "";
     expect(txt).toContain("Animesh");
     expect(txt).toContain("Security researcher");
-    expect(txt).toContain("Featured Work");
+    expect(txt).toContain("Selected work");
+    expect(txt).toContain("SeethaAI");
+    expect(txt).toContain("OpenHour");
     expect(txt).toContain("VISITOR"); // recon panel header
     expect(container.querySelector("#hero")).toBeTruthy();
     expect(container.querySelector("#contact")).toBeTruthy();

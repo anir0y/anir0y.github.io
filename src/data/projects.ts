@@ -1,6 +1,13 @@
-export interface Project { ix: string; title: string; desc: string; go: string; href: string; }
+export interface Project { ix: string; title: string; desc: string; go: string; href: string; watermark?: string; feature?: "hero" | "product"; proof?: string[]; }
 export const PROJECTS: Project[] = [
-  { ix: "SAAS · pentest reporting", title: "VulnQuill", go: "explore →", href: "/pentestreport",
+  { ix: "AI · security operations", title: "SeethaAI", watermark: "SEETHA AI", go: "open live command →", href: "https://hunter.anir0y.in/", feature: "hero",
+    desc: "My multi-agent security research operating system. SeethaAI coordinates specialist agents across a live fleet for recon, validation, code audit, disclosure tracking, memory, orchestration, and continuous self-improvement.",
+    proof: ["13 specialist agents", "4-machine fleet", "14,306 turns", "18.77B measured tokens", "82 bugs tracked", "6 published CVEs"] },
+
+  { ix: "PRODUCT · expert scheduling", title: "OpenHour", watermark: "OPENHOUR", go: "visit openhour.me →", href: "https://openhour.me/", feature: "product",
+    desc: "A scheduling platform that turns professional expertise into a clear, bookable profile. I built OpenHour to remove the back-and-forth from discovery and booking; my live security consulting and mentoring page is at openhour.me/anir0y." },
+
+  { ix: "SAAS · pentest reporting", title: "VulnQuill", watermark: "VULNQUILL", go: "explore →", href: "/pentestreport",
     desc: "Multi-tenant penetration-test engagement & reporting platform. Findings with CWE/CVE/CVSS and evidence, AI assist, recon, and branded PDF/DOCX/XLSX reports — clients get a read-only portal." },
   { ix: "REPO · pcap analysis", title: "PCaptor", go: "view repo →", href: "https://github.com/anir0y/PCaptor",
     desc: "Large pcap and pcapng analyzer that emits full JSON, HTML and CSV reports. Built for red team, CTF and threat hunting." },

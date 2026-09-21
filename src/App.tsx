@@ -2,7 +2,7 @@ import { lazy, Suspense, useEffect, useState } from "react";
 import Background from "./components/Background";
 import Footer from "./components/Footer";
 import { Boot, Nav, ScrollProgress, TelemetryStream, CommandPalette } from "./components/Chrome";
-import { Hero, About, Arsenal, Services, Training, Research, Projects, Contact, ThreadsDivider } from "./components/Sections";
+import { Hero, About, Arsenal, Services, Training, Research, Projects, Contact } from "./components/Sections";
 import { registerWebMcpTools } from "./lib/webmcp";
 
 // Standalone product showcase at /pentestreport — code-split so it never weighs
@@ -54,11 +54,8 @@ export default function App() {
         <About />
         <Arsenal />
         <Services />
-        <ThreadsDivider />
         <Training />
-        <ThreadsDivider />
         <Research />
-        <ThreadsDivider />
         <Projects />
         <Contact />
       </main>
