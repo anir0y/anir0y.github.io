@@ -15,49 +15,85 @@ export function ScrollProgress() {
   return <motion.div className="scrollbar-top" style={{ scaleX }} aria-hidden="true" />;
 }
 
-/* ── Boot / security handshake ───────────────────────────────────────── */
-const BOOT_LINES: [string, "" | "ok" | "warn"][] = [
-  ["$ init secure-session --profile anir0y", ""],
-  ["  negotiating cipher suite TLS_AES_256_GCM ...", "ok"],
-  ["  exchanging keys · curve25519 ...", "ok"],
-  ["  verifying operator identity ...", "ok"],
-  ["  mounting attack-surface digital twin ...", "ok"],
-  ["  arming threat-detection overlays ...", "warn"],
-  ["  grid telemetry uplink · classroom.anir0y.in", "ok"],
-  ["$ handshake complete. Welcome, operator.", ""],
-];
-const tag = (t: string) => (t === "ok" ? "  [OK]" : t === "warn" ? "  [ARMED]" : "");
+/* ── Boot / orbital handshake ────────────────────────────────────────── */
+const BOOT_PHASES = [
+  ["ACQ-01", "Acquiring orbital relay"],
+  ["NAV-13", "Calibrating planetary mesh"],
+  ["ENC-25", "Negotiating encrypted tunnel"],
+  ["MAP-47", "Mapping attack-surface telemetry"],
+  ["SIG-82", "Verifying operator signature"],
+  ["LNK-99", "Secure channel established"],
+] as const;
 
 export function Boot() {
   const [done, setDone] = useState(false);
-  const [shown, setShown] = useState(REDUCED ? BOOT_LINES.length : 0);
+  const [shown, setShown] = useState(REDUCED ? BOOT_PHASES.length : 0);
 
   useEffect(() => {
-    if (REDUCED) { const id = window.setTimeout(() => setDone(true), 350); return () => window.clearTimeout(id); }
+    if (REDUCED) { const id = window.setTimeout(() => setDone(true), 280); return () => window.clearTimeout(id); }
     let i = 0; const timers: number[] = [];
     const step = () => {
       i++; setShown(i);
-      if (i < BOOT_LINES.length) timers.push(window.setTimeout(step, 120 + Math.random() * 180));
-      else timers.push(window.setTimeout(() => setDone(true), 520));
+      if (i < BOOT_PHASES.length) timers.push(window.setTimeout(step, 170 + Math.random() * 120));
+      else timers.push(window.setTimeout(() => setDone(true), 620));
     };
     timers.push(window.setTimeout(step, 120));
-    const safety = window.setTimeout(() => setDone(true), 4200); // never trap the user
+    const safety = window.setTimeout(() => setDone(true), 3200); // never trap the user
     timers.push(safety);
     return () => timers.forEach(clearTimeout);
   }, []);
 
-  const pct = Math.round((shown / BOOT_LINES.length) * 100);
-  const text = BOOT_LINES.slice(0, shown).map(([l, t]) => l + tag(t)).join("\n");
+  const pct = Math.round((shown / BOOT_PHASES.length) * 100);
+  const phase = BOOT_PHASES[Math.max(0, Math.min(shown - 1, BOOT_PHASES.length - 1))];
 
   return (
-    <div id="boot" className={done ? "done" : ""} role="status" aria-label="System boot sequence">
-      <div className="boot-card">
-        <div className="boot-head"><span className="boot-dot" /> anir0y // secure session handshake</div>
-        <div className="boot-log">
-          {text}
-          {shown >= BOOT_LINES.length && <span className="cursor" />}
+    <div id="boot" className={done ? "done" : ""} aria-busy={!done} aria-label="Secure orbital link loading">
+      <button className="boot-skip" type="button" onClick={() => setDone(true)}>Skip intro</button>
+      <div className="boot-static" aria-hidden="true" />
+      <div className="boot-coordinate boot-coordinate-a" aria-hidden="true">13.0827° N<br />80.2707° E</div>
+      <div className="boot-coordinate boot-coordinate-b" aria-hidden="true">NODE / ANR-0Y<br />EPOCH / 2026</div>
+
+      <div className="boot-shell">
+        <div className="boot-orbital" aria-hidden="true">
+          <span className="boot-axis boot-axis-x" />
+          <span className="boot-axis boot-axis-y" />
+          <div className="boot-orbit boot-orbit-a"><i /></div>
+          <div className="boot-orbit boot-orbit-b"><i /></div>
+          <div className="boot-planet-wrap">
+            <div className="boot-saturn-ring boot-saturn-ring-back" />
+            <div className="boot-planet">
+              <span className="boot-planet-scan" />
+              <span className="boot-planet-logo" />
+            </div>
+            <div className="boot-saturn-ring boot-saturn-ring-front" />
+            <div className="boot-planet-glitch boot-planet-glitch-a" />
+            <div className="boot-planet-glitch boot-planet-glitch-b" />
+          </div>
+          <div className="boot-target">SIGNAL LOCK <b>{pct}%</b></div>
         </div>
-        <div className="boot-bar"><i style={{ width: pct + "%" }} /></div>
+
+        <div className="boot-console">
+          <div className="boot-head">
+            <span className="boot-dot" />
+            <span>ANIR0Y / SECURE ORBIT</span>
+            <b>CHANNEL 0X13</b>
+          </div>
+          <div className="boot-copy">
+            <p>Deep-space security relay</p>
+            <h1 className="boot-title" data-text="ORBITAL LINK">ORBITAL LINK</h1>
+            <span>Synchronizing a protected session with the security operations grid.</span>
+          </div>
+          <div className="boot-telemetry" role="status" aria-live="polite">
+            <div><small>{phase[0]}</small><span>{phase[1]}</span></div>
+            <strong>{String(pct).padStart(3, "0")}%</strong>
+          </div>
+          <div className="boot-bar" aria-hidden="true"><i style={{ width: pct + "%" }} /></div>
+          <div className="boot-foot" aria-hidden="true">
+            <span>TLS_AES_256_GCM</span>
+            <span>CURVE25519</span>
+            <span>{shown >= BOOT_PHASES.length ? "LINK STABLE" : "SCANNING"}</span>
+          </div>
+        </div>
       </div>
     </div>
   );
