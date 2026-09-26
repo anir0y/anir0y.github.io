@@ -56,7 +56,14 @@ export default function Footer() {
         {/* ── Footer line ────────────────────────────────────────────── */}
         <div className="foot">
           <div>© {year} ANIMESH ROY · <a href="https://anir0y.in/">anir0y.in</a> · built by a cat dad &amp; his cat 🐈‍⬛</div>
-          <div className="legal">Independent security research practice. Visualizations are illustrative. All offensive work is conducted under explicit authorization and scope.</div>
+          <div className="legal">
+            Independent security research practice. Visualizations are illustrative. All offensive work is conducted under explicit authorization and scope.
+            <nav className="policy-links" aria-label="Policies">
+              <a href="/terms/">Terms</a>
+              <a href="/refund/">Refunds</a>
+              <a href="/shipping/">Shipping</a>
+            </nav>
+          </div>
           <div>
             {utc} UTC · LOCAL {local}<br />
             NODE · UPTIME <span style={{ color: "var(--green)" }}>{uptime}</span> ·{" "}

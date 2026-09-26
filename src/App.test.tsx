@@ -41,6 +41,9 @@ describe("App (full render smoke test)", () => {
     expect(container.querySelector("#contact")).toBeTruthy();
     expect(container.querySelectorAll("#projects .lab").length).toBe(4);
     expect(container.querySelectorAll("#training .module.scan").length).toBe(6);
+    expect(container.querySelector('.policy-links a[href="/terms/"]')).toBeTruthy();
+    expect(container.querySelector('.policy-links a[href="/refund/"]')).toBeTruthy();
+    expect(container.querySelector('.policy-links a[href="/shipping/"]')).toBeTruthy();
     await act(async () => { root.unmount(); });
   });
 });

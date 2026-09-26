@@ -289,6 +289,9 @@ footer{border-top:1px solid var(--panel-line);padding:40px 0 48px;position:relat
 .recon-note{padding:12px 20px;font-family:var(--font-mono);font-size:10px;color:var(--text-faint);letter-spacing:.3px;border-top:1px solid var(--panel-line)}
 .foot{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center;font-family:var(--font-mono);font-size:11px;color:var(--text-faint);letter-spacing:1px}
 .foot .legal{max-width:520px;line-height:1.7}
+.foot .policy-links{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:8px}
+.foot .policy-links a{color:var(--text-dim);text-decoration:underline;text-decoration-color:var(--panel-line);text-underline-offset:4px}
+.foot .policy-links a:hover{color:var(--cyan);text-decoration-color:currentColor}
 .foot a{color:var(--text-dim);text-decoration:none}.foot a:hover{color:var(--cyan)}
 
 ::selection{background:var(--cyan);color:#02141a}
