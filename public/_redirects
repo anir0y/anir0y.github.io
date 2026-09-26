@@ -8,12 +8,3 @@
 # Serving "/" keeps the URL at /pentestreport; base:'./' assets resolve to /assets.
 /pentestreport      /   200
 /pentestreport/     /   200
-
-# Razorpay-hosted merchant policies. Keep Razorpay as the authoritative source
-# so policy updates do not leave stale legal copy on the portfolio.
-/terms              https://merchant.razorpay.com/policy/R8oJJ4dAn7eYY8/terms    302
-/terms/             https://merchant.razorpay.com/policy/R8oJJ4dAn7eYY8/terms    302
-/refund             https://merchant.razorpay.com/policy/R8oJJ4dAn7eYY8/refund   302
-/refund/            https://merchant.razorpay.com/policy/R8oJJ4dAn7eYY8/refund   302
-/shipping           https://merchant.razorpay.com/policy/R8oJJ4dAn7eYY8/shipping 302
-/shipping/          https://merchant.razorpay.com/policy/R8oJJ4dAn7eYY8/shipping 302
