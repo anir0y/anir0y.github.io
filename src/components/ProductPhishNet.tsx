@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import "../phishnet.css";
+import "../standalone.css";
 
 const PITCH_DECK = "https://gamma.app/docs-robot/y02yokagvnyp8as";
 
@@ -28,7 +29,7 @@ export default function ProductPhishNet() {
   return (
     <div className="pn-root">
       <header className="pn-nav">
-        <a className="pn-brand" href="/">anir0y<span>.in</span></a>
+        <a className="pn-brand standalone-brand" href="/" aria-label="anir0y home"><img className="standalone-mark" src="/anir0y-logo.svg" alt="" /><span>anir0y<em>.in</em><small>security ops command</small></span></a>
         <nav aria-label="PhishNet sections">
           <a href="#pipeline">Pipeline</a>
           <a href="#operations">Operations</a>

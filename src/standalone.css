@@ -1,0 +1,192 @@
+/* Shared orbital dossier theme for standalone product pages. */
+.pn-root,
+.vq-root {
+  --dossier-bg: #07111f;
+  --dossier-panel: #0d1b2e;
+  --dossier-panel-2: #102139;
+  --dossier-line: rgba(208, 222, 241, 0.16);
+  --dossier-text: #f4f7fb;
+  --dossier-muted: #b8c5d4;
+  --dossier-faint: #8192a8;
+  --dossier-cobalt: #315cff;
+  --dossier-signal: #8ef6cf;
+  position: relative;
+  isolation: isolate;
+  min-height: 100svh;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 78% 0, rgba(49, 92, 255, 0.2), transparent 34rem),
+    linear-gradient(90deg, transparent calc(50% - .5px), rgba(208, 222, 241, 0.045) 50%, transparent calc(50% + .5px)),
+    var(--dossier-bg);
+  color: var(--dossier-text);
+  font-family: var(--font-display);
+}
+
+.pn-root::before,
+.vq-root::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(208, 222, 241, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(208, 222, 241, 0.025) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: linear-gradient(to bottom, black, transparent 72%);
+}
+
+.pn-root :focus-visible,
+.vq-root :focus-visible {
+  outline: 2px solid var(--dossier-signal);
+  outline-offset: 4px;
+}
+
+.pn-root .pn-nav,
+.vq-root .vq-nav {
+  min-height: 72px;
+  border-bottom: 1px solid var(--dossier-line);
+  background: rgba(7, 17, 31, 0.82);
+  backdrop-filter: blur(18px) saturate(130%);
+}
+
+.standalone-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 44px;
+  color: var(--dossier-text) !important;
+  text-decoration: none;
+}
+
+.standalone-brand > span:last-child {
+  display: grid;
+  grid-template-columns: auto auto;
+  align-items: baseline;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+.standalone-brand em { color: var(--dossier-signal); font-style: normal; }
+.standalone-brand small {
+  grid-column: 1 / -1;
+  margin: 3px 0 0 !important;
+  color: var(--dossier-faint) !important;
+  font: 500 7px/1 var(--font-mono) !important;
+  letter-spacing: .18em !important;
+  text-transform: uppercase;
+}
+
+.standalone-mark {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+
+.pn-root .pn-nav nav a,
+.vq-root .vq-nav nav a,
+.vq-root .vq-nav-actions > a:first-child { color: var(--dossier-muted); }
+.pn-root .pn-nav nav a:hover,
+.vq-root .vq-nav nav a:hover,
+.vq-root .vq-nav-actions > a:first-child:hover { color: var(--dossier-text); }
+
+.pn-root .pn-nav-cta,
+.pn-root .pn-btn.primary,
+.vq-root .vq-button:not(.quiet) {
+  min-height: 48px;
+  border: 1px solid var(--dossier-cobalt);
+  border-radius: 0;
+  background: var(--dossier-cobalt);
+  color: #fff;
+}
+.pn-root .pn-nav-cta:hover,
+.pn-root .pn-btn.primary:hover,
+.vq-root .vq-button:not(.quiet):hover {
+  border-color: var(--dossier-signal);
+  background: var(--dossier-signal);
+  color: #07111f;
+}
+
+.pn-root .pn-btn.secondary,
+.vq-root .vq-button.quiet {
+  min-height: 48px;
+  border-color: var(--dossier-line);
+  border-radius: 0;
+  background: rgba(244, 247, 251, 0.025);
+  color: var(--dossier-text);
+}
+
+/* PhishNet: retain its operational structure on the shared dark canvas. */
+.pn-root {
+  --pn-ink: var(--dossier-text);
+  --pn-muted: var(--dossier-muted);
+  --pn-line: var(--dossier-line);
+  --pn-paper: transparent;
+  --pn-white: var(--dossier-panel);
+  --pn-blue: #9bb1ff;
+  --pn-green: var(--dossier-signal);
+}
+.pn-root .pn-status { color: var(--dossier-signal); }
+.pn-root .pn-status span { background: var(--dossier-signal); box-shadow: 0 0 14px rgba(142, 246, 207, .55); }
+.pn-root .pn-kicker,
+.pn-root .pn-section-head > p,
+.pn-root .pn-pipeline li > span,
+.pn-root .pn-op-list article > span { color: #9bb1ff; }
+.pn-root .pn-lead,
+.pn-root .pn-section-head > div,
+.pn-root .pn-pipeline li p,
+.pn-root .pn-op-list p,
+.pn-root .pn-screen-notes p,
+.pn-root .pn-footer { color: var(--dossier-muted); }
+.pn-root .pn-skills span { border-color: var(--dossier-line); background: rgba(244, 247, 251, .03); color: var(--dossier-muted); }
+.pn-root .pn-hero-frame,
+.pn-root .pn-screen-wide { overflow: hidden; border: 1px solid var(--dossier-line); border-radius: 0; background: var(--dossier-panel); box-shadow: 0 28px 80px rgba(0, 0, 0, .28); }
+.pn-root .pn-windowbar,
+.pn-root .pn-screen-wide figcaption { border-color: var(--dossier-line); background: var(--dossier-panel); color: var(--dossier-faint); }
+.pn-root .pn-screen-notes p { background: rgba(244, 247, 251, .025); }
+.pn-root .pn-close { background: var(--dossier-cobalt); }
+.pn-root .pn-close .pn-btn { border-radius: 0; }
+
+/* VulnQuill: align its existing dark UI with the same portfolio identity. */
+.vq-root {
+  --vq-bg: transparent;
+  --vq-panel: var(--dossier-panel);
+  --vq-panel-2: var(--dossier-panel-2);
+  --vq-text: var(--dossier-text);
+  --vq-muted: var(--dossier-muted);
+  --vq-faint: var(--dossier-faint);
+  --vq-line: var(--dossier-line);
+  --vq-blue: var(--dossier-cobalt);
+  --vq-mint: var(--dossier-signal);
+}
+.vq-root .vq-kicker,
+.vq-root .vq-label,
+.vq-root .vq-section-heading > p { color: var(--dossier-signal); }
+.vq-root .vq-facts article,
+.vq-root .vq-capabilities article,
+.vq-root .vq-price-grid article { border-color: var(--dossier-line); background: rgba(13, 27, 46, .72); }
+.vq-root .vq-evidence figure { border: 1px solid var(--dossier-line); border-radius: 0; background: var(--dossier-panel); }
+.vq-root .vq-close { background: var(--dossier-cobalt); }
+
+@media (max-width: 680px) {
+  .pn-root::before,
+  .vq-root::before { background-size: 48px 48px; }
+  .pn-root .pn-nav,
+  .vq-root .vq-nav { min-height: 68px; }
+  .standalone-mark { width: 26px; height: 26px; }
+  .standalone-brand > span:last-child { font-size: 13px; }
+  .pn-root .pn-nav-cta,
+  .vq-root .vq-button { min-height: 44px; }
+  .pn-root .pn-hero,
+  .vq-root .vq-hero { padding-top: 52px; }
+  .pn-root .pn-hero h1,
+  .vq-root .vq-hero h1 { overflow-wrap: anywhere; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pn-root *,
+  .vq-root * { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+}
