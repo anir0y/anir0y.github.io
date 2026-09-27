@@ -41,6 +41,9 @@ describe("App (full render smoke test)", () => {
     expect(container.querySelector("#hero")).toBeTruthy();
     expect(container.querySelector("#contact")).toBeTruthy();
     expect(container.querySelector('#projects a[href="/product-phishnet"]')).toBeTruthy();
+    for (const href of ["https://openhour.me/", "/product-phishnet", "/pentestreport"]) {
+      expect(container.querySelector(`#projects a[href="${href}"] .project-watermark`)).toBeNull();
+    }
     expect(container.querySelectorAll("#projects .lab").length).toBe(4);
     expect(container.querySelectorAll("#training .module.scan").length).toBe(6);
     expect(container.querySelector('.policy-links a[href="/terms/"]')).toBeTruthy();
