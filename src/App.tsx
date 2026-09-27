@@ -8,8 +8,11 @@ import { registerWebMcpTools } from "./lib/webmcp";
 // Standalone product showcase at /pentestreport — code-split so it never weighs
 // down the portfolio bundle. Path is fixed at load (full-page nav, no client router).
 const PentestReport = lazy(() => import("./components/PentestReport"));
+const ProductPhishNet = lazy(() => import("./components/ProductPhishNet"));
 const IS_PENTESTREPORT =
   typeof window !== "undefined" && /^\/pentestreport\/?$/.test(window.location.pathname);
+const IS_PHISHNET =
+  typeof window !== "undefined" && /^\/product-phishnet\/?$/.test(window.location.pathname);
 
 export default function App() {
   const [cmdk, setCmdk] = useState(false);
@@ -32,6 +35,14 @@ export default function App() {
     return (
       <Suspense fallback={null}>
         <PentestReport />
+      </Suspense>
+    );
+  }
+
+  if (IS_PHISHNET) {
+    return (
+      <Suspense fallback={null}>
+        <ProductPhishNet />
       </Suspense>
     );
   }

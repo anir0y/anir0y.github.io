@@ -7,4 +7,8 @@
 # Cloudflare Pages canonicalizes back to "/" as a 308 redirect (dropping the path).
 # Serving "/" keeps the URL at /pentestreport; base:'./' assets resolve to /assets.
 /pentestreport      /   200
-/pentestreport/     /   200
+/pentestreport/     /pentestreport  301
+
+# PhishNet product showcase — served by the SPA.
+/product-phishnet   /   200
+/product-phishnet/  /product-phishnet  301

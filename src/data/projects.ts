@@ -7,8 +7,11 @@ export const PROJECTS: Project[] = [
   { ix: "PRODUCT · expert scheduling", title: "OpenHour", watermark: "OPENHOUR", go: "visit openhour.me →", href: "https://openhour.me/", feature: "product",
     desc: "A scheduling platform that turns professional expertise into a clear, bookable profile. I built OpenHour to remove the back-and-forth from discovery and booking; my live security consulting and mentoring page is at openhour.me/anir0y." },
 
+  { ix: "PROD · anti-phishing", title: "PhishNet", watermark: "PHISHNET", go: "view product →", href: "/product-phishnet",
+    desc: "Turn every reported email into explainable, actionable threat intelligence. A production anti-phishing and SIEM workflow currently used by XBP Global Holdings Inc." },
+
   { ix: "SAAS · pentest reporting", title: "VulnQuill", watermark: "VULNQUILL", go: "explore →", href: "/pentestreport",
-    desc: "Multi-tenant penetration-test engagement & reporting platform. Findings with CWE/CVE/CVSS and evidence, AI assist, recon, and branded PDF/DOCX/XLSX reports — clients get a read-only portal." },
+    desc: "Penetration-testing reporting software for human-reviewed findings, scoped automation, controlled publication, verified remediation, and client-ready reports." },
   { ix: "REPO · pcap analysis", title: "PCaptor", go: "view repo →", href: "https://github.com/anir0y/PCaptor",
     desc: "Large pcap and pcapng analyzer that emits full JSON, HTML and CSV reports. Built for red team, CTF and threat hunting." },
   { ix: "REPO · data-loss prevention", title: "Sentinel DLP", go: "view repo →", href: "https://github.com/anir0y/sentinel-dlp",

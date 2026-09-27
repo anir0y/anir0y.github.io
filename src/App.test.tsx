@@ -36,9 +36,11 @@ describe("App (full render smoke test)", () => {
     expect(txt).toContain("Selected work");
     expect(txt).toContain("SeethaAI");
     expect(txt).toContain("OpenHour");
+    expect(txt).toContain("PhishNet");
     expect(txt).toContain("VISITOR"); // recon panel header
     expect(container.querySelector("#hero")).toBeTruthy();
     expect(container.querySelector("#contact")).toBeTruthy();
+    expect(container.querySelector('#projects a[href="/product-phishnet"]')).toBeTruthy();
     expect(container.querySelectorAll("#projects .lab").length).toBe(4);
     expect(container.querySelectorAll("#training .module.scan").length).toBe(6);
     expect(container.querySelector('.policy-links a[href="/terms/"]')).toBeTruthy();
