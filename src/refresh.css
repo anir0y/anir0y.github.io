@@ -539,11 +539,11 @@ a.intel-watermarked {
 
 .intel-watermarked .project-watermark {
   position: absolute;
-  top: 0.14em;
-  right: -0.02em;
+  top: 0.32em;
+  right: 0.28em;
   color: transparent;
   font-family: var(--font-title);
-  font-size: clamp(72px, 13vw, 170px);
+  font-size: clamp(48px, 5.2vw, 68px);
   font-weight: 500;
   line-height: 0.9;
   letter-spacing: -0.06em;
@@ -558,17 +558,34 @@ a.intel-hero::after {
 }
 
 a.intel-hero .project-watermark {
+  top: 0.14em;
+  right: -0.02em;
+  font-size: clamp(72px, 13vw, 170px);
   -webkit-text-stroke: 1px rgba(255, 255, 255, 0.19);
 }
 
 a.intel-product .project-watermark {
+  top: 0.18em;
+  right: 0.08em;
+  font-size: clamp(76px, 9vw, 112px);
   -webkit-text-stroke: 1px rgba(155, 177, 255, 0.2);
 }
 
 @media (max-width: 620px) {
   .intel-watermarked .project-watermark {
     top: 0.32em;
+    right: 0.18em;
+    font-size: 52px;
+  }
+
+  a.intel-hero .project-watermark {
+    right: -0.02em;
     font-size: 64px;
+  }
+
+  a.intel-product .project-watermark {
+    right: 0.18em;
+    font-size: 44px;
   }
 }
 

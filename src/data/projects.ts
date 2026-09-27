@@ -4,13 +4,13 @@ export const PROJECTS: Project[] = [
     desc: "My multi-agent security research operating system. SeethaAI coordinates specialist agents across a live fleet for recon, validation, code audit, disclosure tracking, memory, orchestration, and continuous self-improvement.",
     proof: ["13 specialist agents", "4-machine fleet", "14,306 turns", "18.77B measured tokens", "82 bugs tracked", "6 published CVEs"] },
 
-  { ix: "PRODUCT · expert scheduling", title: "OpenHour", go: "visit openhour.me →", href: "https://openhour.me/", feature: "product",
+  { ix: "PRODUCT · expert scheduling", title: "OpenHour", watermark: "OPENHOUR", go: "visit openhour.me →", href: "https://openhour.me/", feature: "product",
     desc: "A scheduling platform that turns professional expertise into a clear, bookable profile. I built OpenHour to remove the back-and-forth from discovery and booking; my live security consulting and mentoring page is at openhour.me/anir0y." },
 
-  { ix: "PROD · anti-phishing", title: "PhishNet", go: "view product →", href: "/product-phishnet",
+  { ix: "PROD · anti-phishing", title: "PhishNet", watermark: "PHISHNET", go: "view product →", href: "/product-phishnet",
     desc: "Turn every reported email into explainable, actionable threat intelligence. A production anti-phishing and SIEM workflow currently used by XBP Global Holdings Inc." },
 
-  { ix: "SAAS · pentest reporting", title: "VulnQuill", go: "explore →", href: "/pentestreport",
+  { ix: "SAAS · pentest reporting", title: "VulnQuill", watermark: "VULNQUILL", go: "explore →", href: "/pentestreport",
     desc: "Penetration-testing reporting software for human-reviewed findings, scoped automation, controlled publication, verified remediation, and client-ready reports." },
   { ix: "REPO · pcap analysis", title: "PCaptor", go: "view repo →", href: "https://github.com/anir0y/PCaptor",
     desc: "Large pcap and pcapng analyzer that emits full JSON, HTML and CSV reports. Built for red team, CTF and threat hunting." },
