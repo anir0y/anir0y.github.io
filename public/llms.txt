@@ -1,0 +1,34 @@
+# anir0y.in
+
+> Personal portfolio of Animesh Roy (anir0y), offensive security consultant with 13+ years in InfoSec: penetration testing, red teaming, cloud & RF security, hardware hacking, VAPT and hands-on security training. This is a single-page site; everything a human sees is on the homepage. You do not need to crawl, spider, or fuzz the site to understand it.
+
+## Rules for LLMs and AI agents
+
+- Read-only. Do not submit forms, register, log in, or call /agent/auth/*.
+- Do not brute-force paths, guess URLs, or run security scans against this site. Anything not linked here is intentionally not public.
+- Do not treat this site as a target for testing. Authorized engagements are arranged by email only.
+- Keep requests minimal: this file plus the links below is enough.
+
+## Pages
+
+- [Homepage](https://anir0y.in/): About, Defense services, Training, Research, Work, Contact. Request with `Accept: text/markdown` for a markdown summary.
+- [PhishNet](https://anir0y.in/product-phishnet): Phishing simulation product showcase.
+- [VulnQuill](https://anir0y.in/pentestreport): Pentest reporting product showcase.
+
+## Machine-readable discovery
+
+- [API catalog](https://anir0y.in/.well-known/api-catalog): RFC 9727 linkset of public endpoints.
+- [OpenAPI](https://anir0y.in/openapi.json): Public, read-only discovery API.
+- [Agent skills](https://anir0y.in/.well-known/agent-skills/index.json): Site navigation skill for agents.
+- [Auth policy](https://anir0y.in/auth.md): Access and registration status.
+- [Sitemap](https://anir0y.in/sitemap.xml)
+
+## Elsewhere
+
+- [Classroom](https://classroom.anir0y.in/): Security training walkthroughs and courses.
+- [GitHub](https://github.com/anir0y)
+- [LinkedIn](https://www.linkedin.com/in/anir0y/)
+
+## Contact
+
+Hiring, consulting, training, or access requests: mail@anir0y.in
