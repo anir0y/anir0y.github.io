@@ -28,27 +28,6 @@ function Reveal({ children, className = "", glitch = false }: { children: ReactN
   );
 }
 
-function CountUp({ to, suffix = "" }: { to: number; suffix?: string }) {
-  const [n, setN] = useState(REDUCED ? to : 0);
-  return (
-    <motion.span
-      viewport={{ once: true }}
-      onViewportEnter={() => {
-        if (REDUCED) return;
-        const t0 = performance.now(), dur = 1300;
-        const tick = (now: number) => {
-          const p = Math.min(1, (now - t0) / dur);
-          setN(Math.round(to * (1 - Math.pow(1 - p, 3))));
-          if (p < 1) requestAnimationFrame(tick);
-        };
-        requestAnimationFrame(tick);
-      }}
-    >
-      {n}{suffix}
-    </motion.span>
-  );
-}
-
 /* Section index: label on the left, a count drawn from the data on the right,
    and a hairline that draws in once. Same device as the hero's poster index,
    so every band opens the same way and tells you what is in it. */
@@ -130,12 +109,14 @@ export function About() {
             <p>With a background spanning <b>offensive security, threat intelligence, and cloud infrastructure</b>, I bridge the gap between identifying risks and building defenses that actually work.</p>
             <p>Currently focused on red-teaming engagements, building interactive security labs for the community, and mentoring the next generation of security professionals. Founder of the <b>Vapra Shiksha Foundation</b>.</p>
           </div>
-          <div className="stats">
-            <div className="stat"><div className="n"><CountUp to={13} suffix="+" /></div><div className="l">Years Experience</div></div>
-            <div className="stat"><div className="n"><CountUp to={100} suffix="+" /></div><div className="l">Security Assessments</div></div>
-            <div className="stat"><div className="n"><CountUp to={20} suffix="+" /></div><div className="l">Open-Source Projects</div></div>
-            <div className="stat"><div className="n"><CountUp to={6} /></div><div className="l">Live Interactive Labs</div></div>
-          </div>
+          {/* The hero already carries the headline numbers; this panel says what they stand for. */}
+          <dl className="facts">
+            <div><dt>Focus</dt><dd>Red teaming, hardware, RF and cloud security</dd></div>
+            <div><dt>Published</dt><dd><a href={RESEARCH[0].href} target="_blank" rel="noopener noreferrer">IEEE Xplore: evading malware analysis with reverse execution</a></dd></div>
+            <div><dt>Teaches</dt><dd>{COURSES.length} hands-on courses at <a href={LINKS.classroom} target="_blank" rel="noopener noreferrer">classroom.anir0y.in</a></dd></div>
+            <div><dt>Builds</dt><dd>{MAJOR_PROJECTS.map((p) => p.title).join(", ")}</dd></div>
+            <div><dt>Based</dt><dd>India, working worldwide</dd></div>
+          </dl>
         </Reveal>
       </div>
     </section>
@@ -548,7 +529,7 @@ export function Projects() {
         <Reveal className="deck"><ProjectDeck items={MAJOR_PROJECTS} /></Reveal>
         <Reveal className="mm"><ProjectMap items={TOOL_PROJECTS} root={MORE_PROJECT} /></Reveal>
         <Reveal>
-          <div className="labs-head"><h3>Interactive Labs</h3><span className="lh-line" /></div>
+          <div className="labs-head"><h3 className="vh">Interactive labs</h3><SectionIndex label="Interactive labs" meta={`${LABS.length} live · each opens in a new tab`} /></div>
           <div className="labs">
             {LABS.map((l, i) => <LabCard key={l.name} l={l} order={i} />)}
           </div>
@@ -565,7 +546,7 @@ export function Contact() {
       <div className="contact-threads"><Threads color="rgba(0,229,255,0.4)" amplitude={1.15} lineCount={26} /></div>
       <div className="wrap">
         <Reveal className="panel">
-          <span className="eyebrow" style={{ justifyContent: "center" }}>Start a conversation</span>
+          <SectionIndex label="Start a conversation" meta="Taking select engagements" />
           <h2>Bring me the <em>hard problem.</em></h2>
           <p className="lead">Available for security consulting, penetration testing, and collaboration. Scope an engagement, book a call, or just trade notes. Reach out through any channel below.</p>
           <div className="handshake">

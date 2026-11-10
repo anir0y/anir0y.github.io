@@ -1398,7 +1398,8 @@ footer {
 .deck-slide a.intel-hero { height: 100%; }
 .deck-slide a.intel-hero:hover { box-shadow: none; transform: none; }
 @media (max-width: 880px) {
-  .deck { grid-template-columns: 1fr; }
+  .deck { grid-template-columns: minmax(0, 1fr); }
+  .deck-rail { min-width: 0; }
   .deck-rail [role="tablist"] { flex-direction: row; overflow-x: auto; }
   .deck-tab { flex: 0 0 auto; min-width: 210px; border-right: 1px solid rgba(208, 222, 241, 0.12); border-bottom: 0; }
   .deck-ind { top: auto; right: 0; width: auto; height: 2px; }
@@ -1454,7 +1455,7 @@ footer {
 .mm-panel .go:hover { color: var(--signal); }
 @media (prefers-reduced-motion: reduce) { .mm-panel { transform: none; transition: none; } }
 @media (max-width: 880px) {
-  .mm { grid-template-columns: 1fr; }
+  .mm { grid-template-columns: minmax(0, 1fr); }
   .mm-map { min-height: 0; padding: 20px; }
   .mm-map svg { display: none; }
   .mm-node { position: static; width: auto; transform: none; }
@@ -1516,3 +1517,15 @@ a.lab:is(:hover, :focus-visible, .is-live) .v-pass { animation: lab-show 0.2s li
 @media (prefers-reduced-motion: reduce) {
   a.lab .lab-demo * { animation-duration: 0.01s !important; animation-delay: 0s !important; transition: none !important; }
 }
+
+/* About: a facts list instead of repeating the hero's numbers. */
+.facts { border-top: 1px solid rgba(208, 222, 241, 0.16); }
+.facts > div { display: grid; grid-template-columns: 104px 1fr; gap: 18px; align-items: baseline; padding: 18px 0; border-bottom: 1px solid rgba(208, 222, 241, 0.16); }
+.facts dt { color: var(--text-faint); font: 500 10px/1.4 var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; }
+.facts dd { color: var(--text); font-size: 15px; line-height: 1.55; }
+.facts a { color: inherit; text-decoration: underline; text-decoration-color: rgba(142, 246, 207, 0.45); text-underline-offset: 4px; transition: color 0.25s var(--ease); }
+.facts a:hover { color: var(--signal); }
+
+/* Labs heading uses the shared section index; the real heading stays for assistive tech. */
+.vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.labs-head { display: block; margin: 96px 0 0; }
