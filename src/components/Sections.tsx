@@ -7,6 +7,7 @@ import { RESEARCH } from "../data/research";
 import { PROJECTS, type Project } from "../data/projects";
 import { LABS, type Lab } from "../data/labs";
 import Threads from "./Threads";
+import EmblemCanvas from "./EmblemCanvas";
 
 const REDUCED = typeof window !== "undefined" && window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
 const scrollTo = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: REDUCED ? "auto" : "smooth" });
@@ -450,21 +451,19 @@ function ProjectMap({ items, root }: { items: Project[]; root?: Project }) {
           </div>
         ))}
       </div>
-      <div className="mm-detail" id="mm-detail" aria-live="polite">
+      <div className="mm-detail" id="mm-detail">
+        <EmblemCanvas arts={ART} active={items[active].art ?? ""} />
+        <div className="mm-panels" aria-live="polite">
         {items.map((p, i) => (
           <div key={p.title} ref={(el) => { panels.current[i] = el; }} className={"mm-panel" + (i === active ? " is-active" : "")} aria-hidden={i !== active}>
             <span className="ix">{p.ix}</span>
-            {p.art && ART[p.art] && (
-              <span className="mm-art" aria-hidden="true">
-                <svg viewBox="0 0 120 120" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">{ART[p.art]}</svg>
-              </span>
-            )}
             <h4>{p.title}</h4>
             <p>{p.desc}</p>
             <a className="go" href={p.href} target="_blank" rel="noopener noreferrer">{p.go}</a>
             {p.extra && <a className="go" href={p.extra.href} target="_blank" rel="noopener noreferrer">{p.extra.label}</a>}
           </div>
         ))}
+        </div>
       </div>
     </>
   );

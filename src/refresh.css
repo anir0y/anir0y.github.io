@@ -1445,17 +1445,20 @@ footer {
 .mm-leaf:hover { border-color: rgba(208, 222, 241, 0.4); }
 .mm-leaf[aria-pressed="true"] { border-color: var(--signal); background: rgba(142, 246, 207, 0.07); }
 .mm-leaf[aria-pressed="true"] span { color: var(--signal); }
-.mm-detail { display: grid; background: #0d1b2e; }
-.mm-panel { display: flex; grid-area: 1 / 1; flex-direction: column; min-width: 0; padding: clamp(28px, 3vw, 44px); opacity: 0; pointer-events: none; transform: translateY(8px); transition: opacity 0.3s var(--ease), transform 0.3s var(--ease); }
+.mm-detail { display: flex; flex-direction: column; background: #0d1b2e; }
+.mm-panels { display: grid; }
+.mm-panel { display: flex; grid-area: 1 / 1; flex-direction: column; min-width: 0; padding: 22px clamp(28px, 3vw, 44px) clamp(28px, 3vw, 44px); opacity: 0; pointer-events: none; transform: translateY(8px); transition: opacity 0.3s var(--ease), transform 0.3s var(--ease); }
 .mm-panel.is-active { opacity: 1; pointer-events: auto; transform: none; }
 .mm-panel .ix { color: var(--signal); font-size: 11px; }
-/* Emblem fills the space above the title without making the panel taller. */
+/* Emblem stage: one WebGL canvas shared by every tool, above the text panels. */
 .mm-art {
+  position: relative;
   display: grid;
   flex: 1 1 0;
   place-items: center;
-  min-height: 140px;
-  margin-top: 20px;
+  min-height: 200px;
+  margin: clamp(28px, 3vw, 44px) clamp(28px, 3vw, 44px) 0;
+  overflow: hidden;
   border: 1px solid rgba(208, 222, 241, 0.12);
   background:
     radial-gradient(circle at 50% 46%, rgba(155, 177, 255, 0.12), transparent 58%),
@@ -1463,10 +1466,13 @@ footer {
     linear-gradient(90deg, rgba(208, 222, 241, 0.04) 1px, transparent 1px) 0 0 / 28px 100%,
     #0a1627;
 }
-.mm-art svg { width: min(56%, 190px); height: auto; overflow: visible; stroke: #9bb1ff; }
-.mm-art .a { stroke: var(--signal); }
-.mm-art + h4 { margin-top: 0; padding-top: 26px; }
-.mm-panel h4 { margin-top: auto; padding-top: 40px; color: var(--text); font: 500 clamp(28px, 2.6vw, 38px)/1.1 var(--font-title); letter-spacing: -0.04em; }
+.mm-art canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+.mm-art-static { width: min(56%, 190px); height: auto; overflow: visible; stroke: #9bb1ff; }
+.mm-art-static .a { stroke: var(--signal); }
+.mm-art.is-live .mm-art-static { visibility: hidden; }
+.mm-art-src { position: absolute; width: 0; height: 0; overflow: hidden; }
+.mm-art-src svg { width: 120px; height: 120px; }
+.mm-panel h4 { margin-top: 10px; color: var(--text); font: 500 clamp(28px, 2.6vw, 38px)/1.1 var(--font-title); letter-spacing: -0.04em; }
 .mm-panel p { margin-top: 16px; color: #b8c5d4; font-size: 15px; line-height: 1.7; }
 .mm-panel .go { margin-top: 28px; color: #9bb1ff; font: 500 11px/1 var(--font-mono); letter-spacing: 0.06em; text-decoration: none; }
 .mm-panel .go:hover { color: var(--signal); }
