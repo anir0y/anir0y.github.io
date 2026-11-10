@@ -372,6 +372,22 @@ function ProjectDeck({ items }: { items: Project[] }) {
   );
 }
 
+/* Emblems for the tool map's detail panel: one drawn mark per tool, in the same
+   line style as the rest of the site. Paths with class "a" take the accent colour. */
+const ART: Record<string, ReactNode> = {
+  pcap: <><path d="M14 96H106 M22 90V70 M34 90V50 M46 90V62 M58 90V38 M70 90V58 M82 90V66 M94 90V74" /><circle className="a" cx="84" cy="34" r="12" /><path className="a" d="M93 43l10 10" /></>,
+  shield: <><path d="M60 14l34 12v28c0 24-15 40-34 50-19-10-34-26-34-50V26z" /><path className="a" d="M40 58c6-9 13-13 20-13s14 4 20 13c-6 9-13 13-20 13s-14-4-20-13z" /><circle className="a" cx="60" cy="58" r="5" /></>,
+  inventory: <><path d="M20 20h22v22H20z M49 20h22v22H49z M20 49h22v22H20z M49 49h22v22H49z M78 49h22v22H78z M20 78h22v22H20z M49 78h22v22H49z M78 78h22v22H78z" /><path className="a" d="M78 20h22v22H78z M89 26v8 M89 38v.5" /></>,
+  browser: <><rect x="16" y="22" width="88" height="76" rx="6" /><path d="M16 40H104 M26 31h.5 M34 31h.5 M42 31h.5" /><path className="a" d="M60 52l18 32H42z M60 64v9 M60 78v.5" /></>,
+  gauge: <><path d="M24 76a36 36 0 0 1 72 0 M60 40v6 M35 52l4 4 M85 52l-4 4 M14 98H106 M36 98v-7 M60 98v-7 M84 98v-7" /><path className="a" d="M60 76L79 53" /><circle className="a" cx="60" cy="76" r="4" /></>,
+  cloud: <><path d="M38 62a14 14 0 0 1 4-27 20 20 0 0 1 38 4 12 12 0 0 1 2 23z" /><path className="a" d="M50 78L40 89l10 11 M70 78l10 11-10 11 M64 76l-8 26" /></>,
+  terminalMail: <><rect x="14" y="20" width="92" height="76" rx="6" /><path d="M26 42l11 9-11 9 M43 60h12" /><rect className="a" x="58" y="58" width="38" height="28" rx="3" /><path className="a" d="M58 62l19 13 19-13" /></>,
+  statement: <><path d="M30 14h36l18 18v74H30z M66 14v18h18 M42 90V74 M52 90V62 M62 90V68 M42 46h18 M42 54h12" /><rect className="a" x="70" y="80" width="28" height="22" rx="3" /><path className="a" d="M77 80v-7a7 7 0 0 1 14 0v7" /></>,
+  decode: <><path d="M16 36h14v14H16z M34 36h14v14H34z M16 54h14v14H16z M34 54h14v14H34z M16 72h14v14H16z M34 72h14v14H34z M88 43h18 M88 61h18 M88 79h11" /><path className="a" d="M58 61h20 M71 53l8 8-8 8" /></>,
+  shell: <><rect x="14" y="20" width="92" height="80" rx="6" /><path d="M14 38H106 M24 29h.5 M32 29h.5 M40 29h.5 M28 54l14 11-14 11 M50 76h18" /><path className="a" d="M78 62v16h8V62z" /></>,
+  mail: <><rect x="16" y="28" width="88" height="62" rx="6" /><path d="M16 35l44 30 44-30" /><circle className="a" cx="90" cy="86" r="15" /><path className="a" d="M90 78v8l6 4" /></>,
+};
+
 /* Project map: the open tools as a mind map — root, a branch per purpose, a leaf
    per project. Pointing at, focusing or tapping a leaf lights its path and shows
    that project in the panel. Every project's link stays in the page. */
@@ -438,7 +454,11 @@ function ProjectMap({ items, root }: { items: Project[]; root?: Project }) {
         {items.map((p, i) => (
           <div key={p.title} ref={(el) => { panels.current[i] = el; }} className={"mm-panel" + (i === active ? " is-active" : "")} aria-hidden={i !== active}>
             <span className="ix">{p.ix}</span>
-            {p.image && <span className="mm-shot"><img src={p.image.src} alt={p.image.alt} loading="lazy" decoding="async" /></span>}
+            {p.art && ART[p.art] && (
+              <span className="mm-art" aria-hidden="true">
+                <svg viewBox="0 0 120 120" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">{ART[p.art]}</svg>
+              </span>
+            )}
             <h4>{p.title}</h4>
             <p>{p.desc}</p>
             <a className="go" href={p.href} target="_blank" rel="noopener noreferrer">{p.go}</a>
