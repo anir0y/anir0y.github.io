@@ -26,10 +26,15 @@ const BOOT_PHASES = [
 ] as const;
 
 export function Boot() {
-  const [done, setDone] = useState(false);
+  // The intro plays once per browser session; reloads and return trips go straight to the page.
+  const [seen] = useState(() => { try { return sessionStorage.getItem("anir0y:boot") === "1"; } catch { return false; } });
+  const [done, setDone] = useState(seen);
   const [shown, setShown] = useState(REDUCED ? BOOT_PHASES.length : 0);
 
+  useEffect(() => { if (done) { try { sessionStorage.setItem("anir0y:boot", "1"); } catch { /* private mode */ } } }, [done]);
+
   useEffect(() => {
+    if (seen) return;
     if (REDUCED) { const id = window.setTimeout(() => setDone(true), 280); return () => window.clearTimeout(id); }
     let i = 0; const timers: number[] = [];
     const step = () => {

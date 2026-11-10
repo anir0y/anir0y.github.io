@@ -10,6 +10,10 @@ import { useEffect, useRef, useState, type ReactNode } from "react";
  * One canvas and one GL context serve every emblem. The loop only runs while
  * the canvas is on screen and the tab is visible. With reduced motion, or
  * without WebGL, the static SVG emblem is shown instead.
+ *
+ * `remote` adds emblems loaded from SVG files (e.g. the site logo), keyed like
+ * `arts`. `fit` scales every emblem to the same extent, for sets drawn at
+ * different sizes.
  */
 
 const N = 1800;
@@ -60,23 +64,47 @@ function permutation(n: number): Uint32Array {
   return out;
 }
 
+/** An element's own transform composed with its ancestors', up to the <svg>. */
+function matrixOf(el: SVGGraphicsElement, root: SVGSVGElement): [number, number, number, number, number, number] {
+  let m: [number, number, number, number, number, number] = [1, 0, 0, 1, 0, 0];
+  for (let node: Element | null = el; node && node !== root; node = node.parentElement) {
+    const t = (node as SVGGraphicsElement).transform?.baseVal?.consolidate()?.matrix;
+    if (t) m = [t.a * m[0] + t.c * m[1], t.b * m[0] + t.d * m[1], t.a * m[2] + t.c * m[3], t.b * m[2] + t.d * m[3], t.a * m[4] + t.c * m[5] + t.e, t.b * m[4] + t.d * m[5] + t.f];
+  }
+  return m;
+}
+
 /** Sample an emblem's strokes into N points in [-1, 1] space (y up). */
-function sample(svg: SVGSVGElement, perm: Uint32Array): Cloud | null {
+function sample(svg: SVGSVGElement, perm: Uint32Array, fit: boolean): Cloud | null {
   const els = Array.from(svg.querySelectorAll<SVGGeometryElement>("path, rect, circle"))
     .filter((el) => typeof el.getTotalLength === "function");
   const lens = els.map((el) => el.getTotalLength());
   const total = lens.reduce((a, b) => a + b, 0);
   if (!els.length || !(total > 0)) return null;
 
+  const vb = svg.viewBox.baseVal;
+  const bx = vb && vb.width ? vb.x : 0, by = vb && vb.height ? vb.y : 0;
+  const bw = vb && vb.width ? vb.width : 120, bh = vb && vb.height ? vb.height : 120;
+
   const xs: number[] = [], ys: number[] = [], as: number[] = [];
   els.forEach((el, k) => {
     const count = Math.max(2, Math.round((N * lens[k]) / total));
     const accent = el.classList.contains("a") ? 1 : 0;
+    const m = matrixOf(el, svg);
     for (let j = 0; j < count; j++) {
       const pt = el.getPointAtLength((lens[k] * j) / (count - 1));
-      xs.push((pt.x - 60) / 60); ys.push(-(pt.y - 60) / 60); as.push(accent);
+      const x = m[0] * pt.x + m[2] * pt.y + m[4], y = m[1] * pt.x + m[3] * pt.y + m[5];
+      xs.push(((x - bx) / bw) * 2 - 1); ys.push(-(((y - by) / bh) * 2 - 1)); as.push(accent);
     }
   });
+
+  if (fit) {
+    // Centre on the drawing's bounds and scale its longer side to a common extent.
+    let x0 = Infinity, x1 = -Infinity, y0 = Infinity, y1 = -Infinity;
+    for (let i = 0; i < xs.length; i++) { x0 = Math.min(x0, xs[i]); x1 = Math.max(x1, xs[i]); y0 = Math.min(y0, ys[i]); y1 = Math.max(y1, ys[i]); }
+    const k = 1.64 / Math.max(x1 - x0, y1 - y0, 1e-6), cx = (x0 + x1) / 2, cy = (y0 + y1) / 2;
+    for (let i = 0; i < xs.length; i++) { xs[i] = (xs[i] - cx) * k; ys[i] = (ys[i] - cy) * k; }
+  }
 
   const pos = new Float32Array(N * 2), acc = new Float32Array(N);
   for (let i = 0; i < N; i++) {
@@ -87,7 +115,40 @@ function sample(svg: SVGSVGElement, perm: Uint32Array): Cloud | null {
   return { pos, acc };
 }
 
-export default function EmblemCanvas({ arts, active }: { arts: Record<string, ReactNode>; active: string }) {
+const SVG_NS = "http://www.w3.org/2000/svg";
+
+/** Fetch an SVG file and mount an unrendered copy of its shapes for sampling. */
+async function loadRemote(host: HTMLElement, key: string, url: string): Promise<void> {
+  if (host.querySelector(`svg[data-art="${key}"]`)) return;
+  try {
+    const res = await fetch(url);
+    if (!res.ok) return;
+    const doc = new DOMParser().parseFromString(await res.text(), "image/svg+xml");
+    const src = doc.documentElement;
+    if (!src || src.nodeName !== "svg" || host.querySelector(`svg[data-art="${key}"]`)) return;
+    const svg = document.createElementNS(SVG_NS, "svg");
+    const w = parseFloat(src.getAttribute("width") || "") || 120, h = parseFloat(src.getAttribute("height") || "") || 120;
+    svg.setAttribute("viewBox", src.getAttribute("viewBox") || `0 0 ${w} ${h}`);
+    svg.dataset.art = key;
+    Array.from(src.children).forEach((child) => svg.appendChild(document.importNode(child, true)));
+    host.appendChild(svg);
+  } catch { /* the emblem is optional; fall back to whatever else is available */ }
+}
+
+interface EmblemProps {
+  arts: Record<string, ReactNode>;
+  active: string;
+  /** viewBox size the `arts` are drawn in. */
+  box?: number;
+  /** Extra emblems loaded from SVG files: key -> url. */
+  remote?: Record<string, string>;
+  /** Emblem half-extent as a fraction of the canvas's shorter side. */
+  scale?: number;
+  fit?: boolean;
+  className?: string;
+}
+
+export default function EmblemCanvas({ arts, active, box = 120, remote, scale = 0.45, fit = false, className = "mm-art" }: EmblemProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const sourcesRef = useRef<HTMLSpanElement>(null);
   const activeRef = useRef(active);
@@ -105,10 +166,13 @@ export default function EmblemCanvas({ arts, active }: { arts: Record<string, Re
     try { gl = canvas.getContext("webgl", { alpha: true, antialias: true }); } catch { gl = null; }
     if (!gl) return;
 
+    let cancelled = false;
+    let stop: (() => void) | undefined;
+    const start = (): (() => void) | undefined => {
     const perm = permutation(N);
     const clouds: Record<string, Cloud> = {};
     sources.querySelectorAll<SVGSVGElement>("svg[data-art]").forEach((svg) => {
-      const cloud = sample(svg, perm);
+      const cloud = sample(svg, perm, fit);
       if (cloud) clouds[svg.dataset.art as string] = cloud;
     });
     const first = clouds[activeRef.current] ?? Object.values(clouds)[0];
@@ -173,7 +237,7 @@ export default function EmblemCanvas({ arts, active }: { arts: Record<string, Re
       const w = Math.max(1, Math.round(rect.width * dpr)), h = Math.max(1, Math.round(rect.height * dpr));
       if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; }
       gl!.viewport(0, 0, w, h);
-      const half = 0.45 * Math.min(rect.width, rect.height, 520);
+      const half = scale * Math.min(rect.width, rect.height, 520);
       gl!.uniform2f(uScale, half / (rect.width / 2), half / (rect.height / 2));
       gl!.uniform1f(uSize, 2.6 * dpr);
     };
@@ -206,16 +270,24 @@ export default function EmblemCanvas({ arts, active }: { arts: Record<string, Re
       gl!.deleteProgram(prog); gl!.deleteShader(vs); gl!.deleteShader(fs);
       setLive(false);
     };
+    };
+
+    // Remote emblems must be in the DOM before sampling; local ones are already there.
+    Promise.all(Object.entries(remote ?? {}).map(([key, url]) => loadRemote(sources, key, url)))
+      .then(() => { if (!cancelled) stop = start(); });
+    return () => { cancelled = true; stop?.(); };
+    // Mount-only: the emblem set and sizing props are fixed for a given instance.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => { morphRef.current?.(active); }, [active]);
 
-  const svgProps = { viewBox: "0 0 120 120", fill: "none", strokeWidth: 2, strokeLinecap: "round", strokeLinejoin: "round" } as const;
+  const svgProps = { viewBox: `0 0 ${box} ${box}`, fill: "none", strokeWidth: 2, strokeLinecap: "round", strokeLinejoin: "round" } as const;
   return (
-    <span className={"mm-art" + (live ? " is-live" : "")} aria-hidden="true">
+    <span className={className + (live ? " is-live" : "")} aria-hidden="true">
       <canvas ref={canvasRef} />
       {/* Static emblem: what you see without WebGL or with reduced motion. */}
-      {arts[active] && <svg className="mm-art-static" {...svgProps}>{arts[active]}</svg>}
+      {arts[active] && <svg className="mm-art-static" {...svgProps} strokeWidth={box >= 100 ? 2 : 1.5}>{arts[active]}</svg>}
       {/* Unrendered copies of every emblem, used only to sample stroke points. */}
       <span ref={sourcesRef} className="mm-art-src">
         {Object.entries(arts).map(([key, node]) => <svg key={key} data-art={key} {...svgProps}>{node}</svg>)}

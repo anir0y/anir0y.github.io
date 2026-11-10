@@ -75,21 +75,14 @@ export function Hero() {
             </div>
           </div>
 
-          <aside className="hero-scope" aria-hidden="true">
-            <div className="scope-aperture">
-              <span className="scope-logo" />
-              <span className="scope-sweep" />
-              <span className="scope-cross cross-x" />
-              <span className="scope-cross cross-y" />
-            </div>
-            <p>Find the path.<br />Prove the risk.<br />Fix what matters.</p>
-          </aside>
+          <HeroScope />
         </div>
 
         <div className="hero-proof" aria-label="Professional highlights">
           <span><b>13+</b> years in security</span>
-          <span><b>100+</b> assessments</span>
-          <span><b>20+</b> open tools</span>
+          <span><b>IEEE</b> published research</span>
+          <span><b>{MAJOR_PROJECTS.length}</b> flagship projects</span>
+          <span><b>XBP Global</b> runs PhishNet in production</span>
           <span className="availability"><i /> Taking select engagements</span>
         </div>
       </div>
@@ -535,6 +528,53 @@ function LabCard({ l, order }: { l: Lab; order: number }) {
 }
 
 const MAJOR_PROJECTS = PROJECTS.filter((p) => p.feature === "hero");
+
+/* Hero scope: the logo re-forms into each flagship project's mark in turn, with
+   its name and link alongside. It pauses while pointed at or focused, and the
+   pips jump straight to one. Under reduced motion it holds on the logo. */
+const SHOWCASE: { key: string; project?: Project }[] = [{ key: "logo" }, ...MAJOR_PROJECTS.map((p) => ({ key: p.mark ?? "", project: p }))];
+const SHOWCASE_MS = 4800;
+
+function HeroScope() {
+  const [index, setIndex] = useState(0);
+  const [paused, setPaused] = useState(false);
+  useEffect(() => {
+    if (REDUCED || paused) return;
+    const id = window.setInterval(() => { if (!document.hidden) setIndex((v) => (v + 1) % SHOWCASE.length); }, SHOWCASE_MS);
+    return () => window.clearInterval(id);
+  }, [paused]);
+  const cur = SHOWCASE[index];
+  return (
+    <aside className="hero-scope" aria-label="Flagship projects"
+      onPointerEnter={() => setPaused(true)} onPointerLeave={() => setPaused(false)}
+      onFocus={() => setPaused(true)} onBlur={() => setPaused(false)}>
+      <div className="scope-aperture" aria-hidden="true">
+        <span className="scope-sweep" />
+        <span className="scope-cross cross-x" />
+        <span className="scope-cross cross-y" />
+        <EmblemCanvas className="scope-emblem" arts={MARKS} box={24} remote={{ logo: "/anir0y-logo.svg" }} active={cur.key} scale={0.31} fit />
+        {cur.key === "logo" && <span className="scope-logo" />}
+      </div>
+      <div className="scope-caption">
+        {cur.project ? (
+          <a key={cur.key} className="scope-card" href={cur.project.href} target="_blank" rel="noopener noreferrer">
+            <small>{cur.project.ix}</small>
+            <b>{cur.project.title}</b>
+            <span>{cur.project.go}</span>
+          </a>
+        ) : (
+          <p key="logo" className="scope-card">Find the path.<br />Prove the risk.<br />Fix what matters.</p>
+        )}
+        <div className="scope-pips" role="group" aria-label="Choose a project">
+          {SHOWCASE.map((s, k) => (
+            <button key={s.key} type="button" aria-label={s.project ? s.project.title : "anir0y"} aria-pressed={k === index} onClick={() => setIndex(k)} />
+          ))}
+        </div>
+      </div>
+    </aside>
+  );
+}
+
 const TOOL_PROJECTS = PROJECTS.filter((p) => !p.feature);
 const MORE_PROJECT = PROJECTS.find((p) => p.feature === "more");
 

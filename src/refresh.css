@@ -1553,3 +1553,29 @@ a.lab:is(:hover, :focus-visible, .is-live) .v-pass { animation: lab-show 0.2s li
 /* Labs heading uses the shared section index; the real heading stays for assistive tech. */
 .vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 .labs-head { display: block; margin: 96px 0 0; }
+
+/* Hero scope: the logo re-forms into each flagship project's mark. */
+.scope-emblem { position: absolute; inset: 0; z-index: 2; display: grid; place-items: center; }
+.scope-emblem canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+.scope-emblem .mm-art-static { width: 30%; height: auto; overflow: visible; stroke: var(--text); }
+.scope-emblem.is-live .mm-art-static,
+.scope-emblem.is-live ~ .scope-logo { visibility: hidden; }
+@media (min-width: 1121px) { .hero-scope { grid-template-columns: minmax(230px, 380px) minmax(170px, 0.62fr); } }
+.scope-caption { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.scope-card { display: block; min-height: 112px; padding-bottom: 14px; border-bottom: 1px solid var(--signal); color: var(--text-dim); font-size: 13px; line-height: 1.7; text-decoration: none; animation: scope-card-in 0.45s var(--ease) both; }
+.hero-scope p.scope-card { margin: 0; }
+a.scope-card small { display: block; color: var(--text-faint); font-size: 11px; line-height: 1.5; }
+a.scope-card b { display: block; margin: 2px 0 4px; color: var(--text); font: 500 22px/1.15 var(--font-title); letter-spacing: -0.03em; }
+a.scope-card span { color: #9bb1ff; font: 500 11px/1 var(--font-mono); letter-spacing: 0.06em; }
+a.scope-card:hover span { color: var(--signal); }
+@keyframes scope-card-in { from { opacity: 0; transform: translateY(6px); } }
+.scope-pips { display: flex; gap: 6px; }
+.scope-pips button { position: relative; width: 22px; height: 22px; padding: 0; border: 0; background: transparent; cursor: pointer; }
+.scope-pips button::before { content: ""; position: absolute; left: 0; right: 0; top: 10px; height: 2px; background: rgba(208, 222, 241, 0.22); transition: background 0.25s var(--ease); }
+.scope-pips button:hover::before { background: rgba(208, 222, 241, 0.5); }
+.scope-pips button[aria-pressed="true"]::before { background: var(--signal); }
+@media (prefers-reduced-motion: reduce) { .scope-card { animation: none; } }
+
+/* Hero proof row: five cells now (four claims + availability). */
+.hero-proof { grid-template-columns: repeat(5, 1fr); }
+@media (max-width: 880px) { .hero-proof { grid-template-columns: 1fr 1fr; } }
