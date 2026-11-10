@@ -1,11 +1,11 @@
-import { useRef, useState, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import { motion } from "framer-motion";
 import { LINKS } from "../data/links";
 import { SERVICES } from "../data/services";
 import { COURSES } from "../data/training";
 import { RESEARCH } from "../data/research";
-import { PROJECTS } from "../data/projects";
-import { LABS } from "../data/labs";
+import { PROJECTS, type Project } from "../data/projects";
+import { LABS, type Lab } from "../data/labs";
 import Threads from "./Threads";
 
 const REDUCED = typeof window !== "undefined" && window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
@@ -46,6 +46,26 @@ function CountUp({ to, suffix = "" }: { to: number; suffix?: string }) {
     >
       {n}{suffix}
     </motion.span>
+  );
+}
+
+/* Section index: label on the left, a count drawn from the data on the right,
+   and a hairline that draws in once. Same device as the hero's poster index,
+   so every band opens the same way and tells you what is in it. */
+function SectionIndex({ label, meta }: { label: string; meta: string }) {
+  return (
+    <div className="sec-index">
+      <span className="eyebrow">{label}</span>
+      <span className="sec-meta">{meta}</span>
+      <motion.span
+        className="sec-rule"
+        aria-hidden="true"
+        initial={REDUCED ? false : { scaleX: 0 }}
+        whileInView={{ scaleX: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: REDUCED ? 0 : 0.9, ease: EASE }}
+      />
+    </div>
   );
 }
 
@@ -111,7 +131,7 @@ export function About() {
             <p>Currently focused on red-teaming engagements, building interactive security labs for the community, and mentoring the next generation of security professionals. Founder of the <b>Vapra Shiksha Foundation</b>.</p>
           </div>
           <div className="stats">
-            <div className="stat"><div className="n"><CountUp to={13} suffix=" +" /></div><div className="l">Years Experience</div></div>
+            <div className="stat"><div className="n"><CountUp to={13} suffix="+" /></div><div className="l">Years Experience</div></div>
             <div className="stat"><div className="n"><CountUp to={100} suffix="+" /></div><div className="l">Security Assessments</div></div>
             <div className="stat"><div className="n"><CountUp to={20} suffix="+" /></div><div className="l">Open-Source Projects</div></div>
             <div className="stat"><div className="n"><CountUp to={6} /></div><div className="l">Live Interactive Labs</div></div>
@@ -123,18 +143,19 @@ export function About() {
 }
 
 /* ── Arsenal marquee ─────────────────────────────────────────────────── */
-import { ARSENAL } from "../data/arsenal";
+import { ARSENAL_GROUPS } from "../data/arsenal";
 export function Arsenal() {
-  const row = [...ARSENAL, ...ARSENAL];
   return (
-    <section id="arsenal">
-      <div className="arsenal-label">// operating arsenal</div>
-      <div className="marquee-mask">
-        <div className="marquee">
-          {row.map((t, i) => (
-            <span className="chip" key={i}><span className="ic">{t[0]}</span>{t[1]}</span>
+    <section id="arsenal" aria-label="Working toolkit">
+      <div className="wrap">
+        <Reveal className="loadout">
+          {ARSENAL_GROUPS.map((g) => (
+            <div className="loadout-col" key={g.role}>
+              <h3>{g.role}<span>{g.tools.length}</span></h3>
+              <p>{g.tools.map((t) => <span key={t}>{t}</span>)}</p>
+            </div>
           ))}
-        </div>
+        </Reveal>
       </div>
     </section>
   );
@@ -161,7 +182,7 @@ export function Services() {
     <section id="services">
       <div className="wrap">
         <Reveal glitch>
-          <span className="eyebrow">What I do</span>
+          <SectionIndex label="What I do" meta={`${SERVICES.length} engagement types`} />
           <h2 className="title">I pressure-test what you <em>cannot afford to lose.</em></h2>
           <p className="lead">Independent, hands-on offensive security. Every engagement is scoped and evidence-driven, and it ends with a remediation path you can act on, not a raw vulnerability dump.</p>
         </Reveal>
@@ -191,28 +212,24 @@ const TRAIN_ICONS: Record<string, ReactNode> = {
 };
 
 type PickPhase = "locked" | "picking" | "open";
-function TrainingCard({ c }: { c: (typeof COURSES)[number] }) {
+function TrainingCard({ c, order }: { c: (typeof COURSES)[number]; order: number }) {
   const isLock = c.icon === "lock";
-  const [phase, setPhase] = useState<PickPhase>("locked");
-  const timer = useRef<number | null>(null);
+  // The syllabus is content, not a reward: each card opens itself once when it
+  // scrolls into view (staggered), then stays open. Nothing depends on hover.
+  const [phase, setPhase] = useState<PickPhase>(REDUCED ? "open" : "locked");
+  const timers = useRef<number[]>([]);
+  useEffect(() => () => { timers.current.forEach((t) => window.clearTimeout(t)); }, []);
   const begin = () => {
-    if (phase === "open") return;
-    if (REDUCED) { setPhase("open"); return; }
-    setPhase("picking");
-    timer.current = window.setTimeout(() => setPhase("open"), isLock ? 1100 : 600);
-  };
-  const reset = () => {
-    if (timer.current) { window.clearTimeout(timer.current); timer.current = null; }
-    setPhase("locked");
+    if (REDUCED || timers.current.length) return;
+    const start = 250 + order * 160;
+    timers.current.push(window.setTimeout(() => setPhase("picking"), start));
+    timers.current.push(window.setTimeout(() => setPhase("open"), start + (isLock ? 1100 : 600)));
   };
   const cls = phase === "open" ? " unlocked" : phase === "picking" ? " picking" : "";
-  const label = isLock
-    ? (phase === "open" ? "LOCK PICKED · access granted" : phase === "picking" ? "PICKING LOCK…" : "LOCKED · hover to pick")
-    : (phase === "open" ? "ACCESS GRANTED" : phase === "picking" ? "AUTHENTICATING…" : "SECURED · hover to access");
+  const label = phase === "open" ? "SYLLABUS" : phase === "picking" ? (isLock ? "PICKING LOCK…" : "AUTHENTICATING…") : "SEALED";
   return (
-    <article className={"module scan" + (isLock ? " lockcard" : "") + cls} tabIndex={0}
-      aria-label={c.name + (isLock ? " (hover or focus to pick the lock)" : " (hover or focus to unlock the syllabus)")}
-      onPointerEnter={begin} onPointerLeave={reset} onFocus={begin} onBlur={reset}>
+    <motion.article className={"module scan" + (isLock ? " lockcard" : "") + cls}
+      viewport={{ once: true, amount: 0.4 }} onViewportEnter={begin}>
       <span className="scanbar" /><span className="ripple" />
       {isLock ? (
         <svg className="lockpick" viewBox="0 0 40 50" fill="none" stroke="currentColor" aria-hidden="true">
@@ -234,7 +251,7 @@ function TrainingCard({ c }: { c: (typeof COURSES)[number] }) {
       <div className="mod-tags">{c.tags.map((t) => <span className="tag" key={t}>{t}</span>)}</div>
       <div className="lock-state"><span className="ld" />{label}</div>
       <div className="mod-reveal"><p style={{ marginTop: 14, fontSize: 13, color: "var(--text)" }}>{c.reveal}</p></div>
-    </article>
+    </motion.article>
   );
 }
 export function Training() {
@@ -242,11 +259,11 @@ export function Training() {
     <section id="training">
       <div className="wrap">
         <Reveal glitch>
-          <span className="eyebrow">Teach the trade</span>
+          <SectionIndex label="Teach the trade" meta={`${COURSES.length} courses · all hands-on`} />
           <h2 className="title">Training built from <em>real failure modes.</em></h2>
-          <p className="lead">Hands-on courses and workshops drawn from real conference deliveries. Hover a module to unlock the syllabus — pick the lock on the physical course, authenticate on the rest.</p>
+          <p className="lead">Hands-on courses and workshops drawn from real conference deliveries. Each card lists what you work through on the bench.</p>
         </Reveal>
-        <Reveal className="grid cols-3">{COURSES.map((c) => <TrainingCard key={c.idx} c={c} />)}</Reveal>
+        <Reveal className="grid cols-3">{COURSES.map((c, i) => <TrainingCard key={c.idx} c={c} order={i} />)}</Reveal>
         <p className="note">⌬ All training runs through <strong>classroom.anir0y.in</strong>, with interactive labs covering web security, bug-bounty methodology and CTF tradecraft.</p>
       </div>
     </section>
@@ -259,7 +276,7 @@ export function Research() {
     <section id="research">
       <div className="wrap">
         <Reveal>
-          <span className="eyebrow">Research</span>
+          <SectionIndex label="Research" meta={`${RESEARCH.length} lines of work · ${RESEARCH.filter((n) => n.href).length} published`} />
           <h2 className="title">Research that <em>escapes the lab.</em></h2>
           <p className="lead">A live map of where I spend my cycles: offensive research, open-source tooling and published tradecraft. Each node is an active line of work.</p>
         </Reveal>
@@ -276,40 +293,264 @@ export function Research() {
               : <div className="node" key={n.title}>{inner}</div>;
           })}
         </Reveal>
-        <p className="note">◈ The orbital map above is illustrative, not a feed of real client engagements. Client work stays confidential by default.</p>
+        <p className="note">◈ The orbital scene behind this page is illustrative, not a feed of real client engagements. Client work stays confidential by default.</p>
       </div>
     </section>
   );
 }
 
 /* ── Projects + Labs ─────────────────────────────────────────────────── */
+/* Line marks for the major projects (drawn here; swap for real logos when available). */
+const MARKS: Record<string, ReactNode> = {
+  agents: <><circle cx="12" cy="12" r="2.6" /><circle cx="4.5" cy="6" r="1.6" /><circle cx="19.5" cy="6" r="1.6" /><circle cx="4.5" cy="18" r="1.6" /><circle cx="19.5" cy="18" r="1.6" /><path d="M9.9 10.4 5.9 7 M14.1 10.4 18.1 7 M9.9 13.6 5.9 17 M14.1 13.6 18.1 17" /></>,
+  clock: <><circle cx="12" cy="12" r="8.5" /><path d="M12 7v5l3.5 2" /></>,
+  hook: <><circle cx="14" cy="4.5" r="1.5" /><path d="M14 6v9a4.5 4.5 0 0 1-9 0v-2 M5 13l-2 2.5 M5 13l2 2.5" /></>,
+  quill: <path d="M20 4c-7 0-12 4-13 12l-2 4 M7 16c4 0 8-2 10-6 M11 12h5" />,
+};
+
+/* Project deck: the rail keeps every major project visible; the stage shows one
+   in full and slides to whichever is picked. Click, arrow keys or swipe — it
+   never advances on its own. */
+function ProjectDeck({ items }: { items: Project[] }) {
+  const [[active, dir], setState] = useState<[number, number]>([0, 0]);
+  const tabs = useRef<(HTMLButtonElement | null)[]>([]);
+  const slides = useRef<(HTMLDivElement | null)[]>([]);
+  const dragged = useRef(false);
+  // Hidden slides must not take focus or clicks; keep `inert` in step with the active one.
+  useEffect(() => { slides.current.forEach((el, i) => { if (el) el.inert = i !== active; }); }, [active]);
+  const go = (to: number, focus = false) => {
+    const next = (to + items.length) % items.length;
+    setState(([cur]) => [next, next === cur ? 0 : to > cur ? 1 : -1]);
+    if (focus) tabs.current[next]?.focus();
+  };
+  const onKey = (e: React.KeyboardEvent) => {
+    if (e.key === "ArrowDown" || e.key === "ArrowRight") { e.preventDefault(); go(active + 1, true); }
+    else if (e.key === "ArrowUp" || e.key === "ArrowLeft") { e.preventDefault(); go(active - 1, true); }
+    else if (e.key === "Home") { e.preventDefault(); go(0, true); }
+    else if (e.key === "End") { e.preventDefault(); go(items.length - 1, true); }
+  };
+  const shift = REDUCED ? 0 : 44;
+  return (
+    <>
+      <div className="deck-rail">
+        <div role="tablist" aria-label="Major projects" aria-orientation="vertical" onKeyDown={onKey}>
+          {items.map((it, i) => (
+            <button key={it.title} ref={(el) => { tabs.current[i] = el; }} type="button" role="tab" className="deck-tab"
+              id={`deck-tab-${i}`} aria-selected={i === active} aria-controls="deck-panel" tabIndex={i === active ? 0 : -1}
+              onClick={() => go(i)}>
+              {i === active && <motion.span className="deck-ind" layoutId="deck-ind" transition={{ duration: REDUCED ? 0 : 0.35, ease: EASE }} />}
+              <span className="deck-mark" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">{it.mark && MARKS[it.mark]}</svg>
+              </span>
+              <span className="deck-name">{it.title}</span>
+              <span className="deck-kind">{it.ix}</span>
+            </button>
+          ))}
+        </div>
+        <div className="deck-nav">
+          <button type="button" aria-label="Previous project" onClick={() => go(active - 1)}>←</button>
+          <span aria-hidden="true">{active + 1} / {items.length}</span>
+          <button type="button" aria-label="Next project" onClick={() => go(active + 1)}>→</button>
+        </div>
+      </div>
+      {/* Every slide stays mounted (links and copy remain in the page for search,
+          find-in-page and crawlers); only the active one is visible and interactive. */}
+      <div className="deck-stage" id="deck-panel" role="tabpanel" aria-labelledby={`deck-tab-${active}`}>
+        {items.map((it, i) => {
+          const on = i === active;
+          // Inactive slides rest on the side they would travel from, so the motion reads as a slide.
+          const rest = (i < active ? -1 : 1) * (dir === 0 ? 1 : Math.abs(dir)) * shift;
+          return (
+            <motion.div
+              key={it.title}
+              className={"deck-slide" + (on ? " is-active" : "")}
+              aria-hidden={!on}
+              ref={(el) => { slides.current[i] = el; }}
+              initial={false}
+              animate={{ opacity: on ? 1 : 0, x: on ? 0 : rest }}
+              transition={{ duration: REDUCED ? 0 : 0.42, ease: EASE }}
+              drag={REDUCED || !on ? false : "x"} dragConstraints={{ left: 0, right: 0 }} dragElastic={0.12}
+              onDragStart={() => { dragged.current = true; }}
+              onDragEnd={(_, info) => {
+                if (info.offset.x < -70) go(active + 1); else if (info.offset.x > 70) go(active - 1);
+                window.setTimeout(() => { dragged.current = false; }, 0);
+              }}
+            >
+              <a className="intel intel-hero intel-watermarked" href={it.href} target="_blank" rel="noopener noreferrer" draggable={false}
+                tabIndex={on ? undefined : -1} onClick={(e) => { if (dragged.current) e.preventDefault(); }}>
+                {it.watermark && <span className="project-watermark" aria-hidden="true">{it.watermark}</span>}
+                <span className="ix">{it.ix}</span><h4>{it.title}</h4><p>{it.desc}</p>
+                {it.proof && <span className="project-proof">{it.proof.map((item) => <span key={item}>{item}</span>)}</span>}
+                <span className="go">{it.go}</span>
+              </a>
+            </motion.div>
+          );
+        })}
+      </div>
+    </>
+  );
+}
+
+/* Project map: the open tools as a mind map — root, a branch per purpose, a leaf
+   per project. Pointing at, focusing or tapping a leaf lights its path and shows
+   that project in the panel. Every project's link stays in the page. */
+function ProjectMap({ items, root }: { items: Project[]; root?: Project }) {
+  const [active, setActive] = useState(0);
+  const panels = useRef<(HTMLDivElement | null)[]>([]);
+  const leaves = useRef<(HTMLButtonElement | null)[]>([]);
+  useEffect(() => { panels.current.forEach((el, i) => { if (el) el.inert = i !== active; }); }, [active]);
+
+  const n = items.length;
+  const leafY = (i: number) => (n === 1 ? 50 : 8 + (i * 84) / (n - 1));
+  const groups: { name: string; idx: number[] }[] = [];
+  items.forEach((p, i) => {
+    const name = p.group ?? "Other";
+    const g = groups.find((x) => x.name === name);
+    if (g) g.idx.push(i); else groups.push({ name, idx: [i] });
+  });
+  const branchY = (g: { idx: number[] }) => g.idx.reduce((sum, i) => sum + leafY(i), 0) / g.idx.length;
+  const onKey = (e: React.KeyboardEvent) => {
+    const step = e.key === "ArrowDown" ? 1 : e.key === "ArrowUp" ? -1 : 0;
+    if (!step) return;
+    e.preventDefault();
+    const next = (active + step + n) % n;
+    setActive(next); leaves.current[next]?.focus();
+  };
+
+  return (
+    <>
+      <div className="mm-map" onKeyDown={onKey}>
+        <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+          {groups.map((g) => {
+            const by = branchY(g), on = g.idx.includes(active);
+            return (
+              <g key={g.name}>
+                <path className={"mm-edge" + (on ? " on" : "")} d={`M18,50 C24,50 24,${by} 30,${by}`} />
+                {g.idx.map((i) => (
+                  <path key={i} className={"mm-edge" + (i === active ? " on" : "")} d={`M48,${by} C55,${by} 55,${leafY(i)} 62,${leafY(i)}`} />
+                ))}
+              </g>
+            );
+          })}
+        </svg>
+        {root && (
+          <a className="mm-node mm-root" style={{ top: "50%" }} href={root.href} target="_blank" rel="noopener noreferrer">
+            <b>Open tooling</b><span>{root.go}</span>
+          </a>
+        )}
+        {groups.map((g) => (
+          <div className="mm-group" key={g.name}>
+            <span className={"mm-node mm-branch" + (g.idx.includes(active) ? " on" : "")} style={{ top: branchY(g) + "%" }}>
+              {g.name}<i>{g.idx.length}</i>
+            </span>
+            {g.idx.map((i) => (
+              <button key={items[i].title} ref={(el) => { leaves.current[i] = el; }} type="button"
+                className="mm-node mm-leaf" style={{ top: leafY(i) + "%" }} aria-pressed={i === active} aria-controls="mm-detail"
+                onPointerEnter={() => setActive(i)} onFocus={() => setActive(i)} onClick={() => setActive(i)}>
+                <b>{items[i].title}</b><span>{items[i].ix.split(" · ")[1] ?? items[i].ix}</span>
+              </button>
+            ))}
+          </div>
+        ))}
+      </div>
+      <div className="mm-detail" id="mm-detail" aria-live="polite">
+        {items.map((p, i) => (
+          <div key={p.title} ref={(el) => { panels.current[i] = el; }} className={"mm-panel" + (i === active ? " is-active" : "")} aria-hidden={i !== active}>
+            <span className="ix">{p.ix}</span>
+            <h4>{p.title}</h4>
+            <p>{p.desc}</p>
+            <a className="go" href={p.href} target="_blank" rel="noopener noreferrer">{p.go}</a>
+          </div>
+        ))}
+      </div>
+    </>
+  );
+}
+
+/* Lab cards: each carries a miniature of what the lab teaches. The miniature
+   plays once when the row scrolls into view, and again on hover or focus. */
+const step = (i: number) => ({ "--i": i }) as React.CSSProperties;
+const MORSE: [string, string][] = [["M", "--"], ["O", "---"], ["R", ".-."], ["S", "..."], ["E", "."]];
+const OSI: [number, string][] = [[7, "APP"], [6, "PRES"], [5, "SESS"], [4, "TRNS"], [3, "NET"], [2, "LINK"], [1, "PHY"]];
+
+function LabDemo({ kind }: { kind: Lab["demo"] }) {
+  if (kind === "morse") {
+    let k = 0;
+    return (
+      <div className="lab-demo demo-morse" aria-hidden="true">
+        {MORSE.map(([ch, code]) => (
+          <span className="mletter" key={ch}>
+            <em>{ch}</em>
+            <span>{code.split("").map((s, j) => <i key={j} className={s === "." ? "dot" : "dash"} style={step(k++)} />)}</span>
+          </span>
+        ))}
+      </div>
+    );
+  }
+  if (kind === "osi") {
+    return (
+      <div className="lab-demo demo-osi" aria-hidden="true">
+        {OSI.map(([n, ab], i) => <span className="ocell" key={n} style={step(i)}><b>{n}</b><em>{ab}</em></span>)}
+      </div>
+    );
+  }
+  if (kind === "overflow") {
+    return (
+      <div className="lab-demo demo-bof" aria-hidden="true">
+        <div className="bcells">
+          {Array.from({ length: 10 }, (_, i) => <span key={i} className={"bcell" + (i >= 8 ? " ret" : "")} style={step(i)}><i>41</i></span>)}
+        </div>
+        <div className="blabels"><em>buf[8]</em><em>ret</em></div>
+      </div>
+    );
+  }
+  return (
+    <div className="lab-demo demo-dkim" aria-hidden="true">
+      <code>DKIM-Signature: v=1; a=rsa-sha256;</code>
+      <code>d=anir0y.in; s=selector1; b=<span className="hash">{Array.from({ length: 10 }, (_, i) => <i key={i} style={step(i)} />)}</span></code>
+      <span className="verdict"><b className="v-none">dkim=none</b><b className="v-pass">dkim=pass</b></span>
+    </div>
+  );
+}
+
+function LabCard({ l, order }: { l: Lab; order: number }) {
+  const [live, setLive] = useState(false);
+  const timers = useRef<number[]>([]);
+  useEffect(() => () => { timers.current.forEach((t) => window.clearTimeout(t)); }, []);
+  const play = () => {
+    if (REDUCED || timers.current.length) return;
+    const start = 400 + order * 700;
+    timers.current.push(window.setTimeout(() => setLive(true), start));
+    timers.current.push(window.setTimeout(() => setLive(false), start + 2600));
+  };
+  return (
+    <motion.a className={"lab" + (live ? " is-live" : "")} href={l.href} target="_blank" rel="noopener noreferrer"
+      viewport={{ once: true, amount: 0.6 }} onViewportEnter={play}>
+      <LabDemo kind={l.demo} />
+      <span className="lt"><span className="live" />{l.name}</span><p>{l.desc}</p><span className="lurl">{l.url}</span>
+    </motion.a>
+  );
+}
+
+const MAJOR_PROJECTS = PROJECTS.filter((p) => p.feature === "hero");
+const TOOL_PROJECTS = PROJECTS.filter((p) => !p.feature);
+const MORE_PROJECT = PROJECTS.find((p) => p.feature === "more");
+
 export function Projects() {
   return (
     <section id="projects">
       <div className="wrap">
         <Reveal glitch>
-          <span className="eyebrow">Selected work</span>
+          <SectionIndex label="Selected work" meta={`${PROJECTS.filter((p) => p.feature !== "more").length} projects · ${LABS.length} live labs`} />
           <h2 className="title">Products, tools, and <em>working proof.</em></h2>
           <p className="lead">Products and open-source security tools I build for practitioners, teams, and people who want to work with me. Each card opens the live product or its source.</p>
         </Reveal>
-        <Reveal className="intel-row">
-          {PROJECTS.map((p) => (
-            <a className={"intel" + (p.feature ? ` intel-${p.feature}` : "") + (p.watermark ? " intel-watermarked" : "")} key={p.title} href={p.href} target="_blank" rel="noopener noreferrer">
-              {p.watermark && <span className="project-watermark" aria-hidden="true">{p.watermark}</span>}
-              <span className="ix">{p.ix}</span><h4>{p.title}</h4><p>{p.desc}</p>
-              {p.proof && <span className="project-proof">{p.proof.map((item) => <span key={item}>{item}</span>)}</span>}
-              <span className="go">{p.go}</span>
-            </a>
-          ))}
-        </Reveal>
+        <Reveal className="deck"><ProjectDeck items={MAJOR_PROJECTS} /></Reveal>
+        <Reveal className="mm"><ProjectMap items={TOOL_PROJECTS} root={MORE_PROJECT} /></Reveal>
         <Reveal>
           <div className="labs-head"><h3>Interactive Labs</h3><span className="lh-line" /></div>
           <div className="labs">
-            {LABS.map((l) => (
-              <a className="lab" key={l.name} href={l.href} target="_blank" rel="noopener noreferrer">
-                <span className="lt"><span className="live" />{l.name}</span><p>{l.desc}</p><span className="lurl">{l.url}</span>
-              </a>
-            ))}
+            {LABS.map((l, i) => <LabCard key={l.name} l={l} order={i} />)}
           </div>
         </Reveal>
       </div>
