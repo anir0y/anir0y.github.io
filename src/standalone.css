@@ -61,7 +61,8 @@
 
 .standalone-brand > span:last-child {
   display: grid;
-  grid-template-columns: auto auto;
+  /* The wider tagline row must not stretch the name column, or ".in" drifts away from "anir0y". */
+  grid-template-columns: auto 1fr;
   align-items: baseline;
   font-size: 14px;
   font-style: normal;

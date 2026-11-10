@@ -47,6 +47,8 @@
     if (pick === "desktop" || pick === "mobile") localStorage.setItem("anir0y:view", pick);
     var pref = localStorage.getItem("anir0y:view");
     if (pref === "desktop") return;
+    // Product pages share this document but have no phone edition: never bounce them.
+    if (/\/(pentestreport|product-phishnet)\/?$/.test(location.pathname)) return;
     var phone = /Mobi|iPhone|iPod/i.test(navigator.userAgent);
     var coarse = !!(window.matchMedia && matchMedia("(pointer: coarse)").matches);
     if (pref === "mobile" || (phone && coarse)) location.replace("m/" + location.hash);
