@@ -438,6 +438,7 @@ function ProjectMap({ items, root }: { items: Project[]; root?: Project }) {
         {items.map((p, i) => (
           <div key={p.title} ref={(el) => { panels.current[i] = el; }} className={"mm-panel" + (i === active ? " is-active" : "")} aria-hidden={i !== active}>
             <span className="ix">{p.ix}</span>
+            {p.image && <span className="mm-shot"><img src={p.image.src} alt={p.image.alt} loading="lazy" decoding="async" /></span>}
             <h4>{p.title}</h4>
             <p>{p.desc}</p>
             <a className="go" href={p.href} target="_blank" rel="noopener noreferrer">{p.go}</a>
