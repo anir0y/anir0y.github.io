@@ -97,26 +97,39 @@
 .pn-root .pn-nav-cta,
 .pn-root .pn-btn.primary,
 .vq-root .vq-button:not(.quiet) {
-  min-height: 48px;
+  min-height: 50px;
+  padding: 0 21px;
   border: 1px solid var(--dossier-cobalt);
-  border-radius: 0;
+  border-radius: 999px;
   background: var(--dossier-cobalt);
   color: #fff;
+  font: 600 13px/1 var(--font-display);
+  letter-spacing: -0.01em;
 }
 .pn-root .pn-nav-cta:hover,
 .pn-root .pn-btn.primary:hover,
 .vq-root .vq-button:not(.quiet):hover {
-  border-color: var(--dossier-signal);
-  background: var(--dossier-signal);
-  color: #07111f;
+  border-color: #7895ff;
+  background: #7895ff;
+  color: #0a1423;
 }
 
 .pn-root .pn-btn.secondary,
-.vq-root .vq-button.quiet {
-  min-height: 48px;
-  border-color: var(--dossier-line);
-  border-radius: 0;
-  background: rgba(244, 247, 251, 0.025);
+.vq-root .vq-button.quiet,
+.vq-root .vq-close .vq-button.quiet {
+  min-height: 50px;
+  padding: 0 21px;
+  border: 1px solid rgba(208, 222, 241, 0.22);
+  border-radius: 999px;
+  background: rgba(244, 247, 251, 0.035);
+  color: var(--dossier-text);
+  font: 600 13px/1 var(--font-display);
+  letter-spacing: -0.01em;
+}
+.pn-root .pn-btn.secondary:hover,
+.vq-root .vq-button.quiet:hover {
+  border-color: rgba(208, 222, 241, 0.5);
+  background: rgba(244, 247, 251, 0.08);
   color: var(--dossier-text);
 }
 
@@ -147,9 +160,7 @@
 .pn-root .pn-screen-wide { overflow: hidden; border: 1px solid var(--dossier-line); border-radius: 0; background: var(--dossier-panel); box-shadow: 0 28px 80px rgba(0, 0, 0, .28); }
 .pn-root .pn-windowbar,
 .pn-root .pn-screen-wide figcaption { border-color: var(--dossier-line); background: var(--dossier-panel); color: var(--dossier-faint); }
-.pn-root .pn-screen-notes p { background: rgba(244, 247, 251, .025); }
-.pn-root .pn-close { background: var(--dossier-cobalt); }
-.pn-root .pn-close .pn-btn { border-radius: 0; }
+.pn-root .pn-screen-notes p { background: var(--dossier-panel); }
 
 /* VulnQuill: align its existing dark UI with the same portfolio identity. */
 .vq-root {
@@ -170,7 +181,54 @@
 .vq-root .vq-capabilities article,
 .vq-root .vq-price-grid article { border-color: var(--dossier-line); background: rgba(13, 27, 46, .72); }
 .vq-root .vq-evidence figure { border: 1px solid var(--dossier-line); border-radius: 0; background: var(--dossier-panel); }
-.vq-root .vq-close { background: var(--dossier-cobalt); }
+
+/* ── Match the main site ───────────────────────────────────────────────
+   Eyebrow labels, the lighter headline weight, a level screenshot frame, and
+   a dark closing band with a mint glow instead of a full-bleed cobalt block. */
+.pn-root .pn-kicker,
+.pn-root .pn-section-head > p,
+.vq-root .vq-kicker,
+.vq-root .vq-section-heading > p,
+.pn-root .pn-close > p,
+.vq-root .vq-close > p {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: #9bb1ff;
+  font: 600 12px/1.4 var(--font-display);
+  letter-spacing: -0.01em;
+}
+.pn-root .pn-kicker::before,
+.pn-root .pn-section-head > p::before,
+.vq-root .vq-kicker::before,
+.vq-root .vq-section-heading > p::before,
+.pn-root .pn-close > p::before,
+.vq-root .vq-close > p::before { content: ""; flex: 0 0 28px; height: 1px; background: currentColor; }
+
+.pn-root .pn-hero h1,
+.pn-root .pn-section-head h2,
+.pn-root .pn-op-list h3,
+.pn-root .pn-close h2,
+.vq-root .vq-hero h1,
+.vq-root .vq-section-heading h2,
+.vq-root .vq-evidence h2,
+.vq-root .vq-close h2 { font-weight: 500; }
+
+.pn-root .pn-hero-frame { transform: none; }
+
+/* The nav action is a compact pill with its label centred. */
+.pn-root .pn-nav-cta { display: inline-flex; align-items: center; min-height: 42px; padding: 0 18px; }
+
+.pn-root .pn-close,
+.vq-root .vq-close {
+  border: 1px solid var(--dossier-line);
+  background: radial-gradient(circle at 78% 28%, rgba(142, 246, 207, 0.1), transparent 40%), var(--dossier-panel);
+  color: var(--dossier-text);
+}
+.pn-root .pn-close > p,
+.vq-root .vq-close > p { color: var(--dossier-signal); }
+.pn-root .pn-close h2,
+.vq-root .vq-close h2 { color: var(--dossier-text); }
 
 @media (max-width: 680px) {
   .pn-root::before,
