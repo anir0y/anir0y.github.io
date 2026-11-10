@@ -40,7 +40,7 @@ export function renderMobileHtml(year: number = new Date().getFullYear()): strin
   <p class="lede">Find the path before the adversary does.</p>
   <p>I pressure-test systems, map real attack paths, and stay through remediation. Offensive security with enough technical depth for the engineers, and enough clarity for the board.</p>
   <p class="actions">${link(LINKS.booking, "Book a working session")} ${link(LINKS.email, LINKS.emailPlain)}</p>
-  <p class="kind">13+ years in security · IEEE-published research · PhishNet in production at XBP Global · taking select engagements</p>
+  <p class="kind">13+ years in security · 100+ assessments · 20+ open tools · IEEE-published research · PhishNet in production at XBP Global · taking select engagements</p>
   <nav aria-label="Sections">
     <a href="#about">About</a> <a href="#services">Services</a> <a href="#training">Training</a>
     <a href="#research">Research</a> <a href="#projects">Work</a> <a href="#contact">Contact</a>

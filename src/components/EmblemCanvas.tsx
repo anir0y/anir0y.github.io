@@ -145,10 +145,12 @@ interface EmblemProps {
   /** Emblem half-extent as a fraction of the canvas's shorter side. */
   scale?: number;
   fit?: boolean;
+  /** Start scattered and assemble into the first emblem, instead of appearing formed. */
+  assemble?: boolean;
   className?: string;
 }
 
-export default function EmblemCanvas({ arts, active, box = 120, remote, scale = 0.45, fit = false, className = "mm-art" }: EmblemProps) {
+export default function EmblemCanvas({ arts, active, box = 120, remote, scale = 0.45, fit = false, assemble = false, className = "mm-art" }: EmblemProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const sourcesRef = useRef<HTMLSpanElement>(null);
   const activeRef = useRef(active);
@@ -191,6 +193,12 @@ export default function EmblemCanvas({ arts, active, box = 120, remote, scale = 
     gl.useProgram(prog);
 
     const from = { pos: first.pos.slice(), acc: first.acc.slice() };
+    if (assemble) {
+      for (let i = 0; i < N; i++) {
+        const ang = Math.random() * Math.PI * 2, r = 0.9 + Math.random() * 1.1;
+        from.pos[i * 2] = Math.cos(ang) * r; from.pos[i * 2 + 1] = Math.sin(ang) * r;
+      }
+    }
     let to: Cloud = first;
     const seeds = new Float32Array(N);
     for (let i = 0; i < N; i++) seeds[i] = (perm[i] + 0.5) / N;
@@ -218,7 +226,7 @@ export default function EmblemCanvas({ arts, active, box = 120, remote, scale = 
     gl.enable(gl.BLEND); gl.blendFunc(gl.ONE, gl.ONE);
     gl.clearColor(0, 0, 0, 0);
 
-    let t = 1, morphStart = 0;
+    let t = assemble ? 0 : 1, morphStart = performance.now();
     const ease = (x: number) => x * x * (3 - 2 * x);
     morphRef.current = (key: string) => {
       const next = clouds[key];

@@ -3,6 +3,7 @@ import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
 import { NAV, SPY_IDS } from "../data/nav";
 import { LINKS } from "../data/links";
 import { useScrollSpy } from "../hooks/useScrollSpy";
+import EmblemCanvas from "./EmblemCanvas";
 
 const REDUCED = typeof window !== "undefined" && window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
 
@@ -16,95 +17,49 @@ export function ScrollProgress() {
 }
 
 /* ── Boot / orbital handshake ────────────────────────────────────────── */
-const BOOT_PHASES = [
-  ["ACQ-01", "Acquiring orbital relay"],
-  ["NAV-13", "Calibrating planetary mesh"],
-  ["ENC-25", "Negotiating encrypted tunnel"],
-  ["MAP-47", "Mapping attack-surface telemetry"],
-  ["SIG-82", "Verifying operator signature"],
-  ["LNK-99", "Secure channel established"],
-] as const;
+// Points drift in and assemble into the logo (~0.9s), a short hold, then the page takes over.
+const BOOT_MS = 1500;
 
 export function Boot() {
   // The intro plays once per browser session; reloads and return trips go straight to the page.
   const [seen] = useState(() => { try { return sessionStorage.getItem("anir0y:boot") === "1"; } catch { return false; } });
   const [done, setDone] = useState(seen);
-  const [shown, setShown] = useState(REDUCED ? BOOT_PHASES.length : 0);
+  // Once faded out, the contents unmount so the loader's canvas is released.
+  const [gone, setGone] = useState(seen);
 
   useEffect(() => { if (done) { try { sessionStorage.setItem("anir0y:boot", "1"); } catch { /* private mode */ } } }, [done]);
 
   useEffect(() => {
     if (seen) return;
-    if (REDUCED) { const id = window.setTimeout(() => setDone(true), 280); return () => window.clearTimeout(id); }
-    let i = 0; const timers: number[] = [];
-    const step = () => {
-      i++; setShown(i);
-      if (i < BOOT_PHASES.length) timers.push(window.setTimeout(step, 170 + Math.random() * 120));
-      else timers.push(window.setTimeout(() => setDone(true), 620));
-    };
-    timers.push(window.setTimeout(step, 120));
-    const safety = window.setTimeout(() => setDone(true), 3200); // never trap the user
-    timers.push(safety);
-    return () => timers.forEach(clearTimeout);
-  }, []);
+    const id = window.setTimeout(() => setDone(true), REDUCED ? 280 : BOOT_MS);
+    return () => window.clearTimeout(id);
+  }, [seen]);
 
-  const pct = Math.round((shown / BOOT_PHASES.length) * 100);
-  const phase = BOOT_PHASES[Math.max(0, Math.min(shown - 1, BOOT_PHASES.length - 1))];
+  useEffect(() => {
+    if (!done || gone) return;
+    const id = window.setTimeout(() => setGone(true), 900);
+    return () => window.clearTimeout(id);
+  }, [done, gone]);
 
   return (
-    <div id="boot" className={done ? "done" : ""} aria-busy={!done} aria-label="Secure orbital link loading">
-      <button className="boot-skip" type="button" onClick={() => setDone(true)}>Skip intro</button>
-      <div className="boot-static" aria-hidden="true" />
-      <div className="boot-coordinate boot-coordinate-a" aria-hidden="true">13.0827° N<br />80.2707° E</div>
-      <div className="boot-coordinate boot-coordinate-b" aria-hidden="true">NODE / ANR-0Y<br />EPOCH / 2026</div>
-
-      <div className="boot-shell">
-        <div className="boot-orbital" aria-hidden="true">
-          <span className="boot-axis boot-axis-x" />
-          <span className="boot-axis boot-axis-y" />
-          <div className="boot-orbit boot-orbit-a"><i /></div>
-          <div className="boot-orbit boot-orbit-b"><i /></div>
-          <div className="boot-planet-wrap">
-            <div className="boot-saturn-ring boot-saturn-ring-back" />
-            <div className="boot-planet">
-              <span className="boot-planet-scan" />
-              <span className="boot-planet-logo" />
+    <div id="boot" className={done ? "done" : ""} aria-busy={!done} aria-label="Loading">
+      {!gone && (
+        <>
+          <button className="boot-skip" type="button" onClick={() => setDone(true)}>Skip intro</button>
+          <div className="boot-stage">
+            <div className="boot-mark" aria-hidden="true">
+              <EmblemCanvas className="boot-emblem" arts={{}} remote={{ logo: "/anir0y-logo.svg" }} active="logo" scale={0.36} fit assemble />
+              <span className="boot-logo" />
             </div>
-            <div className="boot-saturn-ring boot-saturn-ring-front" />
-            <div className="boot-planet-glitch boot-planet-glitch-a" />
-            <div className="boot-planet-glitch boot-planet-glitch-b" />
+            <p className="boot-name">Animesh Roy <span>@anir0y</span></p>
+            <div className="boot-line" aria-hidden="true"><i /></div>
           </div>
-          <div className="boot-target">SIGNAL LOCK <b>{pct}%</b></div>
-        </div>
-
-        <div className="boot-console">
-          <div className="boot-head">
-            <span className="boot-dot" />
-            <span>ANIR0Y / SECURE ORBIT</span>
-            <b>CHANNEL 0X13</b>
-          </div>
-          <div className="boot-copy">
-            <p>Deep-space security relay</p>
-            <h1 className="boot-title" data-text="ORBITAL LINK">ORBITAL LINK</h1>
-            <span>Synchronizing a protected session with the security operations grid.</span>
-          </div>
-          <div className="boot-telemetry" role="status" aria-live="polite">
-            <div><small>{phase[0]}</small><span>{phase[1]}</span></div>
-            <strong>{String(pct).padStart(3, "0")}%</strong>
-          </div>
-          <div className="boot-bar" aria-hidden="true"><i style={{ width: pct + "%" }} /></div>
-          <div className="boot-foot" aria-hidden="true">
-            <span>TLS_AES_256_GCM</span>
-            <span>CURVE25519</span>
-            <span>{shown >= BOOT_PHASES.length ? "LINK STABLE" : "SCANNING"}</span>
-          </div>
-        </div>
-      </div>
+        </>
+      )}
     </div>
   );
 }
 
-/* ── Telemetry stream (decorative) ───────────────────────────────────── */
 export function TelemetryStream() {
   const [lines, setLines] = useState<string[]>([]);
   useEffect(() => {

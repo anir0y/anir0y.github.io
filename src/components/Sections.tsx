@@ -80,8 +80,9 @@ export function Hero() {
 
         <div className="hero-proof" aria-label="Professional highlights">
           <span><b>13+</b> years in security</span>
+          <span><b>100+</b> assessments</span>
+          <span><b>20+</b> open tools</span>
           <span><b>IEEE</b> published research</span>
-          <span><b>{MAJOR_PROJECTS.length}</b> flagship projects</span>
           <span><b>XBP Global</b> runs PhishNet in production</span>
           <span className="availability"><i /> Taking select engagements</span>
         </div>

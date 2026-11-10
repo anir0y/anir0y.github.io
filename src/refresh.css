@@ -1576,6 +1576,31 @@ a.scope-card:hover span { color: var(--signal); }
 .scope-pips button[aria-pressed="true"]::before { background: var(--signal); }
 @media (prefers-reduced-motion: reduce) { .scope-card { animation: none; } }
 
-/* Hero proof row: five cells now (four claims + availability). */
-.hero-proof { grid-template-columns: repeat(5, 1fr); }
+/* Hero proof row: three numbers, two named claims, availability. */
+.hero-proof { grid-template-columns: repeat(3, minmax(0, 0.8fr)) minmax(0, 1fr) minmax(0, 1.25fr) minmax(0, 1.15fr); }
 @media (max-width: 880px) { .hero-proof { grid-template-columns: 1fr 1fr; } }
+
+/* Loader: the logo assembles from points, then the page takes over. Same
+   language as the hero scope; replaces the cobalt planet and glitch effects. */
+#boot,
+#boot.done { animation: none; }
+#boot { display: grid; place-items: center; padding: 24px; background: #07111f; }
+#boot::before,
+#boot::after { display: none; }
+.boot-stage { display: grid; justify-items: center; gap: 18px; }
+.boot-mark { position: relative; width: min(52vw, 260px); aspect-ratio: 1; }
+.boot-emblem { position: absolute; inset: 0; }
+.boot-emblem canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+/* Static logo: only appears if the canvas has not started (no WebGL), or with reduced motion. */
+.boot-logo { position: absolute; inset: 28%; background: var(--text); opacity: 0; -webkit-mask: url('/anir0y-logo.svg') center / contain no-repeat; mask: url('/anir0y-logo.svg') center / contain no-repeat; animation: boot2-show 0.01s linear 0.7s forwards; }
+.boot-emblem.is-live ~ .boot-logo { visibility: hidden; }
+.boot-name { margin: 0; color: var(--text); font: 500 22px/1.2 var(--font-title); letter-spacing: -0.03em; opacity: 0; animation: boot2-show 0.5s var(--ease) 0.55s forwards; }
+.boot-name span { margin-left: 8px; color: var(--signal); font: 500 11px/1 var(--font-mono); letter-spacing: 0.04em; }
+.boot-line { width: 160px; height: 1px; overflow: hidden; background: rgba(208, 222, 241, 0.16); }
+.boot-line i { display: block; height: 100%; background: var(--signal); transform: scaleX(0); transform-origin: left center; animation: boot2-line 1.4s var(--ease) forwards; }
+@keyframes boot2-show { to { opacity: 1; } }
+@keyframes boot2-line { to { transform: scaleX(1); } }
+@media (prefers-reduced-motion: reduce) {
+  .boot-logo, .boot-name { opacity: 1; animation: none; }
+  .boot-line i { transform: none; animation: none; }
+}
