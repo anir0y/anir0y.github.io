@@ -1,4 +1,4 @@
-export interface Project { ix: string; title: string; desc: string; go: string; href: string; watermark?: string; feature?: "hero" | "product" | "more"; proof?: string[]; mark?: "agents" | "clock" | "hook" | "quill"; group?: string; }
+export interface Project { ix: string; title: string; desc: string; go: string; href: string; watermark?: string; feature?: "hero" | "product" | "more"; proof?: string[]; mark?: "agents" | "clock" | "hook" | "quill"; group?: string; extra?: { label: string; href: string }; }
 export const PROJECTS: Project[] = [
   { ix: "AI · security operations", title: "SeethaAI", mark: "agents", watermark: "SEETHA AI", go: "open live command →", href: "https://hunter.anir0y.in/", feature: "hero",
     desc: "My multi-agent security research operating system. SeethaAI coordinates specialist agents across a live fleet for recon, validation, code audit, disclosure tracking, memory, orchestration, and continuous self-improvement.",
@@ -28,6 +28,13 @@ export const PROJECTS: Project[] = [
     desc: "Disposable email addresses from your terminal: generate, receive and send. Ships as both a CLI and an MCP server." },
   { ix: "REPO · privacy by design", title: "Offline Statement Tracker", group: "Utilities", go: "view repo →", href: "https://github.com/anir0y/offline-statement-tracker",
     desc: "Local-only finance dashboard for password-protected bank PDFs, with dedup, categorisation and a private LLM chat. Nothing leaves the device." },
+  { ix: "LIVE · data decoding", title: "Decoder", group: "Hosted services", go: "open decoder →", href: "https://decoder.anir0y.in/",
+    desc: "A hosted instance of CyberChef, the open-source toolkit for encoding, encryption, compression and data analysis, running in your browser." },
+  { ix: "LIVE · shell one-liners", title: "Shell Generator", group: "Hosted services", go: "open generator →", href: "https://shell.anir0y.in/",
+    desc: "Reverse, bind and MSFVenom one-liners for authorised tests and CTFs, with URL and Base64 encoding, listener commands and a raw mode." },
+  { ix: "LIVE · disposable email", title: "Emailz", group: "Hosted services", go: "open emailz →", href: "https://emailz.anir0y.in/",
+    extra: { label: "get the emailctl binary →", href: "https://github.com/anir0y/emailctl" },
+    desc: "The hosted service behind emailctl: disposable addresses you generate, receive on and send from. The web console is for administration; use it from the emailctl command-line binary." },
   { ix: "REPO · all projects", title: "More on GitHub", go: "github.com/anir0y →", href: "https://github.com/anir0y", feature: "more",
     desc: "20+ open-source security tools, automation and research drops, actively maintained at github.com/anir0y." },
 ];

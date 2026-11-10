@@ -29,7 +29,7 @@ export function renderMobileHtml(year: number = new Date().getFullYear()): strin
       <li>
         <h3>${link(p.href, p.title)}</h3>
         <p class="kind">${esc(p.ix)}</p>
-        <p>${esc(p.desc)}</p>${p.proof ? `\n        <p class="kind">${p.proof.map(esc).join(" · ")}</p>` : ""}
+        <p>${esc(p.desc)}${p.extra ? ` ${link(p.extra.href, plain(p.extra.label))}` : ""}</p>${p.proof ? `\n        <p class="kind">${p.proof.map(esc).join(" · ")}</p>` : ""}
       </li>`;
 
   return `

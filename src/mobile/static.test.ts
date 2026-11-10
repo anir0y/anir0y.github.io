@@ -16,7 +16,10 @@ describe("static phone edition", () => {
   });
 
   it("carries every project, course, service and lab from the shared data", () => {
-    for (const p of PROJECTS) expect(html).toContain(`href="${p.href}"`);
+    for (const p of PROJECTS) {
+      expect(html).toContain(`href="${p.href}"`);
+      if (p.extra) expect(html).toContain(`href="${p.extra.href}"`);
+    }
     for (const c of COURSES) { expect(html).toContain(c.name); expect(html).toContain("Syllabus:"); }
     for (const s of SERVICES) expect(html).toContain(s.title.replace(/&/g, "&amp;"));
     for (const l of LABS) expect(html).toContain(`href="${l.href}"`);

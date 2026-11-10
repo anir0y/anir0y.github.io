@@ -441,6 +441,7 @@ function ProjectMap({ items, root }: { items: Project[]; root?: Project }) {
             <h4>{p.title}</h4>
             <p>{p.desc}</p>
             <a className="go" href={p.href} target="_blank" rel="noopener noreferrer">{p.go}</a>
+            {p.extra && <a className="go" href={p.extra.href} target="_blank" rel="noopener noreferrer">{p.extra.label}</a>}
           </div>
         ))}
       </div>
