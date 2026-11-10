@@ -534,7 +534,7 @@ const MAJOR_PROJECTS = PROJECTS.filter((p) => p.feature === "hero");
    its name and link alongside. It pauses while pointed at or focused, and the
    pips jump straight to one. Under reduced motion it holds on the logo. */
 const SHOWCASE: { key: string; project?: Project }[] = [{ key: "logo" }, ...MAJOR_PROJECTS.map((p) => ({ key: p.mark ?? "", project: p }))];
-const SHOWCASE_MS = 4800;
+const SHOWCASE_MS = 3000;
 
 function HeroScope() {
   const [index, setIndex] = useState(0);

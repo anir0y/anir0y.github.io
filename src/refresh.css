@@ -219,7 +219,7 @@ nav.links a.active::before,
   position: absolute;
   inset: 0;
   background: conic-gradient(from 0deg, transparent 0 307deg, rgba(49, 92, 255, 0.34) 340deg, transparent 360deg);
-  animation: atlas-scan 5s linear infinite;
+  animation: atlas-scan 9s linear infinite;
 }
 .hero-scope p { padding-bottom: 14px; border-bottom: 1px solid var(--signal); color: var(--text-dim); font-size: 13px; line-height: 1.7; }
 @keyframes atlas-scan { to { transform: rotate(360deg); } }
