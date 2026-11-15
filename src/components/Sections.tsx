@@ -4,7 +4,7 @@ import { LINKS } from "../data/links";
 import { SERVICES } from "../data/services";
 import { COURSES } from "../data/training";
 import { RESEARCH } from "../data/research";
-import { CVES } from "../data/cves";
+import { CVES, CVE_KINDS } from "../data/cves";
 import { PROJECTS, type Project } from "../data/projects";
 import { LABS, type Lab } from "../data/labs";
 import Threads from "./Threads";
@@ -247,6 +247,124 @@ export function Training() {
   );
 }
 
+/* ── CVE scope ───────────────────────────────────────────────────────── */
+/* Every published CVE on one instrument: the closer to the centre, the higher
+   the CVSS score; the sector is the class of bug. The list beside it carries
+   the same data as text; pointing at either side lights the other. */
+const SECTOR = 360 / CVE_KINDS.length;
+const SECTOR_START = -90 - SECTOR / 2;
+const polar = (deg: number, r: number) => {
+  const a = (deg * Math.PI) / 180;
+  return [+(r * Math.cos(a)).toFixed(2), +(r * Math.sin(a)).toFixed(2)] as const;
+};
+/* The four CVSS severity bands (critical, high, medium, low) each get a ring of
+   equal width, so the scale is linear inside a band rather than across 0-10. */
+const BANDS = [[10, 9], [9, 7], [7, 4], [4, 0]] as const;
+const RING = 100 / BANDS.length;
+const radius = (cvss: number) => {
+  const i = BANDS.findIndex(([, lo]) => cvss >= lo);
+  const [hi, lo] = BANDS[i];
+  return (i + (hi - cvss) / (hi - lo)) * RING;
+};
+const BLIPS = CVE_KINDS.flatMap((kind, i) => {
+  const group = CVES.filter((c) => c.kind === kind);
+  return group.map((c, k) => {
+    const [x, y] = polar(SECTOR_START + SECTOR * i + (SECTOR * (k + 0.5)) / group.length, radius(c.cvss));
+    return { ...c, x, y };
+  });
+});
+/* Blips surface from the outer ring inwards, least severe first. */
+const BLIP_ORDER = [...BLIPS].sort((a, b) => a.cvss - b.cvss).map((b) => b.id);
+/* Bezel lettering: lower sectors run the other way so nothing reads upside down. */
+const BEZEL = CVE_KINDS.map((kind, i) => {
+  const from = SECTOR_START + SECTOR * i + 3;
+  const to = SECTOR_START + SECTOR * (i + 1) - 3;
+  const upper = Math.sin(((from + to) / 2) * (Math.PI / 180)) < 0;
+  const r = upper ? 106 : 113.5;
+  const [ax, ay] = polar(from, r);
+  const [bx, by] = polar(to, r);
+  return { kind, d: upper ? `M${ax} ${ay}A${r} ${r} 0 0 1 ${bx} ${by}` : `M${bx} ${by}A${r} ${r} 0 0 0 ${ax} ${ay}` };
+});
+const RING_SCORES = [9, 7, 4];
+
+function CveScope() {
+  const [active, setActive] = useState<string | null>(null);
+  const hit = BLIPS.find((b) => b.id === active);
+  return (
+    <div className="cves-grid">
+      <div className="cve-scope" aria-hidden="true">
+        <svg viewBox="-122 -122 244 244">
+          <defs>
+            <radialGradient id="cs-glow">
+              <stop offset="0" stopColor="#8ef6cf" stopOpacity="0.14" />
+              <stop offset="1" stopColor="#8ef6cf" stopOpacity="0" />
+            </radialGradient>
+            {BEZEL.map((b, i) => <path key={b.kind} id={`cs-arc-${i}`} d={b.d} />)}
+          </defs>
+          <circle r="100" fill="url(#cs-glow)" />
+          <circle className="cs-ring cs-rim" r="100" />
+          {RING_SCORES.map((s) => <circle key={s} className={"cs-ring" + (s === 9 ? " cs-core" : "")} r={radius(s)} />)}
+          <circle className="cs-pin" r="1" />
+          {CVE_KINDS.map((kind, i) => {
+            const [x1, y1] = polar(SECTOR_START + SECTOR * i, RING);
+            const [x2, y2] = polar(SECTOR_START + SECTOR * i, 100);
+            return <line key={kind} className="cs-spoke" x1={x1} y1={y1} x2={x2} y2={y2} />;
+          })}
+          {RING_SCORES.map((s) => <text key={s} className="cs-num" x="3" y={radius(s) + 6.5}>{s.toFixed(1)}</text>)}
+          {BEZEL.map((b, i) => (
+            <text key={b.kind} className={"cs-band" + (hit?.kind === b.kind ? " is-active" : "")} textAnchor="middle">
+              <textPath href={`#cs-arc-${i}`} startOffset="50%">{b.kind}</textPath>
+            </text>
+          ))}
+          {hit && <line className="cs-range" x1="0" y1="0" x2={hit.x} y2={hit.y} />}
+          {BLIPS.map((b) => (
+            <motion.g
+              key={b.id}
+              className={"cs-blip" + (active === b.id ? " is-active" : active ? " is-dim" : "")}
+              initial={REDUCED ? false : { opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: REDUCED ? 0 : 0.45, delay: REDUCED ? 0 : 0.3 + BLIP_ORDER.indexOf(b.id) * 0.09 }}
+              onMouseEnter={() => setActive(b.id)}
+              onMouseLeave={() => setActive(null)}
+            >
+              <a href={b.href} target="_blank" rel="noopener noreferrer" tabIndex={-1}>
+                <circle cx={b.x} cy={b.y} r="7" fill="transparent" />
+                <circle className="cs-dot" cx={b.x} cy={b.y} r="2.6" />
+              </a>
+            </motion.g>
+          ))}
+          {hit && <path className="cs-lock" transform={`translate(${hit.x} ${hit.y})`} d="M-6-3.5V-6H-3.5M3.5-6H6V-3.5M6 3.5V6H3.5M-3.5 6H-6V3.5" />}
+        </svg>
+        <p className="cve-readout">
+          {hit
+            ? <><b>{hit.project}</b> scores {hit.cvss.toFixed(1)}, {hit.severity.toLowerCase()}. {hit.kind}.</>
+            : "Each blip is one CVE. The closer it sits to the centre, the higher its CVSS score; its sector is the class of bug."}
+        </p>
+      </div>
+      <ul className="cve-list">
+        {CVES.map((c) => (
+          <li key={c.id}>
+            <a
+              className={active === c.id ? "is-active" : undefined}
+              href={c.href} target="_blank" rel="noopener noreferrer"
+              onMouseEnter={() => setActive(c.id)} onMouseLeave={() => setActive(null)}
+              onFocus={() => setActive(c.id)} onBlur={() => setActive(null)}
+            >
+              <span className="cve-score">{c.cvss.toFixed(1)}<small>{c.severity.toLowerCase()}</small></span>
+              <span className="cve-body">
+                <b className="cve-name">{c.project}</b>
+                <span className="cve-title">{c.title}</span>
+                <span className="cve-meta"><span className="cve-id">{c.id}</span><span>{c.kind}</span></span>
+              </span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
 /* ── Research ────────────────────────────────────────────────────────── */
 export function Research() {
   return (
@@ -272,17 +390,7 @@ export function Research() {
         </Reveal>
         <Reveal className="cves">
           <div className="cves-head"><h3>Published CVEs</h3><span>{CVES.length} credited advisories</span></div>
-          <ul>
-            {CVES.map((c) => (
-              <li key={c.id}>
-                <a href={c.href} target="_blank" rel="noopener noreferrer">
-                  <span className="cve-id">{c.id}</span>
-                  <span className="cve-title"><b>{c.project}</b>{c.title}</span>
-                  <span className={"cve-sev " + c.severity.toLowerCase()}>{c.cvss.toFixed(1)} {c.severity}</span>
-                </a>
-              </li>
-            ))}
-          </ul>
+          <CveScope />
         </Reveal>
         <p className="note">◈ The orbital scene behind this page is illustrative, not a feed of real client engagements. Client work stays confidential by default.</p>
       </div>
