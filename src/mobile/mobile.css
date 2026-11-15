@@ -133,6 +133,11 @@ a.node:active{border-color:var(--cyan);background:rgba(0,229,255,.05)}
 .node p{color:var(--dim);font-size:13px;margin:7px 0 0}
 .node .ix{display:block;color:var(--orange);font-size:10px;letter-spacing:1.4px;text-transform:uppercase;margin-bottom:5px}
 .node .meta,.node .go{display:block;margin-top:9px;font-size:10.5px;letter-spacing:1.2px;text-transform:uppercase;color:var(--cyan-soft)}
+.cve{display:block;border:1px solid var(--line);background:rgba(7,16,20,.74);padding:11px 14px;margin-bottom:8px;color:var(--text);text-decoration:none}
+a.cve:active{border-color:var(--cyan)}
+.cve .ix{display:block;color:var(--orange);font-size:10px;letter-spacing:1.4px;text-transform:uppercase;margin-bottom:5px}
+.cve b{font-weight:600;font-size:13.5px}
+.cve p{color:var(--dim);font-size:13px;margin:4px 0 0}
 .ping{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--faint);margin-right:8px;vertical-align:1px}
 .ping.live{background:var(--green);box-shadow:0 0 7px var(--green)}
 

@@ -4,6 +4,7 @@ import { LINKS } from "../data/links";
 import { SERVICES } from "../data/services";
 import { COURSES } from "../data/training";
 import { RESEARCH } from "../data/research";
+import { CVES } from "../data/cves";
 import { PROJECTS, type Project } from "../data/projects";
 import { LABS, type Lab } from "../data/labs";
 import Threads from "./Threads";
@@ -268,6 +269,20 @@ export function Research() {
               ? <a className="node" key={n.title} href={n.href} target="_blank" rel="noopener noreferrer">{inner}</a>
               : <div className="node" key={n.title}>{inner}</div>;
           })}
+        </Reveal>
+        <Reveal className="cves">
+          <div className="cves-head"><h3>Published CVEs</h3><span>{CVES.length} credited advisories</span></div>
+          <ul>
+            {CVES.map((c) => (
+              <li key={c.id}>
+                <a href={c.href} target="_blank" rel="noopener noreferrer">
+                  <span className="cve-id">{c.id}</span>
+                  <span className="cve-title"><b>{c.project}</b>{c.title}</span>
+                  <span className={"cve-sev " + c.severity.toLowerCase()}>{c.cvss.toFixed(1)} {c.severity}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
         </Reveal>
         <p className="note">◈ The orbital scene behind this page is illustrative, not a feed of real client engagements. Client work stays confidential by default.</p>
       </div>

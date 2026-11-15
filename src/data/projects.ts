@@ -1,8 +1,10 @@
+import { CVES } from "./cves";
+
 export interface Project { ix: string; title: string; desc: string; go: string; href: string; watermark?: string; feature?: "hero" | "product" | "more"; proof?: string[]; mark?: "agents" | "clock" | "hook" | "quill"; group?: string; extra?: { label: string; href: string }; art?: string; }
 export const PROJECTS: Project[] = [
   { ix: "AI · security operations", title: "SeethaAI", mark: "agents", watermark: "SEETHA AI", go: "open live command →", href: "https://hunter.anir0y.in/", feature: "hero",
     desc: "My multi-agent security research operating system. SeethaAI coordinates specialist agents across a live fleet for recon, validation, code audit, disclosure tracking, memory, orchestration, and continuous self-improvement.",
-    proof: ["13 specialist agents", "4-machine fleet", "14,306 turns", "18.77B measured tokens", "82 bugs tracked", "6 published CVEs"] },
+    proof: ["13 specialist agents", "4-machine fleet", "14,306 turns", "18.77B measured tokens", "82 bugs tracked", `${CVES.length} published CVEs`] },
 
   { ix: "PRODUCT · expert scheduling", title: "OpenHour", mark: "clock", watermark: "OPENHOUR", go: "visit openhour.me →", href: "https://openhour.me/", feature: "hero",
     desc: "A scheduling platform that turns professional expertise into a clear, bookable profile. I built OpenHour to remove the back-and-forth from discovery and booking; my live security consulting and mentoring page is at openhour.me/anir0y." },

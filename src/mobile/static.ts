@@ -5,6 +5,7 @@ import { LINKS } from "../data/links";
 import { SERVICES } from "../data/services";
 import { COURSES } from "../data/training";
 import { RESEARCH } from "../data/research";
+import { CVES } from "../data/cves";
 import { PROJECTS } from "../data/projects";
 import { LABS } from "../data/labs";
 import { ARSENAL_GROUPS } from "../data/arsenal";
@@ -88,6 +89,10 @@ export function renderMobileHtml(year: number = new Date().getFullYear()): strin
         <h3>${n.href ? link(n.href, n.title) : esc(n.title)}</h3>
         <p>${esc(n.desc)}</p>
       </li>`).join("")}
+    </ul>
+    <h3>Published CVEs</h3>
+    <ul>${CVES.map((c) => `
+      <li>${link(c.href, c.id)}: ${esc(c.project)}. ${esc(c.title)} (CVSS ${c.cvss.toFixed(1)}, ${esc(c.severity.toLowerCase())})</li>`).join("")}
     </ul>
   </section>
 

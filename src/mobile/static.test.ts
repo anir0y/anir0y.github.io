@@ -5,6 +5,7 @@ import { COURSES } from "../data/training";
 import { LABS } from "../data/labs";
 import { SERVICES } from "../data/services";
 import { LINKS } from "../data/links";
+import { CVES } from "../data/cves";
 
 describe("static phone edition", () => {
   const html = renderMobileHtml(2026);
@@ -23,6 +24,11 @@ describe("static phone edition", () => {
     for (const c of COURSES) { expect(html).toContain(c.name); expect(html).toContain("Syllabus:"); }
     for (const s of SERVICES) expect(html).toContain(s.title.replace(/&/g, "&amp;"));
     for (const l of LABS) expect(html).toContain(`href="${l.href}"`);
+  });
+
+  it("lists every credited CVE with a link to its advisory", () => {
+    expect(CVES.length).toBe(10);
+    for (const c of CVES) expect(html).toContain(`<a href="${c.href}" target="_blank" rel="noopener noreferrer">${c.id}</a>`);
   });
 
   it("keeps the desktop section ids so shared #hash links still land", () => {

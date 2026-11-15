@@ -4,6 +4,7 @@ import { ARSENAL } from "../data/arsenal";
 import { SERVICES } from "../data/services";
 import { COURSES, type Course } from "../data/training";
 import { RESEARCH } from "../data/research";
+import { CVES } from "../data/cves";
 import { PROJECTS } from "../data/projects";
 import { LABS } from "../data/labs";
 import { useClock } from "../hooks/useClock";
@@ -185,6 +186,15 @@ function IntelPanel() {
           ? <a className="node" key={n.title} href={n.href} target="_blank" rel="noopener noreferrer">{inner}</a>
           : <div className="node" key={n.title}>{inner}</div>;
       })}
+
+      <div className="sub">// published CVEs</div>
+      {CVES.map((c) => (
+        <a className="cve" key={c.id} href={c.href} target="_blank" rel="noopener noreferrer">
+          <span className="ix">{c.id} · {c.cvss.toFixed(1)} {c.severity}</span>
+          <b>{c.project}</b>
+          <p>{c.title}</p>
+        </a>
+      ))}
 
       <div className="sub">// shipped tooling</div>
       {PROJECTS.map((p) => (
